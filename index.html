@@ -969,8 +969,206 @@
     .cv-modal-item span { display: block; font-size: 0.82rem; color: var(--ink-muted); }
     .cv-modal-item p { margin: 4px 0 0; font-size: 0.88rem; color: var(--ink-soft); line-height: 1.55; }
 
+    /* ================= COZY VILLAGE ADVENTURE GAME ================= */
+    .hud-quest-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 12px; border-radius: var(--radius-pill);
+      background: var(--terracotta-soft); color: var(--terracotta);
+      border: 1px solid rgba(194, 101, 74, 0.25);
+      font-size: 0.8rem; font-weight: 700; font-variant-numeric: tabular-nums;
+      transition: transform 0.2s var(--ease-out), background-color 0.2s ease;
+    }
+    .hud-quest-pill:hover { background: var(--terracotta); color: #FFFDF8; transform: translateY(-1px); }
+    [data-theme="dark"] .hud-quest-pill { color: var(--ochre); border-color: rgba(240, 194, 107, 0.34); }
+    [data-theme="dark"] .hud-quest-pill:hover { background: var(--terracotta); color: #161311; }
+    .hud-district-tag {
+      font-size: 0.78rem; font-weight: 600; color: var(--ink-muted);
+      padding: 4px 10px; border-left: 1px solid var(--hairline); white-space: nowrap;
+    }
+    .hud-sfx-btn {
+      width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
+      font-size: 0.88rem; border: 1px solid var(--hairline); color: var(--ink-soft);
+    }
+    .hud-sfx-btn:hover { background: var(--paper-deep); color: var(--ink); }
+
+    /* Extra Village Scenery Details */
+    .village-prop--sign { bottom: 122px; z-index: 12; }
+    .village-prop--fence { bottom: 132px; z-index: 6; opacity: 0.92; }
+    .village-prop--bunting { bottom: 320px; z-index: 8; opacity: 0.88; }
+    .village-prop--flower { bottom: 120px; z-index: 14; }
+    .village-prop--bench { bottom: 128px; z-index: 13; }
+    [data-theme="dark"] .village-prop--fence,
+    [data-theme="dark"] .village-prop--flower,
+    [data-theme="dark"] .village-prop--bench,
+    [data-theme="dark"] .village-prop--sign { filter: brightness(0.76) contrast(1.06); }
+    .village-butterfly {
+      position: absolute; font-size: 16px; pointer-events: none; z-index: 26;
+      animation: butterflyGlide 6.4s ease-in-out infinite;
+      transition: opacity 0.6s ease;
+    }
+    [data-theme="dark"] .village-butterfly { opacity: 0; }
+
+    /* Collectible Skill & Story Orbs */
+    .game-orb {
+      position: absolute; transform: translateX(-50%); z-index: 28;
+      width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; flex-direction: column;
+      background: radial-gradient(circle at 35% 30%, #FFFDF4 0%, #FFE49E 58%, #E5A64B 100%);
+      border: 2px solid rgba(58, 45, 38, 0.25);
+      box-shadow: 0 6px 18px rgba(217, 160, 78, 0.45), 0 0 18px rgba(255, 224, 130, 0.65);
+      animation: orbFloat 2.8s ease-in-out infinite;
+      transition: transform 0.35s var(--ease-out), opacity 0.35s ease;
+    }
+    .game-orb:hover { transform: translateX(-50%) scale(1.14); }
+    .game-orb-icon { font-size: 1.15rem; line-height: 1; }
+    .game-orb-tag {
+      position: absolute; top: calc(100% + 4px); white-space: nowrap;
+      font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: var(--radius-pill);
+      background: rgba(255, 253, 248, 0.92); color: #241F1B;
+      border: 1px solid rgba(36, 31, 27, 0.14); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+    [data-theme="dark"] .game-orb {
+      box-shadow: 0 0 24px 6px rgba(255, 214, 118, 0.68), 0 0 42px rgba(224, 138, 94, 0.35);
+    }
+    [data-theme="dark"] .game-orb-tag {
+      background: rgba(28, 23, 20, 0.92); color: var(--ochre); border-color: rgba(240, 194, 107, 0.35);
+    }
+    .game-orb.is-collected { opacity: 0; transform: translateX(-50%) translateY(-34px) scale(1.55); pointer-events: none; }
+
+    /* Interactive Village Companions (NPCs) */
+    .village-npc {
+      position: absolute; bottom: 112px; transform: translateX(-50%); z-index: 25;
+      display: flex; flex-direction: column; align-items: center; cursor: pointer;
+      transition: transform 0.25s var(--ease-out);
+    }
+    .village-npc:hover, .village-npc.is-nearby { transform: translateX(-50%) translateY(-4px); }
+    .npc-art { animation: npcIdle 3.1s ease-in-out infinite; filter: drop-shadow(0 8px 12px rgba(36, 31, 27, 0.16)); }
+    .npc-tag {
+      margin-bottom: 4px; padding: 3px 10px; border-radius: var(--radius-pill);
+      background: var(--paper-card); border: 1.5px solid var(--terracotta);
+      font-size: 0.72rem; font-weight: 700; color: var(--terracotta); white-space: nowrap;
+      box-shadow: 0 4px 12px rgba(36, 31, 27, 0.12);
+    }
+    [data-theme="dark"] .npc-tag { background: rgba(28, 23, 20, 0.94); color: var(--ochre); border-color: var(--ochre); }
+    .npc-prompt {
+      margin-top: 2px; padding: 3px 9px; border-radius: var(--radius-pill);
+      background: rgba(36, 31, 27, 0.84); color: #FFFDF8; font-size: 0.7rem; font-weight: 600;
+      opacity: 0; transform: translateY(4px); transition: all 0.2s ease;
+    }
+    .village-npc:hover .npc-prompt, .village-npc.is-nearby .npc-prompt { opacity: 1; transform: translateY(0); }
+    [data-theme="dark"] .npc-prompt { background: var(--ochre); color: #161311; }
+
+    /* Visited Stamp Badge on Shops */
+    .stop-visited-badge {
+      display: none; margin-left: 6px; padding: 1px 6px; border-radius: var(--radius-pill);
+      background: var(--sage); color: #FFFDF8; font-size: 0.62rem; font-weight: 700; vertical-align: middle;
+    }
+    .village-stop.is-visited .stop-visited-badge { display: inline-block; }
+
+    /* Floating Sparkle & Heart Burst Popups */
+    .game-float-pop {
+      position: absolute; z-index: 90; pointer-events: none;
+      font-family: var(--font-hand); font-size: 1.18rem; font-weight: 700;
+      color: #FFFDF8; text-shadow: 0 2px 10px rgba(36, 31, 27, 0.65);
+      background: var(--terracotta); padding: 4px 12px; border-radius: var(--radius-pill);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+      transform: translate(-50%, 0); animation: floatPop 1.35s var(--ease-out) forwards;
+    }
+
+    /* Cozy RPG Dialogue Box */
+    .rpg-dialogue {
+      position: fixed; bottom: 78px; left: 50%; transform: translateX(-50%) translateY(16px);
+      z-index: 420; width: min(620px, calc(100vw - 32px));
+      background: rgba(255, 253, 248, 0.96); backdrop-filter: blur(14px);
+      border: 2px solid var(--terracotta); border-radius: var(--radius-md);
+      padding: 14px 18px; box-shadow: var(--shadow-modal);
+      display: flex; align-items: flex-start; gap: 14px;
+      opacity: 0; pointer-events: none; transition: opacity 0.26s ease, transform 0.28s var(--ease-out);
+    }
+    .rpg-dialogue.is-open { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+    [data-theme="dark"] .rpg-dialogue { background: rgba(28, 23, 20, 0.96); border-color: var(--ochre); }
+    .rpg-speaker-icon {
+      width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+      display: grid; place-items: center; font-size: 1.45rem;
+      background: var(--terracotta-soft); border: 1.5px solid var(--hairline-strong);
+    }
+    .rpg-dialogue-body { flex: 1; min-width: 0; }
+    .rpg-speaker-name { font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--terracotta); margin-bottom: 2px; }
+    .rpg-dialogue-text { margin: 0; font-size: 0.91rem; color: var(--ink); line-height: 1.5; }
+    .rpg-dialogue-close {
+      padding: 5px 11px; border-radius: var(--radius-pill); flex-shrink: 0;
+      background: var(--paper-deep); border: 1px solid var(--hairline-strong);
+      font-size: 0.78rem; font-weight: 700; color: var(--ink);
+    }
+    .rpg-dialogue-close:hover { background: var(--ink); color: var(--paper); }
+
+    /* Bottom Game Controls Bar */
+    .village-hud-bottom { gap: 10px; align-items: center; flex-wrap: wrap; }
+    .game-pad {
+      pointer-events: auto; display: flex; align-items: center; gap: 6px;
+      background: rgba(255, 253, 248, 0.88); backdrop-filter: blur(12px);
+      border: 1px solid var(--hairline); border-radius: var(--radius-pill);
+      padding: 6px 10px; box-shadow: 0 8px 24px rgba(36, 31, 27, 0.1);
+    }
+    [data-theme="dark"] .game-pad {
+      background: rgba(24, 20, 18, 0.86); border-color: rgba(244, 237, 226, 0.15);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.44);
+    }
+    .pad-btn {
+      padding: 6px 12px; border-radius: var(--radius-pill);
+      font-size: 0.8rem; font-weight: 700; color: var(--ink);
+      background: var(--paper-deep); border: 1px solid var(--hairline);
+      transition: transform 0.12s ease, background-color 0.15s ease;
+      touch-action: manipulation;
+    }
+    .pad-btn:active, .pad-btn.is-pressed { transform: scale(0.93); background: var(--terracotta); color: #FFFDF8; }
+    .pad-btn--act { background: var(--terracotta); color: #FFFDF8; border-color: transparent; }
+    .pad-btn--act:hover { background: #AE553B; }
+    [data-theme="dark"] .pad-btn--act { color: #161311; }
+
+    /* Explorer's Passport & Mini-Quiz Modal */
+    .passport-banner {
+      display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+      padding: 16px 18px; border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--terracotta-soft) 0%, var(--sage-soft) 100%);
+      border: 1px solid var(--hairline); margin-bottom: 18px;
+    }
+    .passport-rank { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 600; color: var(--ink); }
+    .passport-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 18px; }
+    .passport-stamp {
+      padding: 10px; border-radius: var(--radius-sm); text-align: left;
+      background: var(--paper); border: 1px dashed var(--hairline-strong);
+      font-size: 0.78rem; color: var(--ink-muted); transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .passport-stamp:hover { border-color: var(--terracotta); transform: translateY(-1px); }
+    .passport-stamp.is-stamped {
+      background: var(--sage-soft); border-style: solid; border-color: var(--sage); color: var(--ink);
+    }
+    .passport-stamp strong { display: block; font-size: 0.82rem; color: var(--ink); margin-bottom: 2px; }
+    .quiz-card {
+      background: var(--paper); border: 1px solid var(--hairline); border-radius: var(--radius-md);
+      padding: 16px 18px; margin-top: 12px;
+    }
+    .quiz-q { font-family: var(--font-serif); font-size: 1.02rem; font-weight: 600; margin: 0 0 10px; }
+    .quiz-opts { display: flex; flex-direction: column; gap: 8px; }
+    .quiz-opt {
+      text-align: left; padding: 9px 13px; border-radius: var(--radius-sm);
+      background: var(--paper-card); border: 1px solid var(--hairline-strong);
+      font-size: 0.88rem; color: var(--ink); transition: all 0.2s ease;
+    }
+    .quiz-opt:hover { border-color: var(--terracotta); background: var(--paper-deep); }
+    .quiz-opt.is-correct { background: var(--sage-soft); border-color: var(--sage); font-weight: 600; }
+    .quiz-opt.is-wrong { background: var(--terracotta-soft); border-color: var(--terracotta); opacity: 0.8; }
+
+    @keyframes orbFloat { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-9px); } }
+    @keyframes npcIdle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+    @keyframes butterflyGlide { 0%, 100% { transform: translate(0, 0) rotate(-6deg); } 50% { transform: translate(26px, -18px) rotate(8deg); } }
+    @keyframes floatPop { 0% { opacity: 0; transform: translate(-50%, 6px) scale(0.8); } 18% { opacity: 1; transform: translate(-50%, -10px) scale(1.05); } 100% { opacity: 0; transform: translate(-50%, -56px) scale(0.95); } }
+
     @media (max-width: 840px) {
       .hero-grid, .path-grid, .work-grid, .about-layout, .contact-grid, .studio-grid, .goodbye-lamp-section, .skills-matrix, .awards-grid, .edu-grid, .certs-grid, .notes-grid { grid-template-columns: 1fr; }
+      .passport-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hud-district-tag { display: none; }
       .award-card--featured { grid-column: span 1; }
       .stats-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .hero-portrait-wrap { order: -1; }
@@ -981,6 +1179,7 @@
       .timeline-row { grid-template-columns: 1fr; gap: 6px; }
       .read-nav a:not(.nav-village-pill) { display: none; }
       .read-nav { gap: 8px; }
+      .hud-progress-bar { max-width: 100%; }
     }
     @media (prefers-reduced-motion: reduce) {
       .urmi-actor, .lamp-room-glow, .lamp-intro, .goodbye-veil { transition-duration: 0.2s !important; }
@@ -1307,11 +1506,16 @@
     </main>
   </div>
 
-  <!-- ================= 3. VILLAGE MODE ================= -->
+  <!-- ================= 3. VILLAGE MODE (COZY ADVENTURE GAME) ================= -->
   <div id="view-village" class="view-panel village-root">
     <header class="village-hud-top">
       <div class="hud-group">
         <button type="button" class="hud-brand" data-switch-view="entry">urmi.design</button>
+        <span class="hud-district-tag" id="hud-district">Welcome Gate</span>
+        <button type="button" class="hud-quest-pill" id="btn-passport" title="Open Explorer's Passport & Mini-Quiz">
+          <span id="hud-stamps">🏅 0/12</span>
+          <span id="hud-orbs">✦ 0/12</span>
+        </button>
       </div>
       <nav class="hud-group">
         <div class="hud-dropdown-wrap">
@@ -1319,7 +1523,9 @@
           <div class="hud-dropdown" id="work-dropdown"></div>
         </div>
         <button type="button" class="hud-btn" id="btn-studio">Studio</button>
+        <button type="button" class="hud-btn" data-open-cv>CV</button>
         <button type="button" class="hud-btn" id="btn-contact">Contact</button>
+        <button type="button" class="hud-sfx-btn" id="btn-sfx" aria-label="Toggle cozy game sound effects" title="Toggle cozy game sound effects">🔊</button>
         <button type="button" class="hud-btn hud-btn--theme" data-theme-toggle="village" aria-label="Toggle night village mode" aria-pressed="false">🌙 Night</button>
         <button type="button" class="hud-btn hud-btn--read" data-switch-view="read">Read mode</button>
       </nav>
@@ -1327,12 +1533,12 @@
 
     <div class="welcome-veil" id="welcome-veil">
       <div class="welcome-card">
-        <p class="welcome-kicker">A little village by Urmi</p>
+        <p class="welcome-kicker">A cozy adventure by Urmi</p>
         <h1 class="welcome-title">Hello, traveller.<br />Welcome to my little village.</h1>
-        <p class="welcome-text">I'm Urmi — a CSE graduate, UI/UX designer, AI engineer, and an artist at heart.</p>
-        <p class="welcome-text">Each shop holds a project I've helped bring to life. There's a cozy canvas home at the end where you can meet the person behind the work. Come along. I'll show you around.</p>
-        <button type="button" class="btn btn-terracotta" id="btn-enter-village" style="margin-top:8px">Come along →</button>
-        <p class="welcome-hint">Scroll, drag, swipe, or use the arrow keys to move through the village. Click or tap a shop to step inside.</p>
+        <p class="welcome-text">I'm Urmi — a CSE graduate from UIU, AI/ML engineer, UI/UX designer, and an artist at heart.</p>
+        <p class="welcome-text">Walk or hop down my lane to collect <strong>12 glowing Skill &amp; Story Orbs</strong>, chat with village friends (including Mango my rescued Dhaka cat!), stamp your <strong>Explorer's Passport</strong> at each project shop, and unlock a sweet mini-quiz at my Canvas Home!</p>
+        <button type="button" class="btn btn-terracotta" id="btn-enter-village" style="margin-top:8px">Start exploring →</button>
+        <p class="welcome-hint">Use <strong>A / D</strong> or <strong>← / →</strong> (or scroll/drag) to walk, <strong>Space / ↑</strong> to hop, and <strong>E</strong> or click to enter shops &amp; chat!</p>
       </div>
     </div>
 
@@ -1356,7 +1562,23 @@
       </div>
     </main>
 
+    <!-- Cozy RPG Dialogue Bar -->
+    <div class="rpg-dialogue" id="rpg-dialogue" role="status" aria-live="polite">
+      <div class="rpg-speaker-icon" id="rpg-speaker-icon">✨</div>
+      <div class="rpg-dialogue-body">
+        <div class="rpg-speaker-name" id="rpg-speaker-name">Urmi</div>
+        <p class="rpg-dialogue-text" id="rpg-dialogue-text"></p>
+      </div>
+      <button type="button" class="rpg-dialogue-close" id="rpg-dialogue-close">Got it ✓</button>
+    </div>
+
     <div class="village-hud-bottom">
+      <div class="game-pad" aria-label="Game movement controls">
+        <button type="button" class="pad-btn" id="pad-left" aria-label="Walk left">◀</button>
+        <button type="button" class="pad-btn" id="pad-right" aria-label="Walk right">▶</button>
+        <button type="button" class="pad-btn" id="pad-jump" aria-label="Jump">⬆ Hop</button>
+        <button type="button" class="pad-btn pad-btn--act" id="pad-interact" aria-label="Interact with nearby shop or friend">✨ Enter</button>
+      </div>
       <div class="hud-progress-bar">
         <button type="button" class="step-arrow" id="step-prev" aria-label="Previous stop">←</button>
         <div class="track-rail" id="track-rail"><div class="track-fill" id="track-fill"></div></div>
@@ -1658,6 +1880,86 @@
         ? svgWrap("0 0 120 170", `<path d="M56 156 L58 88 H64 L66 156 Z" fill="#8C6245" stroke="${INK}" stroke-width="2"/><circle cx="60" cy="64" r="36" fill="#779970" stroke="${INK}" stroke-width="2.2"/><circle cx="36" cy="82" r="22" fill="#8FB086" stroke="${INK}" stroke-width="2"/><circle cx="84" cy="80" r="24" fill="#63845D" stroke="${INK}" stroke-width="2"/>`, "prop-tree")
         : svgWrap("0 0 100 165", `<path d="M47 152 L48 94 H52 L53 152 Z" fill="#8C6245" stroke="${INK}" stroke-width="2"/><path d="M50 20 C24 56, 20 98, 50 104 C80 98, 76 56, 50 20 Z" fill="#5E7D5A" stroke="${INK}" stroke-width="2.2"/>`, "prop-tree"),
       lamp: () => svgWrap("0 0 60 170", `<path d="M24 162 L28 48 H32 L36 162 Z" fill="#463C37" stroke="${INK}" stroke-width="1.8"/><circle cx="30" cy="36" r="22" fill="#FFE399" opacity="0.34" class="lantern-glow"/><rect x="22" y="26" width="16" height="22" rx="4" fill="#FFE7A6" stroke="${INK}" stroke-width="1.9"/>`, "prop-lamp"),
+      signpost: (label) => svgWrap("0 0 156 120", `
+        <rect x="72" y="34" width="12" height="82" rx="3" fill="#8C6245" stroke="${INK}" stroke-width="2"/>
+        <path d="M18 32 H130 L146 48 L130 64 H18 Z" fill="#FAF0DD" stroke="${INK}" stroke-width="2.1" stroke-linejoin="round"/>
+        <text x="76" y="52" text-anchor="middle" font-family="Georgia, serif" font-size="10.5" font-weight="700" fill="${INK}">${label}</text>
+        <circle cx="78" cy="24" r="6" fill="#D9A04E" stroke="${INK}" stroke-width="1.8"/>
+      `, "prop-sign"),
+      fence: () => svgWrap("0 0 180 62", `
+        <rect x="6" y="22" width="168" height="8" rx="3" fill="#F2E7D3" stroke="${INK}" stroke-width="1.6"/>
+        <rect x="6" y="42" width="168" height="8" rx="3" fill="#E9DBBF" stroke="${INK}" stroke-width="1.6"/>
+        ${[18,46,74,102,130,158].map((x) => `<path d="M${x} 58 V16 L${x+6} 8 L${x+12} 16 V58 Z" fill="#FFFBF2" stroke="${INK}" stroke-width="1.6" stroke-linejoin="round"/>`).join("")}
+      `, "prop-fence"),
+      bunting: () => svgWrap("0 0 280 56", `
+        <path d="M4 10 Q140 42 276 10" stroke="${INK}" stroke-width="1.6" fill="none" opacity="0.65"/>
+        <polygon points="28,17 44,21 34,37" fill="#C2654A" stroke="${INK}" stroke-width="1.2"/>
+        <polygon points="68,24 86,27 76,43" fill="#D9A04E" stroke="${INK}" stroke-width="1.2"/>
+        <polygon points="112,29 130,30 120,46" fill="#5E7D5A" stroke="${INK}" stroke-width="1.2"/>
+        <polygon points="154,30 172,29 164,46" fill="#497387" stroke="${INK}" stroke-width="1.2"/>
+        <polygon points="196,26 214,23 206,41" fill="#C2654A" stroke="${INK}" stroke-width="1.2"/>
+        <polygon points="236,20 252,16 246,35" fill="#F2CA7B" stroke="${INK}" stroke-width="1.2"/>
+      `, "prop-bunting"),
+      bench: () => svgWrap("0 0 116 66", `
+        <rect x="14" y="16" width="88" height="12" rx="4" fill="#B87A4B" stroke="${INK}" stroke-width="1.8"/>
+        <rect x="10" y="34" width="96" height="10" rx="4" fill="#9E653C" stroke="${INK}" stroke-width="1.8"/>
+        <path d="M22 28 V58 M94 28 V58 M20 44 L16 60 M96 44 L100 60" stroke="#463C37" stroke-width="3.2" stroke-linecap="round"/>
+      `, "prop-bench"),
+      flowerPatch: () => svgWrap("0 0 94 46", `
+        <ellipse cx="47" cy="39" rx="40" ry="7" fill="#6F8F67"/>
+        <path d="M24 38 V22 M46 38 V18 M68 38 V24" stroke="#4F7049" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="24" cy="18" r="6" fill="#E3896B" stroke="${INK}" stroke-width="1.3"/><circle cx="24" cy="18" r="2.2" fill="#FFE69A"/>
+        <circle cx="46" cy="14" r="6.5" fill="#F2CA7B" stroke="${INK}" stroke-width="1.3"/><circle cx="46" cy="14" r="2.3" fill="#C2654A"/>
+        <circle cx="68" cy="20" r="5.5" fill="#D5A6BD" stroke="${INK}" stroke-width="1.3"/><circle cx="68" cy="20" r="2" fill="#FFF6D6"/>
+      `, "prop-flower"),
+      npcCat: () => svgWrap("0 0 76 72", `
+        <ellipse cx="38" cy="65" rx="22" ry="5" fill="rgba(58,45,38,0.16)"/>
+        <path d="M54 54 C66 52, 70 36, 60 32" stroke="#E29A58" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <ellipse cx="36" cy="48" rx="18" ry="15" fill="#E9A867" stroke="${INK}" stroke-width="2"/>
+        <circle cx="35" cy="28" r="14" fill="#F0B578" stroke="${INK}" stroke-width="2"/>
+        <polygon points="23,21 20,9 31,16" fill="#E9A867" stroke="${INK}" stroke-width="1.8" stroke-linejoin="round"/>
+        <polygon points="47,21 50,9 39,16" fill="#E9A867" stroke="${INK}" stroke-width="1.8" stroke-linejoin="round"/>
+        <circle cx="30" cy="27" r="2" fill="${INK}"/><circle cx="40" cy="27" r="2" fill="${INK}"/>
+        <path d="M33 32 Q35 34.5 37 32" stroke="${INK}" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M28 40 Q35 45 42 40" stroke="#C2654A" stroke-width="3.2" stroke-linecap="round"/>
+        <circle cx="35" cy="43" r="2.6" fill="#FFE49E" stroke="${INK}" stroke-width="1"/>
+      `, "npc-art"),
+      npcOwl: () => svgWrap("0 0 78 86", `
+        <ellipse cx="39" cy="79" rx="20" ry="5" fill="rgba(58,45,38,0.16)"/>
+        <rect x="26" y="64" width="26" height="12" rx="4" fill="#8C6245" stroke="${INK}" stroke-width="1.8"/>
+        <ellipse cx="39" cy="46" rx="20" ry="22" fill="#7B6251" stroke="${INK}" stroke-width="2"/>
+        <ellipse cx="39" cy="52" rx="12" ry="13" fill="#EFE4D2"/>
+        <circle cx="31" cy="36" r="7.5" fill="#FFFDF8" stroke="${INK}" stroke-width="1.8"/>
+        <circle cx="47" cy="36" r="7.5" fill="#FFFDF8" stroke="${INK}" stroke-width="1.8"/>
+        <circle cx="32" cy="36" r="2.7" fill="${INK}"/><circle cx="46" cy="36" r="2.7" fill="${INK}"/>
+        <polygon points="39,38 35,44 43,44" fill="#E5A64B" stroke="${INK}" stroke-width="1.5"/>
+        <polygon points="18,22 39,13 60,22 39,29" fill="#2E3648" stroke="${INK}" stroke-width="1.8" stroke-linejoin="round"/>
+        <line x1="56" y1="22" x2="58" y2="33" stroke="#F2CA7B" stroke-width="2"/>
+      `, "npc-art"),
+      npcBus: () => svgWrap("0 0 132 76", `
+        <ellipse cx="66" cy="70" rx="56" ry="5" fill="rgba(58,45,38,0.16)"/>
+        <rect x="10" y="18" width="112" height="44" rx="10" fill="#FFF8EA" stroke="${INK}" stroke-width="2.2"/>
+        <path d="M10 44 H122 V54 C122 58, 118 62, 112 62 H20 C14 62, 10 58, 10 54 Z" fill="#C2654A" stroke="${INK}" stroke-width="2"/>
+        <path d="M12 46 Q48 34 86 46 T120 42" stroke="#F2CA7B" stroke-width="5" fill="none"/>
+        <g class="shop-window">
+          <rect x="18" y="24" width="22" height="15" rx="3" fill="#FFE6A3" stroke="${INK}" stroke-width="1.6"/>
+          <rect x="44" y="24" width="22" height="15" rx="3" fill="#FFE6A3" stroke="${INK}" stroke-width="1.6"/>
+          <rect x="70" y="24" width="22" height="15" rx="3" fill="#FFE6A3" stroke="${INK}" stroke-width="1.6"/>
+          <rect x="96" y="24" width="18" height="15" rx="3" fill="#DDEBF0" stroke="${INK}" stroke-width="1.6"/>
+        </g>
+        <circle cx="34" cy="62" r="8.5" fill="#2F2824" stroke="${INK}" stroke-width="1.8"/><circle cx="34" cy="62" r="3" fill="#E6DCCB"/>
+        <circle cx="96" cy="62" r="8.5" fill="#2F2824" stroke="${INK}" stroke-width="1.8"/><circle cx="96" cy="62" r="3" fill="#E6DCCB"/>
+        <text x="58" y="57" text-anchor="middle" font-family="Georgia, serif" font-size="8.5" font-weight="700" fill="#FFFDF8">UIU 1ST PRIZE</text>
+      `, "npc-art"),
+      npcEasel: () => svgWrap("0 0 82 92", `
+        <ellipse cx="41" cy="86" rx="26" ry="5" fill="rgba(58,45,38,0.14)"/>
+        <path d="M24 84 L41 18 L58 84 M41 18 V82" stroke="#8C6245" stroke-width="3.4" stroke-linecap="round"/>
+        <rect x="20" y="24" width="42" height="34" rx="4" fill="#23203A" stroke="${INK}" stroke-width="2"/>
+        <circle cx="34" cy="36" r="8" fill="#8A5A7B" opacity="0.85"/>
+        <circle cx="48" cy="44" r="6.5" fill="#F0C26B" opacity="0.85"/>
+        <circle cx="42" cy="34" r="2" fill="#FFFDF8"/><circle cx="52" cy="32" r="1.5" fill="#FFFDF8"/>
+        <rect x="16" y="56" width="50" height="6" rx="3" fill="#A8744F" stroke="${INK}" stroke-width="1.7"/>
+      `, "npc-art"),
       cuteLamp: (uid) => svgWrap("0 0 180 220", `
         <defs>
           <linearGradient id="${uid}-dark" x1="0" y1="0" x2="1" y2="1">
@@ -2735,12 +3037,82 @@ LIMIT 10;</code></pre>`
     renderProjects();
     renderNotes();
 
-    /* ================= INIT VILLAGE MODE (ALL 10 FLAGSHIP SHOPS) ================= */
+    /* ================= INIT VILLAGE MODE (COZY ADVENTURE GAME) ================= */
     const WORLD_WIDTH = 7400;
+    const GAME_STORAGE_KEY = "urmi-village-game-v1";
     const stops = [
       { id: "gate", x: 340, type: "gate", kicker: "Start · Welcome", name: "Village Gate", greeting: "Welcome to my lane!", illustration: "gate", extra: "village-stop--gate" },
       ...DATA.projects.map((p, i) => ({ id: p.id, x: 920 + i * 580, type: "project", project: p, kicker: p.shopSign, name: p.shopName, greeting: `Step into ${p.shopName}!`, illustration: p.illustration, extra: "" })),
       { id: "home", x: 6840, type: "home", kicker: "Studio & Home · End", name: "Urmi's Canvas Home", greeting: "Come in for tea & art!", illustration: "home", extra: "village-stop--home" }
+    ];
+
+    const GAME_ORBS = [
+      { id: "orb-cse", x: 520, bottom: 172, icon: "🎓", label: "B.Sc. CSE · UIU", fact: "Urmi graduated in Computer Science & Engineering from United International University (UIU) in Dhaka!" },
+      { id: "orb-gpa", x: 1185, bottom: 232, icon: "🏆", label: "GPA 5.00 / 5.00", fact: "Urmi earned a perfect GPA 5.00 / 5.00 in both HSC & SSC — and served 5 years as Elected Class Representative!" },
+      { id: "orb-fintech", x: 1490, bottom: 175, icon: "🔒", label: "AES-256 & FinTech", fact: "In FundBridge, she engineered double-entry ledgers, AES-256-GCM KYC encryption, and a SHA-256 audit chain." },
+      { id: "orb-vision", x: 1805, bottom: 236, icon: "🔬", label: "94.8% Vision AI", fact: "MedVision-AI isolates overlapping cellular nuclei in <145 ms using CLAHE, Otsu thresholding, and Watershed." },
+      { id: "orb-mining", x: 2365, bottom: 178, icon: "📊", label: "0.923 Churn AUC", fact: "MarketPulse discovers cross-sell bundles with Apriori mining and predicts customer churn at 0.923 ROC-AUC." },
+      { id: "orb-rag", x: 2945, bottom: 235, icon: "📚", label: "99.1% RAG Grounding", fact: "DocuQuery-AI delivers sub-40ms FAISS semantic retrieval with cross-encoder reranking and 100% cited answers." },
+      { id: "orb-green", x: 3530, bottom: 176, icon: "🌱", label: "Green AI Paper", fact: "Her Green Computing research measures live GPU carbon overhead of AI safety guardrails via CodeCarbon & NVML." },
+      { id: "orb-nlp", x: 4090, bottom: 234, icon: "🌐", label: "15-Language NLP", fact: "Her FYDP CLSC framework benchmarks multilingual stance consistency across 15 languages on Tesla T4 GPUs." },
+      { id: "orb-bus", x: 4680, bottom: 178, icon: "🚌", label: "1st Prize · BDT 50K", fact: "Urmi won 1st Prize (BDT 50,000) designing the official exterior bus livery for UIU's student transit fleet!" },
+      { id: "orb-design", x: 5270, bottom: 234, icon: "🎨", label: "Illustrator 95%", fact: "Expert in Adobe Illustrator, Photoshop & Figma — 20+ delivered client projects & Freelancer.com Global Champion!" },
+      { id: "orb-iot", x: 5850, bottom: 176, icon: "⚡", label: "UIU Lab Champion", fact: "1st Place Champion in UIU Microprocessor Lab & 1st Runner-Up in Electronics Lab with Synapse IoT telemetry!" },
+      { id: "orb-certs", x: 6410, bottom: 232, icon: "📜", label: "10+ Verified Certs", fact: "Certified by Stanford Online, Google, Meta, LinkedIn Learning, and 5× Grameenphone Academy!" }
+    ];
+
+    const VILLAGE_NPCS = [
+      {
+        id: "npc-cat", x: 645, name: "Mango the Rescued Cat", tag: "🐱 Mango · Pet me!", icon: "🐱", art: "npcCat", pop: "Purrr! ♥", prompt: "[E] Pet Mango",
+        lines: [
+          "Meow~ I'm Mango! Urmi has been rescuing and caring for stray animals across Dhaka since 2021!",
+          "Purrr! Did you know you can press Space or tap '⬆ Hop' to jump and catch the high floating Skill Orbs?",
+          "Walk down the lane to collect all 12 Skill Orbs and stamp your Explorer's Passport — Urmi's Canvas Home awaits at the end!"
+        ]
+      },
+      {
+        id: "npc-owl", x: 2640, name: "Prof. Owl · UIU Guide", tag: "🦉 Prof. Owl · UIU", icon: "🦉", art: "npcOwl", pop: "Hoot! 🎓", prompt: "[E] Chat",
+        lines: [
+          "Hoot! Welcome to AI & Research Lane! Urmi graduated in B.Sc. CSE from United International University (UIU).",
+          "She's authored two concurrent research papers — one in 15-language Multilingual NLP (CLSC) and one in Green AI safety benchmarking!",
+          "She was also an active member of both the UIU HR Forum and UIU App Forum, and scored GPA 5.00/5.00 in HSC & SSC."
+        ]
+      },
+      {
+        id: "npc-bus", x: 4210, name: "UIU Moving Canvas Bus", tag: "🚌 UIU Fleet · Honk!", icon: "🚌", art: "npcBus", pop: "Honk Honk! 🏆", prompt: "[E] Honk Bus",
+        lines: [
+          "Beep-beep! This is Urmi's 1st Prize (BDT 50,000) winning bus livery from the UIU Moving Canvas Challenge 2026!",
+          "She engineered curved-panel anamorphic distortion math and CIELAB sunlight contrast (>45 ΔL*) so the artwork stays crisp at 60 km/h!"
+        ]
+      },
+      {
+        id: "npc-easel", x: 6535, name: "Urmi's Nebula Easel", tag: "🎨 Studio Easel", icon: "🎨", art: "npcEasel", pop: "Sparkle! ✨", prompt: "[E] Admire Art",
+        lines: [
+          "Beyond code & UX, Urmi paints textured Midnight Celestial Nebulas in acrylic, sketches graphite portraits, and experiments with pastry plating!",
+          "Step inside Urmi's Canvas Home right next door to try the 3-question 'Know Urmi' mini-quiz and grab her CV!"
+        ]
+      }
+    ];
+
+    const URMI_QUIZ = [
+      {
+        q: "1. What prize did Urmi win in the UIU Moving Canvas Challenge 2026?",
+        opts: ["1st Prize (BDT 50,000) for UIU's official student transit bus livery", "3rd Prize for a mobile game icon", "Best Photography Award"],
+        ans: 0,
+        explain: "Correct! She won 1st Prize (BDT 50,000) designing UIU's official student transit bus fleet livery."
+      },
+      {
+        q: "2. Which two concurrent academic research areas has Urmi authored papers in?",
+        opts: ["Quantum Cryptography & Blockchain", "15-Language Multilingual NLP (CLSC) & Green AI Safety Benchmarking", "Compiler Optimization & 3D Game Engines"],
+        ans: 1,
+        explain: "Spot on! She researched Cross-Lingual Stance Consistency (15 languages) and GPU carbon overhead of AI safety guardrails."
+      },
+      {
+        q: "3. Which heartwarming community cause has Urmi volunteered for in Dhaka since 2021?",
+        opts: ["Stray animal rescue, rehabilitation & welfare advocacy", "Deep-sea coral reef diving", "Alpine mountaineering"],
+        ans: 0,
+        explain: "Yes! Mango the cat says purr-fect — Urmi has been rescuing and advocating for stray animals in Dhaka since 2021!"
+      }
     ];
 
     const layerWorld = document.getElementById("layer-world");
@@ -2756,6 +3128,121 @@ LIMIT 10;</code></pre>`
     const trackFill = document.getElementById("track-fill");
     const percentEl = document.getElementById("hud-percent");
     const workDropdown = document.getElementById("work-dropdown");
+    const hudDistrict = document.getElementById("hud-district");
+    const hudStamps = document.getElementById("hud-stamps");
+    const hudOrbs = document.getElementById("hud-orbs");
+    const rpgDialogue = document.getElementById("rpg-dialogue");
+    const rpgSpeakerIcon = document.getElementById("rpg-speaker-icon");
+    const rpgSpeakerName = document.getElementById("rpg-speaker-name");
+    const rpgDialogueText = document.getElementById("rpg-dialogue-text");
+
+    /* Game State (persisted in localStorage) */
+    let sfxEnabled = true;
+    let gameState = { stamps: [], orbs: [], quizDone: false };
+    try {
+      const savedGame = JSON.parse(localStorage.getItem(GAME_STORAGE_KEY) || "null");
+      if (savedGame && Array.isArray(savedGame.stamps) && Array.isArray(savedGame.orbs)) {
+        gameState = savedGame;
+      }
+    } catch {}
+    const saveGameState = () => { try { localStorage.setItem(GAME_STORAGE_KEY, JSON.stringify(gameState)); } catch {} };
+
+    /* Cozy Synthesized Game Sound Effects (Zero external audio files) */
+    function playGameSfx(kind = "orb") {
+      if (!sfxEnabled) return;
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const now = ctx.currentTime;
+        const tone = (freq, start, dur, vol = 0.06, type = "sine") => {
+          const osc = ctx.createOscillator();
+          const g = ctx.createGain();
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, now + start);
+          g.gain.setValueAtTime(vol, now + start);
+          g.gain.exponentialRampToValueAtTime(0.001, now + start + dur);
+          osc.connect(g); g.connect(ctx.destination);
+          osc.start(now + start); osc.stop(now + start + dur + 0.01);
+        };
+        if (kind === "orb") { tone(587.3, 0, 0.11, 0.065); tone(880, 0.07, 0.18, 0.065); }
+        else if (kind === "jump") { tone(330, 0, 0.08, 0.05, "triangle"); tone(494, 0.05, 0.09, 0.04, "triangle"); }
+        else if (kind === "stamp") { tone(523.3, 0, 0.1, 0.06); tone(659.3, 0.08, 0.1, 0.06); tone(784, 0.16, 0.2, 0.065); }
+        else if (kind === "chat") { tone(440, 0, 0.07, 0.045, "triangle"); tone(554.4, 0.06, 0.09, 0.045, "triangle"); }
+        else if (kind === "win") { [523.3, 659.3, 784, 1046.5].forEach((f, i) => tone(f, i * 0.08, 0.22, 0.065)); }
+        setTimeout(() => ctx.close().catch(() => {}), 600);
+      } catch {}
+    }
+
+    function updateGameHud() {
+      hudStamps.textContent = `🏅 ${gameState.stamps.length}/${stops.length}`;
+      hudOrbs.textContent = `✦ ${gameState.orbs.length}/${GAME_ORBS.length}`;
+      document.querySelectorAll(".village-stop").forEach((el) => {
+        el.classList.toggle("is-visited", gameState.stamps.includes(el.dataset.stopId));
+      });
+    }
+
+    let dialogueTimer = null;
+    function showRpgDialogue(icon, speaker, text, autoHideMs = 7500) {
+      rpgSpeakerIcon.textContent = icon;
+      rpgSpeakerName.textContent = speaker;
+      rpgDialogueText.textContent = text;
+      rpgDialogue.classList.add("is-open");
+      clearTimeout(dialogueTimer);
+      if (autoHideMs > 0) dialogueTimer = setTimeout(() => rpgDialogue.classList.remove("is-open"), autoHideMs);
+    }
+    document.getElementById("rpg-dialogue-close").addEventListener("click", () => rpgDialogue.classList.remove("is-open"));
+
+    function spawnFloatPop(worldX, bottomPx, text) {
+      const pop = document.createElement("div");
+      pop.className = "game-float-pop";
+      pop.style.left = `${worldX}px`;
+      pop.style.bottom = `${bottomPx}px`;
+      pop.textContent = text;
+      layerWorld.appendChild(pop);
+      setTimeout(() => pop.remove(), 1400);
+    }
+
+    function markStopVisited(stopId, stopName) {
+      if (!gameState.stamps.includes(stopId)) {
+        gameState.stamps.push(stopId);
+        saveGameState();
+        updateGameHud();
+        playGameSfx("stamp");
+        const st = stops.find((s) => s.id === stopId);
+        if (st) spawnFloatPop(st.x, 340, `🏅 Stamped: ${stopName}!`);
+        if (gameState.stamps.length === stops.length) {
+          playGameSfx("win");
+          showToast("🎉 All 12 Village Passport Stamps collected!");
+        }
+      }
+    }
+
+    function collectOrb(orb) {
+      if (gameState.orbs.includes(orb.id)) return;
+      gameState.orbs.push(orb.id);
+      saveGameState();
+      const el = layerWorld.querySelector(`[data-orb-id="${orb.id}"]`);
+      if (el) el.classList.add("is-collected");
+      playGameSfx("orb");
+      spawnFloatPop(orb.x, orb.bottom + 24, `+1 ${orb.icon} ${orb.label}`);
+      showRpgDialogue(orb.icon, `Skill Orb Discovered (${gameState.orbs.length}/${GAME_ORBS.length})`, orb.fact, 6800);
+      updateGameHud();
+      if (gameState.orbs.length === GAME_ORBS.length) {
+        playGameSfx("win");
+        showToast("✨ Amazing! You collected all 12 Skill & Story Orbs!");
+      }
+    }
+
+    const npcChatIdx = {};
+    function chatWithNpc(npc) {
+      const idx = npcChatIdx[npc.id] || 0;
+      const line = npc.lines[idx % npc.lines.length];
+      npcChatIdx[npc.id] = idx + 1;
+      playGameSfx("chat");
+      spawnFloatPop(npc.x, 225, npc.pop);
+      showRpgDialogue(npc.icon, npc.name, line, 8500);
+    }
 
     // 42 twinkling stars scattered across the Starlit Night Village sky
     layerStars.innerHTML = Array.from({ length: 42 }, (_, i) => {
@@ -2774,12 +3261,39 @@ LIMIT 10;</code></pre>`
     const propsHtml = [[110,"tree",0],[560,"lamp",0],[630,"tree",1],[1195,"tree",0],[1265,"lamp",0],[1790,"tree",1],[2350,"lamp",0],[2410,"tree",0],[2960,"tree",1],[3510,"lamp",0],[3580,"tree",0],[4130,"tree",1],[4680,"lamp",0],[4740,"tree",0],[5290,"tree",1],[5840,"lamp",0],[5910,"tree",0],[6460,"tree",1],[6550,"lamp",0],[7140,"tree",0]]
       .map(([x,k,v]) => `<div class="village-prop" style="left:${x}px">${k === "tree" ? ART.tree(v) : ART.lamp() + '<span class="lamp-pool" aria-hidden="true"></span>'}</div>`).join("");
 
+    const extraSceneryHtml =
+      [[710,"ENGINEERING →"],[2500,"AI & RESEARCH →"],[4320,"DESIGN QUARTER →"],[6290,"URMI'S STUDIO →"]]
+        .map(([x,lbl]) => `<div class="village-prop village-prop--sign" style="left:${x}px">${ART.signpost(lbl)}</div>`).join("") +
+      [420,1320,2470,3640,4810,5960,6600]
+        .map((x) => `<div class="village-prop village-prop--fence" style="left:${x}px">${ART.fence()}</div>`).join("") +
+      [620,1800,3220,4420,5620,6560]
+        .map((x) => `<div class="village-prop village-prop--bunting" style="left:${x}px">${ART.bunting()}</div>`).join("") +
+      [1150,2870,4040,5480,6360]
+        .map((x) => `<div class="village-prop village-prop--bench" style="left:${x}px">${ART.bench()}</div>`).join("") +
+      [210,790,1640,2240,3180,3820,4980,5540,6180,7020]
+        .map((x) => `<div class="village-prop village-prop--flower" style="left:${x}px">${ART.flowerPatch()}</div>`).join("") +
+      [[480,295,0],[1720,330,1.2],[3100,290,2.3],[4560,340,0.8],[6040,305,1.7]]
+        .map(([x,b,d]) => `<span class="village-butterfly" style="left:${x}px;bottom:${b}px;animation-delay:${d}s" aria-hidden="true">🦋</span>`).join("");
+
     const stopsHtml = stops.map((s) => `
-      <div class="village-stop ${s.extra}" style="left:${s.x}px" data-stop-id="${s.id}" role="button" tabindex="0">
-        <div class="stop-sign"><span class="stop-sign-kicker">${s.kicker}</span><span class="stop-sign-name">${s.name}</span></div>
+      <div class="village-stop ${s.extra} ${gameState.stamps.includes(s.id) ? "is-visited" : ""}" style="left:${s.x}px" data-stop-id="${s.id}" role="button" tabindex="0">
+        <div class="stop-sign"><span class="stop-sign-kicker">${s.kicker}</span><span class="stop-sign-name">${s.name}<span class="stop-visited-badge">✓</span></span></div>
         ${ART[s.illustration]()}
-        <span class="stop-door-prompt">Click to step inside ↗</span>
+        <span class="stop-door-prompt">[E] Step inside ↗</span>
       </div>`).join("");
+
+    const orbsHtml = GAME_ORBS.map((o, idx) => `
+      <button type="button" class="game-orb ${gameState.orbs.includes(o.id) ? "is-collected" : ""}" style="left:${o.x}px;bottom:${o.bottom}px;animation-delay:${(idx*0.28).toFixed(2)}s" data-orb-id="${o.id}" aria-label="Collect ${o.label}">
+        <span class="game-orb-icon">${o.icon}</span>
+        <span class="game-orb-tag">${o.label}</span>
+      </button>`).join("");
+
+    const npcsHtml = VILLAGE_NPCS.map((n) => `
+      <button type="button" class="village-npc" style="left:${n.x}px" data-npc-id="${n.id}" aria-label="Chat with ${n.name}">
+        <span class="npc-tag">${n.tag}</span>
+        ${ART[n.art]()}
+        <span class="npc-prompt">${n.prompt}</span>
+      </button>`).join("");
 
     const firefliesHtml = `<div class="fireflies">${[[180,120,0],[320,80,0.7],[460,180,1.4],[600,90,2.1],[740,140,0.4],[860,70,1.9]].map(([x,y,d]) => `<span class="firefly" style="left:${x}px;top:${y}px;animation-delay:${d}s"></span>`).join("")}</div>`;
     const nightLaneFirefliesHtml = `<div class="fireflies-lane" aria-hidden="true">${Array.from({ length: 48 }, (_, i) => {
@@ -2788,8 +3302,10 @@ LIMIT 10;</code></pre>`
       const delay = ((i * 0.43) % 4.4).toFixed(2);
       return `<span class="firefly" style="left:${x}px;top:${y}px;animation-delay:${delay}s"></span>`;
     }).join("")}</div>`;
-    layerWorld.insertAdjacentHTML("beforeend", propsHtml + stopsHtml + firefliesHtml + nightLaneFirefliesHtml);
+
+    layerWorld.insertAdjacentHTML("beforeend", extraSceneryHtml + propsHtml + stopsHtml + orbsHtml + npcsHtml + firefliesHtml + nightLaneFirefliesHtml);
     document.getElementById("traveller-art").innerHTML = ART.character();
+    updateGameHud();
 
     workDropdown.innerHTML = `<span class="hud-dropdown-label">Jump to a shop (10)</span>` +
       DATA.projects.map((p) => `<button type="button" data-jump-stop="${p.id}"><span>${p.shopName}</span><small>${p.year}</small></button>`).join("") +
@@ -2802,20 +3318,132 @@ LIMIT 10;</code></pre>`
     }).join(""));
 
     let curX = 0, tgtX = 0, walkTimer = null, activeStop = 0;
+    let jumpY = 0, jumpVy = 0;
+    const heldKeys = { left: false, right: false };
     const clampTgt = () => { tgtX = Math.max(0, Math.min(maxS(), tgtX)); };
+
+    function triggerJump() {
+      if (jumpY > 2) return;
+      jumpVy = 12.2;
+      playGameSfx("jump");
+    }
+
     function jumpToStop(id) {
       const s = stops.find((x) => x.id === id);
       if (!s) return;
-      tgtX = s.x - window.innerWidth * 0.5;
+      tgtX = s.x - window.innerWidth * 0.28;
       clampTgt();
       workDropdown.classList.remove("is-open");
     }
 
+    function renderQuizHtml() {
+      return `
+        <p class="modal-copy" style="margin-bottom:10px">Answer these 3 quick questions from your walk down Urmi's village to earn your <strong>VIP Explorer Badge</strong>!</p>
+        ${URMI_QUIZ.map((item, qi) => `
+          <div class="quiz-card" data-quiz-q="${qi}">
+            <p class="quiz-q">${item.q}</p>
+            <div class="quiz-opts">
+              ${item.opts.map((opt, oi) => `<button type="button" class="quiz-opt" data-qi="${qi}" data-oi="${oi}">${opt}</button>`).join("")}
+            </div>
+            <p class="modal-copy" data-quiz-fb="${qi}" style="margin:8px 0 0;font-size:0.84rem;display:none"></p>
+          </div>`).join("")}
+        <div id="quiz-win-banner" style="display:${gameState.quizDone ? "block" : "none"};margin-top:16px;padding:14px 16px;border-radius:var(--radius-md);background:var(--sage-soft);border:1px solid var(--sage)">
+          <strong>🏆 VIP Explorer Unlocked!</strong> You officially know Urmi's story — feel free to grab her CV or say hello anytime!
+        </div>
+      `;
+    }
+
+    function wireQuizHandlers() {
+      let correctSet = new Set();
+      modalBody.querySelectorAll(".quiz-opt").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const qi = Number(btn.dataset.qi);
+          const oi = Number(btn.dataset.oi);
+          const item = URMI_QUIZ[qi];
+          const card = modalBody.querySelector(`[data-quiz-q="${qi}"]`);
+          const fb = modalBody.querySelector(`[data-quiz-fb="${qi}"]`);
+          card.querySelectorAll(".quiz-opt").forEach((b) => b.classList.remove("is-correct", "is-wrong"));
+          if (oi === item.ans) {
+            btn.classList.add("is-correct");
+            fb.textContent = "✓ " + item.explain;
+            fb.style.color = "var(--sage)";
+            fb.style.display = "block";
+            correctSet.add(qi);
+            playGameSfx("orb");
+            if (correctSet.size === URMI_QUIZ.length) {
+              gameState.quizDone = true;
+              saveGameState();
+              playGameSfx("win");
+              const wb = modalBody.querySelector("#quiz-win-banner");
+              if (wb) wb.style.display = "block";
+              showToast("🎉 VIP Explorer Badge Unlocked!");
+            }
+          } else {
+            btn.classList.add("is-wrong");
+            fb.textContent = "Not quite — try another answer or peek at the shops along the lane!";
+            fb.style.color = "var(--terracotta)";
+            fb.style.display = "block";
+          }
+        });
+      });
+    }
+
+    function openPassportModal() {
+      const score = gameState.stamps.length + gameState.orbs.length;
+      const rank = score >= 20 || gameState.quizDone ? "Urmi's VIP Explorer ★"
+        : score >= 12 ? "Village Friend 🌿"
+        : score >= 5 ? "Lane Wanderer 🧭"
+        : "Curious Visitor ✨";
+      openModal(`
+        <div class="modal-kicker">Explorer's Passport · Cozy Village Adventure</div>
+        <h2 class="modal-title">Your Journey Through Urmi's World</h2>
+        <div class="passport-banner">
+          <div>
+            <span style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-muted);display:block">Current Explorer Rank</span>
+            <div class="passport-rank">${rank}</div>
+          </div>
+          <div style="font-weight:700;font-size:0.9rem;color:var(--terracotta)">
+            🏅 ${gameState.stamps.length}/${stops.length} Stamps · ✦ ${gameState.orbs.length}/${GAME_ORBS.length} Orbs
+          </div>
+        </div>
+        <h3 class="modal-section-heading" style="margin-top:0">Village Stamps (Click any stop to warp there!)</h3>
+        <div class="passport-grid">
+          ${stops.map((s) => {
+            const done = gameState.stamps.includes(s.id);
+            return `<button type="button" class="passport-stamp ${done ? "is-stamped" : ""}" data-passport-warp="${s.id}">
+              <strong>${done ? "✓ " : "○ "}${s.name}</strong>
+              <span>${done ? "Stamped!" : "Click to visit →"}</span>
+            </button>`;
+          }).join("")}
+        </div>
+        <h3 class="modal-section-heading">Discovered Skill &amp; Story Orbs (${gameState.orbs.length}/${GAME_ORBS.length})</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px">
+          ${GAME_ORBS.map((o) => {
+            const got = gameState.orbs.includes(o.id);
+            return `<span class="tag-chip" style="${got ? "background:var(--sage-soft);color:var(--ink);font-weight:600" : "opacity:0.55"}">${o.icon} ${got ? o.label : "???"}</span>`;
+          }).join("")}
+        </div>
+        <h3 class="modal-section-heading">Sweet Mini-Quiz: How Well Do You Know Urmi?</h3>
+        ${renderQuizHtml()}
+        <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+          <button type="button" class="btn btn-terracotta" data-open-cv>📄 View &amp; Download CV</button>
+          <button type="button" class="btn btn-secondary" data-copy-email>Copy Email</button>
+        </div>
+      `);
+      modalBody.querySelectorAll("[data-passport-warp]").forEach((b) => b.addEventListener("click", () => {
+        closeModal();
+        jumpToStop(b.dataset.passportWarp);
+      }));
+      wireQuizHandlers();
+    }
+
     function openHomeModal(tab = "about") {
+      markStopVisited("home", "Urmi's Canvas Home");
       let body = "";
       if (tab === "about") body = DATA.profile.aboutParagraphs.map((p) => `<p class="modal-copy">${p}</p>`).join("");
       else if (tab === "exp") body = `<div class="studio-grid">${DATA.experience.map((x) => `<div class="studio-mini-card"><span class="stop-sign-kicker">${x.period}</span><h4>${x.title}</h4><p><strong>${x.org}</strong> — ${x.bullets[0]}</p></div>`).join("")}</div>`;
       else if (tab === "art") body = `<div class="studio-grid">${DATA.beyond.map((b) => `<div class="studio-mini-card"><span class="stop-sign-kicker">${b.medium}</span><h4>${b.title}</h4><p>${b.desc}</p></div>`).join("")}</div>`;
+      else if (tab === "quiz") body = renderQuizHtml();
       else body = `<div class="studio-grid">${DATA.awards.map((a) => `<div class="studio-mini-card"><span class="stop-sign-kicker">${a.badge} · ${a.date}</span><h4>${a.title}</h4><p>${a.desc}</p></div>`).join("")}</div>`;
       openModal(`
         <div class="modal-kicker">End of the Lane · Dhaka, Bangladesh</div>
@@ -2825,6 +3453,7 @@ LIMIT 10;</code></pre>`
           <button type="button" class="studio-tab ${tab==="exp"?"is-active":""}" data-ht="exp">Experience</button>
           <button type="button" class="studio-tab ${tab==="awards"?"is-active":""}" data-ht="awards">Awards &amp; UIU</button>
           <button type="button" class="studio-tab ${tab==="art"?"is-active":""}" data-ht="art">Art &amp; Passions</button>
+          <button type="button" class="studio-tab ${tab==="quiz"?"is-active":""}" data-ht="quiz">✨ Mini-Quiz</button>
         </div>
         ${body}
         <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
@@ -2835,20 +3464,65 @@ LIMIT 10;</code></pre>`
         </div>
       `);
       modalBody.querySelectorAll("[data-ht]").forEach((b) => b.addEventListener("click", () => openHomeModal(b.dataset.ht)));
+      if (tab === "quiz") wireQuizHandlers();
+    }
+
+    function openStopById(id) {
+      const s = stops.find((x) => x.id === id);
+      if (!s) return;
+      markStopVisited(s.id, s.name);
+      if (s.type === "gate") {
+        openModal(`<div class="modal-kicker">Village Noticeboard · Quest Start</div><h2 class="modal-title">Welcome to Urmi's Little Village</h2><p class="modal-copy">${DATA.profile.heroLead}</p><p class="modal-copy">Collect all <strong>12 glowing Skill Orbs</strong> along the road, chat with Mango the rescued cat &amp; village friends, and stamp your Passport at every shop!</p><button type="button" class="btn btn-terracotta" id="gate-go">Walk to ${DATA.projects[0].shopName} →</button>`);
+        document.getElementById("gate-go").addEventListener("click", () => { closeModal(); jumpToStop(DATA.projects[0].id); });
+      } else if (s.type === "home") openHomeModal("about");
+      else openProjectModal(s.project, true);
+    }
+
+    function interactWithNearest() {
+      const charX = curX + window.innerWidth * 0.24 + 32;
+      let nearNpc = null, npcDist = 150;
+      VILLAGE_NPCS.forEach((n) => { const d = Math.abs(n.x - charX); if (d < npcDist) { npcDist = d; nearNpc = n; } });
+      if (nearNpc) { chatWithNpc(nearNpc); return; }
+      let nearStop = null, stopDist = 230;
+      stops.forEach((s) => { const d = Math.abs(s.x - charX); if (d < stopDist) { stopDist = d; nearStop = s; } });
+      if (nearStop) { openStopById(nearStop.id); return; }
+      showRpgDialogue("🧭", "Urmi's Tip", "Walk closer to any glowing shop or village friend (like Mango the cat!) and press E or tap Enter.", 4200);
+    }
+
+    function getDistrictName(charX) {
+      if (charX < 740) return "Welcome Gate";
+      if (charX < 2520) return "Engineering & FinTech Quarter";
+      if (charX < 4340) return "AI & Research Lane";
+      if (charX < 6300) return "Design & Craft Quarter";
+      return "Urmi's Cozy Studio";
     }
 
     function animateVillage() {
       if (currentView === "village") {
+        const canMove = !modal.classList.contains("is-open") && document.getElementById("welcome-veil").classList.contains("is-hidden");
+        if (canMove) {
+          if (heldKeys.right) { tgtX += 11; clampTgt(); }
+          if (heldKeys.left) { tgtX -= 11; clampTgt(); }
+        }
+
         const dx = tgtX - curX;
         if (Math.abs(dx) > 0.25) {
-          curX += dx * 0.1;
-          if (Math.abs(dx) > 1.2) {
+          curX += dx * 0.12;
+          if (Math.abs(dx) > 1.0) {
             traveller.classList.add("is-walking");
             traveller.classList.toggle("facing-left", dx < 0);
             clearTimeout(walkTimer);
-            walkTimer = setTimeout(() => traveller.classList.remove("is-walking"), 140);
+            walkTimer = setTimeout(() => traveller.classList.remove("is-walking"), 130);
           }
         } else curX = tgtX;
+
+        // Playful Jump Physics
+        if (jumpY > 0 || jumpVy > 0) {
+          jumpY += jumpVy;
+          jumpVy -= 0.72;
+          if (jumpY <= 0) { jumpY = 0; jumpVy = 0; }
+        }
+        traveller.style.transform = `translate3d(0, ${-jumpY.toFixed(1)}px, 0)`;
 
         const prog = Math.max(0, Math.min(1, curX / maxS()));
         layerWorld.style.transform = `translate3d(${-curX}px, 0, 0)`;
@@ -2863,13 +3537,30 @@ LIMIT 10;</code></pre>`
         trackFill.style.width = `${pct}%`;
         percentEl.textContent = `${pct}%`;
 
-        const charX = curX + window.innerWidth * 0.28;
+        const charX = curX + window.innerWidth * 0.24 + 32;
+        hudDistrict.textContent = getDistrictName(charX);
+
+        // Auto-collect nearby Skill & Story Orbs (walk into low orbs or hop for high orbs!)
+        const charTopPx = 166 + jumpY;
+        GAME_ORBS.forEach((o) => {
+          if (gameState.orbs.includes(o.id)) return;
+          if (Math.abs(o.x - charX) < 58 && charTopPx >= o.bottom - 18) {
+            collectOrb(o);
+          }
+        });
+
         let ci = 0, md = Infinity;
         stops.forEach((s, i) => { const d = Math.abs(s.x - charX); if (d < md) { md = d; ci = i; } });
         activeStop = ci;
         document.querySelectorAll(".track-dot").forEach((d, i) => d.classList.toggle("is-active", i === ci));
-        document.querySelectorAll(".village-stop").forEach((el, i) => el.classList.toggle("is-nearby", i === ci && md < 240));
-        if (md < 210) { bubble.textContent = stops[ci].greeting; bubble.classList.add("is-visible"); }
+        document.querySelectorAll(".village-stop").forEach((el, i) => el.classList.toggle("is-nearby", i === ci && md < 220));
+
+        let nearNpc = null, npcMd = 150;
+        VILLAGE_NPCS.forEach((n) => { const d = Math.abs(n.x - charX); if (d < npcMd) { npcMd = d; nearNpc = n; } });
+        document.querySelectorAll(".village-npc").forEach((el) => el.classList.toggle("is-nearby", nearNpc && el.dataset.npcId === nearNpc.id));
+
+        if (nearNpc) { bubble.textContent = `${nearNpc.icon} Press E to chat!`; bubble.classList.add("is-visible"); }
+        else if (md < 200) { bubble.textContent = stops[ci].greeting; bubble.classList.add("is-visible"); }
         else bubble.classList.remove("is-visible");
       }
       requestAnimationFrame(animateVillage);
@@ -2886,15 +3577,37 @@ LIMIT 10;</code></pre>`
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && document.getElementById("goodbye-veil").classList.contains("is-open")) { restoreLightsFromGoodbye(false); return; }
       if (e.key === "Escape" && modal.classList.contains("is-open")) { closeModal(); return; }
-      if (currentView !== "village" || modal.classList.contains("is-open")) return;
-      if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") { tgtX += 240; clampTgt(); }
-      else if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") { tgtX -= 240; clampTgt(); }
+      if (e.key === "Escape" && rpgDialogue.classList.contains("is-open")) { rpgDialogue.classList.remove("is-open"); return; }
+      if (currentView !== "village" || modal.classList.contains("is-open") || !document.getElementById("welcome-veil").classList.contains("is-hidden")) return;
+      if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") heldKeys.right = true;
+      else if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") heldKeys.left = true;
+      else if (e.key === " " || e.key === "ArrowUp" || e.key === "w" || e.key === "W") { e.preventDefault(); triggerJump(); }
+      else if (e.key === "e" || e.key === "E" || e.key === "Enter") { e.preventDefault(); interactWithNearest(); }
     });
+    window.addEventListener("keyup", (e) => {
+      if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") heldKeys.right = false;
+      else if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") heldKeys.left = false;
+    });
+
+    // Wire tactile on-screen Game Pad buttons (works smoothly with mouse & touch!)
+    function bindHoldButton(btnId, dirKey) {
+      const b = document.getElementById(btnId);
+      const start = (ev) => { ev.preventDefault(); heldKeys[dirKey] = true; b.classList.add("is-pressed"); };
+      const stop = () => { heldKeys[dirKey] = false; b.classList.remove("is-pressed"); };
+      b.addEventListener("pointerdown", start);
+      window.addEventListener("pointerup", stop);
+      window.addEventListener("pointercancel", stop);
+      b.addEventListener("pointerleave", stop);
+    }
+    bindHoldButton("pad-left", "left");
+    bindHoldButton("pad-right", "right");
+    document.getElementById("pad-jump").addEventListener("click", triggerJump);
+    document.getElementById("pad-interact").addEventListener("click", interactWithNearest);
 
     let dragging = false, dragX = 0, dragStartTgt = 0, moved = false;
     const stage = document.getElementById("village-stage");
     stage.addEventListener("pointerdown", (e) => {
-      if (e.target.closest(".village-hud-top,.village-hud-bottom,.modal-backdrop,.welcome-veil")) return;
+      if (e.target.closest(".village-hud-top,.village-hud-bottom,.rpg-dialogue,.modal-backdrop,.welcome-veil")) return;
       dragging = true; moved = false; dragX = e.clientX; dragStartTgt = tgtX; stage.classList.add("is-dragging");
     });
     window.addEventListener("pointermove", (e) => {
@@ -2908,21 +3621,37 @@ LIMIT 10;</code></pre>`
 
     layerWorld.addEventListener("click", (e) => {
       if (moved) return;
+      const orbEl = e.target.closest("[data-orb-id]");
+      if (orbEl) {
+        const orb = GAME_ORBS.find((o) => o.id === orbEl.dataset.orbId);
+        if (orb) collectOrb(orb);
+        return;
+      }
+      const npcEl = e.target.closest("[data-npc-id]");
+      if (npcEl) {
+        const npc = VILLAGE_NPCS.find((n) => n.id === npcEl.dataset.npcId);
+        if (npc) chatWithNpc(npc);
+        return;
+      }
       const el = e.target.closest("[data-stop-id]");
-      if (!el) return;
-      const s = stops.find((x) => x.id === el.dataset.stopId);
-      if (s.type === "gate") {
-        openModal(`<div class="modal-kicker">Village Noticeboard</div><h2 class="modal-title">Welcome to Urmi's Little Village</h2><p class="modal-copy">${DATA.profile.heroLead}</p><button type="button" class="btn btn-terracotta" id="gate-go">Walk to ${DATA.projects[0].shopName} →</button>`);
-        document.getElementById("gate-go").addEventListener("click", () => { closeModal(); jumpToStop(DATA.projects[0].id); });
-      } else if (s.type === "home") openHomeModal("about");
-      else openProjectModal(s.project, true);
+      if (el) openStopById(el.dataset.stopId);
     });
 
-    document.getElementById("btn-enter-village").addEventListener("click", () => document.getElementById("welcome-veil").classList.add("is-hidden"));
+    document.getElementById("btn-enter-village").addEventListener("click", () => {
+      document.getElementById("welcome-veil").classList.add("is-hidden");
+      playGameSfx("stamp");
+      showRpgDialogue("✨", "Urmi · Welcome!", "Use A/D or ◀/▶ to walk, Space/⬆ Hop to grab floating Skill Orbs, and say hi to Mango the cat right ahead!", 7500);
+    });
+    document.getElementById("btn-passport").addEventListener("click", openPassportModal);
+    document.getElementById("btn-sfx").addEventListener("click", (e) => {
+      sfxEnabled = !sfxEnabled;
+      e.currentTarget.textContent = sfxEnabled ? "🔊" : "🔇";
+      showToast(sfxEnabled ? "Cozy game chimes on 🔊" : "Game sound muted 🔇");
+    });
     document.getElementById("btn-work-menu").addEventListener("click", () => workDropdown.classList.toggle("is-open"));
     document.getElementById("btn-studio").addEventListener("click", () => jumpToStop("home"));
     document.getElementById("btn-contact").addEventListener("click", () => {
-      openModal(`<div class="modal-kicker">Village Postbox</div><h2 class="modal-title">Say hello to Urmi</h2><p class="modal-copy">Email: <strong>${DATA.profile.email}</strong><br/>LinkedIn: <a href="${DATA.profile.linkedin}" target="_blank" rel="noopener noreferrer" style="color:var(--terracotta);text-decoration:underline">Connect on LinkedIn ↗</a></p><button type="button" class="btn btn-terracotta" data-copy-email>Copy Email Address</button>`);
+      openModal(`<div class="modal-kicker">Village Postbox</div><h2 class="modal-title">Say hello to Urmi</h2><p class="modal-copy">Email: <strong>${DATA.profile.email}</strong><br/>LinkedIn: <a href="${DATA.profile.linkedin}" target="_blank" rel="noopener noreferrer" style="color:var(--terracotta);text-decoration:underline">Connect on LinkedIn ↗</a></p><div style="display:flex;gap:10px;flex-wrap:wrap"><button type="button" class="btn btn-terracotta" data-copy-email>Copy Email Address</button><button type="button" class="btn btn-secondary" data-open-cv>📄 View &amp; Download CV</button></div>`);
     });
     document.getElementById("step-prev").addEventListener("click", () => jumpToStop(stops[Math.max(0, activeStop - 1)].id));
     document.getElementById("step-next").addEventListener("click", () => jumpToStop(stops[Math.min(stops.length - 1, activeStop + 1)].id));
