@@ -1330,9 +1330,103 @@
       .read-nav { gap: 8px; }
       .hud-progress-bar { max-width: 100%; }
     }
+    /* ================= READ MODE LIVE BACKGROUND (AURORA + NEURAL CONSTELLATION + GLASS) ================= */
+    #view-read { position: relative; }
+    #view-read .read-container { position: relative; z-index: 2; }
+    .read-live-bg {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+      transition: opacity 0.45s ease;
+    }
+    .read-live-bg.is-paused { opacity: 0; }
+    .read-dot-grid {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(58, 45, 38, 0.11) 1.1px, transparent 1.1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse 82% 76% at 50% 42%, #000 35%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 82% 76% at 50% 42%, #000 35%, transparent 100%);
+      opacity: 0.72;
+    }
+    [data-theme="dark"] .read-dot-grid {
+      background-image: radial-gradient(rgba(244, 202, 116, 0.12) 1.1px, transparent 1.1px);
+      opacity: 0.65;
+    }
+    .read-aurora-orb {
+      position: absolute; border-radius: 50%; filter: blur(68px); will-change: transform;
+      opacity: 0.85;
+    }
+    .read-aurora-orb--1 {
+      width: 520px; height: 520px; top: -110px; right: -90px;
+      background: radial-gradient(circle, rgba(194, 101, 74, 0.24) 0%, rgba(214, 161, 74, 0.12) 48%, transparent 74%);
+      animation: readAurora1 18s ease-in-out infinite alternate;
+    }
+    .read-aurora-orb--2 {
+      width: 500px; height: 500px; top: 34%; left: -140px;
+      background: radial-gradient(circle, rgba(110, 133, 107, 0.24) 0%, rgba(164, 195, 160, 0.11) 50%, transparent 74%);
+      animation: readAurora2 22s ease-in-out infinite alternate;
+    }
+    .read-aurora-orb--3 {
+      width: 480px; height: 480px; bottom: -120px; right: 10%;
+      background: radial-gradient(circle, rgba(214, 161, 74, 0.22) 0%, rgba(194, 101, 74, 0.1) 50%, transparent 74%);
+      animation: readAurora3 20s ease-in-out infinite alternate;
+    }
+    [data-theme="dark"] .read-aurora-orb--1 {
+      background: radial-gradient(circle, rgba(224, 138, 94, 0.22) 0%, rgba(194, 101, 74, 0.08) 52%, transparent 74%);
+    }
+    [data-theme="dark"] .read-aurora-orb--2 {
+      background: radial-gradient(circle, rgba(112, 152, 128, 0.2) 0%, rgba(44, 68, 98, 0.14) 54%, transparent 76%);
+    }
+    [data-theme="dark"] .read-aurora-orb--3 {
+      background: radial-gradient(circle, rgba(240, 198, 118, 0.2) 0%, rgba(224, 138, 94, 0.08) 52%, transparent 74%);
+    }
+    #read-live-canvas {
+      position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+    }
+
+    /* Subtle frosted studio glass on Read Mode cards so the live canvas breathes softly underneath */
+    #view-read .stat-card, #view-read .work-card, #view-read .skill-panel,
+    #view-read .award-card, #view-read .edu-card, #view-read .cert-card,
+    #view-read .note-card, #view-read .beyond-card, #view-read .contact-form,
+    #view-read .contact-card, #view-read .goodbye-lamp-section {
+      background: rgba(255, 253, 248, 0.84);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    [data-theme="dark"] #view-read .stat-card, [data-theme="dark"] #view-read .work-card,
+    [data-theme="dark"] #view-read .skill-panel, [data-theme="dark"] #view-read .award-card,
+    [data-theme="dark"] #view-read .edu-card, [data-theme="dark"] #view-read .cert-card,
+    [data-theme="dark"] #view-read .note-card, [data-theme="dark"] #view-read .beyond-card,
+    [data-theme="dark"] #view-read .contact-form, [data-theme="dark"] #view-read .contact-card,
+    [data-theme="dark"] #view-read .goodbye-lamp-section {
+      background: rgba(31, 26, 23, 0.8);
+    }
+
+    .read-scroll-progress {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 2.5px;
+      background: transparent; overflow: hidden; pointer-events: none;
+    }
+    .read-scroll-fill {
+      height: 100%; width: 0%;
+      background: linear-gradient(90deg, var(--terracotta), var(--ochre), var(--sage));
+      transition: width 0.08s linear;
+    }
+
+    @keyframes readAurora1 {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      100% { transform: translate3d(-75px, 55px, 0) scale(1.14); }
+    }
+    @keyframes readAurora2 {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      100% { transform: translate3d(85px, -45px, 0) scale(1.12); }
+    }
+    @keyframes readAurora3 {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      100% { transform: translate3d(-60px, -65px, 0) scale(1.15); }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .urmi-actor, .lamp-room-glow, .lamp-intro, .goodbye-veil { transition-duration: 0.2s !important; }
-      .urmi-actor.is-walking .urmi-cartoon-svg, .urmi-actor.is-waving .urmi-arm-reach { animation: none !important; }
+      .urmi-actor.is-walking .urmi-cartoon-svg, .urmi-actor.is-waving .urmi-arm-reach,
+      .read-aurora-orb { animation: none !important; }
     }
   </style>
 </head>
@@ -1410,6 +1504,13 @@
 
   <!-- ================= 2. READ MODE ================= -->
   <div id="view-read" class="view-panel">
+    <div class="read-live-bg" id="read-live-bg" aria-hidden="true">
+      <div class="read-dot-grid"></div>
+      <div class="read-aurora-orb read-aurora-orb--1"></div>
+      <div class="read-aurora-orb read-aurora-orb--2"></div>
+      <div class="read-aurora-orb read-aurora-orb--3"></div>
+      <canvas id="read-live-canvas"></canvas>
+    </div>
     <header class="read-header">
       <div class="read-header-inner">
         <button type="button" class="read-brand" data-switch-view="entry">urmi.design</button>
@@ -1426,6 +1527,7 @@
           <button type="button" class="nav-village-pill" data-switch-view="village">Village mode ↗</button>
         </nav>
       </div>
+      <div class="read-scroll-progress" aria-hidden="true"><div class="read-scroll-fill" id="read-scroll-fill"></div></div>
     </header>
     <main class="read-container">
       <section class="read-hero">
@@ -1648,6 +1750,7 @@
           <a href="https://github.com/snigdhaurmiurma" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href="https://www.behance.net/urmisnigdha" target="_blank" rel="noopener noreferrer">Behance</a>
           <a href="https://www.linkedin.com/in/urmi-urma-snigdha-4836362a1/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <button type="button" id="btn-read-live-bg" title="Toggle live animated background">✨ Live BG: On</button>
           <button type="button" data-replay-intro>💡 Replay lamp</button>
           <button type="button" data-switch-view="entry">Switch path ↺</button>
         </div>
@@ -5072,6 +5175,227 @@ LIMIT 10;</code></pre>`
     goodbyeVeilLampBtn.addEventListener("click", () => restoreLightsFromGoodbye(false));
     document.getElementById("btn-lights-back-on").addEventListener("click", () => restoreLightsFromGoodbye(false));
     document.getElementById("btn-goodbye-top").addEventListener("click", () => restoreLightsFromGoodbye(true));
+
+    /* ================= READ MODE LIVE BACKGROUND ENGINE (NEURAL CONSTELLATION + WAVES + RIPPLES) ================= */
+    (function initReadLiveBackground() {
+      const wrap = document.getElementById("read-live-bg");
+      const canvas = document.getElementById("read-live-canvas");
+      const toggleBtn = document.getElementById("btn-read-live-bg");
+      const scrollFill = document.getElementById("read-scroll-fill");
+      if (!wrap || !canvas) return;
+      const ctx = canvas.getContext("2d");
+
+      const BG_KEY = "urmi-read-live-bg";
+      const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let bgEnabled = true;
+      try { if (localStorage.getItem(BG_KEY) === "off") bgEnabled = false; } catch {}
+
+      let W = window.innerWidth, H = window.innerHeight;
+      let pointer = { x: -999, y: -999, active: false };
+      const ripples = [];
+      let nodes = [];
+
+      function buildNodes() {
+        const count = Math.min(54, Math.max(28, Math.floor((W * H) / 26000)));
+        nodes = Array.from({ length: count }, (_, i) => ({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          vx: (Math.random() - 0.5) * 0.36,
+          vy: (Math.random() - 0.5) * 0.32,
+          r: 1.8 + (i % 4) * 0.75,
+          depth: 0.08 + (i % 5) * 0.055,
+          phase: Math.random() * Math.PI * 2,
+          tone: i % 3
+        }));
+      }
+
+      function resizeCanvas() {
+        W = window.innerWidth;
+        H = window.innerHeight;
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.max(1, Math.floor(W * dpr));
+        canvas.height = Math.max(1, Math.floor(H * dpr));
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        if (!nodes.length) buildNodes();
+      }
+      resizeCanvas();
+      window.addEventListener("resize", () => { resizeCanvas(); buildNodes(); });
+
+      function syncToggleUi() {
+        wrap.classList.toggle("is-paused", !bgEnabled);
+        if (toggleBtn) toggleBtn.textContent = bgEnabled ? "✨ Live BG: On" : "✨ Live BG: Off";
+      }
+      syncToggleUi();
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", () => {
+          bgEnabled = !bgEnabled;
+          try { localStorage.setItem(BG_KEY, bgEnabled ? "on" : "off"); } catch {}
+          syncToggleUi();
+          showToast(bgEnabled ? "Live Studio background enabled ✨" : "Minimal paper background enabled");
+        });
+      }
+
+      function updateScrollProgress() {
+        if (!scrollFill || currentView !== "read") return;
+        const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        const pct = Math.max(0, Math.min(100, (window.scrollY / maxScroll) * 100));
+        scrollFill.style.width = `${pct.toFixed(1)}%`;
+      }
+      window.addEventListener("scroll", updateScrollProgress, { passive: true });
+
+      window.addEventListener("pointermove", (e) => {
+        if (currentView !== "read") return;
+        pointer.x = e.clientX;
+        pointer.y = e.clientY;
+        pointer.active = true;
+      }, { passive: true });
+      window.addEventListener("pointerleave", () => { pointer.active = false; });
+
+      window.addEventListener("click", (e) => {
+        if (currentView !== "read" || !bgEnabled || prefersReduced) return;
+        if (modal.classList.contains("is-open")) return;
+        ripples.push({ x: e.clientX, y: e.clientY, r: 8, maxR: 135, alpha: 0.42 });
+        if (ripples.length > 6) ripples.shift();
+      });
+
+      function drawRibbon(t, yBase, amp, freq, color, lineW, scrollShift) {
+        ctx.beginPath();
+        for (let x = -20; x <= W + 20; x += 28) {
+          const y = yBase + Math.sin(x * freq + t) * amp + Math.cos(x * freq * 0.55 - t * 0.7) * (amp * 0.45) - scrollShift;
+          if (x === -20) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = color;
+        ctx.lineWidth = lineW;
+        ctx.stroke();
+      }
+
+      let t = 0;
+      function renderFrame() {
+        requestAnimationFrame(renderFrame);
+        if (currentView !== "read" || !bgEnabled || document.hidden) return;
+
+        const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+        const scrollY = window.scrollY || 0;
+        if (!prefersReduced) t += 0.0085;
+
+        ctx.clearRect(0, 0, W, H);
+
+        // 1. Gently undulating translucent acrylic silk ribbons
+        const ribbonScroll = (scrollY * 0.08) % H;
+        drawRibbon(t * 0.9, H * 0.28, 34, 0.0038, isDark ? "rgba(224, 138, 94, 0.11)" : "rgba(194, 101, 74, 0.11)", 2.2, ribbonScroll * 0.25);
+        drawRibbon(-t * 0.75 + 1.4, H * 0.68, 40, 0.0032, isDark ? "rgba(240, 198, 118, 0.09)" : "rgba(110, 133, 107, 0.12)", 2, -ribbonScroll * 0.18);
+        drawRibbon(t * 0.55 + 3.1, H * 0.48, 26, 0.0046, isDark ? "rgba(143, 181, 138, 0.08)" : "rgba(214, 161, 74, 0.11)", 1.4, ribbonScroll * 0.12);
+
+        // 2. Soft cursor lantern halo
+        if (pointer.active) {
+          const halo = ctx.createRadialGradient(pointer.x, pointer.y, 4, pointer.x, pointer.y, 175);
+          halo.addColorStop(0, isDark ? "rgba(244, 202, 116, 0.15)" : "rgba(194, 101, 74, 0.11)");
+          halo.addColorStop(0.55, isDark ? "rgba(224, 138, 94, 0.05)" : "rgba(214, 161, 74, 0.05)");
+          halo.addColorStop(1, "rgba(0, 0, 0, 0)");
+          ctx.fillStyle = halo;
+          ctx.beginPath();
+          ctx.arc(pointer.x, pointer.y, 175, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // 3. Neural constellation nodes & floating bokeh fireflies with scroll parallax
+        const palette = isDark
+          ? ["rgba(244, 202, 116,", "rgba(224, 138, 94,", "rgba(143, 181, 138,"]
+          : ["rgba(194, 101, 74,", "rgba(110, 133, 107,", "rgba(198, 144, 52,"];
+
+        const screenPos = [];
+        for (let i = 0; i < nodes.length; i++) {
+          const n = nodes[i];
+          if (!prefersReduced) {
+            n.x += n.vx + Math.sin(t + n.phase) * 0.14;
+            n.y += n.vy + Math.cos(t * 0.8 + n.phase) * 0.12;
+            if (n.x < -30) n.x = W + 30;
+            if (n.x > W + 30) n.x = -30;
+            if (n.y < -30) n.y = H + 30;
+            if (n.y > H + 30) n.y = -30;
+          }
+          const sy = ((n.y - scrollY * n.depth) % (H + 60) + (H + 60)) % (H + 60) - 30;
+          let sx = n.x;
+
+          // Gentle magnetic attraction near cursor
+          if (pointer.active) {
+            const mdx = pointer.x - sx, mdy = pointer.y - sy;
+            const md = Math.hypot(mdx, mdy);
+            if (md > 18 && md < 185) {
+              const pull = (1 - md / 185) * 12;
+              sx += (mdx / md) * pull;
+            }
+          }
+          screenPos.push({ x: sx, y: sy, n });
+        }
+
+        // Connect nearby neural constellation nodes
+        const linkDist = 148;
+        ctx.lineWidth = 0.9;
+        for (let i = 0; i < screenPos.length; i++) {
+          const a = screenPos[i];
+          for (let j = i + 1; j < screenPos.length; j++) {
+            const b = screenPos[j];
+            const dist = Math.hypot(a.x - b.x, a.y - b.y);
+            if (dist < linkDist) {
+              const alpha = (1 - dist / linkDist) * (isDark ? 0.22 : 0.17);
+              ctx.strokeStyle = isDark ? `rgba(244, 202, 116, ${alpha.toFixed(3)})` : `rgba(194, 101, 74, ${alpha.toFixed(3)})`;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.stroke();
+            }
+          }
+          // Connect node to active cursor
+          if (pointer.active) {
+            const cd = Math.hypot(a.x - pointer.x, a.y - pointer.y);
+            if (cd < 165) {
+              const alpha = (1 - cd / 165) * (isDark ? 0.34 : 0.26);
+              ctx.strokeStyle = isDark ? `rgba(244, 202, 116, ${alpha.toFixed(3)})` : `rgba(194, 101, 74, ${alpha.toFixed(3)})`;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(pointer.x, pointer.y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Draw luminous nodes & soft halos
+        for (let i = 0; i < screenPos.length; i++) {
+          const { x, y, n } = screenPos[i];
+          const pulse = 0.65 + 0.35 * Math.sin(t * 2.1 + n.phase);
+          const col = palette[n.tone];
+          ctx.fillStyle = `${col}${(pulse * (isDark ? 0.26 : 0.18)).toFixed(3)})`;
+          ctx.beginPath();
+          ctx.arc(x, y, n.r * 3.1, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.fillStyle = `${col}${(pulse * (isDark ? 0.85 : 0.68)).toFixed(3)})`;
+          ctx.beginPath();
+          ctx.arc(x, y, n.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // 4. Interactive expanding watercolor click ripples
+        for (let i = ripples.length - 1; i >= 0; i--) {
+          const rp = ripples[i];
+          rp.r += 2.8;
+          rp.alpha *= 0.955;
+          if (rp.r >= rp.maxR || rp.alpha < 0.015) {
+            ripples.splice(i, 1);
+            continue;
+          }
+          ctx.strokeStyle = isDark ? `rgba(244, 202, 116, ${rp.alpha.toFixed(3)})` : `rgba(194, 101, 74, ${rp.alpha.toFixed(3)})`;
+          ctx.lineWidth = 1.6;
+          ctx.beginPath();
+          ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+      }
+      requestAnimationFrame(renderFrame);
+    })();
 
     // Launch Cartoon Urmi opening lamp intro on visit!
     startLampIntro();
