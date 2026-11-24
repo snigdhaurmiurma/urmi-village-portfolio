@@ -579,6 +579,184 @@
     [data-theme="dark"] .track-rail { background: rgba(244, 237, 226, 0.16); }
     [data-theme="dark"] .track-dot { background: #241E1A; border-color: var(--ink-muted); }
 
+    /* ================= CUTE LAMP INTRO & GOODBYE SCENES ================= */
+    .lamp-intro {
+      position: fixed; inset: 0; z-index: 9500;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 24px; overflow: hidden;
+      background: radial-gradient(circle at 50% 46%, #1D1D26 0%, #121218 58%, #0B0B10 100%);
+      color: #F4EDE2;
+      transition: opacity 0.72s var(--ease-out), visibility 0.72s ease;
+    }
+    .lamp-intro.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
+    .lamp-room-glow {
+      position: absolute; top: 44%; left: 50%; width: 420px; height: 420px;
+      margin: -210px 0 0 -210px; border-radius: 50%; pointer-events: none;
+      background: radial-gradient(circle, rgba(255, 232, 165, 0.92) 0%, rgba(244, 198, 108, 0.42) 38%, rgba(224, 138, 94, 0.12) 65%, transparent 78%);
+      opacity: 0; transform: scale(0.2);
+      transition: opacity 0.65s var(--ease-out), transform 0.95s var(--ease-out);
+    }
+    .lamp-intro.is-lit .lamp-room-glow { opacity: 1; transform: scale(3.4); }
+    .lamp-skip-btn {
+      position: absolute; top: 20px; right: 24px; z-index: 5;
+      padding: 7px 14px; border-radius: var(--radius-pill);
+      font-size: 0.82rem; font-weight: 500; color: rgba(244, 237, 226, 0.72);
+      background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(244, 237, 226, 0.16);
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .lamp-skip-btn:hover { background: rgba(255, 255, 255, 0.14); color: #FFFDF8; }
+
+    .lamp-stage {
+      position: relative; z-index: 2;
+      display: flex; align-items: flex-end; justify-content: center; gap: 6px;
+      min-height: 290px; padding-top: 46px;
+    }
+    .lamp-floor-shadow {
+      position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+      width: 280px; height: 22px; border-radius: 50%;
+      background: rgba(0, 0, 0, 0.48); filter: blur(6px);
+      transition: background-color 0.45s ease;
+    }
+    .lamp-intro.is-lit .lamp-floor-shadow { background: rgba(255, 214, 128, 0.28); }
+
+    /* Cartoon Urmi Character */
+    .urmi-actor {
+      position: relative; width: 132px; flex-shrink: 0; z-index: 3;
+      margin-right: -34px;
+      transform: translateX(-76px); opacity: 0;
+      transition: transform 0.95s var(--ease-out), opacity 0.55s ease;
+    }
+    .urmi-actor.is-arrived { transform: translateX(0); opacity: 1; }
+    .urmi-actor.is-static { transform: none; opacity: 1; transition: none; }
+    .urmi-speech {
+      position: absolute; bottom: calc(100% + 4px); left: 50%; transform: translateX(-42%);
+      white-space: nowrap; padding: 7px 14px; border-radius: var(--radius-pill);
+      background: #FFFDF8; color: #241F1B;
+      border: 1.5px solid rgba(58, 45, 38, 0.22);
+      font-family: var(--font-hand); font-size: 1.06rem; font-weight: 600;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.34);
+      opacity: 0; transform-origin: bottom center;
+      transition: opacity 0.32s ease, transform 0.32s var(--ease-out);
+      pointer-events: none;
+    }
+    .urmi-speech::after {
+      content: ""; position: absolute; left: 36%; top: 100%;
+      border: 6px solid transparent; border-top-color: #FFFDF8;
+    }
+    .urmi-speech.is-visible { opacity: 1; }
+
+    .urmi-cartoon-svg { width: 132px; height: auto; overflow: visible; }
+    .urmi-actor.is-walking .urmi-cartoon-svg { animation: walkBob 0.34s ease-in-out infinite; }
+    .urmi-actor.is-walking .urmi-leg-l { transform-origin: 54px 132px; animation: legSwingA 0.34s ease-in-out infinite; }
+    .urmi-actor.is-walking .urmi-leg-r { transform-origin: 72px 132px; animation: legSwingB 0.34s ease-in-out infinite; }
+    .urmi-arm-reach { transform-origin: 82px 86px; transition: transform 0.28s var(--ease-out); }
+    .urmi-actor.is-reaching .urmi-arm-reach { transform: rotate(-18deg) translate(10px, -4px); }
+    .urmi-actor.is-pulling .urmi-arm-reach { transform: rotate(18deg) translate(10px, 12px); }
+    .urmi-actor.is-waving .urmi-arm-reach { animation: urmiWave 0.65s ease-in-out infinite; }
+    .urmi-face-happy { opacity: 0; transition: opacity 0.25s ease; }
+    .urmi-actor.is-happy .urmi-face-happy { opacity: 1; }
+    .urmi-actor.is-happy .urmi-face-curious { opacity: 0; }
+    .urmi-lantern-hand { opacity: 0; transition: opacity 0.45s ease; }
+    .urmi-actor.has-lantern .urmi-lantern-hand { opacity: 1; }
+
+    /* Cute Sleepy/Awake Lamp (inspired by Cute Lamp Pull-Cord) */
+    .lamp-interactive {
+      position: relative; z-index: 2; padding: 0; border: none; background: none;
+      cursor: pointer; display: inline-flex; align-items: flex-end;
+      transition: transform 0.25s var(--ease-out);
+    }
+    .lamp-interactive:hover { transform: translateY(-2px); }
+    .cute-lamp-svg { width: 168px; height: auto; overflow: visible; }
+    .lamp-cone { opacity: 0; transition: opacity 0.38s ease; pointer-events: none; }
+    .lamp-shade-lit { opacity: 0; transition: opacity 0.38s ease; }
+    .lamp-face-awake { opacity: 0; transition: opacity 0.28s ease; }
+    .lamp-face-sleepy { opacity: 1; transition: opacity 0.28s ease; }
+    .lamp-zzz { opacity: 0; transition: opacity 0.4s ease; }
+    .lamp-cord-group { transform-origin: 66px 96px; transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .lamp-interactive:not(.is-lit) .lamp-cord-group { animation: cordSway 2.8s ease-in-out infinite; }
+    .lamp-interactive.is-pulling .lamp-cord-group { animation: none; transform: translateY(18px); }
+    .lamp-interactive.is-lit .lamp-cone { opacity: 1; }
+    .lamp-interactive.is-lit .lamp-shade-lit { opacity: 1; }
+    .lamp-interactive.is-lit .lamp-face-awake { opacity: 1; }
+    .lamp-interactive.is-lit .lamp-face-sleepy { opacity: 0; }
+    .lamp-interactive.is-sleepy-zzz .lamp-zzz { opacity: 1; animation: zzzFloat 2.6s ease-in-out infinite; }
+
+    .lamp-intro-caption {
+      position: relative; z-index: 2; margin-top: 22px; text-align: center;
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+    }
+    .lamp-intro-title {
+      font-family: var(--font-serif); font-size: clamp(1.3rem, 3vw, 1.75rem);
+      font-weight: 500; margin: 0; color: #F4EDE2;
+      transition: color 0.4s ease;
+    }
+    .lamp-intro.is-lit .lamp-intro-title { color: #FFF8E6; }
+    .lamp-intro-hint { font-size: 0.88rem; color: rgba(244, 237, 226, 0.66); margin: 0; }
+    .lamp-pull-pill {
+      margin-top: 4px; padding: 9px 18px; border-radius: var(--radius-pill);
+      background: rgba(240, 194, 107, 0.16); color: #F7D488;
+      border: 1px solid rgba(240, 194, 107, 0.4);
+      font-size: 0.86rem; font-weight: 600;
+      transition: background-color 0.22s ease, transform 0.2s ease, color 0.22s ease;
+    }
+    .lamp-pull-pill:hover { background: #F0C26B; color: #161311; transform: translateY(-2px); }
+
+    /* End-of-Page Goodbye Lamp Stage (Read Mode) */
+    .goodbye-lamp-section {
+      margin: 28px 0 36px; padding: 34px 36px; border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, #FFFDF8 0%, #F7EFE0 100%);
+      border: 1px solid var(--hairline); box-shadow: var(--shadow-soft);
+      display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center;
+      transition: background 0.5s ease, border-color 0.5s ease;
+    }
+    [data-theme="dark"] .goodbye-lamp-section {
+      background: linear-gradient(135deg, #241E1A 0%, #1B1715 100%);
+      border-color: rgba(240, 194, 107, 0.2);
+    }
+    .goodbye-lamp-stage {
+      display: flex; align-items: flex-end; justify-content: center;
+      padding: 18px 14px 4px; border-radius: var(--radius-md);
+      background: radial-gradient(circle at 58% 36%, rgba(255, 226, 146, 0.28), rgba(24, 20, 18, 0.06) 72%);
+      min-width: 260px; position: relative;
+    }
+    [data-theme="dark"] .goodbye-lamp-stage {
+      background: radial-gradient(circle at 58% 36%, rgba(255, 212, 118, 0.22), rgba(10, 9, 12, 0.55) 74%);
+    }
+    .goodbye-lamp-stage .urmi-cartoon-svg { width: 108px; }
+    .goodbye-lamp-stage .urmi-actor { width: 108px; }
+    .goodbye-lamp-stage .cute-lamp-svg { width: 138px; }
+    .goodbye-copy-kicker { font-family: var(--font-hand); font-size: 1.4rem; color: var(--terracotta); margin: 0 0 4px; }
+    .goodbye-copy-title { font-family: var(--font-serif); font-size: clamp(1.4rem, 2.8vw, 1.85rem); font-weight: 500; margin: 0 0 10px; }
+    .goodbye-copy-desc { margin: 0 0 18px; font-size: 0.93rem; color: var(--ink-soft); max-width: 48ch; }
+    .goodbye-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+    /* Full-Screen Lights-Out Goodbye Veil */
+    .goodbye-veil {
+      position: fixed; inset: 0; z-index: 9600;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 24px; text-align: center; overflow: hidden;
+      background: radial-gradient(circle at 50% 42%, #191B2B 0%, #0D0E16 58%, #07070C 100%);
+      color: #F4EDE2;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity 0.65s var(--ease-out), visibility 0.65s ease;
+    }
+    .goodbye-veil.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
+    .goodbye-stars { position: absolute; inset: 0; pointer-events: none; }
+    .goodbye-veil-inner { position: relative; z-index: 2; max-width: 520px; display: flex; flex-direction: column; align-items: center; }
+    .goodbye-veil-stage { display: flex; align-items: flex-end; justify-content: center; gap: 8px; margin-bottom: 18px; }
+    .goodbye-veil-kicker { font-family: var(--font-hand); font-size: 1.65rem; color: #F0C26B; margin: 0 0 6px; }
+    .goodbye-veil-title { font-family: var(--font-serif); font-size: clamp(1.9rem, 4.5vw, 2.8rem); font-weight: 500; margin: 0 0 12px; color: #FFF9EE; line-height: 1.15; }
+    .goodbye-veil-text { margin: 0 0 24px; color: rgba(244, 237, 226, 0.76); font-size: 0.98rem; max-width: 42ch; }
+    .goodbye-veil-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .goodbye-veil-sign { margin-top: 22px; font-size: 0.82rem; color: rgba(244, 237, 226, 0.5); letter-spacing: 0.04em; }
+
+    .footer-links { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .footer-links button:hover { color: var(--ink); text-decoration: underline; }
+
+    @keyframes cordSway { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(3.2deg); } }
+    @keyframes urmiWave { 0%, 100% { transform: rotate(-42deg); } 50% { transform: rotate(-64deg); } }
+    @keyframes zzzFloat { 0% { opacity: 0; transform: translate(0, 4px) scale(0.85); } 45% { opacity: 0.9; } 100% { opacity: 0; transform: translate(10px, -16px) scale(1.1); } }
+
     @keyframes walkBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
     @keyframes legSwingA { 0%, 100% { transform: rotate(-10deg); } 50% { transform: rotate(12deg); } }
     @keyframes legSwingB { 0%, 100% { transform: rotate(12deg); } 50% { transform: rotate(-10deg); } }
@@ -589,15 +767,42 @@
     @keyframes fireflyFloat { 0%, 100% { transform: translate(0, 0); opacity: 0.28; } 50% { transform: translate(12px, -18px); opacity: 1; } }
 
     @media (max-width: 840px) {
-      .path-grid, .work-grid, .about-layout, .contact-grid, .studio-grid { grid-template-columns: 1fr; }
+      .path-grid, .work-grid, .about-layout, .contact-grid, .studio-grid, .goodbye-lamp-section { grid-template-columns: 1fr; }
+      .goodbye-lamp-section { padding: 24px 20px; text-align: center; }
+      .goodbye-actions { justify-content: center; }
       .beyond-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .timeline-row { grid-template-columns: 1fr; gap: 6px; }
       .read-nav a:not(.nav-village-pill) { display: none; }
       .read-nav { gap: 10px; }
     }
+    @media (prefers-reduced-motion: reduce) {
+      .urmi-actor, .lamp-room-glow, .lamp-intro, .goodbye-veil { transition-duration: 0.2s !important; }
+      .urmi-actor.is-walking .urmi-cartoon-svg, .urmi-actor.is-waving .urmi-arm-reach { animation: none !important; }
+    }
   </style>
 </head>
 <body>
+  <!-- ================= 0. OPENING LAMP CURTAIN (CARTOON URMI TURNS ON THE LIGHT) ================= -->
+  <div id="lamp-intro" class="lamp-intro" role="dialog" aria-modal="true" aria-label="Welcome lamp introduction">
+    <div class="lamp-room-glow" aria-hidden="true"></div>
+    <button type="button" class="lamp-skip-btn" id="lamp-skip-btn">Skip →</button>
+    <div class="lamp-stage">
+      <div class="lamp-floor-shadow" aria-hidden="true"></div>
+      <div class="urmi-actor" id="intro-urmi">
+        <div class="urmi-speech" id="intro-speech">Oh, hi! Let me turn on the light...</div>
+        <div id="intro-urmi-art"></div>
+      </div>
+      <button type="button" class="lamp-interactive" id="intro-lamp-btn" aria-label="Pull the lamp cord to turn on the light">
+        <div id="intro-lamp-art"></div>
+      </button>
+    </div>
+    <div class="lamp-intro-caption">
+      <p class="lamp-intro-title" id="intro-caption-title">Welcome to Urmi's little world</p>
+      <p class="lamp-intro-hint" id="intro-caption-hint">Watch Urmi turn on the light — or pull the cord yourself</p>
+      <button type="button" class="lamp-pull-pill" id="intro-pull-btn">💡 Pull the cord</button>
+    </div>
+  </div>
+
   <!-- ================= 1. ENTRY GATE ================= -->
   <div id="view-entry" class="view-panel entry-page is-active">
     <svg class="entry-backdrop-hills" viewBox="0 0 1440 210" preserveAspectRatio="none" aria-hidden="true">
@@ -640,7 +845,11 @@
     </main>
     <footer class="entry-footer">
       <span>© 2026 Urmi Urma Snigdha</span>
-      <span>urmiurmasnigdha@gmail.com</span>
+      <div class="footer-links">
+        <button type="button" data-replay-intro>💡 Replay lamp intro</button>
+        <button type="button" data-trigger-goodbye>🌙 Turn off light</button>
+        <span>urmiurmasnigdha@gmail.com</span>
+      </div>
     </footer>
   </div>
 
@@ -782,11 +991,34 @@
           </div>
           <button type="button" class="btn btn-terracotta" data-switch-view="village">Walk through the village →</button>
         </div>
+
+        <div class="goodbye-lamp-section" id="goodbye-lamp-section">
+          <div class="goodbye-lamp-stage">
+            <div class="urmi-actor is-static is-happy is-waving" id="footer-urmi">
+              <div id="footer-urmi-art"></div>
+            </div>
+            <button type="button" class="lamp-interactive is-lit" id="footer-lamp-btn" aria-label="Pull the lamp cord to turn off the light and say goodbye">
+              <div id="footer-lamp-art"></div>
+            </button>
+          </div>
+          <div>
+            <p class="goodbye-copy-kicker">End of the page · Before you go...</p>
+            <h2 class="goodbye-copy-title">Turn off the light to say good bye.</h2>
+            <p class="goodbye-copy-desc">Pull the hanging cord on my little lamp (or click below) — I'll switch off the light, wave good bye, and save your cozy spot for next time.</p>
+            <div class="goodbye-actions">
+              <button type="button" class="btn btn-primary" id="btn-goodbye-pull">🌙 Pull cord · Turn off light</button>
+              <button type="button" class="btn btn-secondary" data-replay-intro>💡 Replay welcome intro</button>
+            </div>
+          </div>
+        </div>
       </section>
 
       <footer class="read-footer">
         <span>© 2026 Urmi Urma Snigdha · Crafted in Dhaka</span>
-        <button type="button" data-switch-view="entry">Switch path ↺</button>
+        <div class="footer-links">
+          <button type="button" data-replay-intro>💡 Replay lamp</button>
+          <button type="button" data-switch-view="entry">Switch path ↺</button>
+        </div>
       </footer>
     </main>
   </div>
@@ -855,6 +1087,30 @@
     <div class="modal-panel">
       <button type="button" class="modal-close" id="shared-modal-close" aria-label="Close">✕</button>
       <div id="shared-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Lights-Out Goodbye Veil -->
+  <div class="goodbye-veil" id="goodbye-veil" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Good bye lights off screen">
+    <div class="goodbye-stars" id="goodbye-stars" aria-hidden="true"></div>
+    <div class="goodbye-veil-inner">
+      <div class="goodbye-veil-stage">
+        <div class="urmi-actor is-static is-happy is-waving has-lantern" id="goodbye-urmi">
+          <div class="urmi-speech is-visible" id="goodbye-speech">Good bye, friend! ✨</div>
+          <div id="goodbye-urmi-art"></div>
+        </div>
+        <button type="button" class="lamp-interactive is-sleepy-zzz" id="goodbye-veil-lamp-btn" aria-label="Pull the lamp cord to turn the light back on">
+          <div id="goodbye-veil-lamp-art"></div>
+        </button>
+      </div>
+      <p class="goodbye-veil-kicker">Lights out · Sweet dreams</p>
+      <h2 class="goodbye-veil-title">Good bye, friend!</h2>
+      <p class="goodbye-veil-text">Thank you for visiting my little world. My lamp will be right here waiting whenever you want to come back and explore again.</p>
+      <div class="goodbye-veil-btns">
+        <button type="button" class="btn btn-terracotta" id="btn-lights-back-on">💡 Turn light back on</button>
+        <button type="button" class="btn btn-secondary" id="btn-goodbye-top" style="background:rgba(255,253,248,0.1);color:#F4EDE2;border-color:rgba(244,237,226,0.28)">↑ Back to top</button>
+      </div>
+      <p class="goodbye-veil-sign">— Urmi Urma Snigdha · Dhaka</p>
     </div>
   </div>
   <div class="toast" id="toast" role="status"></div>
@@ -1052,7 +1308,134 @@
       tree: (v) => v % 2 === 0
         ? svgWrap("0 0 120 170", `<path d="M56 156 L58 88 H64 L66 156 Z" fill="#8C6245" stroke="${INK}" stroke-width="2"/><circle cx="60" cy="64" r="36" fill="#779970" stroke="${INK}" stroke-width="2.2"/><circle cx="36" cy="82" r="22" fill="#8FB086" stroke="${INK}" stroke-width="2"/><circle cx="84" cy="80" r="24" fill="#63845D" stroke="${INK}" stroke-width="2"/>`, "prop-tree")
         : svgWrap("0 0 100 165", `<path d="M47 152 L48 94 H52 L53 152 Z" fill="#8C6245" stroke="${INK}" stroke-width="2"/><path d="M50 20 C24 56, 20 98, 50 104 C80 98, 76 56, 50 20 Z" fill="#5E7D5A" stroke="${INK}" stroke-width="2.2"/>`, "prop-tree"),
-      lamp: () => svgWrap("0 0 60 170", `<path d="M24 162 L28 48 H32 L36 162 Z" fill="#463C37" stroke="${INK}" stroke-width="1.8"/><circle cx="30" cy="36" r="22" fill="#FFE399" opacity="0.34" class="lantern-glow"/><rect x="22" y="26" width="16" height="22" rx="4" fill="#FFE7A6" stroke="${INK}" stroke-width="1.9"/>`, "prop-lamp")
+      lamp: () => svgWrap("0 0 60 170", `<path d="M24 162 L28 48 H32 L36 162 Z" fill="#463C37" stroke="${INK}" stroke-width="1.8"/><circle cx="30" cy="36" r="22" fill="#FFE399" opacity="0.34" class="lantern-glow"/><rect x="22" y="26" width="16" height="22" rx="4" fill="#FFE7A6" stroke="${INK}" stroke-width="1.9"/>`, "prop-lamp"),
+      cuteLamp: (uid) => svgWrap("0 0 180 220", `
+        <defs>
+          <linearGradient id="${uid}-dark" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#353742"/>
+            <stop offset="55%" stop-color="#23252E"/>
+            <stop offset="100%" stop-color="#17181F"/>
+          </linearGradient>
+          <linearGradient id="${uid}-lit" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#FFF9E3"/>
+            <stop offset="58%" stop-color="#FBE098"/>
+            <stop offset="100%" stop-color="#EBB45A"/>
+          </linearGradient>
+          <linearGradient id="${uid}-cone" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#FFE89E" stop-opacity="0.62"/>
+            <stop offset="55%" stop-color="#F7CF74" stop-opacity="0.22"/>
+            <stop offset="100%" stop-color="#F7CF74" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="${uid}-stem" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#6A6D78"/>
+            <stop offset="50%" stop-color="#484B55"/>
+            <stop offset="100%" stop-color="#2D2F37"/>
+          </linearGradient>
+        </defs>
+        <!-- Volumetric warm light cone when lit -->
+        <g class="lamp-cone">
+          <polygon points="46,104 134,104 176,214 4,214" fill="url(#${uid}-cone)"/>
+          <ellipse cx="90" cy="108" rx="44" ry="12" fill="#FFF3C2" opacity="0.88"/>
+        </g>
+        <!-- Weighted round base & sleek stem -->
+        <ellipse cx="90" cy="204" rx="34" ry="9" fill="#32343D"/>
+        <ellipse cx="90" cy="201" rx="32" ry="7.5" fill="#5D606B"/>
+        <ellipse cx="90" cy="200" rx="22" ry="4" fill="#767A87" opacity="0.5"/>
+        <rect x="84.5" y="102" width="11" height="99" rx="4" fill="url(#${uid}-stem)"/>
+        <!-- Interactive Pull-Cord hanging on the left side for Cartoon Urmi -->
+        <g class="lamp-cord-group">
+          <line x1="66" y1="100" x2="66" y2="146" stroke="#C8C4BC" stroke-width="2.6" stroke-linecap="round"/>
+          <circle cx="66" cy="149" r="5.5" fill="#F4CA74" stroke="#3A2D26" stroke-width="1.4"/>
+          <circle cx="64.5" cy="147.5" r="1.6" fill="#FFFDF5" opacity="0.85"/>
+        </g>
+        <!-- Matte dark sleepy lampshade -->
+        <path d="M56 32 C56 26, 124 26, 124 32 L138 102 C138 110, 42 110, 42 102 Z" fill="url(#${uid}-dark)"/>
+        <ellipse cx="90" cy="102" rx="48" ry="8" fill="#14151B"/>
+        <!-- Warm glowing lit lampshade -->
+        <g class="lamp-shade-lit">
+          <path d="M56 32 C56 26, 124 26, 124 32 L138 102 C138 110, 42 110, 42 102 Z" fill="url(#${uid}-lit)"/>
+          <ellipse cx="90" cy="102" rx="48" ry="8" fill="#FFF4C8"/>
+        </g>
+        <!-- Sleepy Face (closed cute eyes like reference image) -->
+        <g class="lamp-face-sleepy">
+          <path d="M64 74 Q71 80 78 74" stroke="#111217" stroke-width="2.8" stroke-linecap="round"/>
+          <path d="M102 74 Q109 80 116 74" stroke="#111217" stroke-width="2.8" stroke-linecap="round"/>
+          <path d="M86 81 Q90 84 94 81" stroke="#111217" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
+          <circle cx="62" cy="79" r="3.5" fill="#E08A78" opacity="0.24"/>
+          <circle cx="118" cy="79" r="3.5" fill="#E08A78" opacity="0.24"/>
+        </g>
+        <!-- Awake Happy Face when light turns ON -->
+        <g class="lamp-face-awake">
+          <path d="M64 74 Q71 67 78 74" stroke="#3A2D26" stroke-width="2.8" stroke-linecap="round"/>
+          <path d="M102 74 Q109 67 116 74" stroke="#3A2D26" stroke-width="2.8" stroke-linecap="round"/>
+          <path d="M84 80 Q90 87 96 80" stroke="#3A2D26" stroke-width="2.2" stroke-linecap="round"/>
+          <ellipse cx="61" cy="79" rx="5.5" ry="3.2" fill="#E57A66" opacity="0.5"/>
+          <ellipse cx="119" cy="79" rx="5.5" ry="3.2" fill="#E57A66" opacity="0.5"/>
+        </g>
+        <!-- Floating Zzz when turned off for goodbye -->
+        <g class="lamp-zzz" fill="#C9D6F2" font-family="Georgia, serif" font-style="italic" font-weight="600">
+          <text x="128" y="34" font-size="14">z</text>
+          <text x="142" y="21" font-size="11" opacity="0.78">z</text>
+        </g>
+      `, "cute-lamp-svg"),
+      cartoonUrmi: () => svgWrap("0 0 140 190", `
+        <!-- Articulated legs & boots -->
+        <g class="urmi-leg-l">
+          <path d="M56 132 L52 168" stroke="#3A2D26" stroke-width="7.5" stroke-linecap="round"/>
+          <ellipse cx="55" cy="171" rx="9" ry="4.5" fill="#3A2D26"/>
+        </g>
+        <g class="urmi-leg-r">
+          <path d="M74 132 L78 168" stroke="#3A2D26" stroke-width="7.5" stroke-linecap="round"/>
+          <ellipse cx="81" cy="171" rx="9" ry="4.5" fill="#3A2D26"/>
+        </g>
+        <!-- Back flowing hair -->
+        <path d="M35 46 C33 18, 97 18, 95 48 C97 70, 91 84, 83 88 L45 88 C36 82, 33 66, 35 46 Z" fill="#2A201D" stroke="${INK}" stroke-width="2.2"/>
+        <!-- Left arm + optional tiny firefly lantern during Goodbye -->
+        <path d="M46 84 C34 94, 32 108, 40 116" stroke="#C2654A" stroke-width="9" stroke-linecap="round"/>
+        <circle cx="40" cy="117" r="5" fill="#F3CFAF" stroke="${INK}" stroke-width="1.6"/>
+        <g class="urmi-lantern-hand">
+          <line x1="36" y1="118" x2="31" y2="129" stroke="#C8B8A2" stroke-width="1.6"/>
+          <circle cx="31" cy="138" r="14" fill="#FFE28E" opacity="0.34" class="lantern-glow"/>
+          <rect x="25" y="130" width="12" height="15" rx="4" fill="#FFE69A" stroke="${INK}" stroke-width="1.6"/>
+        </g>
+        <!-- Terracotta coat/dress -->
+        <path d="M44 82 C44 72, 86 72, 86 82 L94 138 H36 Z" fill="#C2654A" stroke="${INK}" stroke-width="2.4" stroke-linejoin="round"/>
+        <!-- Warm ochre scarf -->
+        <path d="M46 76 Q65 90 84 76 L88 90 Q68 98 48 88 Z" fill="#F2CA7B" stroke="${INK}" stroke-width="2"/>
+        <path d="M52 86 L46 108 L57 106 L60 88 Z" fill="#E8B85F" stroke="${INK}" stroke-width="1.8" stroke-linejoin="round"/>
+        <!-- Sage crossbody sketchbook satchel -->
+        <path d="M49 84 L82 114" stroke="#5E7D5A" stroke-width="3.2" stroke-linecap="round"/>
+        <rect x="74" y="108" width="22" height="19" rx="4" fill="#5E7D5A" stroke="${INK}" stroke-width="2"/>
+        <path d="M74 114 H96" stroke="#85AD7F" stroke-width="1.8"/>
+        <!-- Articulated Right Arm (reaches up to pull cord & waves!) -->
+        <g class="urmi-arm-reach">
+          <path d="M82 86 C96 90, 108 86, 114 78" stroke="#C2654A" stroke-width="9.5" stroke-linecap="round"/>
+          <path d="M82 86 C96 90, 108 86, 114 78" stroke="${INK}" stroke-width="1.8" stroke-linecap="round" opacity="0.22"/>
+          <circle cx="116" cy="76" r="5.5" fill="#F3CFAF" stroke="${INK}" stroke-width="1.7"/>
+        </g>
+        <!-- Head & Hair Bangs -->
+        <circle cx="65" cy="52" r="22" fill="#F3CFAF" stroke="${INK}" stroke-width="2.2"/>
+        <path d="M42 48 C46 28, 84 26, 88 48 C79 38, 69 36, 58 40 C51 42, 46 45, 42 48 Z" fill="#2A201D"/>
+        <!-- Cute little hair pin accent -->
+        <rect x="74" y="34" width="9" height="3.2" rx="1.6" transform="rotate(24 74 34)" fill="#F2CA7B"/>
+        <!-- Rosy cheeks -->
+        <ellipse cx="52" cy="58" rx="4.2" ry="2.4" fill="#E68A76" opacity="0.52"/>
+        <ellipse cx="78" cy="58" rx="4.2" ry="2.4" fill="#E68A76" opacity="0.52"/>
+        <!-- Curious Face (before light turns on) -->
+        <g class="urmi-face-curious">
+          <circle cx="57" cy="52" r="2.7" fill="${INK}"/>
+          <circle cx="74" cy="52" r="2.7" fill="${INK}"/>
+          <circle cx="58" cy="51" r="0.9" fill="#FFFDF8"/>
+          <circle cx="75" cy="51" r="0.9" fill="#FFFDF8"/>
+          <path d="M62 61 Q65.5 64 69 61" stroke="${INK}" stroke-width="1.9" stroke-linecap="round"/>
+        </g>
+        <!-- Happy Beaming Face (when light turns on / waving goodbye) -->
+        <g class="urmi-face-happy">
+          <path d="M53 52 Q57 47 61 52" stroke="${INK}" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M70 52 Q74 47 78 52" stroke="${INK}" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M60 59 Q65.5 66 71 59" stroke="${INK}" stroke-width="2.1" stroke-linecap="round"/>
+        </g>
+      `, "urmi-cartoon-svg")
     };
 
     const DATA = {
@@ -1411,6 +1794,7 @@
         <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
           <button type="button" class="btn btn-terracotta" data-copy-email>Copy Email (${DATA.profile.email})</button>
           <button type="button" class="btn btn-secondary" data-switch-view="read">Open Read mode ↗</button>
+          <button type="button" class="btn btn-secondary" data-trigger-goodbye>🌙 Turn off light · Good bye</button>
         </div>
       `);
       modalBody.querySelectorAll("[data-ht]").forEach((b) => b.addEventListener("click", () => openHomeModal(b.dataset.ht)));
@@ -1463,6 +1847,7 @@
     }, { passive: false });
 
     window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && document.getElementById("goodbye-veil").classList.contains("is-open")) { restoreLightsFromGoodbye(false); return; }
       if (e.key === "Escape" && modal.classList.contains("is-open")) { closeModal(); return; }
       if (currentView !== "village" || modal.classList.contains("is-open")) return;
       if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") { tgtX += 240; clampTgt(); }
@@ -1514,7 +1899,215 @@
       if (!e.target.closest(".hud-dropdown-wrap")) workDropdown.classList.remove("is-open");
       const j = e.target.closest("[data-jump-stop]");
       if (j) jumpToStop(j.dataset.jumpStop);
+      if (e.target.closest("[data-replay-intro]")) {
+        closeModal();
+        startLampIntro();
+      }
+      if (e.target.closest("[data-trigger-goodbye]")) {
+        closeModal();
+        triggerGoodbyeLightsOff(false);
+      }
     });
+
+    /* ================= CARTOON URMI LAMP INTRO & GOODBYE EXPERIENCE ================= */
+    document.getElementById("intro-urmi-art").innerHTML = ART.cartoonUrmi();
+    document.getElementById("intro-lamp-art").innerHTML = ART.cuteLamp("intro-lamp");
+    document.getElementById("footer-urmi-art").innerHTML = ART.cartoonUrmi();
+    document.getElementById("footer-lamp-art").innerHTML = ART.cuteLamp("footer-lamp");
+    document.getElementById("goodbye-urmi-art").innerHTML = ART.cartoonUrmi();
+    document.getElementById("goodbye-veil-lamp-art").innerHTML = ART.cuteLamp("goodbye-lamp");
+
+    // Twinkling stars inside the Lights-Out Goodbye screen
+    document.getElementById("goodbye-stars").innerHTML = Array.from({ length: 28 }, (_, i) => {
+      const left = ((i * 37 + 11) % 94) + 3;
+      const top = ((i * 29 + 7) % 86) + 5;
+      const size = (1.6 + (i % 3) * 0.7).toFixed(1);
+      const delay = ((i * 0.35) % 4).toFixed(2);
+      const dur = (2.4 + (i % 4) * 0.65).toFixed(2);
+      const cool = i % 3 === 0 ? " star--cool" : "";
+      return `<span class="star${cool}" style="left:${left}%;top:${top}%;width:${size}px;height:${size}px;animation-delay:${delay}s;--twinkle-dur:${dur}s"></span>`;
+    }).join("");
+
+    // Subtle synthesized mechanical pull-cord click (only plays when AudioContext is permitted)
+    function playLampClick(turnOn = true) {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(turnOn ? 520 : 340, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(turnOn ? 880 : 190, ctx.currentTime + 0.055);
+        gain.gain.setValueAtTime(0.08, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.065);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.07);
+        setTimeout(() => ctx.close().catch(() => {}), 200);
+      } catch {}
+    }
+
+    const lampIntro = document.getElementById("lamp-intro");
+    const introUrmi = document.getElementById("intro-urmi");
+    const introSpeech = document.getElementById("intro-speech");
+    const introLampBtn = document.getElementById("intro-lamp-btn");
+    const introCaptionTitle = document.getElementById("intro-caption-title");
+    const introCaptionHint = document.getElementById("intro-caption-hint");
+    const introPullBtn = document.getElementById("intro-pull-btn");
+    let introTimers = [];
+    let introLit = false;
+
+    function clearIntroTimers() {
+      introTimers.forEach((id) => clearTimeout(id));
+      introTimers = [];
+    }
+
+    function finishLampIntro() {
+      clearIntroTimers();
+      lampIntro.classList.add("is-done");
+      lampIntro.setAttribute("aria-hidden", "true");
+    }
+
+    function pullIntroLampCord(fromUser = false) {
+      if (introLit) return;
+      introLit = true;
+      clearIntroTimers();
+
+      // Make sure Urmi is positioned right beside the lamp
+      introUrmi.classList.add("is-arrived");
+      introUrmi.classList.remove("is-walking");
+      introUrmi.classList.add("is-reaching");
+      introSpeech.textContent = "Click! Turning on the light...";
+      introSpeech.classList.add("is-visible");
+
+      introTimers.push(setTimeout(() => {
+        introUrmi.classList.remove("is-reaching");
+        introUrmi.classList.add("is-pulling");
+        introLampBtn.classList.add("is-pulling");
+        if (fromUser) playLampClick(true);
+      }, 170));
+
+      introTimers.push(setTimeout(() => {
+        introUrmi.classList.remove("is-pulling");
+        introLampBtn.classList.remove("is-pulling");
+        introLampBtn.classList.add("is-lit");
+        lampIntro.classList.add("is-lit");
+        introUrmi.classList.add("is-happy", "is-waving");
+        introSpeech.textContent = "Welcome to my world! ✨";
+        introCaptionTitle.textContent = "Lights on — welcome in!";
+        introCaptionHint.textContent = "Opening Urmi's portfolio...";
+        introPullBtn.style.opacity = "0";
+      }, 420));
+
+      introTimers.push(setTimeout(() => {
+        finishLampIntro();
+      }, 1480));
+    }
+
+    function startLampIntro() {
+      clearIntroTimers();
+      introLit = false;
+      lampIntro.classList.remove("is-done", "is-lit");
+      lampIntro.setAttribute("aria-hidden", "false");
+      introLampBtn.classList.remove("is-lit", "is-pulling");
+      introUrmi.classList.remove("is-arrived", "is-walking", "is-reaching", "is-pulling", "is-happy", "is-waving");
+      introSpeech.classList.remove("is-visible");
+      introSpeech.textContent = "Oh, hi! Let me turn on the light...";
+      introCaptionTitle.textContent = "Welcome to Urmi's little world";
+      introCaptionHint.textContent = "Watch Urmi turn on the light — or pull the cord yourself";
+      introPullBtn.style.opacity = "1";
+
+      // Cartoon Urmi walks in from the left beside the sleepy lamp
+      introTimers.push(setTimeout(() => {
+        introUrmi.classList.add("is-arrived", "is-walking");
+      }, 90));
+
+      // Arrives beside lamp and greets the visitor
+      introTimers.push(setTimeout(() => {
+        introUrmi.classList.remove("is-walking");
+        introSpeech.classList.add("is-visible");
+      }, 980));
+
+      // Automatically reaches up and turns on the light for the visitor
+      introTimers.push(setTimeout(() => {
+        pullIntroLampCord(false);
+      }, 1680));
+    }
+
+    introLampBtn.addEventListener("click", () => pullIntroLampCord(true));
+    introPullBtn.addEventListener("click", () => pullIntroLampCord(true));
+    document.getElementById("lamp-skip-btn").addEventListener("click", finishLampIntro);
+
+    // End-of-Page Goodbye Lamp & Full-Screen Lights-Out Veil
+    const footerUrmi = document.getElementById("footer-urmi");
+    const footerLampBtn = document.getElementById("footer-lamp-btn");
+    const goodbyeVeil = document.getElementById("goodbye-veil");
+    const goodbyeVeilLampBtn = document.getElementById("goodbye-veil-lamp-btn");
+    const goodbyeSpeech = document.getElementById("goodbye-speech");
+    let goodbyeBusy = false;
+
+    function triggerGoodbyeLightsOff(animateFooterLamp = true) {
+      if (goodbyeBusy) return;
+      goodbyeBusy = true;
+
+      const openVeil = () => {
+        goodbyeVeilLampBtn.classList.remove("is-lit", "is-pulling");
+        goodbyeVeilLampBtn.classList.add("is-sleepy-zzz");
+        goodbyeSpeech.textContent = "Good bye, friend! ✨";
+        goodbyeVeil.classList.add("is-open");
+        goodbyeVeil.setAttribute("aria-hidden", "false");
+        goodbyeBusy = false;
+      };
+
+      if (animateFooterLamp) {
+        footerUrmi.classList.remove("is-waving");
+        footerUrmi.classList.add("is-reaching");
+        setTimeout(() => {
+          footerUrmi.classList.remove("is-reaching");
+          footerUrmi.classList.add("is-pulling");
+          footerLampBtn.classList.add("is-pulling");
+          playLampClick(false);
+        }, 150);
+        setTimeout(() => {
+          footerUrmi.classList.remove("is-pulling");
+          footerUrmi.classList.add("is-waving");
+          footerLampBtn.classList.remove("is-pulling", "is-lit");
+          footerLampBtn.classList.add("is-sleepy-zzz");
+        }, 360);
+        setTimeout(openVeil, 520);
+      } else {
+        playLampClick(false);
+        openVeil();
+      }
+    }
+
+    function restoreLightsFromGoodbye(scrollTop = false) {
+      playLampClick(true);
+      goodbyeVeilLampBtn.classList.add("is-pulling");
+      setTimeout(() => {
+        goodbyeVeilLampBtn.classList.remove("is-pulling", "is-sleepy-zzz");
+        goodbyeVeilLampBtn.classList.add("is-lit");
+        goodbyeSpeech.textContent = "Welcome back! 💡";
+      }, 170);
+      setTimeout(() => {
+        goodbyeVeil.classList.remove("is-open");
+        goodbyeVeil.setAttribute("aria-hidden", "true");
+        footerLampBtn.classList.remove("is-sleepy-zzz");
+        footerLampBtn.classList.add("is-lit");
+        if (scrollTop) window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 520);
+    }
+
+    footerLampBtn.addEventListener("click", () => triggerGoodbyeLightsOff(true));
+    document.getElementById("btn-goodbye-pull").addEventListener("click", () => triggerGoodbyeLightsOff(true));
+    goodbyeVeilLampBtn.addEventListener("click", () => restoreLightsFromGoodbye(false));
+    document.getElementById("btn-lights-back-on").addEventListener("click", () => restoreLightsFromGoodbye(false));
+    document.getElementById("btn-goodbye-top").addEventListener("click", () => restoreLightsFromGoodbye(true));
+
+    // Launch Cartoon Urmi opening lamp intro on visit!
+    startLampIntro();
   </script>
 </body>
 </html>
