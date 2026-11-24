@@ -1894,9 +1894,9 @@
               <div class="profiles-wrap" id="verified-profiles"></div>
             </div>
           </div>
-          <form class="contact-form" id="contact-form" action="https://formsubmit.co/urmiurmasnigdha@gmail.com" method="POST" novalidate>
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
+          <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <input type="hidden" name="access_key" value="64bffa9d-5e3e-49a3-940e-15899149cae0" />
+            <input type="checkbox" name="botcheck" tabindex="-1" style="display:none" aria-hidden="true" />
             <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
             <div class="contact-form-head">
               <strong style="font-family:var(--font-serif);font-size:1.12rem">Send a Direct Email</strong>
@@ -2105,6 +2105,7 @@
     // Optional PHP/Java backend URL (e.g. "/backend/php/contact.php" or "https://your-java-api.onrender.com/api/contact").
     // Leave empty ("") on static hosts (Vercel / GitHub Pages) to submit directly via FormSubmit with zero downtime.
     const CONTACT_API_URL = "";
+    const WEB3FORMS_ACCESS_KEY = "64bffa9d-5e3e-49a3-940e-15899149cae0";
     const THEME_STORAGE_KEY = "urmi-portfolio-theme";
 
     const INK = "#3A2D26";
@@ -3696,14 +3697,13 @@ LIMIT 10;</code></pre>`
       f.target = "_blank";
       f.style.display = "none";
       const fields = {
-        Name: name,
-        Email: email,
-        Organization: org || "Not specified",
-        Subject: subject,
-        Message: composedMsg,
+        name,
+        email,
+        organization: org || "Not specified",
+        subject,
+        message: composedMsg,
         _subject: `Portfolio Inquiry (${subject}) — ${name}`,
-        _template: "table",
-        _captcha: "false"
+        _template: "table"
       };
       Object.entries(fields).forEach(([k, v]) => {
         const inp = document.createElement("input");
@@ -3718,34 +3718,89 @@ LIMIT 10;</code></pre>`
     }
 
     async function dispatchPortfolioEmail({ name, email, org, subject, message }) {
-      const endpoint = CONTACT_API_URL || ("https://formsubmit.co/ajax/" + DATA.profile.email);
       const composedMsg = (org ? `Organization: ${org}\n\n` : "") + message;
-      let fetchOpts;
+      const mailSubject = `Portfolio Inquiry (${subject}) — ${name}`;
+
+      // 1. Web3Forms direct (instant, free, zero captcha, 100% CORS-friendly everywhere)
+      if (WEB3FORMS_ACCESS_KEY) {
+        try {
+          const w3Res = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify({
+              access_key: WEB3FORMS_ACCESS_KEY,
+              name,
+              email,
+              replyto: email,
+              organization: org || "Not specified",
+              category: subject,
+              subject: mailSubject,
+              from_name: "Urmi Portfolio Contact Form",
+              message: composedMsg
+            })
+          });
+          const w3Json = await w3Res.json().catch(() => ({}));
+          if (w3Res.ok && w3Json.success) return w3Json;
+          if (!/^https:$/i.test(window.location.protocol)) {
+            throw new Error(w3Json.message || "Web3Forms delivery failed");
+          }
+        } catch (w3Err) {
+          if (!/^https:$/i.test(window.location.protocol)) throw w3Err;
+          // On live HTTPS (Vercel), seamlessly fall through to same-origin /api/contact Web3Forms relay
+        }
+      }
+
+      // 2. Custom backend API (if configured)
       if (CONTACT_API_URL) {
-        fetchOpts = {
+        const apiRes = await fetch(CONTACT_API_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json", "Accept": "application/json" },
           body: JSON.stringify({ name, email, organization: org, subject, message: `[${subject}] ${composedMsg}` })
-        };
-      } else {
-        // Use FormData (CORS-simple request: avoids preflight OPTIONS blocks on FormSubmit)
-        const fd = new FormData();
-        fd.append("Name", name);
-        fd.append("Email", email);
-        fd.append("Organization", org || "Not specified");
-        fd.append("Subject", subject);
-        fd.append("Message", composedMsg);
-        fd.append("_subject", `Portfolio Inquiry (${subject}) — ${name}`);
-        fd.append("_template", "table");
-        fd.append("_captcha", "false");
-        fetchOpts = {
-          method: "POST",
-          headers: { "Accept": "application/json" },
-          referrerPolicy: "origin",
-          body: fd
-        };
+        });
+        const apiJson = await apiRes.json().catch(() => ({}));
+        if (apiRes.ok && (apiJson.ok === true || apiJson.success === true || apiJson.success === "true")) return apiJson;
+        throw new Error(apiJson.message || `API returned HTTP ${apiRes.status}`);
       }
-      const res = await fetch(endpoint, fetchOpts);
+
+      // 3. Same-origin Vercel Serverless Relay (/api/contact — zero CORS / ad-blocker interference)
+      const isLiveHttps = window.location.protocol === "https:" && !/^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
+      if (isLiveHttps) {
+        try {
+          const vRes = await fetch("/api/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify({ name, email, organization: org, subject, message })
+          });
+          if (vRes.status !== 404) {
+            const vJson = await vRes.json().catch(() => ({}));
+            if (vRes.ok && (vJson.ok === true || vJson.success === true)) return vJson;
+            if (vJson && vJson.needsActivation) {
+              const actErr = new Error(vJson.message || "Form needs one-time activation");
+              actErr.needsActivation = true;
+              throw actErr;
+            }
+          }
+        } catch (vErr) {
+          if (vErr && vErr.needsActivation) throw vErr;
+          // Fall through to direct FormSubmit AJAX below
+        }
+      }
+
+      // 4. Direct FormSubmit AJAX with lowercase standard fields (FormData = no CORS preflight)
+      const fd = new FormData();
+      fd.append("name", name);
+      fd.append("email", email);
+      fd.append("organization", org || "Not specified");
+      fd.append("subject", subject);
+      fd.append("message", composedMsg);
+      fd.append("_subject", mailSubject);
+      fd.append("_template", "table");
+      const res = await fetch("https://formsubmit.co/ajax/" + DATA.profile.email, {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        referrerPolicy: "origin",
+        body: fd
+      });
       let json = null;
       try { json = await res.json(); } catch {}
       const okFlag = json ? (json.success === true || json.success === "true" || json.ok === true) : res.ok;
