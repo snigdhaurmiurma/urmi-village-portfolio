@@ -851,23 +851,98 @@
     .about-fact-key { color: var(--ink-muted); font-weight: 600; }
     .about-fact-val { color: var(--ink); text-align: right; font-weight: 500; }
 
-    /* Skills Matrix */
+    /* Skills Matrix & Live Proficiency Counters */
+    .skills-live-kpi {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px;
+      margin-bottom: 24px;
+    }
+    .skill-kpi-card {
+      background: var(--paper-card); border: 1px solid var(--hairline);
+      border-radius: var(--radius-md); padding: 16px 18px; box-shadow: var(--shadow-soft);
+      display: flex; flex-direction: column; gap: 4px;
+      transition: transform 0.24s var(--ease-out), border-color 0.24s ease;
+    }
+    .skill-kpi-card:hover { transform: translateY(-2px); border-color: var(--terracotta); }
+    .skill-kpi-val {
+      font-family: var(--font-serif); font-size: 1.7rem; font-weight: 600; line-height: 1.1;
+      color: var(--terracotta); font-variant-numeric: tabular-nums;
+    }
+    .skill-kpi-label { font-size: 0.78rem; font-weight: 600; color: var(--ink-muted); letter-spacing: 0.02em; }
+    .skills-live-pill {
+      display: inline-flex; align-items: center; gap: 7px; font-size: 0.78rem; font-weight: 600;
+      padding: 6px 13px; border-radius: var(--radius-pill);
+      background: var(--sage-soft); color: var(--sage); border: 1px solid rgba(110, 133, 107, 0.28);
+    }
+    .live-pulse-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--sage);
+      box-shadow: 0 0 0 0 rgba(110, 133, 107, 0.65); animation: livePulse 2s ease-out infinite;
+    }
+    @keyframes livePulse {
+      0% { box-shadow: 0 0 0 0 rgba(110, 133, 107, 0.65); }
+      70% { box-shadow: 0 0 0 8px rgba(110, 133, 107, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(110, 133, 107, 0); }
+    }
     .skills-matrix { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
     .skill-col-card {
       background: var(--paper-card); border: 1px solid var(--hairline);
       border-radius: var(--radius-lg); padding: 26px; box-shadow: var(--shadow-soft);
     }
-    .skill-col-title { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 500; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--hairline); }
+    .skill-col-head {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+      margin: 0 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--hairline);
+    }
+    .skill-col-title { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 500; margin: 0; }
+    .skill-col-badge {
+      font-size: 0.74rem; font-weight: 700; padding: 4px 10px; border-radius: var(--radius-pill);
+      background: var(--paper-deep); color: var(--terracotta); font-variant-numeric: tabular-nums;
+    }
     .skill-item { margin-bottom: 18px; }
     .skill-item:last-child { margin-bottom: 0; }
     .skill-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 6px; }
     .skill-name { font-weight: 600; font-size: 0.94rem; color: var(--ink); }
-    .skill-level { font-size: 0.78rem; font-weight: 600; color: var(--terracotta); font-variant-numeric: tabular-nums; }
-    .skill-bar { height: 6px; border-radius: 999px; background: var(--paper-deep); overflow: hidden; margin-bottom: 8px; }
-    .skill-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--terracotta), var(--ochre)); }
+    .skill-level { font-size: 0.8rem; font-weight: 700; color: var(--terracotta); font-variant-numeric: tabular-nums; }
+    .skill-bar { height: 7px; border-radius: 999px; background: var(--paper-deep); overflow: hidden; margin-bottom: 8px; }
+    .skill-bar-fill {
+      height: 100%; width: 0%; border-radius: 999px;
+      background: linear-gradient(90deg, var(--terracotta), var(--ochre));
+      transition: width 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+    }
     .skill-tags { display: flex; flex-wrap: wrap; gap: 5px; }
 
-    /* Project Card Enhancements */
+    /* Professional Project Cover Media (16:10 Showcase Photography & Architecture Visuals) */
+    .work-card-media {
+      position: relative; width: 100%; aspect-ratio: 16 / 10; overflow: hidden;
+      background: var(--art-bg-dark, #131B2E); border-bottom: 1px solid var(--hairline);
+    }
+    .work-card-img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.55s var(--ease-out);
+    }
+    .work-card:hover .work-card-img { transform: scale(1.045); }
+    .work-card-media-overlay {
+      position: absolute; inset: auto 0 0 0; height: 44%;
+      background: linear-gradient(180deg, transparent 0%, rgba(12, 15, 22, 0.52) 100%);
+      pointer-events: none;
+    }
+    .work-card-cat-pill {
+      position: absolute; top: 12px; left: 12px; z-index: 2;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: var(--radius-pill);
+      background: rgba(16, 20, 28, 0.76); color: #FFFDF8;
+      backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+    .work-card-fallback {
+      width: 100%; height: 100%; display: none; align-items: center; justify-content: center;
+      background: var(--art-bg-light, var(--paper-deep)); padding: 14px 20px 6px;
+    }
+    .modal-project-gallery {
+      display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 18px;
+    }
+    .modal-project-gallery.has-two { grid-template-columns: 1.3fr 1fr; }
+    .modal-project-cover {
+      width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: var(--radius-md);
+      border: 1px solid var(--hairline); background: #0f172a; box-shadow: var(--shadow-soft);
+    }
     .work-card-impact {
       font-size: 0.8rem; font-weight: 600; color: var(--sage);
       background: var(--sage-soft); padding: 5px 10px; border-radius: var(--radius-sm);
@@ -877,6 +952,31 @@
     .work-card-ext { font-size: 0.82rem; font-weight: 600; color: var(--ink-muted); padding: 4px 10px; border-radius: var(--radius-pill); border: 1px solid var(--hairline); }
     .work-card-ext:hover { color: var(--ink); border-color: var(--ink); }
     .work-behance-cta { text-align: center; margin-top: 32px; }
+
+    /* Executive Email Form & Delivery Receipt */
+    .contact-form-head {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+      padding-bottom: 12px; border-bottom: 1px solid var(--hairline); margin-bottom: 4px;
+    }
+    .contact-sla-pill {
+      display: inline-flex; align-items: center; gap: 6px; font-size: 0.74rem; font-weight: 700;
+      color: var(--sage); background: var(--sage-soft); padding: 4px 10px; border-radius: var(--radius-pill);
+    }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-meta-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.74rem; color: var(--ink-muted); margin-top: 4px; }
+    .contact-action-group { display: flex; gap: 6px; align-items: center; flex-shrink: 0; }
+    .contact-item-link { color: var(--ink); text-decoration: underline; text-decoration-color: rgba(194, 101, 74, 0.45); text-underline-offset: 3px; }
+    .contact-item-link:hover { color: var(--terracotta); }
+    .contact-receipt {
+      padding: 16px 18px; border-radius: var(--radius-md);
+      background: var(--sage-soft); border: 1px solid var(--sage);
+      font-size: 0.88rem; line-height: 1.55;
+    }
+    .contact-receipt--fallback {
+      background: var(--ochre-soft); border-color: var(--ochre);
+    }
+    .contact-receipt strong { display: block; font-size: 0.96rem; margin-bottom: 4px; color: var(--ink); }
+    .contact-receipt-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
 
     /* Experience, Awards & Education */
     .timeline-bullets { margin: 8px 0 0; padding-left: 18px; color: var(--ink-soft); font-size: 0.92rem; line-height: 1.62; }
@@ -1315,7 +1415,8 @@
     @keyframes confettiFall { 0% { opacity: 1; transform: translateY(0) rotate(0deg); } 100% { opacity: 0; transform: translateY(105vh) rotate(540deg); } }
 
     @media (max-width: 840px) {
-      .hero-grid, .path-grid, .work-grid, .about-layout, .contact-grid, .studio-grid, .goodbye-lamp-section, .skills-matrix, .awards-grid, .edu-grid, .certs-grid, .notes-grid, .minigame-hub, .mixer-layout { grid-template-columns: 1fr; }
+      .hero-grid, .path-grid, .work-grid, .about-layout, .contact-grid, .studio-grid, .goodbye-lamp-section, .skills-matrix, .awards-grid, .edu-grid, .certs-grid, .notes-grid, .minigame-hub, .mixer-layout, .form-row-2, .modal-project-gallery.has-two { grid-template-columns: 1fr; }
+      .skills-live-kpi { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .passport-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .hud-district-tag { display: none; }
       .award-card--featured { grid-column: span 1; }
@@ -1383,20 +1484,20 @@
     }
 
     /* Subtle frosted studio glass on Read Mode cards so the live canvas breathes softly underneath */
-    #view-read .stat-card, #view-read .work-card, #view-read .skill-panel,
-    #view-read .award-card, #view-read .edu-card, #view-read .cert-card,
-    #view-read .note-card, #view-read .beyond-card, #view-read .contact-form,
-    #view-read .contact-card, #view-read .goodbye-lamp-section {
+    #view-read .stat-card, #view-read .work-card, #view-read .skill-col-card,
+    #view-read .skill-kpi-card, #view-read .award-card, #view-read .edu-card,
+    #view-read .cert-card, #view-read .note-card, #view-read .beyond-card,
+    #view-read .contact-form, #view-read .contact-item, #view-read .goodbye-lamp-section {
       background: rgba(255, 253, 248, 0.84);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
     }
     [data-theme="dark"] #view-read .stat-card, [data-theme="dark"] #view-read .work-card,
-    [data-theme="dark"] #view-read .skill-panel, [data-theme="dark"] #view-read .award-card,
-    [data-theme="dark"] #view-read .edu-card, [data-theme="dark"] #view-read .cert-card,
-    [data-theme="dark"] #view-read .note-card, [data-theme="dark"] #view-read .beyond-card,
-    [data-theme="dark"] #view-read .contact-form, [data-theme="dark"] #view-read .contact-card,
-    [data-theme="dark"] #view-read .goodbye-lamp-section {
+    [data-theme="dark"] #view-read .skill-col-card, [data-theme="dark"] #view-read .skill-kpi-card,
+    [data-theme="dark"] #view-read .award-card, [data-theme="dark"] #view-read .edu-card,
+    [data-theme="dark"] #view-read .cert-card, [data-theme="dark"] #view-read .note-card,
+    [data-theme="dark"] #view-read .beyond-card, [data-theme="dark"] #view-read .contact-form,
+    [data-theme="dark"] #view-read .contact-item, [data-theme="dark"] #view-read .goodbye-lamp-section {
       background: rgba(31, 26, 23, 0.8);
     }
 
@@ -1585,14 +1686,22 @@
             <h2 class="section-title">Design mastery &amp; engineering stack</h2>
             <p class="section-sub">Comprehensive capabilities spanning AI research, full-stack software development, and visual design.</p>
           </div>
+          <span class="skills-live-pill"><span class="live-pulse-dot" aria-hidden="true"></span> Live Proficiency Metrics</span>
         </div>
+        <div class="skills-live-kpi" id="skills-live-kpi"></div>
         <div class="skills-matrix">
           <div class="skill-col-card">
-            <h3 class="skill-col-title">🎨 Design &amp; Creative Direction</h3>
+            <div class="skill-col-head">
+              <h3 class="skill-col-title">🎨 Design &amp; Creative Direction</h3>
+              <span class="skill-col-badge" id="skills-design-badge">0% Avg</span>
+            </div>
             <div id="skills-design"></div>
           </div>
           <div class="skill-col-card">
-            <h3 class="skill-col-title">💻 AI, Software &amp; Data Engineering</h3>
+            <div class="skill-col-head">
+              <h3 class="skill-col-title">💻 AI, Software &amp; Data Engineering</h3>
+              <span class="skill-col-badge" id="skills-tech-badge">0% Avg</span>
+            </div>
             <div id="skills-technical"></div>
           </div>
         </div>
@@ -1676,8 +1785,14 @@
             <p class="section-sub" style="max-width:46ch;margin-top:10px">Available immediately for full-time software engineering, AI/ML &amp; data science, UI/UX product design, and brand consulting roles — locally in Dhaka or remotely worldwide.</p>
             <div class="contact-info-list">
               <div class="contact-item">
-                <div><span class="contact-item-label">Direct Email</span><span class="contact-item-val">urmiurmasnigdha@gmail.com</span></div>
-                <button type="button" class="contact-action-chip" data-copy-email>Copy</button>
+                <div>
+                  <span class="contact-item-label">Direct Email</span>
+                  <a class="contact-item-val contact-item-link" href="mailto:urmiurmasnigdha@gmail.com?subject=Portfolio%20Inquiry%20%E2%80%94%20Urmi%20Urma%20Snigdha&amp;body=Hi%20Urmi%2C%0D%0A%0D%0AI%20reviewed%20your%20portfolio%20and%20would%20love%20to%20connect%20regarding...">urmiurmasnigdha@gmail.com</a>
+                </div>
+                <div class="contact-action-group">
+                  <a class="contact-action-chip" href="mailto:urmiurmasnigdha@gmail.com?subject=Portfolio%20Inquiry%20%E2%80%94%20Urmi%20Urma%20Snigdha&amp;body=Hi%20Urmi%2C%0D%0A%0D%0AI%20reviewed%20your%20portfolio%20and%20would%20love%20to%20connect%20regarding...">Compose ✉</a>
+                  <button type="button" class="contact-action-chip" data-copy-email>Copy</button>
+                </div>
               </div>
               <div class="contact-item">
                 <div><span class="contact-item-label">LinkedIn Messaging</span><span class="contact-item-val">Urmi Urma Snigdha · Professional Inquiries</span></div>
@@ -1696,21 +1811,46 @@
               <div class="profiles-wrap" id="verified-profiles"></div>
             </div>
           </div>
-          <form class="contact-form" id="contact-form">
-            <div class="form-field"><label for="cf-name">Your Name</label><input id="cf-name" name="name" type="text" placeholder="Jane Doe" required /></div>
-            <div class="form-field"><label for="cf-email">Your Email</label><input id="cf-email" name="email" type="email" placeholder="jane@company.com" required /></div>
-            <div class="form-field">
-              <label for="cf-subject">Project Type / Inquiry</label>
-              <select id="cf-subject" name="subject">
-                <option value="Full-Time / Software Engineering Opportunity">Full-Time / Software Engineering Opportunity</option>
-                <option value="AI / Machine Learning & Data Science">AI / Machine Learning &amp; Data Science</option>
-                <option value="UI/UX & Product Design">UI/UX &amp; Product Design</option>
-                <option value="Brand Identity & Graphic Design">Brand Identity &amp; Graphic Design</option>
-                <option value="General Inquiry">General Inquiry</option>
-              </select>
+          <form class="contact-form" id="contact-form" action="https://formsubmit.co/urmiurmasnigdha@gmail.com" method="POST" novalidate>
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_autoresponse" value="Thank you for reaching out to Urmi Urma Snigdha! I have received your message and will respond promptly." />
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+            <div class="contact-form-head">
+              <strong style="font-family:var(--font-serif);font-size:1.12rem">Send a Direct Email</strong>
+              <span class="contact-sla-pill"><span class="live-pulse-dot" aria-hidden="true"></span> Replies &lt; 24h</span>
             </div>
-            <div class="form-field"><label for="cf-message">Message</label><textarea id="cf-message" name="message" placeholder="Tell me about your project, team, or opportunity..." required></textarea></div>
-            <button type="submit" class="btn btn-primary">Send message →</button>
+            <div class="form-row-2">
+              <div class="form-field"><label for="cf-name">Your Name *</label><input id="cf-name" name="name" type="text" placeholder="Jane Doe" autocomplete="name" required /></div>
+              <div class="form-field"><label for="cf-email">Work / Personal Email *</label><input id="cf-email" name="email" type="email" placeholder="jane@company.com" autocomplete="email" required /></div>
+            </div>
+            <div class="form-row-2">
+              <div class="form-field"><label for="cf-org">Company / Team (Optional)</label><input id="cf-org" name="organization" type="text" placeholder="Acme Corp / UIU" autocomplete="organization" /></div>
+              <div class="form-field">
+                <label for="cf-subject">Inquiry Category</label>
+                <select id="cf-subject" name="subject">
+                  <option value="Full-Time / Software Engineering Opportunity">Full-Time / Software Engineering</option>
+                  <option value="AI / Machine Learning & Data Science">AI / ML &amp; Data Science</option>
+                  <option value="UI/UX & Product Design">UI/UX &amp; Product Design</option>
+                  <option value="Brand Identity & Graphic Design">Brand Identity &amp; Design</option>
+                  <option value="Research / Academic Collaboration">Research Collaboration</option>
+                  <option value="General Inquiry">General Inquiry</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="cf-message">Message *</label>
+              <textarea id="cf-message" name="message" maxlength="1500" placeholder="Share a quick overview of your role, project scope, timeline, or collaboration idea..." required></textarea>
+              <div class="form-meta-row">
+                <span>Delivered directly to <strong>urmiurmasnigdha@gmail.com</strong></span>
+                <span id="cf-char-count">0 / 1500</span>
+              </div>
+            </div>
+            <div id="contact-form-status" style="display:none" aria-live="polite"></div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+              <button type="submit" class="btn btn-primary" style="flex:1;justify-content:center">✉ Send Email Directly →</button>
+              <button type="button" class="btn btn-secondary" id="cf-mailto-btn" title="Open pre-filled message in your default email app">Mail App ↗</button>
+            </div>
           </form>
         </div>
 
@@ -2424,6 +2564,7 @@
           accentSoft: "#E6EDF2",
           accentDark: "#1B252E",
           illustration: "vault",
+          coverImg: "https://urmisnigdha.vercel.app/assets/projects/project-fundbridge.svg",
           tags: ["React", "Node.js", "Express", "SQLite (WAL)", "AES-256-GCM", "SHA-256 Chain", "Double-Entry Ledger"],
           url: "https://github.com/snigdhaurmiurma/fundbridge",
           urlLabel: "GitHub Repo ↗",
@@ -2448,6 +2589,7 @@
           accentSoft: "#E4F0ED",
           accentDark: "#1A2926",
           illustration: "microscope",
+          coverImg: "https://urmisnigdha.vercel.app/assets/projects/project-medvision-ai.svg",
           tags: ["Python", "OpenCV", "Scikit-Image", "Watershed Algorithm", "Otsu Thresholding", "CLAHE"],
           url: "https://github.com/snigdhaurmiurma/urmiurmasnigdha.github.io/tree/main/projects/medvision-ai",
           urlLabel: "View Code ↗",
@@ -2472,6 +2614,7 @@
           accentSoft: "#FBF1DF",
           accentDark: "#2B2419",
           illustration: "exchange",
+          coverImg: "https://urmisnigdha.vercel.app/assets/projects/project-marketpulse.svg",
           tags: ["Python", "Pandas", "Scikit-Learn", "Apriori Algorithm", "K-Means RFM", "Gradient Boosting"],
           url: "https://github.com/snigdhaurmiurma/urmiurmasnigdha.github.io/tree/main/projects/marketpulse-mining",
           urlLabel: "View Code ↗",
@@ -2496,6 +2639,7 @@
           accentSoft: "#ECEAF5",
           accentDark: "#222030",
           illustration: "archive",
+          coverImg: "https://urmisnigdha.vercel.app/assets/projects/project-docuquery-rag.svg",
           tags: ["Python", "PyTorch", "FAISS", "Vector Search", "Cross-Encoder Reranker", "RAG", "NLP"],
           url: "https://github.com/snigdhaurmiurma/urmiurmasnigdha.github.io/tree/main/projects/docuquery-rag",
           urlLabel: "View Code ↗",
@@ -2520,6 +2664,7 @@
           accentSoft: "#E6EFE3",
           accentDark: "#1E2A22",
           illustration: "observatory",
+          coverImg: "https://urmisnigdha.vercel.app/assets/projects/project-green-ai.svg",
           tags: ["Python", "CodeCarbon", "NVML", "PyTorch", "Statistical Modeling", "GPU Profiling"],
           url: "https://github.com/snigdhaurmiurma",
           urlLabel: "GitHub ↗",
@@ -2544,6 +2689,7 @@
           accentSoft: "#F5E5DE",
           accentDark: "#2D211D",
           illustration: "library",
+          coverImg: "https://urmisnigdha.vercel.app/assets/projects/project-cross-lingual-nli.svg",
           tags: ["PyTorch", "Transformers", "LaBSE", "XLM-R", "Llama-3.2", "Qwen2.5", "Kaggle GPU"],
           url: "https://github.com/snigdhaurmiurma",
           urlLabel: "GitHub ↗",
@@ -2568,6 +2714,8 @@
           accentSoft: "#F2E9F0",
           accentDark: "#2A2029",
           illustration: "atelier",
+          coverImg: "https://urmisnigdha.vercel.app/assets/achievements/uiu-moving-canvas-bus.jpg",
+          galleryImg: "https://urmisnigdha.vercel.app/assets/achievements/uiu-moving-canvas-winner.jpg",
           tags: ["Adobe Illustrator", "Adobe Photoshop", "Brand Architecture", "Vehicle Livery", "CIELAB Contrast"],
           url: "https://www.behance.net/urmisnigdha",
           urlLabel: "Behance ↗",
@@ -2592,6 +2740,7 @@
           accentSoft: "#FBF1DF",
           accentDark: "#2C251A",
           illustration: "cafe",
+          coverImg: "https://urmisnigdha.vercel.app/assets/projects/project-edusmart-uiux.svg",
           tags: ["Figma", "Design Systems", "Auto-Layout", "User Flows", "Interactive Prototyping"],
           url: "https://www.behance.net/urmisnigdha",
           urlLabel: "Behance ↗",
@@ -2616,6 +2765,7 @@
           accentSoft: "#E5EFF3",
           accentDark: "#1C262E",
           illustration: "press",
+          coverImg: "https://urmisnigdha.vercel.app/assets/projects/project-bangla-news.svg",
           tags: ["Python", "NLP", "OpenCV", "Exploratory Data Analysis", "Multimodal AI"],
           url: "https://github.com/snigdhaurmiurma",
           urlLabel: "GitHub ↗",
@@ -2639,6 +2789,8 @@
           accentSoft: "#F6EAE2",
           accentDark: "#2B211B",
           illustration: "workshop",
+          coverImg: "https://urmisnigdha.vercel.app/assets/projects/project-synapse-iot.svg",
+          galleryImg: "https://urmisnigdha.vercel.app/assets/achievements/uiu-champion-microprocessor.jpg",
           tags: ["Python", "Microcontrollers (C/C++)", "IoT Telemetry", "Circuit Design", "Live Dashboards"],
           url: "https://www.behance.net/urmisnigdha",
           urlLabel: "Portfolio ↗",
@@ -3015,6 +3167,9 @@ LIMIT 10;</code></pre>`
     }
 
     /* View Switcher (Entry <-> Read <-> Village) */
+    let triggerSkillsCountUp = () => {};
+    let triggerHeroStatsCountUp = () => {};
+
     function switchView(name) {
       currentView = name;
       closeModal();
@@ -3022,6 +3177,13 @@ LIMIT 10;</code></pre>`
       document.getElementById("view-" + name).classList.add("is-active");
       document.body.classList.toggle("is-village-active", name === "village");
       if (name !== "village") window.scrollTo(0, 0);
+      if (name === "read") {
+        setTimeout(() => {
+          triggerHeroStatsCountUp();
+          const skSec = document.getElementById("skills");
+          if (skSec && skSec.getBoundingClientRect().top < window.innerHeight * 0.92) triggerSkillsCountUp();
+        }, 120);
+      }
     }
     document.addEventListener("click", (e) => {
       const themeBtn = e.target.closest("[data-theme-toggle]");
@@ -3049,12 +3211,36 @@ LIMIT 10;</code></pre>`
     document.getElementById("vignette-read").innerHTML = ART.entryRead();
     document.getElementById("vignette-village").innerHTML = ART.entryVillage();
 
-    /* Init Read Mode — Executive Hero, Stats, About, Skills, Projects, Experience, Awards, Education, Certs, Searchable Notes, Profiles */
+    /* Shared Smooth Live Counter Utility */
+    function animateLiveNumber(el, target, prefix = "", suffix = "", duration = 1150) {
+      if (!el) return;
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        el.textContent = `${prefix}${target}${suffix}`;
+        return;
+      }
+      const startTs = performance.now();
+      function step(now) {
+        const p = Math.min(1, (now - startTs) / duration);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = `${prefix}${Math.round(target * eased)}${suffix}`;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    /* Init Read Mode — Executive Hero, Live Stats, About, Live Skills Counters, Professional Project Pictures */
     document.getElementById("hero-social-strip").innerHTML = DATA.profile.heroSocials
       .map((s) => `<a class="social-chip" href="${s.url}" target="_blank" rel="noopener noreferrer">${s.name} ↗</a>`).join("");
 
-    document.getElementById("stats-strip").innerHTML = DATA.profile.stats
-      .map((s) => `<div class="stat-card"><div class="stat-val">${s.value}</div><div class="stat-label">${s.label}</div></div>`).join("");
+    document.getElementById("stats-strip").innerHTML = DATA.profile.stats.map((s) => {
+      const m = String(s.value).match(/^(\d+)(\+?)$/);
+      return `<div class="stat-card"><div class="stat-val" ${m ? `data-hero-target="${m[1]}" data-hero-suffix="${m[2]}"` : ""}>${s.value}</div><div class="stat-label">${s.label}</div></div>`;
+    }).join("");
+    triggerHeroStatsCountUp = () => {
+      document.querySelectorAll("[data-hero-target]").forEach((el, idx) => {
+        animateLiveNumber(el, Number(el.dataset.heroTarget), "", el.dataset.heroSuffix || "", 950 + idx * 140);
+      });
+    };
 
     document.getElementById("about-prose").innerHTML = DATA.profile.aboutParagraphs.map((p) => `<p>${p}</p>`).join("") +
       `<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
@@ -3062,14 +3248,74 @@ LIMIT 10;</code></pre>`
         <a href="#work" class="btn btn-secondary">Explore 10 Case Studies</a>
       </div>`;
 
-    const renderSkillList = (list) => list.map((sk) => `
-      <div class="skill-item">
-        <div class="skill-head"><span class="skill-name">${sk.name}</span><span class="skill-level">${sk.level} · ${sk.percent}</span></div>
-        <div class="skill-bar"><div class="skill-bar-fill" style="width:${sk.percent}"></div></div>
-        <div class="skill-tags">${sk.tags.map((t) => `<span class="tag-chip">${t}</span>`).join("")}</div>
+    /* Skills Matrix with Live Counters & Scroll-Triggered Bar Fill */
+    const designSkills = DATA.skills.design;
+    const techSkills = DATA.skills.technical;
+    const avgPct = (list) => Math.round(list.reduce((sum, s) => sum + parseInt(s.percent, 10), 0) / list.length);
+    const designAvg = avgPct(designSkills);
+    const techAvg = avgPct(techSkills);
+    const totalToolsCount = new Set([...designSkills, ...techSkills].flatMap((s) => s.tags)).size;
+    const totalSkillsCount = designSkills.length + techSkills.length;
+
+    document.getElementById("skills-live-kpi").innerHTML = [
+      { target: totalSkillsCount, suffix: "", label: "Core Skill Domains" },
+      { target: designAvg, suffix: "%", label: "Design Mastery Avg" },
+      { target: techAvg, suffix: "%", label: "AI & Eng Mastery Avg" },
+      { target: totalToolsCount, suffix: "+", label: "Tools & Frameworks" }
+    ].map((k) => `
+      <div class="skill-kpi-card">
+        <div class="skill-kpi-val" data-skill-count="${k.target}" data-skill-suffix="${k.suffix}">0${k.suffix}</div>
+        <div class="skill-kpi-label">${k.label}</div>
       </div>`).join("");
-    document.getElementById("skills-design").innerHTML = renderSkillList(DATA.skills.design);
-    document.getElementById("skills-technical").innerHTML = renderSkillList(DATA.skills.technical);
+
+    document.getElementById("skills-design-badge").innerHTML = `${designSkills.length} Skills · <span data-skill-count="${designAvg}" data-skill-suffix="% Avg">0% Avg</span>`;
+    document.getElementById("skills-tech-badge").innerHTML = `${techSkills.length} Skills · <span data-skill-count="${techAvg}" data-skill-suffix="% Avg">0% Avg</span>`;
+
+    const renderSkillList = (list) => list.map((sk) => {
+      const pctNum = parseInt(sk.percent, 10) || 0;
+      return `
+      <div class="skill-item">
+        <div class="skill-head">
+          <span class="skill-name">${sk.name}</span>
+          <span class="skill-level">${sk.level} · <span data-skill-count="${pctNum}" data-skill-suffix="%">0%</span></span>
+        </div>
+        <div class="skill-bar"><div class="skill-bar-fill" data-bar-target="${pctNum}%"></div></div>
+        <div class="skill-tags">${sk.tags.map((t) => `<span class="tag-chip">${t}</span>`).join("")}</div>
+      </div>`;
+    }).join("");
+    document.getElementById("skills-design").innerHTML = renderSkillList(designSkills);
+    document.getElementById("skills-technical").innerHTML = renderSkillList(techSkills);
+
+    let skillsAnimated = false;
+    triggerSkillsCountUp = () => {
+      if (skillsAnimated) return;
+      skillsAnimated = true;
+      const skillsEl = document.getElementById("skills");
+      if (!skillsEl) return;
+      skillsEl.querySelectorAll("[data-skill-count]").forEach((el, idx) => {
+        const target = Number(el.dataset.skillCount) || 0;
+        const suffix = el.dataset.skillSuffix || "";
+        animateLiveNumber(el, target, "", suffix, 900 + Math.min(idx * 55, 650));
+      });
+      skillsEl.querySelectorAll("[data-bar-target]").forEach((bar, idx) => {
+        setTimeout(() => { bar.style.width = bar.dataset.barTarget; }, 70 + idx * 55);
+      });
+    };
+
+    if ("IntersectionObserver" in window) {
+      const skillsObs = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && currentView === "read") {
+            triggerSkillsCountUp();
+            skillsObs.disconnect();
+          }
+        });
+      }, { threshold: 0.16 });
+      const skillsSec = document.getElementById("skills");
+      if (skillsSec) skillsObs.observe(skillsSec);
+    } else {
+      triggerSkillsCountUp();
+    }
 
     const categories = ["All", "FinTech & Software", "AI & NLP", "Computer Vision", "Data Mining", "UI/UX & Product", "Branding & Livery", "Embedded & IoT"];
     let activeCat = "All";
@@ -3083,7 +3329,12 @@ LIMIT 10;</code></pre>`
       const list = activeCat === "All" ? DATA.projects : DATA.projects.filter((p) => p.category === activeCat);
       document.getElementById("work-grid").innerHTML = list.map((p) => `
         <article class="work-card" data-project-id="${p.id}">
-          <div class="work-card-art" style="--art-bg-light:${p.accentSoft};--art-bg-dark:${p.accentDark}">${ART[p.illustration]()}</div>
+          <div class="work-card-media" style="--art-bg-light:${p.accentSoft};--art-bg-dark:${p.accentDark}">
+            <span class="work-card-cat-pill">${p.category}</span>
+            <img class="work-card-img" src="${p.coverImg}" alt="${p.title}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="work-card-fallback">${ART[p.illustration]()}</div>
+            <div class="work-card-media-overlay" aria-hidden="true"></div>
+          </div>
           <div class="work-card-body">
             <div class="work-card-meta"><span>${p.badge}</span><span>${p.year}</span></div>
             <h3 class="work-card-title">${p.title}</h3>
@@ -3115,10 +3366,16 @@ LIMIT 10;</code></pre>`
         : inVillage && p.id === "edusmart"
         ? `<button type="button" class="btn btn-primary" id="modal-play-minigame">🎨 Play Acrylic Color Studio</button>`
         : "";
+      const galleryHtml = p.coverImg
+        ? `<div class="modal-project-gallery ${p.galleryImg ? "has-two" : ""}">
+            <img class="modal-project-cover" src="${p.coverImg}" alt="${p.title}" onerror="this.style.display='none'" />
+            ${p.galleryImg ? `<img class="modal-project-cover" src="${p.galleryImg}" alt="${p.title} award photo" onerror="this.style.display='none'" />` : ""}
+          </div>`
+        : `<div class="modal-illustration" style="--art-bg-light:${p.accentSoft};--art-bg-dark:${p.accentDark}">${ART[p.illustration]()}</div>`;
       openModal(`
         <div class="modal-kicker">${inVillage ? p.shopName + " · " : ""}${p.badge} · ${p.year}</div>
         <h2 class="modal-title">${p.title}</h2>
-        <div class="modal-illustration" style="--art-bg-light:${p.accentSoft};--art-bg-dark:${p.accentDark}">${ART[p.illustration]()}</div>
+        ${galleryHtml}
         <div class="work-card-impact" style="margin-bottom:14px">✦ ${p.impactHighlight}</div>
         <div class="work-card-tags" style="margin-bottom:18px;display:flex;flex-wrap:wrap;gap:6px">${p.tags.map((t) => `<span class="tag-chip">${t}</span>`).join("")}</div>
         <h3 class="modal-section-heading">The Challenge</h3><p class="modal-copy">${p.problem}</p>
@@ -3270,45 +3527,158 @@ LIMIT 10;</code></pre>`
     document.getElementById("verified-profiles").innerHTML = DATA.profile.socialLinks
       .map((s) => `<a class="profile-pill" href="${s.url}" target="_blank" rel="noopener noreferrer">${s.name} ↗</a>`).join("");
 
-    document.getElementById("contact-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const form = e.target;
-      const btn = form.querySelector("button[type='submit']");
-      const origText = btn.textContent;
-      btn.disabled = true;
-      btn.textContent = "Sending...";
-      const subjectVal = form.subject ? form.subject.value : "General Inquiry";
+    function escapeHtmlSafe(str) {
+      return String(str || "").replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[ch]));
+    }
+
+    function buildMailtoUrl({ name, email, org, subject, message }) {
+      const cleanSub = `[Portfolio · ${subject || "General Inquiry"}]${name ? " from " + name : ""}`;
+      const bodyLines = [
+        "Hi Urmi,",
+        "",
+        message || "I reviewed your portfolio and would love to connect.",
+        "",
+        "—",
+        `Name: ${name || "(Not provided)"}`,
+        org ? `Organization: ${org}` : null,
+        `Reply Email: ${email || "(Not provided)"}`
+      ].filter((l) => l !== null).join("\r\n");
+      return `mailto:${DATA.profile.email}?subject=${encodeURIComponent(cleanSub)}&body=${encodeURIComponent(bodyLines)}`;
+    }
+
+    async function dispatchPortfolioEmail({ name, email, org, subject, message }) {
       const endpoint = CONTACT_API_URL || ("https://formsubmit.co/ajax/" + DATA.profile.email);
+      const composedMsg = (org ? `Organization: ${org}\n\n` : "") + message;
       const payload = CONTACT_API_URL
-        ? {
-            name: form.name.value.trim(),
-            email: form.email.value.trim(),
-            subject: subjectVal,
-            message: `[${subjectVal}] ` + form.message.value.trim()
-          }
+        ? { name, email, organization: org, subject, message: `[${subject}] ${composedMsg}` }
         : {
-            name: form.name.value.trim(),
-            email: form.email.value.trim(),
-            subject: subjectVal,
-            message: form.message.value.trim(),
-            _subject: `New ${subjectVal} Inquiry from urmi-village-portfolio!`
+            name,
+            email,
+            organization: org || "Not specified",
+            subject,
+            message: composedMsg,
+            _replyto: email,
+            _subject: `Portfolio Inquiry (${subject}) — ${name}`,
+            _captcha: "false",
+            _template: "table",
+            _autoresponse: "Thank you for reaching out to Urmi Urma Snigdha! Your message has been received and I will reply promptly."
           };
-      try {
-        const res = await fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "Accept": "application/json" },
-          body: JSON.stringify(payload)
-        });
-        if (!res.ok) throw new Error("Request failed");
-        showToast("Message sent to " + DATA.profile.email + "!");
-        form.reset();
-      } catch {
-        showToast("Could not send via form — please copy email directly.");
-      } finally {
-        btn.disabled = false;
-        btn.textContent = origText;
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      let json = null;
+      try { json = await res.json(); } catch {}
+      const okFlag = json ? (json.success === true || json.success === "true" || json.ok === true) : res.ok;
+      if (!res.ok || !okFlag) {
+        const errMsg = (json && json.message) ? String(json.message) : "Direct relay unavailable";
+        throw new Error(errMsg);
       }
-    });
+      return json || { success: true };
+    }
+
+    function wireEmailForm(form, statusEl, mailtoBtn, charCountEl) {
+      if (!form) return;
+      const msgField = form.querySelector("textarea[name='message']");
+      if (msgField && charCountEl) {
+        const syncCount = () => { charCountEl.textContent = `${msgField.value.length} / ${msgField.maxLength || 1500}`; };
+        msgField.addEventListener("input", syncCount);
+        syncCount();
+      }
+
+      const readFields = () => ({
+        name: (form.name ? form.name.value : "").trim(),
+        email: (form.email ? form.email.value : "").trim(),
+        org: (form.organization ? form.organization.value : "").trim(),
+        subject: form.subject ? form.subject.value : "General Inquiry",
+        message: (form.message ? form.message.value : "").trim()
+      });
+
+      if (mailtoBtn) {
+        mailtoBtn.addEventListener("click", () => {
+          const f = readFields();
+          window.location.href = buildMailtoUrl(f);
+          showToast("Opening your email app addressed to " + DATA.profile.email);
+        });
+      }
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (form._honey && form._honey.value) return;
+        const f = readFields();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+        if (f.name.length < 2) {
+          showToast("Please enter your name.");
+          if (form.name) form.name.focus();
+          return;
+        }
+        if (!emailRegex.test(f.email)) {
+          showToast("Please enter a valid email address so Urmi can reply.");
+          if (form.email) form.email.focus();
+          return;
+        }
+        if (f.message.length < 6) {
+          showToast("Please include a short message before sending.");
+          if (form.message) form.message.focus();
+          return;
+        }
+
+        const btn = form.querySelector("button[type='submit']");
+        const origText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = "Delivering email...";
+        if (statusEl) statusEl.style.display = "none";
+
+        try {
+          await dispatchPortfolioEmail(f);
+          const sentTime = new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Dhaka", hour: "2-digit", minute: "2-digit", hour12: true }).format(new Date());
+          if (statusEl) {
+            statusEl.className = "contact-receipt";
+            statusEl.style.display = "block";
+            statusEl.innerHTML = `
+              <strong>✓ Message delivered to ${escapeHtmlSafe(DATA.profile.email)}</strong>
+              <span>Thank you, <strong>${escapeHtmlSafe(f.name)}</strong>! Your <em>${escapeHtmlSafe(f.subject)}</em> inquiry was sent at ${sentTime} (Dhaka time). A reply will be sent to <strong>${escapeHtmlSafe(f.email)}</strong>.</span>
+            `;
+          }
+          showToast("✓ Email delivered to " + DATA.profile.email + "!");
+          form.reset();
+          if (charCountEl) charCountEl.textContent = `0 / ${(msgField && msgField.maxLength) || 1500}`;
+        } catch (err) {
+          const mailtoHref = buildMailtoUrl(f);
+          const formattedCopy = `To: ${DATA.profile.email}\nSubject: ${f.subject}\nFrom: ${f.name} (${f.email})${f.org ? " — " + f.org : ""}\n\n${f.message}`;
+          if (statusEl) {
+            statusEl.className = "contact-receipt contact-receipt--fallback";
+            statusEl.style.display = "block";
+            statusEl.innerHTML = `
+              <strong>Direct relay paused — your message is ready to send in 1 click!</strong>
+              <span>Your draft wasn't lost. Open it pre-filled in your email app (Gmail / Outlook / Apple Mail) or copy it directly below:</span>
+              <div class="contact-receipt-actions">
+                <a class="btn btn-terracotta" style="padding:8px 14px;font-size:0.82rem" href="${mailtoHref}">✉ Open Pre-Filled Email App</a>
+                <button type="button" class="btn btn-secondary" style="padding:8px 14px;font-size:0.82rem" data-copy-draft>📋 Copy Message</button>
+              </div>
+            `;
+            const copyDraftBtn = statusEl.querySelector("[data-copy-draft]");
+            if (copyDraftBtn) copyDraftBtn.addEventListener("click", () => {
+              if (navigator.clipboard) navigator.clipboard.writeText(formattedCopy).catch(() => {});
+              showToast("Full message copied to clipboard!");
+            });
+          }
+          showToast("Click 'Open Pre-Filled Email App' to send right away ✉");
+        } finally {
+          btn.disabled = false;
+          btn.textContent = origText;
+        }
+      });
+    }
+
+    wireEmailForm(
+      document.getElementById("contact-form"),
+      document.getElementById("contact-form-status"),
+      document.getElementById("cf-mailto-btn"),
+      document.getElementById("cf-char-count")
+    );
     setInterval(() => {
       const el = document.getElementById("dhaka-time");
       if (!el) return;
@@ -4955,7 +5325,50 @@ LIMIT 10;</code></pre>`
     document.getElementById("btn-work-menu").addEventListener("click", () => workDropdown.classList.toggle("is-open"));
     document.getElementById("btn-studio").addEventListener("click", () => jumpToStop("home"));
     document.getElementById("btn-contact").addEventListener("click", () => {
-      openModal(`<div class="modal-kicker">Village Postbox</div><h2 class="modal-title">Say hello to Urmi</h2><p class="modal-copy">Email: <strong>${DATA.profile.email}</strong><br/>LinkedIn: <a href="${DATA.profile.linkedin}" target="_blank" rel="noopener noreferrer" style="color:var(--terracotta);text-decoration:underline">Connect on LinkedIn ↗</a></p><div style="display:flex;gap:10px;flex-wrap:wrap"><button type="button" class="btn btn-terracotta" data-copy-email>Copy Email Address</button><button type="button" class="btn btn-secondary" data-open-cv>📄 View &amp; Download CV</button></div>`);
+      openModal(`
+        <div class="modal-kicker">Village Postbox · Direct Email</div>
+        <h2 class="modal-title">Say hello to Urmi</h2>
+        <p class="modal-copy" style="margin-bottom:14px">
+          Direct Email: <a class="contact-item-link" href="mailto:${DATA.profile.email}?subject=Portfolio%20Inquiry%20%E2%80%94%20Urmi%20Urma%20Snigdha"><strong>${DATA.profile.email}</strong></a> ·
+          <a href="${DATA.profile.linkedin}" target="_blank" rel="noopener noreferrer" style="color:var(--terracotta);text-decoration:underline">LinkedIn ↗</a>
+        </p>
+        <form id="village-contact-form" class="contact-form" style="padding:18px;margin-bottom:14px" novalidate>
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+          <div class="form-row-2">
+            <div class="form-field"><label for="vcf-name">Your Name *</label><input id="vcf-name" name="name" type="text" placeholder="Jane Doe" required /></div>
+            <div class="form-field"><label for="vcf-email">Your Email *</label><input id="vcf-email" name="email" type="email" placeholder="jane@company.com" required /></div>
+          </div>
+          <div class="form-field">
+            <label for="vcf-subject">Inquiry Category</label>
+            <select id="vcf-subject" name="subject">
+              <option value="Full-Time / Software Engineering Opportunity">Full-Time / Software Engineering</option>
+              <option value="AI / Machine Learning & Data Science">AI / ML &amp; Data Science</option>
+              <option value="UI/UX & Product Design">UI/UX &amp; Product Design</option>
+              <option value="Brand Identity & Graphic Design">Brand Identity &amp; Design</option>
+              <option value="General Inquiry">General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="vcf-message">Message *</label>
+            <textarea id="vcf-message" name="message" maxlength="1500" placeholder="Write your message to Urmi..." required></textarea>
+          </div>
+          <div id="vcf-status" style="display:none" aria-live="polite"></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button type="submit" class="btn btn-primary" style="flex:1;justify-content:center">✉ Send Email Directly →</button>
+            <button type="button" class="btn btn-secondary" id="vcf-mailto-btn">Mail App ↗</button>
+          </div>
+        </form>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button type="button" class="btn btn-terracotta" data-copy-email>Copy Email Address</button>
+          <button type="button" class="btn btn-secondary" data-open-cv>📄 View &amp; Download CV</button>
+        </div>
+      `);
+      wireEmailForm(
+        document.getElementById("village-contact-form"),
+        document.getElementById("vcf-status"),
+        document.getElementById("vcf-mailto-btn"),
+        null
+      );
     });
     document.getElementById("step-prev").addEventListener("click", () => jumpToStop(stops[Math.max(0, activeStop - 1)].id));
     document.getElementById("step-next").addEventListener("click", () => jumpToStop(stops[Math.min(stops.length - 1, activeStop + 1)].id));
