@@ -524,10 +524,28 @@
     [data-theme="dark"] .modal-illustration .shop-window {
       filter: brightness(1.22) drop-shadow(0 0 10px rgba(255, 200, 95, 0.72));
     }
+    .form-field input:-webkit-autofill,
+    .form-field input:-webkit-autofill:hover,
+    .form-field input:-webkit-autofill:focus,
+    .form-field textarea:-webkit-autofill,
+    .form-field select:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 1000px var(--paper) inset !important;
+      -webkit-text-fill-color: var(--ink) !important;
+      caret-color: var(--ink);
+      transition: background-color 5000s ease-in-out 0s;
+    }
     [data-theme="dark"] .form-field input,
     [data-theme="dark"] .form-field select,
     [data-theme="dark"] .form-field textarea {
       background: #161311; color: var(--ink); border-color: var(--hairline-strong);
+    }
+    [data-theme="dark"] .form-field input:-webkit-autofill,
+    [data-theme="dark"] .form-field input:-webkit-autofill:hover,
+    [data-theme="dark"] .form-field input:-webkit-autofill:focus,
+    [data-theme="dark"] .form-field textarea:-webkit-autofill,
+    [data-theme="dark"] .form-field select:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 1000px #161311 inset !important;
+      -webkit-text-fill-color: var(--ink) !important;
     }
     [data-theme="dark"] .form-field input::placeholder,
     [data-theme="dark"] .form-field textarea::placeholder { color: var(--ink-muted); }
@@ -1821,7 +1839,6 @@
             <h2 class="section-title">Engineering &amp; research notes</h2>
             <p class="section-sub">13 technical deep dives across Generative AI, RAG, Transformers, Computer Vision, Spring Boot, and Brand Architecture.</p>
           </div>
-          <a href="https://urmisnigdha.vercel.app/blog.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:8px 15px;font-size:0.84rem">Open Full Blog Archive ↗</a>
         </div>
         <div class="notes-search-bar">
           <input type="search" id="notes-search-input" class="notes-search-input" placeholder="Search 13 articles by keyword (e.g. Transformers, RAG, YOLO, PyTorch, Spring Boot, Livery)..." aria-label="Search technical articles" />
@@ -1862,8 +1879,11 @@
                 <a class="contact-action-chip" href="https://www.linkedin.com/in/urmi-urma-snigdha-4836362a1/" target="_blank" rel="noopener noreferrer">Message ↗</a>
               </div>
               <div class="contact-item">
-                <div><span class="contact-item-label">Official Curriculum Vitae</span><span class="contact-item-val">Full ATS CV &amp; PDF Download</span></div>
-                <a class="contact-action-chip" href="https://urmisnigdha.vercel.app/cv.html?download=true" target="_blank" rel="noopener noreferrer">PDF ↗</a>
+                <div><span class="contact-item-label">Official Curriculum Vitae</span><span class="contact-item-val">ATS-Friendly CV · Normal View &amp; PDF</span></div>
+                <div class="contact-action-group">
+                  <a class="contact-action-chip" href="./cv.html">View CV</a>
+                  <a class="contact-action-chip" href="./Urmi_Urma_Snigdha_CV.pdf" download="Urmi_Urma_Snigdha_CV.pdf">PDF ↓</a>
+                </div>
               </div>
               <div class="contact-item">
                 <div><span class="contact-item-label">Location &amp; Local Time</span><span class="contact-item-val" id="dhaka-time">Dhaka, Bangladesh (GMT+6)</span></div>
@@ -2557,8 +2577,8 @@
         degree: "B.Sc. in Computer Science & Engineering",
         email: "urmiurmasnigdha@gmail.com",
         linkedin: "https://www.linkedin.com/in/urmi-urma-snigdha-4836362a1/",
-        cvUrl: "https://urmisnigdha.vercel.app/cv.html",
-        cvDownloadUrl: "https://urmisnigdha.vercel.app/cv.html?download=true",
+        cvUrl: "./cv.html",
+        cvDownloadUrl: "./Urmi_Urma_Snigdha_CV.pdf",
         heroLead: "Computer Science & Engineering graduate from United International University (UIU). Engineering robust Machine Learning, Digital Image Processing, Data Mining, and RAG pipelines alongside production-grade UI/UX design systems and award-winning brand architecture.",
         aboutParagraphs: [
           "I am a Computer Science & Engineering graduate from United International University (UIU) in Dhaka, driven by the mission to combine robust software engineering, analytical problem-solving, and human-centered visual design.",
@@ -3213,29 +3233,38 @@ LIMIT 10;</code></pre>`
 
     function openCvModal() {
       openModal(`
-        <div class="modal-kicker">Official Curriculum Vitae · Verified 2026</div>
+        <div class="modal-kicker">ATS-Friendly Curriculum Vitae · 2026</div>
         <h2 class="modal-title">${DATA.profile.name}</h2>
-        <p class="modal-copy" style="margin-bottom:14px"><strong>${DATA.profile.title}</strong><br/>${DATA.profile.institution} · ${DATA.profile.email}</p>
+        <p class="modal-copy" style="margin-bottom:14px"><strong>UI/UX Designer · Researcher · Graphic Designer · CSE (Data Science)</strong><br/>United International University (UIU), Dhaka · ${DATA.profile.email}</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">
-          <a href="${DATA.profile.cvDownloadUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-terracotta">📥 Download Official PDF CV ↗</a>
-          <a href="${DATA.profile.cvUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">📄 Open Full CV Page ↗</a>
+          <a href="${DATA.profile.cvDownloadUrl}" download="Urmi_Urma_Snigdha_CV.pdf" class="btn btn-terracotta">📥 Download ATS PDF</a>
+          <a href="${DATA.profile.cvUrl}" class="btn btn-primary">📄 Normal View Mode</a>
+          <a href="${DATA.profile.cvDownloadUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">👁 Open PDF</a>
           <button type="button" class="btn btn-secondary" data-copy-email>Copy Email</button>
         </div>
         <div class="cv-modal-sec">
-          <h3>Education</h3>
-          ${DATA.education.map((e) => `<div class="cv-modal-item"><strong>${e.degree} — ${e.result}</strong><span>${e.institution} · ${e.period}</span><p>${e.details}</p></div>`).join("")}
+          <h3>Key Achievements</h3>
+          <div class="cv-modal-item"><strong>1st Prize (BDT 50,000) — UIU Moving Canvas Challenge</strong><span>Official University Bus Livery &amp; Brand Identity Competition · 2026</span></div>
+          <div class="cv-modal-item"><strong>Global Contest Winner — Freelancer.com</strong><span>International Design Competition</span></div>
+          <div class="cv-modal-item"><strong>UIU CSE Project Showcase Honors</strong><span>Champion (Microprocessor Lab) · 1st Runners-Up (Electronics Lab) · 5th Runners-Up (UI Design / SAD)</span></div>
+        </div>
+        <div class="cv-modal-sec">
+          <h3>Research &amp; Academic Projects</h3>
+          <div class="cv-modal-item"><strong>Green Computing &amp; AI Safety</strong><span>Academic Research (Pending Publication) · 2025 – Present</span><p>Factorial energy overhead study comparing no-guardrail, lightweight guardrail, and LLM-as-judge via CodeCarbon &amp; NVML across a 6-module Python pipeline.</p></div>
+          <div class="cv-modal-item"><strong>Cross-Lingual NLI &amp; Multilingual LLM Benchmarking (FYDP)</strong><span>Team of Five · UIU · 2024 – Present</span><p>CLSC framework with CGAP, CLAS &amp; LAI metrics, LaBSE + XCR objective, and Kaggle LLINK 2×2×2×2 grid across 15 XNLI languages on Tesla T4.</p></div>
+          <div class="cv-modal-item"><strong>EduSmart — Academic AI Companion</strong><span>UI/UX Designer · Figma Mobile &amp; Desktop Prototype · 2024</span><p>End-to-end responsive design system with auto-layout components covering onboarding, AI Q&amp;A, study scheduling, and resources.</p></div>
+          <div class="cv-modal-item"><strong>Bangla News Image-Text Mismatch Detection</strong><span>NLP Side Project · Exploratory Research · UIU · 2024</span><p>Interactive bilingual (Bangla/English) dataset and visual EDA pipeline for misinformation detection in Bangladeshi news media.</p></div>
         </div>
         <div class="cv-modal-sec">
           <h3>Professional Experience</h3>
-          ${DATA.experience.map((x) => `<div class="cv-modal-item"><strong>${x.title}</strong><span>${x.org} · ${x.period}</span><p>${x.bullets[0]}</p></div>`).join("")}
+          <div class="cv-modal-item"><strong>Freelance Graphic Designer</strong><span>Freelancer.com · Behance · Aug 2021 – Present</span><p>Delivered 20+ client projects (brand identities, social kits, brochures, flyers, calendars) and won a global design competition.</p></div>
+          <div class="cv-modal-item"><strong>Surveyor</strong><span>Your ITeams Sp. z o.o. (Remote) · Dec 2021 – May 2023</span><p>1.5 years of structured remote data collection and QA accuracy in an international environment.</p></div>
+          <div class="cv-modal-item"><strong>Home Tutor</strong><span>Private (Self-Employed) · 2020 – 2024</span><p>4 years teaching Science subjects with structured lesson planning and individual progress tracking.</p></div>
         </div>
         <div class="cv-modal-sec">
-          <h3>Key Honors &amp; Competitions</h3>
-          ${DATA.awards.map((a) => `<div class="cv-modal-item"><strong>${a.title}</strong><span>${a.badge} · ${a.date}</span></div>`).join("")}
-        </div>
-        <div class="cv-modal-sec">
-          <h3>Flagship Engineering &amp; Research Projects</h3>
-          ${DATA.projects.filter((p) => !p.awardShowcase).slice(0, 7).map((p) => `<div class="cv-modal-item"><strong>${p.title}</strong><span>${p.impactHighlight}</span></div>`).join("")}
+          <h3>Education</h3>
+          <div class="cv-modal-item"><strong>B.Sc. in Computer Science &amp; Engineering (Data Science)</strong><span>United International University (UIU), Dhaka · Jun 2022 – Nov 2026 (Expected)</span></div>
+          <div class="cv-modal-item"><strong>HSC &amp; SSC (Science) — GPA 5.00 / 5.00</strong><span>Govt. Mohammadpur Model School &amp; College (2020) · Mohammadpur Preparatory School &amp; College (2018)</span></div>
         </div>
       `);
     }
@@ -3659,34 +3688,71 @@ LIMIT 10;</code></pre>`
       return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(DATA.profile.email)}&su=${encodeURIComponent(cleanSub)}&body=${encodeURIComponent(bodyLines)}`;
     }
 
+    function submitFormSubmitDirect({ name, email, org, subject, message }) {
+      const composedMsg = (org ? `Organization: ${org}\n\n` : "") + message;
+      const f = document.createElement("form");
+      f.method = "POST";
+      f.action = "https://formsubmit.co/" + DATA.profile.email;
+      f.target = "_blank";
+      f.style.display = "none";
+      const fields = {
+        Name: name,
+        Email: email,
+        Organization: org || "Not specified",
+        Subject: subject,
+        Message: composedMsg,
+        _subject: `Portfolio Inquiry (${subject}) — ${name}`,
+        _template: "table",
+        _captcha: "false"
+      };
+      Object.entries(fields).forEach(([k, v]) => {
+        const inp = document.createElement("input");
+        inp.type = "hidden";
+        inp.name = k;
+        inp.value = v;
+        f.appendChild(inp);
+      });
+      document.body.appendChild(f);
+      f.submit();
+      setTimeout(() => f.remove(), 1200);
+    }
+
     async function dispatchPortfolioEmail({ name, email, org, subject, message }) {
       const endpoint = CONTACT_API_URL || ("https://formsubmit.co/ajax/" + DATA.profile.email);
       const composedMsg = (org ? `Organization: ${org}\n\n` : "") + message;
-      // Matches Urmi's verified working FormSubmit AJAX schema (no _autoresponse conflict with _captcha=false)
-      const payload = CONTACT_API_URL
-        ? { name, email, organization: org, subject, message: `[${subject}] ${composedMsg}` }
-        : {
-            Name: name,
-            Email: email,
-            Organization: org || "Not specified",
-            Subject: subject,
-            Message: composedMsg,
-            _subject: `Portfolio Inquiry (${subject}) — ${name}`,
-            _template: "table",
-            _captcha: "false"
-          };
-      const res = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify(payload)
-      });
+      let fetchOpts;
+      if (CONTACT_API_URL) {
+        fetchOpts = {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify({ name, email, organization: org, subject, message: `[${subject}] ${composedMsg}` })
+        };
+      } else {
+        // Use FormData (CORS-simple request: avoids preflight OPTIONS blocks on FormSubmit)
+        const fd = new FormData();
+        fd.append("Name", name);
+        fd.append("Email", email);
+        fd.append("Organization", org || "Not specified");
+        fd.append("Subject", subject);
+        fd.append("Message", composedMsg);
+        fd.append("_subject", `Portfolio Inquiry (${subject}) — ${name}`);
+        fd.append("_template", "table");
+        fd.append("_captcha", "false");
+        fetchOpts = {
+          method: "POST",
+          headers: { "Accept": "application/json" },
+          referrerPolicy: "origin",
+          body: fd
+        };
+      }
+      const res = await fetch(endpoint, fetchOpts);
       let json = null;
       try { json = await res.json(); } catch {}
       const okFlag = json ? (json.success === true || json.success === "true" || json.ok === true) : res.ok;
       if (!res.ok || !okFlag) {
-        const errMsg = (json && json.message) ? String(json.message) : "Direct email relay unavailable";
+        const errMsg = (json && json.message) ? String(json.message) : `Relay returned HTTP ${res.status || "error"}`;
         const err = new Error(errMsg);
-        if (/activat/i.test(errMsg)) err.needsActivation = true;
+        if (/activat|confirm|verify/i.test(errMsg)) err.needsActivation = true;
         throw err;
       }
       return json || { success: true };
@@ -3763,12 +3829,13 @@ LIMIT 10;</code></pre>`
           const gmailHref = buildGmailUrl(f);
           const mailtoHref = buildMailtoUrl(f);
           const formattedCopy = `To: ${DATA.profile.email}\nSubject: ${f.subject}\nFrom: ${f.name} (${f.email})${f.org ? " — " + f.org : ""}\n\n${f.message}`;
+          const rawReason = err && err.message ? String(err.message).slice(0, 140) : "";
           const headline = err && err.needsActivation
-            ? "One-time Form Activation Pending — or send immediately via Gmail Web!"
+            ? "One-time Form Activation Needed — click below to activate & send!"
             : "Instant 1-Click Send Ready — your message wasn't lost!";
           const detail = err && err.needsActivation
-            ? `FormSubmit just sent a one-time <strong>"Activate Form"</strong> link to <strong>${escapeHtmlSafe(DATA.profile.email)}</strong> (check Inbox or Spam once to enable direct form delivery for this site). You can also send your message right now in 1 click:`
-            : `Direct relay couldn't connect from this browser session. Send your pre-filled email right away in Gmail Web, your Mail App, or copy it below:`;
+            ? `FormSubmit requires a 1-time activation click in <strong>${escapeHtmlSafe(DATA.profile.email)}</strong> (Inbox or Spam) for this domain. Click <strong>Direct FormSubmit Relay</strong> to trigger activation &amp; deliver now, or send via Gmail Web:`
+            : `Background AJAX couldn't reach the relay (${escapeHtmlSafe(rawReason || "browser/network block")}). Deliver instantly via the direct FormSubmit relay (no CORS), Gmail Web, or Mail App:`;
           if (statusEl) {
             statusEl.className = "contact-receipt contact-receipt--fallback";
             statusEl.style.display = "block";
@@ -3776,18 +3843,24 @@ LIMIT 10;</code></pre>`
               <strong>${headline}</strong>
               <span>${detail}</span>
               <div class="contact-receipt-actions">
-                <a class="btn btn-terracotta" style="padding:8px 14px;font-size:0.82rem" href="${gmailHref}" target="_blank" rel="noopener noreferrer">✉ Send via Gmail Web ↗</a>
+                <button type="button" class="btn btn-terracotta" style="padding:8px 14px;font-size:0.82rem" data-direct-relay>🚀 Direct FormSubmit Relay ↗</button>
+                <a class="btn btn-secondary" style="padding:8px 14px;font-size:0.82rem" href="${gmailHref}" target="_blank" rel="noopener noreferrer">✉ Gmail Web ↗</a>
                 <a class="btn btn-secondary" style="padding:8px 14px;font-size:0.82rem" href="${mailtoHref}">Mail App</a>
-                <button type="button" class="btn btn-secondary" style="padding:8px 14px;font-size:0.82rem" data-copy-draft>📋 Copy Message</button>
+                <button type="button" class="btn btn-secondary" style="padding:8px 14px;font-size:0.82rem" data-copy-draft>📋 Copy</button>
               </div>
             `;
+            const directRelayBtn = statusEl.querySelector("[data-direct-relay]");
+            if (directRelayBtn) directRelayBtn.addEventListener("click", () => {
+              submitFormSubmitDirect(f);
+              showToast("Submitting directly via FormSubmit in a new tab 🚀");
+            });
             const copyDraftBtn = statusEl.querySelector("[data-copy-draft]");
             if (copyDraftBtn) copyDraftBtn.addEventListener("click", () => {
               if (navigator.clipboard) navigator.clipboard.writeText(formattedCopy).catch(() => {});
               showToast("Full message copied to clipboard!");
             });
           }
-          showToast(err && err.needsActivation ? "Check Inbox/Spam for FormSubmit activation — or click Gmail Web ↗" : "Click 'Send via Gmail Web ↗' to deliver right away ✉");
+          showToast(err && err.needsActivation ? "Click 'Direct FormSubmit Relay' or check Inbox/Spam for activation" : "Click 'Direct FormSubmit Relay' or 'Gmail Web' to send right away ✉");
         } finally {
           btn.disabled = false;
           btn.textContent = origText;
