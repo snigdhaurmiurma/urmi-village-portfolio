@@ -1126,7 +1126,7 @@
     .pad-btn--act:hover { background: #AE553B; }
     [data-theme="dark"] .pad-btn--act { color: #161311; }
 
-    /* Explorer's Passport & Mini-Quiz Modal */
+    /* Explorer's Passport Modal */
     .passport-banner {
       display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
       padding: 16px 18px; border-radius: var(--radius-md);
@@ -1145,28 +1145,177 @@
       background: var(--sage-soft); border-style: solid; border-color: var(--sage); color: var(--ink);
     }
     .passport-stamp strong { display: block; font-size: 0.82rem; color: var(--ink); margin-bottom: 2px; }
-    .quiz-card {
-      background: var(--paper); border: 1px solid var(--hairline); border-radius: var(--radius-md);
-      padding: 16px 18px; margin-top: 12px;
-    }
-    .quiz-q { font-family: var(--font-serif); font-size: 1.02rem; font-weight: 600; margin: 0 0 10px; }
-    .quiz-opts { display: flex; flex-direction: column; gap: 8px; }
-    .quiz-opt {
-      text-align: left; padding: 9px 13px; border-radius: var(--radius-sm);
-      background: var(--paper-card); border: 1px solid var(--hairline-strong);
-      font-size: 0.88rem; color: var(--ink); transition: all 0.2s ease;
-    }
-    .quiz-opt:hover { border-color: var(--terracotta); background: var(--paper-deep); }
-    .quiz-opt.is-correct { background: var(--sage-soft); border-color: var(--sage); font-weight: 600; }
-    .quiz-opt.is-wrong { background: var(--terracotta-soft); border-color: var(--terracotta); opacity: 0.8; }
-
     @keyframes orbFloat { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-9px); } }
     @keyframes npcIdle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
     @keyframes butterflyGlide { 0%, 100% { transform: translate(0, 0) rotate(-6deg); } 50% { transform: translate(26px, -18px) rotate(8deg); } }
     @keyframes floatPop { 0% { opacity: 0; transform: translate(-50%, 6px) scale(0.8); } 18% { opacity: 1; transform: translate(-50%, -10px) scale(1.05); } 100% { opacity: 0; transform: translate(-50%, -56px) scale(0.95); } }
 
+    /* ================= ADVENTURE GAME 2.0 (FOLLOWING PET, SECRETS, TRAMPOLINES, MINI-GAMES) ================= */
+    .mango-follower {
+      position: fixed; bottom: 72px; left: calc(24% - 62px); z-index: 58;
+      pointer-events: none; opacity: 0; transform: scale(0.6);
+      transition: opacity 0.45s ease;
+    }
+    .mango-follower.is-active { opacity: 1; }
+    .mango-follower .npc-art { width: 48px; height: auto; animation: none; }
+    .mango-follower.facing-left .npc-art { transform: scaleX(-1); }
+    .mango-follower.is-trotting .npc-art { animation: walkBob 0.28s ease-in-out infinite; }
+    .mango-emote {
+      position: absolute; bottom: calc(100% + 2px); left: 50%; transform: translateX(-50%);
+      font-size: 0.9rem; font-weight: 700; opacity: 0; transition: opacity 0.25s ease;
+    }
+    .mango-emote.is-show { opacity: 1; }
+
+    .bouncy-flower {
+      position: absolute; bottom: 112px; transform: translateX(-50%); z-index: 22;
+      width: 56px; height: 54px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+      cursor: pointer; transition: transform 0.2s var(--ease-out);
+    }
+    .bouncy-flower:hover { transform: translateX(-50%) scale(1.08); }
+    .bouncy-flower.is-boinging { animation: boingSpring 0.48s var(--ease-out); }
+    .bouncy-flower-cap {
+      font-size: 1.8rem; line-height: 1; filter: drop-shadow(0 4px 8px rgba(36, 31, 27, 0.2));
+    }
+    .bouncy-flower-hint {
+      font-size: 0.62rem; font-weight: 700; padding: 1px 6px; border-radius: var(--radius-pill);
+      background: var(--ochre); color: #241F1B; margin-bottom: 2px;
+    }
+
+    .secret-item {
+      position: absolute; bottom: 132px; transform: translateX(-50%); z-index: 27;
+      padding: 5px 10px; border-radius: var(--radius-pill); cursor: pointer;
+      background: rgba(255, 250, 235, 0.92); border: 1.5px dashed var(--terracotta);
+      box-shadow: 0 6px 16px rgba(194, 101, 74, 0.24);
+      font-size: 0.76rem; font-weight: 700; color: var(--terracotta);
+      display: inline-flex; align-items: center; gap: 4px;
+      animation: orbFloat 3.3s ease-in-out infinite;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    [data-theme="dark"] .secret-item { background: rgba(34, 27, 22, 0.92); color: var(--ochre); border-color: var(--ochre); }
+    .secret-item.is-found { opacity: 0; pointer-events: none; transform: translateX(-50%) translateY(-28px) scale(1.4); }
+
+    .lucky-star {
+      position: fixed; top: 18%; left: -80px; z-index: 350;
+      padding: 6px 12px; border-radius: var(--radius-pill); cursor: pointer;
+      background: linear-gradient(135deg, #FFF7D6, #F4CA74); color: #241F1B;
+      font-size: 0.8rem; font-weight: 700; box-shadow: 0 0 24px rgba(255, 224, 130, 0.85);
+      border: 1.5px solid rgba(58, 45, 38, 0.2);
+      transition: transform 0.2s ease;
+    }
+    .lucky-star:hover { transform: scale(1.12); }
+
+    .foot-spark {
+      position: fixed; z-index: 56; pointer-events: none; border-radius: 50%;
+      width: 8px; height: 8px; background: #FFE49E;
+      box-shadow: 0 0 10px rgba(255, 214, 118, 0.9);
+      animation: sparkFade 0.65s ease-out forwards;
+    }
+    .confetti-bit {
+      position: fixed; top: -12px; z-index: 9800; pointer-events: none;
+      width: 9px; height: 13px; border-radius: 2px;
+      animation: confettiFall 2.2s cubic-bezier(0.2, 0.6, 0.4, 1) forwards;
+    }
+    .hud-boost-badge {
+      display: none; padding: 4px 10px; border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, #F4CA74, #E08A5E); color: #161311;
+      font-size: 0.74rem; font-weight: 700; white-space: nowrap;
+    }
+    .hud-boost-badge.is-on { display: inline-flex; align-items: center; gap: 4px; }
+
+    /* Playable Mini-Game Arenas (Inside Modal) */
+    .minigame-hub { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 14px 0 18px; }
+    .minigame-card {
+      background: var(--paper); border: 1px solid var(--hairline-strong); border-radius: var(--radius-md);
+      padding: 16px; text-align: left; display: flex; flex-direction: column; justify-content: space-between; gap: 10px;
+      transition: transform 0.2s var(--ease-out), border-color 0.2s ease;
+    }
+    .minigame-card:hover { transform: translateY(-3px); border-color: var(--terracotta); }
+    .minigame-card.is-won { background: var(--sage-soft); border-color: var(--sage); }
+    .minigame-card h4 { font-family: var(--font-serif); font-size: 1.02rem; margin: 4px 0; }
+    .minigame-card p { margin: 0; font-size: 0.82rem; color: var(--ink-soft); line-height: 1.48; }
+    .minigame-best { font-size: 0.74rem; font-weight: 700; color: var(--terracotta); margin-top: 6px; display: block; }
+
+    .arcade-hud {
+      display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap;
+      padding: 10px 14px; border-radius: var(--radius-sm); background: var(--paper-deep);
+      font-size: 0.84rem; font-weight: 700; margin-bottom: 10px; font-variant-numeric: tabular-nums;
+    }
+    .arcade-arena {
+      position: relative; width: 100%; height: 300px; border-radius: var(--radius-md); overflow: hidden;
+      background: linear-gradient(180deg, #101829 0%, #1B2840 66%, #24372B 100%);
+      border: 2px solid var(--hairline-strong); touch-action: none; cursor: ew-resize; user-select: none;
+      transition: box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .arcade-arena.is-fever {
+      border-color: #F4CA74;
+      box-shadow: inset 0 0 36px rgba(244, 202, 116, 0.35), 0 0 22px rgba(244, 202, 116, 0.4);
+    }
+    .arcade-arena.is-hurt { border-color: #F07167; box-shadow: inset 0 0 36px rgba(240, 113, 103, 0.45); }
+    .arcade-basket {
+      position: absolute; bottom: 14px; width: 82px; height: 30px; border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, #F4CA74, #E08A5E); border: 2px solid #FFFDF8;
+      display: flex; align-items: center; justify-content: center; gap: 3px; font-size: 1rem;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35); transform: translateX(-50%); pointer-events: none;
+      transition: transform 0.1s ease;
+    }
+    .arcade-basket.is-shielded { box-shadow: 0 0 0 4px rgba(126, 214, 255, 0.65), 0 0 20px rgba(126, 214, 255, 0.85); }
+    .arcade-basket.is-bump { transform: translateX(-50%) scale(1.16, 0.88); }
+    .arcade-drop {
+      position: absolute; width: 36px; height: 36px; border-radius: 50%;
+      display: grid; place-items: center; font-size: 1.15rem; transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .arcade-drop--good { background: rgba(133, 173, 127, 0.28); border: 1.5px solid #9FE0B2; box-shadow: 0 0 12px rgba(159, 224, 178, 0.6); }
+    .arcade-drop--bad { background: rgba(214, 92, 76, 0.28); border: 1.5px solid #F08A78; box-shadow: 0 0 12px rgba(240, 138, 120, 0.5); }
+    .arcade-drop--power { background: rgba(244, 202, 116, 0.35); border: 2px solid #FFE49E; box-shadow: 0 0 18px rgba(255, 224, 130, 0.9); }
+    .arcade-pop {
+      position: absolute; transform: translateX(-50%); pointer-events: none; z-index: 20;
+      font-weight: 800; font-size: 0.86rem; color: #FFFDF8; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+      animation: floatPop 0.85s var(--ease-out) forwards;
+    }
+
+    /* Urmi's Acrylic Color Mixer Studio */
+    .mixer-layout { display: grid; grid-template-columns: 1fr 1.15fr; gap: 14px; align-items: center; margin: 12px 0; }
+    .mixer-canvas {
+      border-radius: var(--radius-md); padding: 14px; background: var(--paper-deep);
+      border: 1.5px solid var(--hairline-strong); display: flex; flex-direction: column; align-items: center; gap: 10px;
+    }
+    .mixer-canvas svg { width: 100%; max-width: 220px; height: auto; border-radius: var(--radius-sm); }
+    .mixer-swatches { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; }
+    .mixer-swatch-box {
+      border-radius: var(--radius-sm); padding: 10px 8px; text-align: center;
+      border: 1.5px solid rgba(58, 45, 38, 0.2); font-size: 0.74rem; font-weight: 700;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.28);
+    }
+    .mixer-sliders { display: flex; flex-direction: column; gap: 12px; }
+    .mixer-slider-row label {
+      display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 700; margin-bottom: 5px;
+    }
+    .mixer-slider-row input[type="range"] {
+      width: 100%; height: 10px; border-radius: var(--radius-pill); appearance: none; cursor: pointer;
+      outline: none; border: 1px solid var(--hairline-strong);
+    }
+    .mixer-slider-row input[type="range"]::-webkit-slider-thumb {
+      appearance: none; width: 20px; height: 20px; border-radius: 50%;
+      background: #FFFDF8; border: 2.5px solid var(--ink); box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    }
+    .mixer-meter {
+      width: 100%; height: 10px; border-radius: var(--radius-pill); background: var(--paper-deep);
+      overflow: hidden; border: 1px solid var(--hairline-strong);
+    }
+    .mixer-meter-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--terracotta), var(--ochre), var(--sage)); transition: width 0.2s ease; }
+
+    /* UIU Moving Canvas · Dhaka Bus Dash Runner */
+    .dash-wrap { position: relative; border-radius: var(--radius-md); overflow: hidden; border: 2px solid var(--hairline-strong); touch-action: manipulation; }
+    .dash-canvas { display: block; width: 100%; height: 270px; cursor: pointer; background: #19243A; }
+    .dash-controls { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+
+    @keyframes boingSpring { 0% { transform: translateX(-50%) scale(1, 1); } 28% { transform: translateX(-50%) scale(1.25, 0.68); } 65% { transform: translateX(-50%) scale(0.9, 1.24); } 100% { transform: translateX(-50%) scale(1, 1); } }
+    @keyframes sparkFade { 0% { opacity: 0.95; transform: scale(1) translateY(0); } 100% { opacity: 0; transform: scale(0.2) translateY(-18px); } }
+    @keyframes confettiFall { 0% { opacity: 1; transform: translateY(0) rotate(0deg); } 100% { opacity: 0; transform: translateY(105vh) rotate(540deg); } }
+
     @media (max-width: 840px) {
-      .hero-grid, .path-grid, .work-grid, .about-layout, .contact-grid, .studio-grid, .goodbye-lamp-section, .skills-matrix, .awards-grid, .edu-grid, .certs-grid, .notes-grid { grid-template-columns: 1fr; }
+      .hero-grid, .path-grid, .work-grid, .about-layout, .contact-grid, .studio-grid, .goodbye-lamp-section, .skills-matrix, .awards-grid, .edu-grid, .certs-grid, .notes-grid, .minigame-hub, .mixer-layout { grid-template-columns: 1fr; }
       .passport-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .hud-district-tag { display: none; }
       .award-card--featured { grid-column: span 1; }
@@ -1512,16 +1661,18 @@
       <div class="hud-group">
         <button type="button" class="hud-brand" data-switch-view="entry">urmi.design</button>
         <span class="hud-district-tag" id="hud-district">Welcome Gate</span>
-        <button type="button" class="hud-quest-pill" id="btn-passport" title="Open Explorer's Passport & Mini-Quiz">
+        <button type="button" class="hud-quest-pill" id="btn-passport" title="Open Explorer's Passport &amp; Trophies">
           <span id="hud-stamps">🏅 0/12</span>
           <span id="hud-orbs">✦ 0/12</span>
         </button>
+        <span class="hud-boost-badge" id="hud-boost" aria-live="polite">☕ Cha Boost!</span>
       </div>
       <nav class="hud-group">
         <div class="hud-dropdown-wrap">
           <button type="button" class="hud-btn" id="btn-work-menu">Work ▾</button>
           <div class="hud-dropdown" id="work-dropdown"></div>
         </div>
+        <button type="button" class="hud-btn" id="btn-games" title="Play Cozy Mini-Games">🎮 Games</button>
         <button type="button" class="hud-btn" id="btn-studio">Studio</button>
         <button type="button" class="hud-btn" data-open-cv>CV</button>
         <button type="button" class="hud-btn" id="btn-contact">Contact</button>
@@ -1533,12 +1684,12 @@
 
     <div class="welcome-veil" id="welcome-veil">
       <div class="welcome-card">
-        <p class="welcome-kicker">A cozy adventure by Urmi</p>
+        <p class="welcome-kicker">A cozy playable adventure by Urmi</p>
         <h1 class="welcome-title">Hello, traveller.<br />Welcome to my little village.</h1>
         <p class="welcome-text">I'm Urmi — a CSE graduate from UIU, AI/ML engineer, UI/UX designer, and an artist at heart.</p>
-        <p class="welcome-text">Walk or hop down my lane to collect <strong>12 glowing Skill &amp; Story Orbs</strong>, chat with village friends (including Mango my rescued Dhaka cat!), stamp your <strong>Explorer's Passport</strong> at each project shop, and unlock a sweet mini-quiz at my Canvas Home!</p>
-        <button type="button" class="btn btn-terracotta" id="btn-enter-village" style="margin-top:8px">Start exploring →</button>
-        <p class="welcome-hint">Use <strong>A / D</strong> or <strong>← / →</strong> (or scroll/drag) to walk, <strong>Space / ↑</strong> to hop, and <strong>E</strong> or click to enter shops &amp; chat!</p>
+        <p class="welcome-text">Pet <strong>Mango my rescued cat</strong> so he trots beside you, bounce on <strong>sunflower trampolines</strong> to grab <strong>12 Skill Orbs</strong> &amp; <strong>3 hidden Dhaka treasures</strong>, catch lucky shooting stars, and win trophies in <strong>3 playable Mini-Games</strong>!</p>
+        <button type="button" class="btn btn-terracotta" id="btn-enter-village" style="margin-top:8px">Start adventure →</button>
+        <p class="welcome-hint">Use <strong>A / D</strong> or <strong>← / →</strong> to walk, press <strong>Space / ↑</strong> twice to <strong>double-jump</strong>, and press <strong>E</strong> or click to enter shops, pet Mango &amp; play!</p>
       </div>
     </div>
 
@@ -1559,6 +1710,10 @@
       <div class="traveller-wrap" id="traveller">
         <div class="traveller-bubble" id="traveller-bubble">Welcome to my lane!</div>
         <div id="traveller-art"></div>
+      </div>
+      <div class="mango-follower" id="mango-follower" aria-hidden="true">
+        <div class="mango-emote" id="mango-emote">♥</div>
+        <div id="mango-follower-art"></div>
       </div>
     </main>
 
@@ -2706,12 +2861,21 @@ LIMIT 10;</code></pre>`
     }
     applyTheme(getInitialTheme(), false);
 
+    let activeModalCleanup = null;
+    function runModalCleanup() {
+      if (typeof activeModalCleanup === "function") {
+        try { activeModalCleanup(); } catch {}
+        activeModalCleanup = null;
+      }
+    }
     function openModal(html) {
+      runModalCleanup();
       modalBody.innerHTML = html;
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
     }
     function closeModal() {
+      runModalCleanup();
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
     }
@@ -2841,6 +3005,13 @@ LIMIT 10;</code></pre>`
     function openProjectModal(p, inVillage = false) {
       const idx = DATA.projects.findIndex((i) => i.id === p.id);
       const nextP = DATA.projects[idx + 1];
+      const miniGameBtn = inVillage && p.id === "green-computing"
+        ? `<button type="button" class="btn btn-primary" id="modal-play-minigame">🧠 Play Green AI Catcher</button>`
+        : inVillage && p.id === "moving-canvas"
+        ? `<button type="button" class="btn btn-primary" id="modal-play-minigame">🚌 Play UIU Bus Dash</button>`
+        : inVillage && p.id === "edusmart"
+        ? `<button type="button" class="btn btn-primary" id="modal-play-minigame">🎨 Play Acrylic Color Studio</button>`
+        : "";
       openModal(`
         <div class="modal-kicker">${inVillage ? p.shopName + " · " : ""}${p.badge} · ${p.year}</div>
         <h2 class="modal-title">${p.title}</h2>
@@ -2851,12 +3022,19 @@ LIMIT 10;</code></pre>`
         <h3 class="modal-section-heading">Engineering Solution &amp; Craft</h3><ul class="modal-list">${p.approach.map((s) => `<li>${s}</li>`).join("")}</ul>
         <h3 class="modal-section-heading">Measurable Impact</h3><p class="modal-copy">${p.outcome}</p>
         <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
+          ${miniGameBtn}
           <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="btn btn-terracotta">${p.urlLabel}</a>
-          ${inVillage ? `<button type="button" class="btn btn-primary" id="modal-next-shop">${nextP ? "Walk to " + nextP.shopName + " →" : "Visit Urmi's Canvas Home →"}</button>
+          ${inVillage ? `<button type="button" class="btn btn-secondary" id="modal-next-shop">${nextP ? "Walk to " + nextP.shopName + " →" : "Visit Urmi's Canvas Home →"}</button>
           <button type="button" class="btn btn-secondary" id="modal-back-lane">Back to lane</button>` : ""}
         </div>
       `);
       if (inVillage) {
+        const mgBtn = document.getElementById("modal-play-minigame");
+        if (mgBtn) mgBtn.addEventListener("click", () => {
+          if (p.id === "green-computing") openAiCatcherGame();
+          else if (p.id === "moving-canvas") openBusDashGame();
+          else if (p.id === "edusmart") openColorMixerGame();
+        });
         document.getElementById("modal-next-shop").addEventListener("click", () => { closeModal(); jumpToStop(nextP ? nextP.id : "home"); });
         document.getElementById("modal-back-lane").addEventListener("click", closeModal);
       }
@@ -3089,30 +3267,84 @@ LIMIT 10;</code></pre>`
         id: "npc-easel", x: 6535, name: "Urmi's Nebula Easel", tag: "🎨 Studio Easel", icon: "🎨", art: "npcEasel", pop: "Sparkle! ✨", prompt: "[E] Admire Art",
         lines: [
           "Beyond code & UX, Urmi paints textured Midnight Celestial Nebulas in acrylic, sketches graphite portraits, and experiments with pastry plating!",
-          "Step inside Urmi's Canvas Home right next door to try the 3-question 'Know Urmi' mini-quiz and grab her CV!"
+          "Open 🎮 Games anytime to paint in Urmi's Acrylic Color Studio, race the UIU Moving Canvas Bus, or catch clean AI signals!"
         ]
       }
     ];
 
-    const URMI_QUIZ = [
+    const BOUNCY_FLOWERS = [
+      { id: "boing-1", x: 1185, label: "BOING!" },
+      { id: "boing-2", x: 2945, label: "BOING!" },
+      { id: "boing-3", x: 4090, label: "BOING!" },
+      { id: "boing-4", x: 5270, label: "BOING!" }
+    ];
+
+    const SECRET_ITEMS = [
+      { id: "secret-fish", x: 1030, icon: "🐟", name: "Golden Fish Treat", reward: "Mango did a mega-purr happy flip! He'll trot extra happily beside you down Urmi's village!" },
+      { id: "secret-cha", x: 3340, icon: "☕", name: "Cozy Dhaka Cha Cup", reward: "Warm spiced Dhaka cha! You unlocked a 12-second ⚡ Cha Speed Boost along the lane!" },
+      { id: "secret-brush", x: 5690, icon: "🖌️", name: "Celestial Paintbrush", reward: "Magic unlocked! Your footsteps now leave a glowing acrylic starlight sparkle trail as you walk!" }
+    ];
+
+    const STUDIO_CANVASES = [
       {
-        q: "1. What prize did Urmi win in the UIU Moving Canvas Challenge 2026?",
-        opts: ["1st Prize (BDT 50,000) for UIU's official student transit bus livery", "3rd Prize for a mobile game icon", "Best Photography Award"],
-        ans: 0,
-        explain: "Correct! She won 1st Prize (BDT 50,000) designing UIU's official student transit bus fleet livery."
+        id: "bus",
+        title: "Canvas 1 · UIU Moving Canvas Bus Livery",
+        story: "Mix Urmi's 1st-Prize winning warm Terracotta-Amber stripe for UIU's student fleet!",
+        target: { h: 23, s: 72, l: 50 },
+        start: { h: 195, s: 40, l: 58 },
+        art: (col) => `<svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+          <rect width="220" height="140" rx="12" fill="#F4EDE0"/>
+          <rect y="102" width="220" height="38" fill="#5A534E"/>
+          <line x1="12" y1="121" x2="208" y2="121" stroke="#F4CA74" stroke-width="3" stroke-dasharray="16 14"/>
+          <rect x="26" y="34" width="168" height="72" rx="14" fill="#FFFDF8" stroke="#3A2D26" stroke-width="3"/>
+          <path d="M26 74 Q82 54, 134 74 T194 68 L194 94 C194 101 188 106 180 106 L40 106 C32 106 26 101 26 94 Z" fill="${col}" stroke="#3A2D26" stroke-width="2.2"/>
+          <rect x="42" y="45" width="32" height="20" rx="4" fill="#CBE0E8" stroke="#3A2D26" stroke-width="2"/>
+          <rect x="82" y="45" width="32" height="20" rx="4" fill="#CBE0E8" stroke="#3A2D26" stroke-width="2"/>
+          <rect x="122" y="45" width="32" height="20" rx="4" fill="#CBE0E8" stroke="#3A2D26" stroke-width="2"/>
+          <rect x="162" y="45" width="22" height="24" rx="4" fill="#CBE0E8" stroke="#3A2D26" stroke-width="2"/>
+          <circle cx="64" cy="108" r="13" fill="#2A2421" stroke="#FFFDF8" stroke-width="3"/><circle cx="158" cy="108" r="13" fill="#2A2421" stroke="#FFFDF8" stroke-width="3"/>
+          <circle cx="64" cy="108" r="4" fill="${col}"/><circle cx="158" cy="108" r="4" fill="${col}"/>
+        </svg>`
       },
       {
-        q: "2. Which two concurrent academic research areas has Urmi authored papers in?",
-        opts: ["Quantum Cryptography & Blockchain", "15-Language Multilingual NLP (CLSC) & Green AI Safety Benchmarking", "Compiler Optimization & 3D Game Engines"],
-        ans: 1,
-        explain: "Spot on! She researched Cross-Lingual Stance Consistency (15 languages) and GPU carbon overhead of AI safety guardrails."
+        id: "nebula",
+        title: "Canvas 2 · Midnight Celestial Nebula",
+        story: "Blend Urmi's deep acrylic Nebula Indigo sky behind golden starlight dust!",
+        target: { h: 222, s: 44, l: 25 },
+        start: { h: 48, s: 65, l: 62 },
+        art: (col) => `<svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+          <rect width="220" height="140" rx="12" fill="${col}" stroke="#3A2D26" stroke-width="2.5"/>
+          <ellipse cx="110" cy="72" rx="76" ry="34" fill="rgba(244,202,116,0.22)" transform="rotate(-14 110 72)"/>
+          <ellipse cx="116" cy="68" rx="46" ry="18" fill="rgba(232,139,106,0.25)" transform="rotate(-14 116 68)"/>
+          <circle cx="44" cy="34" r="3" fill="#FFF7D6"/><circle cx="176" cy="28" r="2.6" fill="#FFF7D6"/>
+          <circle cx="72" cy="96" r="2" fill="#FFE49E"/><circle cx="158" cy="98" r="3.2" fill="#FFF7D6"/>
+          <circle cx="112" cy="66" r="12" fill="#FFE49E" opacity="0.88"/>
+          <path d="M18 122 Q70 96 128 118 T206 106" stroke="#FFE49E" stroke-width="2" fill="none" opacity="0.55"/>
+        </svg>`
       },
       {
-        q: "3. Which heartwarming community cause has Urmi volunteered for in Dhaka since 2021?",
-        opts: ["Stray animal rescue, rehabilitation & welfare advocacy", "Deep-sea coral reef diving", "Alpine mountaineering"],
-        ans: 0,
-        explain: "Yes! Mango the cat says purr-fect — Urmi has been rescuing and advocating for stray animals in Dhaka since 2021!"
+        id: "garden",
+        title: "Canvas 3 · Green Observatory Sage",
+        story: "Mix the soothing Botanical Sage pigment from Urmi's eco-conscious Green AI lab!",
+        target: { h: 132, s: 28, l: 46 },
+        start: { h: 335, s: 58, l: 55 },
+        art: (col) => `<svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+          <rect width="220" height="140" rx="12" fill="#F8F3E8"/>
+          <circle cx="110" cy="70" r="46" fill="${col}" opacity="0.24"/>
+          <path d="M110 116 V62" stroke="#3A2D26" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M110 76 C72 74, 62 42, 92 34 C112 30, 114 58, 110 76 Z" fill="${col}" stroke="#3A2D26" stroke-width="2.4"/>
+          <path d="M110 86 C148 82, 160 50, 130 42 C110 38, 108 66, 110 86 Z" fill="${col}" stroke="#3A2D26" stroke-width="2.4"/>
+          <circle cx="110" cy="34" r="9" fill="#F4CA74" stroke="#3A2D26" stroke-width="2"/>
+          <ellipse cx="110" cy="118" rx="44" ry="8" fill="#D5C8B5"/>
+        </svg>`
       }
+    ];
+
+    const LUCKY_WISHES = [
+      "🌠 Lucky Star Caught! Fun fact: Urmi balances deep ML systems research with acrylic painting and culinary dessert plating!",
+      "🌠 Shooting Star Wish! Urmi achieved a perfect GPA 5.00 / 5.00 in both HSC and SSC — and served 5 years as Class Representative!",
+      "🌠 Starlight Bonus! Urmi won 1st Place Champion in UIU Microprocessor Lab AND 1st Prize (BDT 50,000) in UIU Moving Canvas 2026!",
+      "🌠 Cozy Dhaka Wish! Mango the rescued cat sends you a lucky paw-five for exploring every corner of Urmi's village!"
     ];
 
     const layerWorld = document.getElementById("layer-world");
@@ -3124,6 +3356,9 @@ LIMIT 10;</code></pre>`
     const moonEl = document.getElementById("village-moon");
     const traveller = document.getElementById("traveller");
     const bubble = document.getElementById("traveller-bubble");
+    const mangoFollower = document.getElementById("mango-follower");
+    const mangoEmote = document.getElementById("mango-emote");
+    const hudBoost = document.getElementById("hud-boost");
     const trackRail = document.getElementById("track-rail");
     const trackFill = document.getElementById("track-fill");
     const percentEl = document.getElementById("hud-percent");
@@ -3136,13 +3371,22 @@ LIMIT 10;</code></pre>`
     const rpgSpeakerName = document.getElementById("rpg-speaker-name");
     const rpgDialogueText = document.getElementById("rpg-dialogue-text");
 
-    /* Game State (persisted in localStorage) */
+    /* Game State (persisted in localStorage, backward compatible with earlier saves) */
+    const VALID_TROPHIES = ["ai-catcher", "mixer", "bus-dash"];
     let sfxEnabled = true;
-    let gameState = { stamps: [], orbs: [], quizDone: false };
+    let gameState = { stamps: [], orbs: [], mangoJoined: false, secrets: [], trophies: [], highScores: { ai: 0, mixer: 0, bus: 0 } };
     try {
       const savedGame = JSON.parse(localStorage.getItem(GAME_STORAGE_KEY) || "null");
       if (savedGame && Array.isArray(savedGame.stamps) && Array.isArray(savedGame.orbs)) {
-        gameState = savedGame;
+        const hs = savedGame.highScores || {};
+        gameState = {
+          stamps: savedGame.stamps,
+          orbs: savedGame.orbs,
+          mangoJoined: Boolean(savedGame.mangoJoined),
+          secrets: Array.isArray(savedGame.secrets) ? savedGame.secrets : [],
+          trophies: Array.isArray(savedGame.trophies) ? savedGame.trophies.filter((t) => VALID_TROPHIES.includes(t)) : [],
+          highScores: { ai: Number(hs.ai) || 0, mixer: Number(hs.mixer) || 0, bus: Number(hs.bus) || 0 }
+        };
       }
     } catch {}
     const saveGameState = () => { try { localStorage.setItem(GAME_STORAGE_KEY, JSON.stringify(gameState)); } catch {} };
@@ -3167,16 +3411,69 @@ LIMIT 10;</code></pre>`
         };
         if (kind === "orb") { tone(587.3, 0, 0.11, 0.065); tone(880, 0.07, 0.18, 0.065); }
         else if (kind === "jump") { tone(330, 0, 0.08, 0.05, "triangle"); tone(494, 0.05, 0.09, 0.04, "triangle"); }
+        else if (kind === "boing") {
+          const osc = ctx.createOscillator(); const g = ctx.createGain();
+          osc.type = "sine"; osc.frequency.setValueAtTime(210, now);
+          osc.frequency.exponentialRampToValueAtTime(660, now + 0.19);
+          g.gain.setValueAtTime(0.075, now); g.gain.exponentialRampToValueAtTime(0.001, now + 0.24);
+          osc.connect(g); g.connect(ctx.destination); osc.start(now); osc.stop(now + 0.25);
+        }
+        else if (kind === "secret") { [523.3, 659.3, 784, 987.8, 1174.7].forEach((f, i) => tone(f, i * 0.055, 0.18, 0.055)); }
+        else if (kind === "star") { [880, 1174.7, 1568].forEach((f, i) => tone(f, i * 0.06, 0.22, 0.055)); }
+        else if (kind === "hit") { tone(190, 0, 0.09, 0.06, "sawtooth"); tone(120, 0.06, 0.12, 0.05, "triangle"); }
         else if (kind === "stamp") { tone(523.3, 0, 0.1, 0.06); tone(659.3, 0.08, 0.1, 0.06); tone(784, 0.16, 0.2, 0.065); }
         else if (kind === "chat") { tone(440, 0, 0.07, 0.045, "triangle"); tone(554.4, 0.06, 0.09, 0.045, "triangle"); }
         else if (kind === "win") { [523.3, 659.3, 784, 1046.5].forEach((f, i) => tone(f, i * 0.08, 0.22, 0.065)); }
-        setTimeout(() => ctx.close().catch(() => {}), 600);
+        setTimeout(() => ctx.close().catch(() => {}), 700);
       } catch {}
+    }
+
+    function launchConfetti(count = 40) {
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const colors = ["#C2654A", "#D6A14A", "#6E856B", "#9FE0B2", "#F4CA74", "#E88B6A"];
+      for (let i = 0; i < count; i++) {
+        const bit = document.createElement("span");
+        bit.className = "confetti-bit";
+        bit.style.left = `${(Math.random() * 96 + 2).toFixed(1)}vw`;
+        bit.style.background = colors[i % colors.length];
+        bit.style.animationDelay = `${(Math.random() * 0.45).toFixed(2)}s`;
+        bit.style.animationDuration = `${(1.8 + Math.random() * 0.9).toFixed(2)}s`;
+        document.body.appendChild(bit);
+        setTimeout(() => bit.remove(), 2900);
+      }
+    }
+
+    let mangoEmoteTimer = null;
+    function showMangoEmote(symbol = "♥", ms = 1800) {
+      if (!gameState.mangoJoined) return;
+      mangoEmote.textContent = symbol;
+      mangoEmote.classList.add("is-show");
+      clearTimeout(mangoEmoteTimer);
+      mangoEmoteTimer = setTimeout(() => mangoEmote.classList.remove("is-show"), ms);
+    }
+
+    function syncMangoVisibility() {
+      mangoFollower.classList.toggle("is-active", gameState.mangoJoined);
+      const staticMango = layerWorld.querySelector('[data-npc-id="npc-cat"]');
+      if (staticMango) staticMango.style.display = gameState.mangoJoined ? "none" : "";
+    }
+
+    function unlockTrophy(trophyId, label) {
+      const isNew = !gameState.trophies.includes(trophyId);
+      if (isNew) gameState.trophies.push(trophyId);
+      saveGameState();
+      updateGameHud();
+      playGameSfx("win");
+      launchConfetti(44);
+      showMangoEmote("🏆", 2600);
+      showToast(isNew ? `🏆 Trophy Unlocked: ${label}!` : `✨ Victory! ${label} mastered!`);
     }
 
     function updateGameHud() {
       hudStamps.textContent = `🏅 ${gameState.stamps.length}/${stops.length}`;
       hudOrbs.textContent = `✦ ${gameState.orbs.length}/${GAME_ORBS.length}`;
+      const gamesBtn = document.getElementById("btn-games");
+      if (gamesBtn) gamesBtn.textContent = gameState.trophies.length > 0 ? `🎮 Games (${gameState.trophies.length}/3)` : "🎮 Games";
       document.querySelectorAll(".village-stop").forEach((el) => {
         el.classList.toggle("is-visited", gameState.stamps.includes(el.dataset.stopId));
       });
@@ -3203,6 +3500,18 @@ LIMIT 10;</code></pre>`
       setTimeout(() => pop.remove(), 1400);
     }
 
+    function spawnFootSpark(offsetX = 0, offsetY = 0) {
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const rect = traveller.getBoundingClientRect();
+      if (!rect.width) return;
+      const sp = document.createElement("span");
+      sp.className = "foot-spark";
+      sp.style.left = `${(rect.left + rect.width * 0.5 + offsetX + (Math.random() - 0.5) * 18).toFixed(1)}px`;
+      sp.style.top = `${(rect.bottom - 10 + offsetY + (Math.random() - 0.5) * 8).toFixed(1)}px`;
+      document.body.appendChild(sp);
+      setTimeout(() => sp.remove(), 680);
+    }
+
     function markStopVisited(stopId, stopName) {
       if (!gameState.stamps.includes(stopId)) {
         gameState.stamps.push(stopId);
@@ -3213,6 +3522,7 @@ LIMIT 10;</code></pre>`
         if (st) spawnFloatPop(st.x, 340, `🏅 Stamped: ${stopName}!`);
         if (gameState.stamps.length === stops.length) {
           playGameSfx("win");
+          launchConfetti(48);
           showToast("🎉 All 12 Village Passport Stamps collected!");
         }
       }
@@ -3226,16 +3536,56 @@ LIMIT 10;</code></pre>`
       if (el) el.classList.add("is-collected");
       playGameSfx("orb");
       spawnFloatPop(orb.x, orb.bottom + 24, `+1 ${orb.icon} ${orb.label}`);
+      showMangoEmote("✨", 1400);
       showRpgDialogue(orb.icon, `Skill Orb Discovered (${gameState.orbs.length}/${GAME_ORBS.length})`, orb.fact, 6800);
       updateGameHud();
       if (gameState.orbs.length === GAME_ORBS.length) {
         playGameSfx("win");
+        launchConfetti(50);
         showToast("✨ Amazing! You collected all 12 Skill & Story Orbs!");
       }
     }
 
+    let chaBoostUntil = 0;
+    function collectSecret(sec) {
+      if (gameState.secrets.includes(sec.id)) return;
+      gameState.secrets.push(sec.id);
+      if (sec.id === "secret-fish" && !gameState.mangoJoined) {
+        gameState.mangoJoined = true;
+        syncMangoVisibility();
+      }
+      saveGameState();
+      const el = layerWorld.querySelector(`[data-secret-id="${sec.id}"]`);
+      if (el) el.classList.add("is-found");
+      playGameSfx("secret");
+      spawnFloatPop(sec.x, 185, `🎁 ${sec.icon} ${sec.name}!`);
+      showRpgDialogue(sec.icon, `Secret Treasure (${gameState.secrets.length}/${SECRET_ITEMS.length})`, sec.reward, 7800);
+      if (sec.id === "secret-fish") {
+        showMangoEmote("🐟♥", 2800);
+        launchConfetti(28);
+      } else if (sec.id === "secret-cha") {
+        chaBoostUntil = Date.now() + 12000;
+        hudBoost.classList.add("is-on");
+        showMangoEmote("⚡", 2200);
+      } else if (sec.id === "secret-brush") {
+        for (let i = 0; i < 6; i++) spawnFootSpark((i - 3) * 8, -i * 3);
+        showMangoEmote("🎨", 2200);
+      }
+      updateGameHud();
+    }
+
     const npcChatIdx = {};
     function chatWithNpc(npc) {
+      if (npc.id === "npc-cat" && !gameState.mangoJoined) {
+        gameState.mangoJoined = true;
+        saveGameState();
+        syncMangoVisibility();
+        playGameSfx("win");
+        spawnFloatPop(npc.x, 225, "🐾 Mango joined your party! ♥");
+        showMangoEmote("♥", 2600);
+        showRpgDialogue("🐱", "Mango joined your party!", "Purrr~ Thanks for petting me! Urmi has rescued Dhaka stray animals since 2021. I'll trot beside you down the lane — keep an eye out for a hidden 🐟 Golden Fish Treat!", 8800);
+        return;
+      }
       const idx = npcChatIdx[npc.id] || 0;
       const line = npc.lines[idx % npc.lines.length];
       npcChatIdx[npc.id] = idx + 1;
@@ -3288,6 +3638,17 @@ LIMIT 10;</code></pre>`
         <span class="game-orb-tag">${o.label}</span>
       </button>`).join("");
 
+    const boingsHtml = BOUNCY_FLOWERS.map((b) => `
+      <button type="button" class="bouncy-flower" style="left:${b.x}px" data-boing-id="${b.id}" aria-label="Bouncy Sunflower Trampoline">
+        <span class="bouncy-flower-hint">${b.label}</span>
+        <span class="bouncy-flower-cap" aria-hidden="true">🌻</span>
+      </button>`).join("");
+
+    const secretsHtml = SECRET_ITEMS.map((s) => `
+      <button type="button" class="secret-item ${gameState.secrets.includes(s.id) ? "is-found" : ""}" style="left:${s.x}px" data-secret-id="${s.id}" aria-label="Secret treasure: ${s.name}">
+        <span>${s.icon}</span><span>${s.name}</span>
+      </button>`).join("");
+
     const npcsHtml = VILLAGE_NPCS.map((n) => `
       <button type="button" class="village-npc" style="left:${n.x}px" data-npc-id="${n.id}" aria-label="Chat with ${n.name}">
         <span class="npc-tag">${n.tag}</span>
@@ -3303,8 +3664,10 @@ LIMIT 10;</code></pre>`
       return `<span class="firefly" style="left:${x}px;top:${y}px;animation-delay:${delay}s"></span>`;
     }).join("")}</div>`;
 
-    layerWorld.insertAdjacentHTML("beforeend", extraSceneryHtml + propsHtml + stopsHtml + orbsHtml + npcsHtml + firefliesHtml + nightLaneFirefliesHtml);
+    layerWorld.insertAdjacentHTML("beforeend", extraSceneryHtml + propsHtml + stopsHtml + boingsHtml + secretsHtml + orbsHtml + npcsHtml + firefliesHtml + nightLaneFirefliesHtml);
     document.getElementById("traveller-art").innerHTML = ART.character();
+    document.getElementById("mango-follower-art").innerHTML = ART.npcCat();
+    syncMangoVisibility();
     updateGameHud();
 
     workDropdown.innerHTML = `<span class="hud-dropdown-label">Jump to a shop (10)</span>` +
@@ -3318,14 +3681,40 @@ LIMIT 10;</code></pre>`
     }).join(""));
 
     let curX = 0, tgtX = 0, walkTimer = null, activeStop = 0;
-    let jumpY = 0, jumpVy = 0;
+    let jumpY = 0, jumpVy = 0, jumpsLeft = 2;
+    let mangoJumpY = 0, mangoJumpVy = 0, mangoOffsetX = 0;
+    let lastBounceAt = 0, lastSparkAt = 0;
     const heldKeys = { left: false, right: false };
     const clampTgt = () => { tgtX = Math.max(0, Math.min(maxS(), tgtX)); };
 
     function triggerJump() {
-      if (jumpY > 2) return;
-      jumpVy = 12.2;
+      if (jumpsLeft <= 0) return;
+      const isDouble = jumpsLeft === 1;
+      jumpVy = isDouble ? 11.4 : 12.2;
+      jumpsLeft--;
       playGameSfx("jump");
+      if (isDouble) {
+        for (let i = 0; i < 4; i++) spawnFootSpark((i - 1.5) * 10, 0);
+      }
+      if (gameState.mangoJoined && mangoJumpY <= 2) {
+        setTimeout(() => { if (mangoJumpY <= 2) mangoJumpVy = 9.2; }, 95);
+      }
+    }
+
+    function triggerBounce(flower) {
+      lastBounceAt = Date.now();
+      jumpVy = 17.6;
+      jumpsLeft = 1;
+      playGameSfx("boing");
+      const el = layerWorld.querySelector(`[data-boing-id="${flower.id}"]`);
+      if (el) {
+        el.classList.remove("is-boinging");
+        void el.offsetWidth;
+        el.classList.add("is-boinging");
+      }
+      spawnFloatPop(flower.x, 175, "🌻 BOING!");
+      showMangoEmote("✨", 1300);
+      if (gameState.mangoJoined) setTimeout(() => { mangoJumpVy = 12.5; }, 110);
     }
 
     function jumpToStop(id) {
@@ -3336,64 +3725,747 @@ LIMIT 10;</code></pre>`
       workDropdown.classList.remove("is-open");
     }
 
-    function renderQuizHtml() {
-      return `
-        <p class="modal-copy" style="margin-bottom:10px">Answer these 3 quick questions from your walk down Urmi's village to earn your <strong>VIP Explorer Badge</strong>!</p>
-        ${URMI_QUIZ.map((item, qi) => `
-          <div class="quiz-card" data-quiz-q="${qi}">
-            <p class="quiz-q">${item.q}</p>
-            <div class="quiz-opts">
-              ${item.opts.map((opt, oi) => `<button type="button" class="quiz-opt" data-qi="${qi}" data-oi="${oi}">${opt}</button>`).join("")}
-            </div>
-            <p class="modal-copy" data-quiz-fb="${qi}" style="margin:8px 0 0;font-size:0.84rem;display:none"></p>
-          </div>`).join("")}
-        <div id="quiz-win-banner" style="display:${gameState.quizDone ? "block" : "none"};margin-top:16px;padding:14px 16px;border-radius:var(--radius-md);background:var(--sage-soft);border:1px solid var(--sage)">
-          <strong>🏆 VIP Explorer Unlocked!</strong> You officially know Urmi's story — feel free to grab her CV or say hello anytime!
-        </div>
-      `;
+    /* ================= PLAYABLE MINI-GAMES HUB & 3 INTERACTIVE GAMES ================= */
+    function hslToRgb(h, s, l) {
+      s /= 100; l /= 100;
+      const k = (n) => (n + h / 30) % 12;
+      const a = s * Math.min(l, 1 - l);
+      const f = (n) => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+      return [Math.round(255 * f(0)), Math.round(255 * f(8)), Math.round(255 * f(4))];
+    }
+    function colorMatchPercent(c1, c2) {
+      const r1 = hslToRgb(c1.h, c1.s, c1.l);
+      const r2 = hslToRgb(c2.h, c2.s, c2.l);
+      const dist = Math.hypot(r1[0] - r2[0], r1[1] - r2[1], r1[2] - r2[2]);
+      return Math.max(0, Math.min(100, Math.round(100 * Math.exp(-Math.pow(dist / 138, 1.55)))));
     }
 
-    function wireQuizHandlers() {
-      let correctSet = new Set();
-      modalBody.querySelectorAll(".quiz-opt").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const qi = Number(btn.dataset.qi);
-          const oi = Number(btn.dataset.oi);
-          const item = URMI_QUIZ[qi];
-          const card = modalBody.querySelector(`[data-quiz-q="${qi}"]`);
-          const fb = modalBody.querySelector(`[data-quiz-fb="${qi}"]`);
-          card.querySelectorAll(".quiz-opt").forEach((b) => b.classList.remove("is-correct", "is-wrong"));
-          if (oi === item.ans) {
-            btn.classList.add("is-correct");
-            fb.textContent = "✓ " + item.explain;
-            fb.style.color = "var(--sage)";
-            fb.style.display = "block";
-            correctSet.add(qi);
-            playGameSfx("orb");
-            if (correctSet.size === URMI_QUIZ.length) {
-              gameState.quizDone = true;
-              saveGameState();
-              playGameSfx("win");
-              const wb = modalBody.querySelector("#quiz-win-banner");
-              if (wb) wb.style.display = "block";
-              showToast("🎉 VIP Explorer Badge Unlocked!");
+    function openGamesHubModal() {
+      const hasAi = gameState.trophies.includes("ai-catcher");
+      const hasMix = gameState.trophies.includes("mixer");
+      const hasBus = gameState.trophies.includes("bus-dash");
+      openModal(`
+        <div class="modal-kicker">Village Arcade · ${gameState.trophies.length}/3 Trophies Earned</div>
+        <h2 class="modal-title">Play Cozy Arcade Games by Urmi</h2>
+        <p class="modal-copy">Every mini-game is inspired by Urmi's real engineering, acrylic art, and 1st-Prize UIU bus livery. Win all 3 trophies to become a Grand Village Champion!</p>
+        <div class="minigame-hub">
+          <div class="minigame-card ${hasAi ? "is-won" : ""}">
+            <div>
+              <span class="stop-sign-kicker">${hasAi ? "🏆 Trophy Earned" : "Turbo Catcher · 20s"}</span>
+              <h4>🧠 Green AI Catcher</h4>
+              <p>Build <strong>×3 Fever Combos</strong>, grab <strong>🛡️ Shields</strong> &amp; <strong>🌟 Golden Stars</strong>, and dodge carbon glitches! Hit 100+ pts to win.</p>
+              ${gameState.highScores.ai ? `<span class="minigame-best">★ Best: ${gameState.highScores.ai} pts</span>` : ""}
+            </div>
+            <button type="button" class="btn btn-terracotta" id="hub-play-ai" style="width:100%;justify-content:center">${hasAi ? "Beat Record →" : "Play Catcher →"}</button>
+          </div>
+          <div class="minigame-card ${hasMix ? "is-won" : ""}">
+            <div>
+              <span class="stop-sign-kicker">${hasMix ? "🏆 Trophy Earned" : "Live Studio · 3 Canvases"}</span>
+              <h4>🎨 Acrylic Color Studio</h4>
+              <p>Mix live acrylic paint tubes and watch Urmi's <strong>UIU Bus</strong>, <strong>Midnight Nebula</strong> &amp; <strong>Green Lab</strong> repaint in real time!</p>
+              ${gameState.highScores.mixer ? `<span class="minigame-best">★ Best Match: ${gameState.highScores.mixer}%</span>` : ""}
+            </div>
+            <button type="button" class="btn btn-primary" id="hub-play-mix" style="width:100%;justify-content:center">${hasMix ? "Paint Again →" : "Open Studio →"}</button>
+          </div>
+          <div class="minigame-card ${hasBus ? "is-won" : ""}">
+            <div>
+              <span class="stop-sign-kicker">${hasBus ? "🏆 Trophy Earned" : "Endless Runner"}</span>
+              <h4>🚌 UIU Bus Dash</h4>
+              <p>Jump &amp; double-jump Urmi's winning bus (with Mango!) over Dhaka cones &amp; puddles, grabbing 🎨 &amp; 🐟! Reach 300m to win.</p>
+              ${gameState.highScores.bus ? `<span class="minigame-best">★ Best Run: ${gameState.highScores.bus}m</span>` : ""}
+            </div>
+            <button type="button" class="btn btn-terracotta" id="hub-play-bus" style="width:100%;justify-content:center">${hasBus ? "Drive Again →" : "Start Dash →"}</button>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+          <button type="button" class="btn btn-secondary" id="hub-open-passport">🏅 View Explorer's Passport</button>
+          <button type="button" class="btn btn-secondary" id="hub-close">Back to Village</button>
+        </div>
+      `);
+      document.getElementById("hub-play-ai").addEventListener("click", openAiCatcherGame);
+      document.getElementById("hub-play-mix").addEventListener("click", () => openColorMixerGame(0, []));
+      document.getElementById("hub-play-bus").addEventListener("click", openBusDashGame);
+      document.getElementById("hub-open-passport").addEventListener("click", openPassportModal);
+      document.getElementById("hub-close").addEventListener("click", closeModal);
+    }
+
+    /* MINI-GAME 1: Green AI Signal Catcher — TURBO EDITION (Fever Combos, Shields, Time Freeze, 3 Hearts) */
+    function openAiCatcherGame() {
+      openModal(`
+        <div class="modal-kicker">Mini-Game 1 · Green AI &amp; ML Systems Turbo Catcher</div>
+        <h2 class="modal-title">🧠 Green AI Signal Catcher</h2>
+        <p class="modal-copy" style="margin-bottom:8px">Move with <strong>mouse / finger</strong> or <strong>← / →</strong>. Catch <strong>⚡🌱🧠📚</strong> to build <strong>×3 Fever Mode</strong>, snag <strong>🌟 +25</strong> / <strong>🛡️ Shield</strong> / <strong>⏰ +3s</strong>, and dodge <strong>💨⚠️</strong>!</p>
+        <div class="arcade-hud">
+          <span id="ac-score">Score: 0 / 100</span>
+          <span id="ac-combo">Combo: ×1</span>
+          <span id="ac-hearts">❤️❤️❤️</span>
+          <span id="ac-time">20.0s</span>
+        </div>
+        <div class="arcade-arena" id="ac-arena" aria-label="Green AI Signal Catcher game arena">
+          <div class="arcade-basket" id="ac-basket" style="left:50%">🧠</div>
+        </div>
+        <div id="ac-result" style="display:none;margin-top:14px;padding:14px 16px;border-radius:var(--radius-md);background:var(--paper-deep);border:1px solid var(--hairline-strong)"></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+          <button type="button" class="btn btn-terracotta" id="ac-restart">↻ Play Again</button>
+          <button type="button" class="btn btn-secondary" id="ac-back-hub">← All Mini-Games</button>
+        </div>
+      `);
+
+      const arena = document.getElementById("ac-arena");
+      const basketEl = document.getElementById("ac-basket");
+      const scoreEl = document.getElementById("ac-score");
+      const comboEl = document.getElementById("ac-combo");
+      const heartsEl = document.getElementById("ac-hearts");
+      const timeEl = document.getElementById("ac-time");
+      const resultEl = document.getElementById("ac-result");
+
+      const GOOD_ICONS = ["⚡", "🌱", "🧠", "📚", "🔒"];
+      const BAD_ICONS = ["💨", "⚠️"];
+      const POWER_TYPES = [
+        { kind: "star", icon: "🌟" },
+        { kind: "shield", icon: "🛡️" },
+        { kind: "clock", icon: "⏰" }
+      ];
+
+      let basketPct = 50;
+      let score = 0, streak = 0, hearts = 3, shielded = false;
+      let timeLeft = 20.0, spawnTimer = 0, elapsed = 0, running = true;
+      let drops = [];
+      const keys = { left: false, right: false };
+      let rafId = null, lastTs = performance.now();
+
+      function spawnArenaPop(xPct, yPx, text, color = "#FFFDF8") {
+        const p = document.createElement("div");
+        p.className = "arcade-pop";
+        p.style.left = `${xPct.toFixed(1)}%`;
+        p.style.top = `${yPx.toFixed(0)}px`;
+        p.style.color = color;
+        p.textContent = text;
+        arena.appendChild(p);
+        setTimeout(() => p.remove(), 880);
+      }
+
+      const updateHud = () => {
+        const mult = streak >= 6 ? 3 : streak >= 3 ? 2 : 1;
+        scoreEl.textContent = `Score: ${score} / 100`;
+        comboEl.textContent = mult === 3 ? "🔥 FEVER ×3!" : mult === 2 ? "✨ Combo ×2" : `Streak: ${streak}`;
+        heartsEl.textContent = "❤️".repeat(Math.max(0, hearts)) + "🖤".repeat(Math.max(0, 3 - hearts));
+        arena.classList.toggle("is-fever", mult === 3);
+        basketEl.classList.toggle("is-shielded", shielded);
+        basketEl.textContent = shielded ? "🛡️🧠" : mult === 3 ? "🔥🧠" : "🧠";
+      };
+
+      const updateBasketFromClientX = (clientX) => {
+        const r = arena.getBoundingClientRect();
+        if (!r.width) return;
+        basketPct = Math.max(9, Math.min(91, ((clientX - r.left) / r.width) * 100));
+        basketEl.style.left = `${basketPct.toFixed(1)}%`;
+      };
+      const onPointerMove = (e) => { if (running) updateBasketFromClientX(e.clientX); };
+      const onPointerDown = (e) => { if (running) updateBasketFromClientX(e.clientX); };
+      const onKeyDown = (e) => {
+        if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") keys.left = true;
+        if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") keys.right = true;
+      };
+      const onKeyUp = (e) => {
+        if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") keys.left = false;
+        if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") keys.right = false;
+      };
+
+      arena.addEventListener("pointermove", onPointerMove);
+      arena.addEventListener("pointerdown", onPointerDown);
+      window.addEventListener("keydown", onKeyDown);
+      window.addEventListener("keyup", onKeyUp);
+
+      function cleanup() {
+        running = false;
+        if (rafId) cancelAnimationFrame(rafId);
+        arena.removeEventListener("pointermove", onPointerMove);
+        arena.removeEventListener("pointerdown", onPointerDown);
+        window.removeEventListener("keydown", onKeyDown);
+        window.removeEventListener("keyup", onKeyUp);
+      }
+      activeModalCleanup = cleanup;
+
+      function spawnDrop() {
+        const roll = Math.random();
+        let type = "good", icon = GOOD_ICONS[Math.floor(Math.random() * GOOD_ICONS.length)], cls = "arcade-drop--good";
+        if (roll < 0.14) {
+          const pw = POWER_TYPES[Math.floor(Math.random() * POWER_TYPES.length)];
+          type = pw.kind; icon = pw.icon; cls = "arcade-drop--power";
+        } else if (roll > 0.72) {
+          type = "bad"; icon = BAD_ICONS[Math.floor(Math.random() * BAD_ICONS.length)]; cls = "arcade-drop--bad";
+        }
+        const el = document.createElement("div");
+        el.className = `arcade-drop ${cls}`;
+        const xPct = 9 + Math.random() * 82;
+        el.style.left = `${xPct.toFixed(1)}%`;
+        el.style.top = "-26px";
+        el.textContent = icon;
+        arena.appendChild(el);
+        const speedBoost = Math.min(85, elapsed * 3.8);
+        drops.push({ el, xPct, y: -26, speed: 130 + speedBoost + Math.random() * 85, type });
+      }
+
+      function finishGame(reason) {
+        running = false;
+        arena.classList.remove("is-fever", "is-hurt");
+        drops.forEach((d) => d.el.remove());
+        drops = [];
+        const isRecord = score > gameState.highScores.ai;
+        if (isRecord) { gameState.highScores.ai = score; saveGameState(); }
+        const won = score >= 100;
+        resultEl.style.display = "block";
+        resultEl.style.background = won ? "var(--sage-soft)" : "var(--paper-deep)";
+        resultEl.style.borderColor = won ? "var(--sage)" : "var(--hairline-strong)";
+        resultEl.innerHTML = won
+          ? `<strong>🏆 Green AI Champion! Score: ${score} pts ${isRecord ? "· ★ NEW RECORD!" : ""}</strong><p class="modal-copy" style="margin:6px 0 0">Lightning reflexes! Just like Urmi's Green Computing paper (CodeCarbon + NVML), you kept AI inference clean and carbon-smart!</p>`
+          : `<strong>${reason === "hearts" ? "Out of Hearts!" : "Time's Up!"} Score: ${score} / 100 pts ${isRecord && score > 0 ? "· ★ New Best!" : ""}</strong><p class="modal-copy" style="margin:6px 0 0">Tip: Chain 6 catches to unlock <strong>🔥 ×3 Fever Mode</strong> and grab <strong>🛡️ Shields</strong> &amp; <strong>🌟 Golden Stars</strong>!</p>`;
+        if (won) unlockTrophy("ai-catcher", "Green AI Champion");
+        else playGameSfx("chat");
+      }
+
+      function tick(ts) {
+        if (!running) return;
+        const dt = Math.min(0.05, (ts - lastTs) / 1000);
+        lastTs = ts;
+        elapsed += dt;
+        timeLeft = Math.max(0, timeLeft - dt);
+        timeEl.textContent = `${timeLeft.toFixed(1)}s`;
+
+        if (keys.left) { basketPct = Math.max(9, basketPct - dt * 125); basketEl.style.left = `${basketPct.toFixed(1)}%`; }
+        if (keys.right) { basketPct = Math.min(91, basketPct + dt * 125); basketEl.style.left = `${basketPct.toFixed(1)}%`; }
+
+        spawnTimer += dt;
+        const spawnEvery = Math.max(0.28, 0.44 - elapsed * 0.007);
+        if (spawnTimer >= spawnEvery) {
+          spawnTimer = 0;
+          spawnDrop();
+        }
+
+        const arenaW = arena.clientWidth || 500;
+        const arenaH = arena.clientHeight || 300;
+        const basketX = (basketPct / 100) * arenaW;
+
+        for (let i = drops.length - 1; i >= 0; i--) {
+          const d = drops[i];
+          d.y += d.speed * dt;
+          d.el.style.top = `${d.y.toFixed(1)}px`;
+          const dropX = (d.xPct / 100) * arenaW;
+          if (d.y >= arenaH - 56 && d.y <= arenaH - 8 && Math.abs(dropX - basketX) < 50) {
+            basketEl.classList.add("is-bump");
+            setTimeout(() => basketEl.classList.remove("is-bump"), 110);
+            const mult = streak >= 6 ? 3 : streak >= 3 ? 2 : 1;
+            if (d.type === "good") {
+              const pts = 10 * mult;
+              score += pts;
+              streak += 1;
+              playGameSfx("orb");
+              spawnArenaPop(d.xPct, d.y, `+${pts}`, mult === 3 ? "#FFE49E" : "#9FE0B2");
+            } else if (d.type === "star") {
+              const pts = 25 * mult;
+              score += pts;
+              streak += 1;
+              playGameSfx("star");
+              spawnArenaPop(d.xPct, d.y, `🌟 +${pts}!`, "#FFE49E");
+            } else if (d.type === "shield") {
+              shielded = true;
+              playGameSfx("secret");
+              spawnArenaPop(d.xPct, d.y, "🛡️ SHIELD!", "#8CE0FF");
+            } else if (d.type === "clock") {
+              timeLeft += 3.0;
+              playGameSfx("star");
+              spawnArenaPop(d.xPct, d.y, "⏰ +3.0s!", "#FFE49E");
+            } else if (d.type === "bad") {
+              if (shielded) {
+                shielded = false;
+                playGameSfx("boing");
+                spawnArenaPop(d.xPct, d.y, "🛡️ BLOCKED!", "#8CE0FF");
+              } else {
+                score = Math.max(0, score - 10);
+                streak = 0;
+                hearts -= 1;
+                playGameSfx("hit");
+                arena.classList.add("is-hurt");
+                setTimeout(() => arena.classList.remove("is-hurt"), 220);
+                spawnArenaPop(d.xPct, d.y, "-10 💔", "#F08A78");
+                if (hearts <= 0) {
+                  d.el.remove(); drops.splice(i, 1);
+                  updateHud(); finishGame("hearts"); return;
+                }
+              }
             }
-          } else {
-            btn.classList.add("is-wrong");
-            fb.textContent = "Not quite — try another answer or peek at the shops along the lane!";
-            fb.style.color = "var(--terracotta)";
-            fb.style.display = "block";
+            updateHud();
+            d.el.remove();
+            drops.splice(i, 1);
+          } else if (d.y > arenaH + 22) {
+            d.el.remove();
+            drops.splice(i, 1);
           }
-        });
+        }
+
+        if (timeLeft <= 0) { finishGame("time"); return; }
+        rafId = requestAnimationFrame(tick);
+      }
+
+      updateHud();
+      rafId = requestAnimationFrame(tick);
+      document.getElementById("ac-restart").addEventListener("click", openAiCatcherGame);
+      document.getElementById("ac-back-hub").addEventListener("click", openGamesHubModal);
+    }
+
+    /* MINI-GAME 2: Urmi's Acrylic Color Studio — Live Interactive Paint Mixer (3 Canvases) */
+    function openColorMixerGame(roundIdx = 0, roundScores = []) {
+      if (roundIdx >= STUDIO_CANVASES.length) {
+        const avg = Math.round(roundScores.reduce((a, b) => a + b, 0) / STUDIO_CANVASES.length);
+        const isRecord = avg > gameState.highScores.mixer;
+        if (isRecord) { gameState.highScores.mixer = avg; saveGameState(); }
+        const won = avg >= 80;
+        openModal(`
+          <div class="modal-kicker">Urmi's Acrylic Studio · Exhibition Complete</div>
+          <h2 class="modal-title">${won ? "🎨 Master Colorist Trophy!" : "🎨 Cozy Studio Session Complete!"}</h2>
+          <p class="modal-copy">Average Color Match across all 3 artworks: <strong>${avg}%</strong> ${isRecord ? "· ★ NEW RECORD!" : ""} (Goal: 80%+ to unlock the Trophy).</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px">
+            ${STUDIO_CANVASES.map((c, i) => `<span class="tag-chip" style="background:${roundScores[i] >= 80 ? "var(--sage-soft)" : "var(--paper-deep)"};font-weight:700">${c.title.split("·")[1].trim()}: ${roundScores[i]}%</span>`).join("")}
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button type="button" class="btn btn-terracotta" id="mix-replay">↻ Paint Again</button>
+            <button type="button" class="btn btn-secondary" id="mix-hub">← All Mini-Games</button>
+          </div>
+        `);
+        if (won) unlockTrophy("mixer", "Master Colorist");
+        else playGameSfx("chat");
+        document.getElementById("mix-replay").addEventListener("click", () => openColorMixerGame(0, []));
+        document.getElementById("mix-hub").addEventListener("click", openGamesHubModal);
+        return;
+      }
+
+      const c = STUDIO_CANVASES[roundIdx];
+      let mix = { ...c.start };
+      const targetCss = `hsl(${c.target.h}, ${c.target.s}%, ${c.target.l}%)`;
+      const targetTextCol = c.target.l > 52 ? "#241F1B" : "#FFFDF8";
+      const mixCss = () => `hsl(${mix.h}, ${mix.s}%, ${mix.l}%)`;
+
+      openModal(`
+        <div class="modal-kicker">Mini-Game 2 · Canvas ${roundIdx + 1} of ${STUDIO_CANVASES.length}</div>
+        <h2 class="modal-title">🎨 ${c.title}</h2>
+        <p class="modal-copy" style="margin-bottom:8px">${c.story} Slide the 3 acrylic tubes and watch the artwork repaint live!</p>
+        <div class="mixer-layout">
+          <div class="mixer-canvas">
+            <div id="mix-art" style="width:100%;display:flex;justify-content:center">${c.art(mixCss())}</div>
+            <div class="mixer-swatches">
+              <div class="mixer-swatch-box" style="background:${targetCss};color:${targetTextCol}">Target Swatch</div>
+              <div class="mixer-swatch-box" id="mix-yours" style="background:${mixCss()};color:#FFFDF8">Your Paint</div>
+            </div>
+          </div>
+          <div class="mixer-sliders">
+            <div class="mixer-slider-row">
+              <label for="mix-h"><span>🌈 Pigment Hue</span><span id="mix-h-val">${mix.h}°</span></label>
+              <input type="range" id="mix-h" min="0" max="360" value="${mix.h}" style="background:linear-gradient(90deg,#e74c3c,#f1c40f,#2ecc71,#1abc9c,#3498db,#9b59b6,#e74c3c)"/>
+            </div>
+            <div class="mixer-slider-row">
+              <label for="mix-s"><span>💧 Richness (Saturation)</span><span id="mix-s-val">${mix.s}%</span></label>
+              <input type="range" id="mix-s" min="10" max="95" value="${mix.s}"/>
+            </div>
+            <div class="mixer-slider-row">
+              <label for="mix-l"><span>☀️ Sunlight (Lightness)</span><span id="mix-l-val">${mix.l}%</span></label>
+              <input type="range" id="mix-l" min="15" max="80" value="${mix.l}"/>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:0.78rem;font-weight:700;margin-bottom:4px">
+                <span>Live Harmony Hint</span>
+                <span id="mix-warmth">Slide to match!</span>
+              </div>
+              <div class="mixer-meter"><div class="mixer-meter-fill" id="mix-meter-fill"></div></div>
+            </div>
+          </div>
+        </div>
+        <div id="mix-fb" style="display:none;margin-top:10px;padding:12px 14px;border-radius:var(--radius-sm);font-size:0.88rem"></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+          <button type="button" class="btn btn-terracotta" id="mix-submit">🖌️ Lock Paint &amp; Score!</button>
+          <button type="button" class="btn btn-secondary" id="mix-hint">💡 Nudge Closer</button>
+          <button type="button" class="btn btn-primary" id="mix-next" style="display:none">${roundIdx + 1 < STUDIO_CANVASES.length ? "Next Canvas →" : "See Exhibition Score →"}</button>
+          <button type="button" class="btn btn-secondary" id="mix-back">← All Mini-Games</button>
+        </div>
+      `);
+
+      const artEl = document.getElementById("mix-art");
+      const yoursEl = document.getElementById("mix-yours");
+      const hIn = document.getElementById("mix-h");
+      const sIn = document.getElementById("mix-s");
+      const lIn = document.getElementById("mix-l");
+      const hVal = document.getElementById("mix-h-val");
+      const sVal = document.getElementById("mix-s-val");
+      const lVal = document.getElementById("mix-l-val");
+      const warmthEl = document.getElementById("mix-warmth");
+      const meterFill = document.getElementById("mix-meter-fill");
+      const fbEl = document.getElementById("mix-fb");
+      const submitBtn = document.getElementById("mix-submit");
+      const hintBtn = document.getElementById("mix-hint");
+      const nextBtn = document.getElementById("mix-next");
+      let locked = false, finalPct = 0;
+
+      function refreshPaint() {
+        const col = mixCss();
+        artEl.innerHTML = c.art(col);
+        yoursEl.style.background = col;
+        yoursEl.style.color = mix.l > 52 ? "#241F1B" : "#FFFDF8";
+        hVal.textContent = `${mix.h}°`;
+        sVal.textContent = `${mix.s}%`;
+        lVal.textContent = `${mix.l}%`;
+        sIn.style.background = `linear-gradient(90deg, hsl(${mix.h},10%,${mix.l}%), hsl(${mix.h},95%,${mix.l}%))`;
+        lIn.style.background = `linear-gradient(90deg, hsl(${mix.h},${mix.s}%,15%), hsl(${mix.h},${mix.s}%,50%), hsl(${mix.h},${mix.s}%,80%))`;
+        const pct = colorMatchPercent(mix, c.target);
+        meterFill.style.width = `${pct}%`;
+        warmthEl.textContent = pct >= 92 ? "🔥 Studio Perfect!" : pct >= 80 ? "✨ Very Close!" : pct >= 60 ? "🎨 Getting Warmer..." : "🖌️ Keep Mixing";
+      }
+
+      const onSlide = () => {
+        if (locked) return;
+        mix.h = Number(hIn.value);
+        mix.s = Number(sIn.value);
+        mix.l = Number(lIn.value);
+        refreshPaint();
+      };
+      hIn.addEventListener("input", onSlide);
+      sIn.addEventListener("input", onSlide);
+      lIn.addEventListener("input", onSlide);
+      refreshPaint();
+
+      hintBtn.addEventListener("click", () => {
+        if (locked) return;
+        // Shortest circular hue step halfway toward target
+        let dh = ((c.target.h - mix.h + 540) % 360) - 180;
+        mix.h = (Math.round(mix.h + dh * 0.55) + 360) % 360;
+        mix.s = Math.round(mix.s + (c.target.s - mix.s) * 0.55);
+        mix.l = Math.round(mix.l + (c.target.l - mix.l) * 0.55);
+        hIn.value = mix.h; sIn.value = mix.s; lIn.value = mix.l;
+        playGameSfx("chat");
+        refreshPaint();
       });
+
+      submitBtn.addEventListener("click", () => {
+        if (locked) return;
+        locked = true;
+        finalPct = colorMatchPercent(mix, c.target);
+        hIn.disabled = sIn.disabled = lIn.disabled = true;
+        submitBtn.style.display = "none";
+        hintBtn.style.display = "none";
+        nextBtn.style.display = "inline-flex";
+        fbEl.style.display = "block";
+        if (finalPct >= 85) {
+          fbEl.style.background = "var(--sage-soft)";
+          fbEl.innerHTML = `<strong>✨ ${finalPct}% Match — Masterpiece!</strong> Urmi would frame this straight on her studio wall!`;
+          playGameSfx("star");
+        } else if (finalPct >= 70) {
+          fbEl.style.background = "var(--ochre-soft)";
+          fbEl.innerHTML = `<strong>🎨 ${finalPct}% Match — Lovely Palette!</strong> Really close harmonic balance.`;
+          playGameSfx("orb");
+        } else {
+          fbEl.style.background = "var(--terracotta-soft)";
+          fbEl.innerHTML = `<strong>🖌️ ${finalPct}% Match — Bold Experiment!</strong> Try the 💡 Nudge Closer helper on the next canvas.`;
+          playGameSfx("chat");
+        }
+      });
+
+      nextBtn.addEventListener("click", () => openColorMixerGame(roundIdx + 1, [...roundScores, finalPct]));
+      document.getElementById("mix-back").addEventListener("click", openGamesHubModal);
+    }
+
+    /* MINI-GAME 3: UIU Moving Canvas · Dhaka Bus Dash (60fps Side-Scrolling Endless Runner) */
+    function openBusDashGame() {
+      openModal(`
+        <div class="modal-kicker">Mini-Game 3 · 1st-Prize UIU Moving Canvas Endless Runner</div>
+        <h2 class="modal-title">🚌 UIU Moving Canvas · Dhaka Bus Dash</h2>
+        <p class="modal-copy" style="margin-bottom:8px">Tap/click the road or press <strong>Space / ↑</strong> to <strong>Jump &amp; Double-Jump</strong>! Leap over 🚧 cones &amp; 💧 puddles, snatch 🎨 stars &amp; 🐟 Mango treats, and reach <strong>300m</strong> to win!</p>
+        <div class="arcade-hud">
+          <span id="bd-dist">Distance: 0m / 300m</span>
+          <span id="bd-pts">Bonus: 0 pts</span>
+          <span id="bd-hearts">❤️❤️❤️</span>
+        </div>
+        <div class="dash-wrap">
+          <canvas class="dash-canvas" id="bd-canvas" width="600" height="270" aria-label="UIU Bus Dash Runner Game"></canvas>
+        </div>
+        <div class="dash-controls">
+          <button type="button" class="btn btn-primary" id="bd-jump-btn">⬆ Jump / Double-Jump (Space)</button>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button type="button" class="btn btn-terracotta" id="bd-restart">↻ Restart</button>
+            <button type="button" class="btn btn-secondary" id="bd-hub">← All Mini-Games</button>
+          </div>
+        </div>
+        <div id="bd-result" style="display:none;margin-top:12px;padding:14px 16px;border-radius:var(--radius-md);background:var(--paper-deep);border:1px solid var(--hairline-strong)"></div>
+      `);
+
+      const canvas = document.getElementById("bd-canvas");
+      const ctx = canvas.getContext("2d");
+      const distEl = document.getElementById("bd-dist");
+      const ptsEl = document.getElementById("bd-pts");
+      const heartsEl = document.getElementById("bd-hearts");
+      const resultEl = document.getElementById("bd-result");
+
+      const W = 600, H = 270, GROUND_Y = 214;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = W * dpr;
+      canvas.height = H * dpr;
+      ctx.scale(dpr, dpr);
+
+      let running = true, rafId = null, lastTs = performance.now();
+      let speed = 265, distM = 0, bonusPts = 0, hearts = 3, invuln = 0, wonThisRun = false;
+      let roadOff = 0, cloudOff = 0, treeOff = 0, wheelAngle = 0;
+      let obsTimer = 1.0, itemTimer = 0.7;
+
+      const bus = { x: 86, w: 82, h: 46, y: 0, vy: 0, jumps: 2 };
+      const obstacles = [];
+      const pickups = [];
+      const pops = [];
+      const puffs = [];
+
+      function doJump() {
+        if (!running || bus.jumps <= 0) return;
+        const dbl = bus.jumps === 1;
+        bus.vy = dbl ? -490 : -555;
+        bus.jumps--;
+        playGameSfx(dbl ? "boing" : "jump");
+        for (let i = 0; i < (dbl ? 7 : 4); i++) {
+          puffs.push({ x: bus.x + 14 + Math.random() * 24, y: GROUND_Y - bus.y - 4, vx: -60 - Math.random() * 70, vy: 20 - Math.random() * 50, life: 0.45, color: dbl ? "#FFE49E" : "rgba(255,250,240,0.75)", r: dbl ? 4.5 : 3.5 });
+        }
+      }
+
+      const onKeyDown = (e) => {
+        if (e.key === " " || e.key === "ArrowUp" || e.key === "w" || e.key === "W") {
+          e.preventDefault();
+          doJump();
+        }
+      };
+      canvas.addEventListener("pointerdown", doJump);
+      document.getElementById("bd-jump-btn").addEventListener("click", doJump);
+      window.addEventListener("keydown", onKeyDown);
+
+      function cleanup() {
+        running = false;
+        if (rafId) cancelAnimationFrame(rafId);
+        canvas.removeEventListener("pointerdown", doJump);
+        window.removeEventListener("keydown", onKeyDown);
+      }
+      activeModalCleanup = cleanup;
+
+      function updateDashHud() {
+        distEl.textContent = `Distance: ${Math.floor(distM)}m ${wonThisRun ? "🏆" : "/ 300m"}`;
+        ptsEl.textContent = `Bonus: ${bonusPts} pts`;
+        heartsEl.textContent = "❤️".repeat(Math.max(0, hearts)) + "🖤".repeat(Math.max(0, 3 - hearts));
+      }
+
+      function endRun() {
+        running = false;
+        const finalM = Math.floor(distM);
+        const isRecord = finalM > gameState.highScores.bus;
+        if (isRecord) { gameState.highScores.bus = finalM; saveGameState(); }
+        resultEl.style.display = "block";
+        resultEl.style.background = wonThisRun ? "var(--sage-soft)" : "var(--paper-deep)";
+        resultEl.style.borderColor = wonThisRun ? "var(--sage)" : "var(--hairline-strong)";
+        resultEl.innerHTML = wonThisRun
+          ? `<strong>🏆 Fleet Champion! You drove ${finalM}m (+${bonusPts} bonus pts) ${isRecord ? "· ★ NEW RECORD!" : ""}</strong><p class="modal-copy" style="margin:6px 0 0">Mango loved the ride! Urmi's 1st-Prize UIU Moving Canvas bus livery looked unstoppable across Dhaka!</p>`
+          : `<strong>Run Complete: ${finalM}m / 300m (+${bonusPts} pts) ${isRecord && finalM > 0 ? "· ★ New Best!" : ""}</strong><p class="modal-copy" style="margin:6px 0 0">Tip: You can tap Space/Jump a second time in mid-air to <strong>double-jump</strong> cleanly over wider puddles &amp; cones!</p>`;
+        if (!wonThisRun) playGameSfx("chat");
+      }
+
+      function drawBus(bx, by) {
+        if (invuln > 0 && Math.floor(invuln * 14) % 2 === 0) return;
+        ctx.save();
+        ctx.translate(bx, by);
+        // Bus body
+        ctx.fillStyle = "#FFF8EA";
+        ctx.strokeStyle = "#2E2520";
+        ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.roundRect(0, 0, bus.w, bus.h - 6, 9); ctx.fill(); ctx.stroke();
+        // Winning Terracotta-Amber Livery Wave
+        ctx.fillStyle = "#D96B27";
+        ctx.beginPath();
+        ctx.moveTo(0, 22); ctx.quadraticCurveTo(26, 13, 52, 23); ctx.quadraticCurveTo(68, 28, bus.w, 20);
+        ctx.lineTo(bus.w, 34); ctx.quadraticCurveTo(bus.w, 40, bus.w - 8, 40);
+        ctx.lineTo(8, 40); ctx.quadraticCurveTo(0, 40, 0, 34); ctx.closePath();
+        ctx.fill();
+        // Gold ribbon highlight
+        ctx.strokeStyle = "#F4CA74"; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(3, 25); ctx.quadraticCurveTo(28, 17, 54, 26); ctx.quadraticCurveTo(70, 31, bus.w - 3, 23); ctx.stroke();
+        // Windows
+        ctx.fillStyle = "#BFE0EC"; ctx.strokeStyle = "#2E2520"; ctx.lineWidth = 1.6;
+        [8, 28, 48].forEach((wx) => { ctx.beginPath(); ctx.roundRect(wx, 6, 16, 11, 3); ctx.fill(); ctx.stroke(); });
+        ctx.beginPath(); ctx.roundRect(67, 6, 11, 14, 3); ctx.fill(); ctx.stroke();
+        // Cute Mango cat peeking out window #1!
+        ctx.fillStyle = "#E9A867";
+        ctx.beginPath(); ctx.arc(16, 13, 4.3, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.moveTo(12, 11); ctx.lineTo(13, 7); ctx.lineTo(15, 10); ctx.fill();
+        ctx.beginPath(); ctx.moveTo(20, 11); ctx.lineTo(19, 7); ctx.lineTo(17, 10); ctx.fill();
+        // Headlight
+        ctx.fillStyle = "#FFE49E"; ctx.beginPath(); ctx.arc(bus.w - 2, 31, 3.5, 0, Math.PI * 2); ctx.fill();
+        // Spinning wheels
+        [20, 62].forEach((wx) => {
+          ctx.save(); ctx.translate(wx, 40); ctx.rotate(wheelAngle);
+          ctx.fillStyle = "#241F1B"; ctx.beginPath(); ctx.arc(0, 0, 9.5, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = "#FFF8EA"; ctx.lineWidth = 2; ctx.stroke();
+          ctx.fillStyle = "#F4CA74"; ctx.fillRect(-5, -1.5, 10, 3);
+          ctx.restore();
+        });
+        ctx.restore();
+      }
+
+      function tick(ts) {
+        if (!running) return;
+        const dt = Math.min(0.05, (ts - lastTs) / 1000);
+        lastTs = ts;
+
+        speed = Math.min(445, speed + dt * 6.5);
+        distM += (speed * dt) / 18;
+        roadOff = (roadOff + speed * dt) % 46;
+        cloudOff = (cloudOff + speed * dt * 0.18) % (W + 120);
+        treeOff = (treeOff + speed * dt * 0.42) % 180;
+        wheelAngle += dt * (speed / 26);
+        if (invuln > 0) invuln = Math.max(0, invuln - dt);
+
+        if (!wonThisRun && distM >= 300) {
+          wonThisRun = true;
+          if (Math.floor(distM) > gameState.highScores.bus) gameState.highScores.bus = Math.floor(distM);
+          unlockTrophy("bus-dash", "UIU Fleet Champion");
+        }
+
+        // Bus jump physics
+        if (bus.y > 0 || bus.vy < 0) {
+          bus.y -= bus.vy * dt;
+          bus.vy += 1550 * dt;
+          if (bus.y <= 0) { bus.y = 0; bus.vy = 0; bus.jumps = 2; }
+        }
+
+        // Spawn obstacles
+        obsTimer -= dt;
+        if (obsTimer <= 0) {
+          obsTimer = Math.max(0.85, 1.55 - (speed - 265) / 380) + Math.random() * 0.65;
+          const kind = Math.random() < 0.56 ? "cone" : "puddle";
+          obstacles.push({ kind, x: W + 30, w: kind === "cone" ? 24 : 44, h: kind === "cone" ? 30 : 12 });
+        }
+
+        // Spawn collectibles
+        itemTimer -= dt;
+        if (itemTimer <= 0) {
+          itemTimer = 0.85 + Math.random() * 0.75;
+          const isFish = Math.random() < 0.35;
+          pickups.push({ icon: isFish ? "🐟" : "🎨", pts: isFish ? 30 : 20, x: W + 24, y: GROUND_Y - (Math.random() < 0.62 ? 84 + Math.random() * 34 : 34) });
+        }
+
+        // Draw Dhaka twilight-warm sky
+        const skyGrad = ctx.createLinearGradient(0, 0, 0, GROUND_Y);
+        skyGrad.addColorStop(0, "#1E2B45"); skyGrad.addColorStop(0.58, "#3B4A66"); skyGrad.addColorStop(1, "#D99464");
+        ctx.fillStyle = skyGrad; ctx.fillRect(0, 0, W, GROUND_Y);
+
+        // Glowing sun/moon & scrolling clouds
+        ctx.fillStyle = "#FFE49E"; ctx.beginPath(); ctx.arc(495, 56, 22, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "rgba(255,248,234,0.22)";
+        for (let i = 0; i < 4; i++) {
+          const cx = ((i * 185 - cloudOff) + W + 120) % (W + 120) - 60;
+          ctx.beginPath(); ctx.roundRect(cx, 32 + (i % 2) * 24, 68, 18, 9); ctx.fill();
+        }
+        // Scrolling trees silhouette
+        for (let x = -treeOff; x < W + 60; x += 90) {
+          ctx.fillStyle = "#2E4337";
+          ctx.fillRect(x + 14, GROUND_Y - 26, 7, 26);
+          ctx.beginPath(); ctx.arc(x + 17, GROUND_Y - 34, 18, 0, Math.PI * 2); ctx.fill();
+        }
+
+        // Road & dashed markings
+        ctx.fillStyle = "#3E3936"; ctx.fillRect(0, GROUND_Y, W, H - GROUND_Y);
+        ctx.fillStyle = "#6E856B"; ctx.fillRect(0, GROUND_Y - 4, W, 5);
+        ctx.fillStyle = "#F4CA74";
+        for (let rx = -roadOff; rx < W + 46; rx += 46) ctx.fillRect(rx, GROUND_Y + 24, 24, 4);
+
+        const busTop = GROUND_Y - bus.h - bus.y + 4;
+        const busBox = { l: bus.x + 8, r: bus.x + bus.w - 8, t: busTop + 4, b: busTop + bus.h - 4 };
+
+        // Update & draw pickups
+        ctx.font = "22px sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+        for (let i = pickups.length - 1; i >= 0; i--) {
+          const pk = pickups[i];
+          pk.x -= speed * dt;
+          ctx.fillStyle = "rgba(255, 228, 158, 0.28)";
+          ctx.beginPath(); ctx.arc(pk.x, pk.y, 16, 0, Math.PI * 2); ctx.fill();
+          ctx.fillText(pk.icon, pk.x, pk.y + 1);
+          if (pk.x > busBox.l - 12 && pk.x < busBox.r + 12 && pk.y > busBox.t - 12 && pk.y < busBox.b + 12) {
+            bonusPts += pk.pts;
+            playGameSfx(pk.pts === 30 ? "star" : "orb");
+            pops.push({ x: pk.x, y: pk.y - 8, text: `+${pk.pts} ${pk.icon}`, life: 0.75, color: "#FFE49E" });
+            pickups.splice(i, 1);
+          } else if (pk.x < -30) pickups.splice(i, 1);
+        }
+
+        // Update & draw obstacles
+        for (let i = obstacles.length - 1; i >= 0; i--) {
+          const ob = obstacles[i];
+          ob.x -= speed * dt;
+          if (ob.kind === "cone") {
+            ctx.fillStyle = "#E0613A";
+            ctx.beginPath(); ctx.moveTo(ob.x + 12, GROUND_Y - 28); ctx.lineTo(ob.x + 23, GROUND_Y); ctx.lineTo(ob.x + 1, GROUND_Y); ctx.closePath(); ctx.fill();
+            ctx.fillStyle = "#FFFDF8"; ctx.fillRect(ob.x + 6, GROUND_Y - 14, 12, 5);
+          } else {
+            ctx.fillStyle = "#69B5DC";
+            ctx.beginPath(); ctx.ellipse(ob.x + ob.w / 2, GROUND_Y + 2, ob.w / 2, 7, 0, 0, Math.PI * 2); ctx.fill();
+            ctx.strokeStyle = "#CBEFF9"; ctx.lineWidth = 1.6;
+            ctx.beginPath(); ctx.ellipse(ob.x + ob.w / 2, GROUND_Y + 1, ob.w / 3, 3.5, 0, 0, Math.PI * 2); ctx.stroke();
+          }
+          const obBox = { l: ob.x + 4, r: ob.x + ob.w - 4, t: GROUND_Y - ob.h + 4, b: GROUND_Y };
+          if (invuln <= 0 && busBox.r > obBox.l && busBox.l < obBox.r && busBox.b > obBox.t && busBox.t < obBox.b) {
+            hearts -= 1;
+            invuln = 1.25;
+            playGameSfx("hit");
+            pops.push({ x: bus.x + 40, y: busTop - 6, text: "Bump! 💔", life: 0.85, color: "#F08A78" });
+            obstacles.splice(i, 1);
+            updateDashHud();
+            if (hearts <= 0) { endRun(); return; }
+          } else if (ob.x < -60) obstacles.splice(i, 1);
+        }
+
+        // Particles & Bus
+        for (let i = puffs.length - 1; i >= 0; i--) {
+          const pf = puffs[i];
+          pf.x += pf.vx * dt; pf.y += pf.vy * dt; pf.life -= dt;
+          if (pf.life <= 0) { puffs.splice(i, 1); continue; }
+          ctx.globalAlpha = pf.life * 2;
+          ctx.fillStyle = pf.color; ctx.beginPath(); ctx.arc(pf.x, pf.y, pf.r, 0, Math.PI * 2); ctx.fill();
+          ctx.globalAlpha = 1;
+        }
+        drawBus(bus.x, busTop);
+
+        // Floating canvas score popups
+        ctx.font = "bold 14px sans-serif"; ctx.textAlign = "center";
+        for (let i = pops.length - 1; i >= 0; i--) {
+          const pp = pops[i];
+          pp.y -= 42 * dt; pp.life -= dt;
+          if (pp.life <= 0) { pops.splice(i, 1); continue; }
+          ctx.globalAlpha = Math.min(1, pp.life * 1.6);
+          ctx.fillStyle = pp.color; ctx.fillText(pp.text, pp.x, pp.y);
+          ctx.globalAlpha = 1;
+        }
+
+        updateDashHud();
+        rafId = requestAnimationFrame(tick);
+      }
+
+      updateDashHud();
+      rafId = requestAnimationFrame(tick);
+      document.getElementById("bd-restart").addEventListener("click", openBusDashGame);
+      document.getElementById("bd-hub").addEventListener("click", openGamesHubModal);
     }
 
     function openPassportModal() {
-      const score = gameState.stamps.length + gameState.orbs.length;
-      const rank = score >= 20 || gameState.quizDone ? "Urmi's VIP Explorer ★"
-        : score >= 12 ? "Village Friend 🌿"
-        : score >= 5 ? "Lane Wanderer 🧭"
+      const score = gameState.stamps.length + gameState.orbs.length + gameState.trophies.length * 3 + gameState.secrets.length * 2;
+      const rank = score >= 28 || gameState.trophies.length === 3 ? "Grand Village Champion ★"
+        : score >= 18 || gameState.trophies.length >= 2 ? "Urmi's VIP Explorer ★"
+        : score >= 10 ? "Village Friend 🌿"
+        : score >= 4 ? "Lane Wanderer 🧭"
         : "Curious Visitor ✨";
+      const TROPHY_META = [
+        { id: "ai-catcher", icon: "🧠", name: "Green AI Champion" },
+        { id: "mixer", icon: "🎨", name: "Master Colorist" },
+        { id: "bus-dash", icon: "🚌", name: "UIU Fleet Champion" }
+      ];
       openModal(`
         <div class="modal-kicker">Explorer's Passport · Cozy Village Adventure</div>
         <h2 class="modal-title">Your Journey Through Urmi's World</h2>
@@ -3402,11 +4474,27 @@ LIMIT 10;</code></pre>`
             <span style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-muted);display:block">Current Explorer Rank</span>
             <div class="passport-rank">${rank}</div>
           </div>
-          <div style="font-weight:700;font-size:0.9rem;color:var(--terracotta)">
-            🏅 ${gameState.stamps.length}/${stops.length} Stamps · ✦ ${gameState.orbs.length}/${GAME_ORBS.length} Orbs
+          <div style="font-weight:700;font-size:0.86rem;color:var(--terracotta);text-align:right">
+            🏅 ${gameState.stamps.length}/${stops.length} Stamps · ✦ ${gameState.orbs.length}/${GAME_ORBS.length} Orbs<br/>
+            🏆 ${gameState.trophies.length}/3 Trophies · 🎁 ${gameState.secrets.length}/${SECRET_ITEMS.length} Secrets
           </div>
         </div>
-        <h3 class="modal-section-heading" style="margin-top:0">Village Stamps (Click any stop to warp there!)</h3>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;padding:10px 14px;border-radius:var(--radius-sm);background:var(--paper-deep)">
+          <span style="font-size:0.84rem"><strong>🐾 Companion:</strong> ${gameState.mangoJoined ? "Mango the Rescued Cat is trotting beside you! ♥" : "Pet Mango near the Welcome Gate so he follows you!"}</span>
+          <button type="button" class="btn btn-primary" id="pass-open-games" style="padding:7px 14px;font-size:0.8rem">🎮 Play Mini-Games (${gameState.trophies.length}/3)</button>
+        </div>
+        <h3 class="modal-section-heading" style="margin-top:0">Arcade Trophies &amp; Hidden Dhaka Secrets</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px">
+          ${TROPHY_META.map((t) => {
+            const won = gameState.trophies.includes(t.id);
+            return `<span class="tag-chip" style="${won ? "background:var(--ochre-soft);color:var(--ink);font-weight:700;border-color:var(--ochre)" : "opacity:0.55"}">${won ? "🏆" : t.icon} ${t.name}</span>`;
+          }).join("")}
+          ${SECRET_ITEMS.map((s) => {
+            const got = gameState.secrets.includes(s.id);
+            return `<span class="tag-chip" style="${got ? "background:var(--terracotta-soft);color:var(--ink);font-weight:600" : "opacity:0.55"}">${s.icon} ${got ? s.name : "Secret ???"}</span>`;
+          }).join("")}
+        </div>
+        <h3 class="modal-section-heading">Village Stamps (Click any stop to warp there!)</h3>
         <div class="passport-grid">
           ${stops.map((s) => {
             const done = gameState.stamps.includes(s.id);
@@ -3423,18 +4511,18 @@ LIMIT 10;</code></pre>`
             return `<span class="tag-chip" style="${got ? "background:var(--sage-soft);color:var(--ink);font-weight:600" : "opacity:0.55"}">${o.icon} ${got ? o.label : "???"}</span>`;
           }).join("")}
         </div>
-        <h3 class="modal-section-heading">Sweet Mini-Quiz: How Well Do You Know Urmi?</h3>
-        ${renderQuizHtml()}
-        <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+        <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+          <button type="button" class="btn btn-primary" id="pass-games-bottom">🎮 Play Arcade Games</button>
           <button type="button" class="btn btn-terracotta" data-open-cv>📄 View &amp; Download CV</button>
           <button type="button" class="btn btn-secondary" data-copy-email>Copy Email</button>
         </div>
       `);
+      document.getElementById("pass-open-games").addEventListener("click", openGamesHubModal);
+      document.getElementById("pass-games-bottom").addEventListener("click", openGamesHubModal);
       modalBody.querySelectorAll("[data-passport-warp]").forEach((b) => b.addEventListener("click", () => {
         closeModal();
         jumpToStop(b.dataset.passportWarp);
       }));
-      wireQuizHandlers();
     }
 
     function openHomeModal(tab = "about") {
@@ -3443,7 +4531,6 @@ LIMIT 10;</code></pre>`
       if (tab === "about") body = DATA.profile.aboutParagraphs.map((p) => `<p class="modal-copy">${p}</p>`).join("");
       else if (tab === "exp") body = `<div class="studio-grid">${DATA.experience.map((x) => `<div class="studio-mini-card"><span class="stop-sign-kicker">${x.period}</span><h4>${x.title}</h4><p><strong>${x.org}</strong> — ${x.bullets[0]}</p></div>`).join("")}</div>`;
       else if (tab === "art") body = `<div class="studio-grid">${DATA.beyond.map((b) => `<div class="studio-mini-card"><span class="stop-sign-kicker">${b.medium}</span><h4>${b.title}</h4><p>${b.desc}</p></div>`).join("")}</div>`;
-      else if (tab === "quiz") body = renderQuizHtml();
       else body = `<div class="studio-grid">${DATA.awards.map((a) => `<div class="studio-mini-card"><span class="stop-sign-kicker">${a.badge} · ${a.date}</span><h4>${a.title}</h4><p>${a.desc}</p></div>`).join("")}</div>`;
       openModal(`
         <div class="modal-kicker">End of the Lane · Dhaka, Bangladesh</div>
@@ -3453,18 +4540,18 @@ LIMIT 10;</code></pre>`
           <button type="button" class="studio-tab ${tab==="exp"?"is-active":""}" data-ht="exp">Experience</button>
           <button type="button" class="studio-tab ${tab==="awards"?"is-active":""}" data-ht="awards">Awards &amp; UIU</button>
           <button type="button" class="studio-tab ${tab==="art"?"is-active":""}" data-ht="art">Art &amp; Passions</button>
-          <button type="button" class="studio-tab ${tab==="quiz"?"is-active":""}" data-ht="quiz">✨ Mini-Quiz</button>
         </div>
         ${body}
         <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
+          <button type="button" class="btn btn-primary" id="home-open-games">🎮 Play Mini-Games</button>
           <button type="button" class="btn btn-terracotta" data-open-cv>📄 View &amp; Download CV</button>
           <button type="button" class="btn btn-secondary" data-copy-email>Copy Email</button>
           <button type="button" class="btn btn-secondary" data-switch-view="read">Open Read mode ↗</button>
           <button type="button" class="btn btn-secondary" data-trigger-goodbye>🌙 Turn off light · Good bye</button>
         </div>
       `);
+      document.getElementById("home-open-games").addEventListener("click", openGamesHubModal);
       modalBody.querySelectorAll("[data-ht]").forEach((b) => b.addEventListener("click", () => openHomeModal(b.dataset.ht)));
-      if (tab === "quiz") wireQuizHandlers();
     }
 
     function openStopById(id) {
@@ -3472,8 +4559,9 @@ LIMIT 10;</code></pre>`
       if (!s) return;
       markStopVisited(s.id, s.name);
       if (s.type === "gate") {
-        openModal(`<div class="modal-kicker">Village Noticeboard · Quest Start</div><h2 class="modal-title">Welcome to Urmi's Little Village</h2><p class="modal-copy">${DATA.profile.heroLead}</p><p class="modal-copy">Collect all <strong>12 glowing Skill Orbs</strong> along the road, chat with Mango the rescued cat &amp; village friends, and stamp your Passport at every shop!</p><button type="button" class="btn btn-terracotta" id="gate-go">Walk to ${DATA.projects[0].shopName} →</button>`);
+        openModal(`<div class="modal-kicker">Village Noticeboard · Quest Start</div><h2 class="modal-title">Welcome to Urmi's Little Village</h2><p class="modal-copy">${DATA.profile.heroLead}</p><p class="modal-copy">Pet <strong>Mango the cat</strong> so he trots alongside you, bounce on <strong>sunflower trampolines</strong>, discover <strong>12 Skill Orbs</strong> &amp; <strong>3 hidden Dhaka treasures</strong>, and win all <strong>3 Mini-Game Trophies</strong>!</p><div style="display:flex;gap:10px;flex-wrap:wrap"><button type="button" class="btn btn-terracotta" id="gate-go">Walk to ${DATA.projects[0].shopName} →</button><button type="button" class="btn btn-primary" id="gate-games">🎮 Open Mini-Games</button></div>`);
         document.getElementById("gate-go").addEventListener("click", () => { closeModal(); jumpToStop(DATA.projects[0].id); });
+        document.getElementById("gate-games").addEventListener("click", openGamesHubModal);
       } else if (s.type === "home") openHomeModal("about");
       else openProjectModal(s.project, true);
     }
@@ -3481,12 +4569,16 @@ LIMIT 10;</code></pre>`
     function interactWithNearest() {
       const charX = curX + window.innerWidth * 0.24 + 32;
       let nearNpc = null, npcDist = 150;
-      VILLAGE_NPCS.forEach((n) => { const d = Math.abs(n.x - charX); if (d < npcDist) { npcDist = d; nearNpc = n; } });
+      VILLAGE_NPCS.forEach((n) => {
+        if (n.id === "npc-cat" && gameState.mangoJoined) return;
+        const d = Math.abs(n.x - charX);
+        if (d < npcDist) { npcDist = d; nearNpc = n; }
+      });
       if (nearNpc) { chatWithNpc(nearNpc); return; }
       let nearStop = null, stopDist = 230;
       stops.forEach((s) => { const d = Math.abs(s.x - charX); if (d < stopDist) { stopDist = d; nearStop = s; } });
       if (nearStop) { openStopById(nearStop.id); return; }
-      showRpgDialogue("🧭", "Urmi's Tip", "Walk closer to any glowing shop or village friend (like Mango the cat!) and press E or tap Enter.", 4200);
+      showRpgDialogue("🧭", "Urmi's Tip", "Walk closer to any glowing shop, sunflower trampoline, or village friend and press E or tap Enter!", 4200);
     }
 
     function getDistrictName(charX) {
@@ -3497,32 +4589,105 @@ LIMIT 10;</code></pre>`
       return "Urmi's Cozy Studio";
     }
 
+    // Periodic Lucky Shooting Star gliding across the Village sky
+    let wishIdx = 0;
+    function spawnLuckyStar() {
+      if (currentView !== "village" || modal.classList.contains("is-open") || !document.getElementById("welcome-veil").classList.contains("is-hidden")) return;
+      if (document.querySelector(".lucky-star")) return;
+      const star = document.createElement("button");
+      star.type = "button";
+      star.className = "lucky-star";
+      star.textContent = "🌠 Catch a Wish!";
+      star.style.top = `${14 + Math.floor(Math.random() * 14)}%`;
+      document.getElementById("village-stage").appendChild(star);
+
+      let starX = -140;
+      let caught = false;
+      const speed = Math.max(120, window.innerWidth * 0.13);
+      let lastT = performance.now();
+
+      star.addEventListener("click", (ev) => {
+        ev.stopPropagation();
+        if (caught) return;
+        caught = true;
+        star.remove();
+        playGameSfx("star");
+        launchConfetti(24);
+        showMangoEmote("🌠", 2200);
+        showRpgDialogue("🌠", "Lucky Village Star!", LUCKY_WISHES[wishIdx % LUCKY_WISHES.length], 8200);
+        wishIdx++;
+      });
+
+      function glide(ts) {
+        if (caught || !star.isConnected) return;
+        const dt = Math.min(0.05, (ts - lastT) / 1000);
+        lastT = ts;
+        starX += speed * dt;
+        star.style.left = `${starX.toFixed(1)}px`;
+        if (starX > window.innerWidth + 160) { star.remove(); return; }
+        requestAnimationFrame(glide);
+      }
+      requestAnimationFrame(glide);
+    }
+    setInterval(spawnLuckyStar, 22000);
+
     function animateVillage() {
       if (currentView === "village") {
+        const now = Date.now();
+        const boostRem = chaBoostUntil - now;
+        const isBoosted = boostRem > 0;
+        if (isBoosted) {
+          hudBoost.classList.add("is-on");
+          hudBoost.textContent = `☕ Cha Boost ${Math.ceil(boostRem / 1000)}s`;
+        } else if (hudBoost.classList.contains("is-on")) {
+          hudBoost.classList.remove("is-on");
+        }
+
         const canMove = !modal.classList.contains("is-open") && document.getElementById("welcome-veil").classList.contains("is-hidden");
+        const moveStep = isBoosted ? 17.5 : 11;
         if (canMove) {
-          if (heldKeys.right) { tgtX += 11; clampTgt(); }
-          if (heldKeys.left) { tgtX -= 11; clampTgt(); }
+          if (heldKeys.right) { tgtX += moveStep; clampTgt(); }
+          if (heldKeys.left) { tgtX -= moveStep; clampTgt(); }
         }
 
         const dx = tgtX - curX;
+        const isWalkingNow = Math.abs(dx) > 1.0;
         if (Math.abs(dx) > 0.25) {
           curX += dx * 0.12;
-          if (Math.abs(dx) > 1.0) {
+          if (isWalkingNow) {
             traveller.classList.add("is-walking");
             traveller.classList.toggle("facing-left", dx < 0);
             clearTimeout(walkTimer);
             walkTimer = setTimeout(() => traveller.classList.remove("is-walking"), 130);
+            if (gameState.secrets.includes("secret-brush") && now - lastSparkAt > 110) {
+              lastSparkAt = now;
+              spawnFootSpark(0, 0);
+            }
           }
         } else curX = tgtX;
 
-        // Playful Jump Physics
+        // Playful Double-Jump & Trampoline Physics
         if (jumpY > 0 || jumpVy > 0) {
           jumpY += jumpVy;
           jumpVy -= 0.72;
-          if (jumpY <= 0) { jumpY = 0; jumpVy = 0; }
+          if (jumpY <= 0) { jumpY = 0; jumpVy = 0; jumpsLeft = 2; }
         }
         traveller.style.transform = `translate3d(0, ${-jumpY.toFixed(1)}px, 0)`;
+
+        // Mango Follower Pet smooth trot & delayed hop!
+        if (gameState.mangoJoined) {
+          const facingLeft = traveller.classList.contains("facing-left");
+          const targetMangoX = facingLeft ? 132 : 0;
+          mangoOffsetX += (targetMangoX - mangoOffsetX) * 0.12;
+          if (mangoJumpY > 0 || mangoJumpVy > 0) {
+            mangoJumpY += mangoJumpVy;
+            mangoJumpVy -= 0.72;
+            if (mangoJumpY <= 0) { mangoJumpY = 0; mangoJumpVy = 0; }
+          }
+          mangoFollower.classList.toggle("facing-left", facingLeft);
+          mangoFollower.classList.toggle("is-trotting", traveller.classList.contains("is-walking"));
+          mangoFollower.style.transform = `translate3d(${mangoOffsetX.toFixed(1)}px, ${-mangoJumpY.toFixed(1)}px, 0)`;
+        }
 
         const prog = Math.max(0, Math.min(1, curX / maxS()));
         layerWorld.style.transform = `translate3d(${-curX}px, 0, 0)`;
@@ -3540,7 +4705,25 @@ LIMIT 10;</code></pre>`
         const charX = curX + window.innerWidth * 0.24 + 32;
         hudDistrict.textContent = getDistrictName(charX);
 
-        // Auto-collect nearby Skill & Story Orbs (walk into low orbs or hop for high orbs!)
+        // Bouncy Sunflower Trampolines auto-launch when walked over!
+        if (canMove && jumpY < 16 && jumpVy <= 0 && now - lastBounceAt > 650) {
+          for (const f of BOUNCY_FLOWERS) {
+            if (Math.abs(f.x - charX) < 38) {
+              triggerBounce(f);
+              break;
+            }
+          }
+        }
+
+        // Auto-collect hidden Dhaka Secret Treasures
+        SECRET_ITEMS.forEach((s) => {
+          if (gameState.secrets.includes(s.id)) return;
+          if (Math.abs(s.x - charX) < 54 && jumpY < 62) {
+            collectSecret(s);
+          }
+        });
+
+        // Auto-collect nearby Skill & Story Orbs (walk into low orbs, double-jump or bounce for high orbs!)
         const charTopPx = 166 + jumpY;
         GAME_ORBS.forEach((o) => {
           if (gameState.orbs.includes(o.id)) return;
@@ -3556,7 +4739,11 @@ LIMIT 10;</code></pre>`
         document.querySelectorAll(".village-stop").forEach((el, i) => el.classList.toggle("is-nearby", i === ci && md < 220));
 
         let nearNpc = null, npcMd = 150;
-        VILLAGE_NPCS.forEach((n) => { const d = Math.abs(n.x - charX); if (d < npcMd) { npcMd = d; nearNpc = n; } });
+        VILLAGE_NPCS.forEach((n) => {
+          if (n.id === "npc-cat" && gameState.mangoJoined) return;
+          const d = Math.abs(n.x - charX);
+          if (d < npcMd) { npcMd = d; nearNpc = n; }
+        });
         document.querySelectorAll(".village-npc").forEach((el) => el.classList.toggle("is-nearby", nearNpc && el.dataset.npcId === nearNpc.id));
 
         if (nearNpc) { bubble.textContent = `${nearNpc.icon} Press E to chat!`; bubble.classList.add("is-visible"); }
@@ -3607,7 +4794,7 @@ LIMIT 10;</code></pre>`
     let dragging = false, dragX = 0, dragStartTgt = 0, moved = false;
     const stage = document.getElementById("village-stage");
     stage.addEventListener("pointerdown", (e) => {
-      if (e.target.closest(".village-hud-top,.village-hud-bottom,.rpg-dialogue,.modal-backdrop,.welcome-veil")) return;
+      if (e.target.closest(".village-hud-top,.village-hud-bottom,.rpg-dialogue,.modal-backdrop,.welcome-veil,.lucky-star")) return;
       dragging = true; moved = false; dragX = e.clientX; dragStartTgt = tgtX; stage.classList.add("is-dragging");
     });
     window.addEventListener("pointermove", (e) => {
@@ -3621,6 +4808,18 @@ LIMIT 10;</code></pre>`
 
     layerWorld.addEventListener("click", (e) => {
       if (moved) return;
+      const secEl = e.target.closest("[data-secret-id]");
+      if (secEl) {
+        const sec = SECRET_ITEMS.find((s) => s.id === secEl.dataset.secretId);
+        if (sec) collectSecret(sec);
+        return;
+      }
+      const boingEl = e.target.closest("[data-boing-id]");
+      if (boingEl) {
+        const flower = BOUNCY_FLOWERS.find((b) => b.id === boingEl.dataset.boingId);
+        if (flower) triggerBounce(flower);
+        return;
+      }
       const orbEl = e.target.closest("[data-orb-id]");
       if (orbEl) {
         const orb = GAME_ORBS.find((o) => o.id === orbEl.dataset.orbId);
@@ -3640,9 +4839,11 @@ LIMIT 10;</code></pre>`
     document.getElementById("btn-enter-village").addEventListener("click", () => {
       document.getElementById("welcome-veil").classList.add("is-hidden");
       playGameSfx("stamp");
-      showRpgDialogue("✨", "Urmi · Welcome!", "Use A/D or ◀/▶ to walk, Space/⬆ Hop to grab floating Skill Orbs, and say hi to Mango the cat right ahead!", 7500);
+      showRpgDialogue("✨", "Urmi · Welcome!", "Pet Mango the cat right ahead so he joins you! Double-tap Space/⬆ Hop, bounce on 🌻 sunflowers, and try 🎮 Games anytime!", 8200);
+      setTimeout(spawnLuckyStar, 9000);
     });
     document.getElementById("btn-passport").addEventListener("click", openPassportModal);
+    document.getElementById("btn-games").addEventListener("click", openGamesHubModal);
     document.getElementById("btn-sfx").addEventListener("click", (e) => {
       sfxEnabled = !sfxEnabled;
       e.currentTarget.textContent = sfxEnabled ? "🔊" : "🔇";
