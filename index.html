@@ -3,8 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Urmi Urma Snigdha · CSE Graduate, AI Engineer &amp; UI/UX Designer</title>
-  <meta name="description" content="Official dual-mode portfolio of Urmi Urma Snigdha — B.Sc. in Computer Science &amp; Engineering Graduate from United International University (UIU), AI/ML Researcher, Software Engineer, UI/UX Designer, and 1st Prize Winner UIU Moving Canvas 2026." />
+  <title>Urmi Urma Snigdha · CSE (Data Science), AI Researcher &amp; UI/UX Designer</title>
+  <meta name="description" content="Dual-mode portfolio of Urmi Urma Snigdha — B.Sc. CSE (Data Science) at United International University (UIU), AI &amp; NLP Researcher, UI/UX &amp; Brand Designer, and 1st Prize Winner UIU Moving Canvas 2026." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://urmi-village-repo.vercel.app/" />
+  <meta property="og:title" content="Urmi Urma Snigdha — Dual-Mode CSE &amp; UI/UX Portfolio" />
+  <meta property="og:description" content="Explore Urmi's recruiter-ready Read Mode (with live CSE neural &amp; circuit background) or walk her playable Dhaka Village Adventure Game with 3 built-in arcade games." />
+  <meta property="og:image" content="https://urmi-village-repo.vercel.app/docs/screenshots/04-read-hero-cse-dark.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Urmi Urma Snigdha — Dual-Mode CSE &amp; UI/UX Portfolio" />
+  <meta name="twitter:description" content="Playable Dhaka Village Adventure Game + Recruiter-Ready CSE, AI &amp; UI/UX Portfolio." />
+  <meta name="twitter:image" content="https://urmi-village-repo.vercel.app/docs/screenshots/04-read-hero-cse-dark.png" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -21,8 +30,8 @@
       "https://www.freelancer.com.bd/u/urmisnigdha",
       "https://www.upwork.com/freelancers/~011290c250c742513a"
     ],
-    "jobTitle": "Computer Science & Engineering Graduate · UI/UX & Graphic Designer",
-    "alumniOf": {
+    "jobTitle": "UI/UX Designer · AI & Data Science Researcher · Graphic Designer · CSE (Data Science)",
+    "affiliation": {
       "@type": "EducationalOrganization",
       "name": "United International University (UIU)"
     }
@@ -382,8 +391,8 @@
     .village-stop:hover .stop-sign { background: var(--ink); transform: translateY(-3px); }
     .village-stop:hover .stop-sign-name { color: var(--paper); }
     .village-stop:hover .stop-sign-kicker { color: #F2CA7B; }
-    .stop-door-prompt { margin-top: -12px; padding: 4px 12px; border-radius: var(--radius-pill); background: rgba(36, 31, 27, 0.85); color: var(--paper); font-size: 0.75rem; font-weight: 500; opacity: 0; transform: translateY(6px); transition: all 0.22s ease; pointer-events: none; }
-    .village-stop:hover .stop-door-prompt, .village-stop.is-nearby .stop-door-prompt { opacity: 1; transform: translateY(0); }
+    .stop-door-prompt { margin-top: -12px; padding: 4px 12px; border-radius: var(--radius-pill); background: rgba(36, 31, 27, 0.9); color: var(--paper); font-size: 0.74rem; font-weight: 600; opacity: 0; transform: translateY(-18px); transition: all 0.22s ease; pointer-events: none; position: relative; z-index: 25; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18); }
+    .village-stop:hover .stop-door-prompt, .village-stop.is-nearby .stop-door-prompt { opacity: 1; transform: translateY(-30px); }
 
     .traveller-wrap { position: fixed; bottom: 70px; left: 24%; z-index: 60; pointer-events: none; }
     .traveller-svg { width: 64px; height: auto; transform-origin: bottom center; }
@@ -957,11 +966,11 @@
       pointer-events: none;
     }
     .work-card-cat-pill {
-      position: absolute; top: 10px; left: 10px; z-index: 3;
-      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
-      padding: 3px 9px; border-radius: var(--radius-pill);
-      background: rgba(16, 20, 28, 0.78); color: #FFFDF8;
-      backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.16);
+      display: inline-flex; align-items: center;
+      font-size: 0.64rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+      padding: 2.5px 8px; border-radius: var(--radius-pill);
+      background: var(--terracotta-soft); color: var(--terracotta);
+      border: 1px solid rgba(194, 101, 74, 0.22);
     }
     .work-card-fallback {
       width: 100%; height: 100%; display: none; align-items: center; justify-content: center;
@@ -1644,7 +1653,7 @@
     <header class="entry-header">
       <span class="brand-mark">urmi.design</span>
       <div class="entry-header-right">
-        <span>CSE Graduate · UI/UX Designer &amp; Software Engineer · Dhaka</span>
+        <span>CSE (Data Science) · AI Researcher &amp; UI/UX Designer · Dhaka</span>
         <button type="button" class="theme-toggle" data-theme-toggle="standard" aria-label="Toggle dark mode" aria-pressed="false">🌙 Dark</button>
       </div>
     </header>
@@ -1652,7 +1661,7 @@
       <p class="entry-greeting">Hello, explorer!</p>
       <h1 class="entry-title">Pick your path into my world.</h1>
       <p class="entry-subtitle">
-        I'm Urmi Urma Snigdha — a Computer Science &amp; Engineering graduate from United International University, bridging human-centered UI/UX design with software engineering &amp; AI.
+        I'm Urmi Urma Snigdha — a Computer Science &amp; Engineering (Data Science) researcher at United International University, bridging human-centered UI/UX design with software engineering &amp; applied AI.
       </p>
       <div class="path-grid">
         <button type="button" class="path-card" data-switch-view="read">
@@ -1716,9 +1725,9 @@
       <section class="read-hero">
         <div class="hero-grid">
           <div>
-            <p class="hero-eyebrow">CSE Graduate · Available Immediately for Full-Time &amp; Remote Roles</p>
+            <p class="hero-eyebrow">CSE (Data Science) · Open to Internships, Research &amp; Junior Roles</p>
             <h1 class="hero-title">Hello, I'm Urmi Urma Snigdha.</h1>
-            <p class="hero-degree-line">B.Sc. in Computer Science &amp; Engineering · United International University (UIU) · Dhaka</p>
+            <p class="hero-degree-line">B.Sc. in Computer Science &amp; Engineering (Data Science) · United International University (UIU) · Dhaka</p>
             <p class="hero-lead">Engineering robust Machine Learning, Digital Image Processing, Data Mining, and RAG pipelines alongside production-grade UI/UX design systems and award-winning brand architecture.</p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="#work">Explore Selected Works ↓</a>
@@ -1751,11 +1760,11 @@
               <img src="https://urmisnigdha.vercel.app/assets/photos/urmi-intro.jpg" alt="Urmi Urma Snigdha" loading="lazy" onerror="this.parentElement.style.display='none'" />
             </div>
             <div class="about-facts">
-              <div class="about-fact-row"><span class="about-fact-key">Degree</span><span class="about-fact-val">B.Sc. in CSE (Graduated)</span></div>
+              <div class="about-fact-row"><span class="about-fact-key">Degree</span><span class="about-fact-val">B.Sc. CSE (Data Science · Nov 2026)</span></div>
               <div class="about-fact-row"><span class="about-fact-key">University</span><span class="about-fact-val">United International University</span></div>
               <div class="about-fact-row"><span class="about-fact-key">Location</span><span class="about-fact-val">Dhaka, Bangladesh</span></div>
               <div class="about-fact-row"><span class="about-fact-key">Forums</span><span class="about-fact-val">UIU HR Forum · UIU App Forum</span></div>
-              <div class="about-fact-row"><span class="about-fact-key">Status</span><span class="about-fact-val">Open to Full-Time &amp; Remote</span></div>
+              <div class="about-fact-row"><span class="about-fact-key">Status</span><span class="about-fact-val">Open to Internships &amp; Roles</span></div>
             </div>
           </aside>
         </div>
@@ -2573,19 +2582,19 @@
     const DATA = {
       profile: {
         name: "Urmi Urma Snigdha",
-        title: "Computer Science & Engineering Graduate · UI/UX & Graphic Designer",
+        title: "UI/UX Designer · AI & Data Science Researcher · Graphic Designer · CSE (Data Science)",
         institution: "United International University (UIU), Dhaka",
-        degree: "B.Sc. in Computer Science & Engineering",
+        degree: "B.Sc. in Computer Science & Engineering (Data Science)",
         email: "urmiurmasnigdha@gmail.com",
         linkedin: "https://www.linkedin.com/in/urmi-urma-snigdha-4836362a1/",
         cvUrl: "./cv.html",
         cvDownloadUrl: "./Urmi_Urma_Snigdha_CV.pdf",
-        heroLead: "Computer Science & Engineering graduate from United International University (UIU). Engineering robust Machine Learning, Digital Image Processing, Data Mining, and RAG pipelines alongside production-grade UI/UX design systems and award-winning brand architecture.",
+        heroLead: "Computer Science & Engineering (Data Science) student and researcher at United International University (UIU). Engineering robust Machine Learning, Digital Image Processing, Data Mining, and RAG pipelines alongside production-grade UI/UX design systems and award-winning brand architecture.",
         aboutParagraphs: [
-          "I am a Computer Science & Engineering graduate from United International University (UIU) in Dhaka, driven by the mission to combine robust software engineering, analytical problem-solving, and human-centered visual design.",
+          "I am a Computer Science & Engineering (Data Science) student and active researcher at United International University (UIU) in Dhaka, driven by the mission to combine robust software engineering, analytical problem-solving, and human-centered visual design.",
           "With strong foundations across core computer science, I specialize in Machine Learning, Digital Image Processing, Data Mining, and Natural Language Processing. I focus on building practical, deterministic software pipelines — from computer vision cellular segmentation and predictive churn mining to distributed FinTech ledgers and vector Retrieval-Augmented Generation (RAG) architectures — alongside authoring two concurrent research papers in multilingual NLP and Green AI.",
           "Complementing my engineering background, I bring deep hands-on proficiency in UI/UX and graphic design using Figma, Adobe Illustrator, and Photoshop. I design scalable design systems, interactive prototypes, official vehicle fleet liveries, and production-ready brand identities, ensuring end-to-end digital solutions are both technically resilient and visually compelling.",
-          "Having completed my B.Sc. in CSE, I am available immediately for full-time software engineering, AI/ML & data science, and UI/UX product design roles — locally in Dhaka or remotely worldwide."
+          "With my B.Sc. in CSE (Data Science) expected in November 2026, I am open to internships, research collaborations, freelance design projects, and junior roles in software engineering, AI/data science, and UI/UX design — locally in Dhaka or remotely worldwide."
         ],
         stats: [
           { value: "20+", label: "Client Projects Delivered on Behance & Freelancer" },
@@ -2966,11 +2975,11 @@
       ],
       education: [
         {
-          result: "Graduated (Degree Completed)",
+          result: "Data Science Specialization",
           degree: "B.Sc. in Computer Science & Engineering",
           institution: "United International University (UIU)",
-          period: "Dhaka, Bangladesh",
-          details: "Core coursework in Machine Learning, Digital Image Processing, Data Mining, Database Systems, Algorithms, Software Engineering, and System Analysis & Design (SAD). General Member: UIU HR Forum & UIU App Forum."
+          period: "Jun 2022 – Nov 2026 (Expected) · Dhaka",
+          details: "Active researcher with two concurrent papers in Multilingual NLP and Green Computing. General Member: UIU HR Forum & UIU App Forum (2023–present)."
         },
         {
           result: "GPA 5.00 / 5.00",
@@ -3438,13 +3447,12 @@ LIMIT 10;</code></pre>`
         <article class="work-card reveal-card" data-project-id="${p.id}">
           <span class="card-spotlight" aria-hidden="true"></span>
           <div class="work-card-media" style="--art-bg-light:${p.accentSoft};--art-bg-dark:${p.accentDark}">
-            <span class="work-card-cat-pill">${p.category}</span>
             <img class="work-card-img" src="${p.coverImg}" alt="${p.title}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
             <div class="work-card-fallback">${ART[p.illustration]()}</div>
             <div class="work-card-media-overlay" aria-hidden="true"></div>
           </div>
           <div class="work-card-body">
-            <div class="work-card-meta"><span>${p.badge}</span><span>${p.year}</span></div>
+            <div class="work-card-meta"><span class="work-card-cat-pill">${p.category}</span><span>${p.year}</span></div>
             <h3 class="work-card-title">${p.title}</h3>
             <p class="work-card-desc">${p.shortDesc}</p>
             <div class="work-card-impact">✦ ${p.impactHighlight}</div>
