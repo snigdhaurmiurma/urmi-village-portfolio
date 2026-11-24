@@ -136,44 +136,72 @@ public class PortfolioServer {
                   },
                   "projects": [
                     {
+                      "id": "fundbridge",
+                      "shopName": "FundBridge Vault",
+                      "category": "FinTech & Software",
+                      "year": "2026",
+                      "title": "FundBridge — Distributed Micro-Finance & Anti-Predatory Lending Engine"
+                    },
+                    {
+                      "id": "medvision-ai",
+                      "shopName": "MedVision Micro-Lab",
+                      "category": "Computer Vision",
+                      "year": "2026",
+                      "title": "MedVision-AI — Cellular & Microscopic Image Analysis Pipeline"
+                    },
+                    {
+                      "id": "marketpulse-mining",
+                      "shopName": "MarketPulse Exchange",
+                      "category": "Data Mining",
+                      "year": "2026",
+                      "title": "MarketPulse — Customer Behavior Mining & Churn Intelligence"
+                    },
+                    {
+                      "id": "docuquery-rag",
+                      "shopName": "DocuQuery Archive",
+                      "category": "AI & NLP",
+                      "year": "2026",
+                      "title": "DocuQuery-AI — Enterprise Document Intelligence & Semantic Search (RAG)"
+                    },
+                    {
                       "id": "green-computing",
                       "shopName": "The Green Observatory",
-                      "category": "AI Research & NLP",
+                      "category": "AI & NLP",
                       "year": "2026",
                       "title": "Green Computing & AI Safety Guardrail Benchmarking"
                     },
                     {
                       "id": "cross-lingual-nli",
                       "shopName": "The Babel Library",
-                      "category": "AI Research & NLP",
+                      "category": "AI & NLP",
                       "year": "2026",
-                      "title": "Cross-Lingual NLI & Multilingual LLM Benchmarking"
-                    },
-                    {
-                      "id": "edusmart",
-                      "shopName": "EduSmart Study Café",
-                      "category": "UI/UX & AI Product",
-                      "year": "2025",
-                      "title": "EduSmart — Academic AI Companion & Study Ecosystem"
+                      "title": "Cross-Lingual NLI & Multilingual LLM Benchmarking (CLSC)"
                     },
                     {
                       "id": "moving-canvas",
                       "shopName": "UIU Moving Canvas Atelier",
-                      "category": "Branding & Identity",
+                      "category": "Branding & Livery",
                       "year": "2026",
                       "title": "UIU Moving Canvas — Official Student Transit Bus Fleet Livery"
                     },
                     {
+                      "id": "edusmart",
+                      "shopName": "EduSmart Study Café",
+                      "category": "UI/UX & Product",
+                      "year": "2025",
+                      "title": "EduSmart — Academic Companion & Interactive Study Ecosystem"
+                    },
+                    {
                       "id": "bangla-news-mismatch",
                       "shopName": "The Dhaka Press & Lens",
-                      "category": "AI Research & NLP",
+                      "category": "Computer Vision",
                       "year": "2025",
                       "title": "Bangla News Image-Text Mismatch Detection"
                     },
                     {
                       "id": "synapse-iot",
                       "shopName": "Synapse Tinkerer's Workshop",
-                      "category": "Data & IoT",
+                      "category": "Embedded & IoT",
                       "year": "2024",
                       "title": "Synapse — Sensor Telemetry & Microcontroller Hub"
                     }

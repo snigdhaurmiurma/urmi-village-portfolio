@@ -49,9 +49,45 @@ public class PortfolioController {
 
     private static final List<ProjectSummary> PROJECTS = List.of(
             new ProjectSummary(
+                    "fundbridge",
+                    "FundBridge Vault",
+                    "FinTech & Software",
+                    "FinTech Engineering & Cryptographic Security",
+                    "2026",
+                    "FundBridge — Distributed Micro-Finance & Anti-Predatory Lending Engine",
+                    List.of("React", "Node.js", "Express", "SQLite (WAL)", "AES-256-GCM", "SHA-256 Chain")
+            ),
+            new ProjectSummary(
+                    "medvision-ai",
+                    "MedVision Micro-Lab",
+                    "Computer Vision",
+                    "Digital Image Processing & Computer Vision",
+                    "2026",
+                    "MedVision-AI — Cellular & Microscopic Image Analysis Pipeline",
+                    List.of("Python", "OpenCV", "Scikit-Image", "Watershed Algorithm", "Otsu Thresholding")
+            ),
+            new ProjectSummary(
+                    "marketpulse-mining",
+                    "MarketPulse Exchange",
+                    "Data Mining",
+                    "Data Mining & Predictive Analytics",
+                    "2026",
+                    "MarketPulse — Customer Behavior Mining & Churn Intelligence",
+                    List.of("Python", "Pandas", "Scikit-Learn", "Apriori Algorithm", "K-Means RFM")
+            ),
+            new ProjectSummary(
+                    "docuquery-rag",
+                    "DocuQuery Archive",
+                    "AI & NLP",
+                    "Applied Machine Learning & NLP",
+                    "2026",
+                    "DocuQuery-AI — Enterprise Document Intelligence & Semantic Search (RAG)",
+                    List.of("Python", "PyTorch", "FAISS", "Vector Search", "Cross-Encoder Reranker")
+            ),
+            new ProjectSummary(
                     "green-computing",
                     "The Green Observatory",
-                    "AI Research & NLP",
+                    "AI & NLP",
                     "Academic Research · Pending Publication",
                     "2026",
                     "Green Computing & AI Safety Guardrail Benchmarking",
@@ -60,44 +96,44 @@ public class PortfolioController {
             new ProjectSummary(
                     "cross-lingual-nli",
                     "The Babel Library",
-                    "AI Research & NLP",
-                    "Final Year Design Project · UIU",
+                    "AI & NLP",
+                    "Final Year Design Project (FYDP) · UIU",
                     "2026",
-                    "Cross-Lingual NLI & Multilingual LLM Benchmarking",
+                    "Cross-Lingual NLI & Multilingual LLM Benchmarking (CLSC)",
                     List.of("PyTorch", "Transformers", "LaBSE", "XLM-R", "Llama-3.2")
-            ),
-            new ProjectSummary(
-                    "edusmart",
-                    "EduSmart Study Café",
-                    "UI/UX & AI Product",
-                    "UI/UX & AI Prototype",
-                    "2025",
-                    "EduSmart — Academic AI Companion & Study Ecosystem",
-                    List.of("Figma", "Design Systems", "Auto-Layout", "User Flows", "Prototyping")
             ),
             new ProjectSummary(
                     "moving-canvas",
                     "UIU Moving Canvas Atelier",
-                    "Branding & Identity",
+                    "Branding & Livery",
                     "1st Prize Winner · BDT 50,000",
                     "2026",
                     "UIU Moving Canvas — Official Student Transit Bus Fleet Livery",
-                    List.of("Adobe Illustrator", "Adobe Photoshop", "Brand Architecture", "Vector Art")
+                    List.of("Adobe Illustrator", "Adobe Photoshop", "Brand Architecture", "Vehicle Livery")
+            ),
+            new ProjectSummary(
+                    "edusmart",
+                    "EduSmart Study Café",
+                    "UI/UX & Product",
+                    "UI/UX & Product Prototype",
+                    "2025",
+                    "EduSmart — Academic Companion & Interactive Study Ecosystem",
+                    List.of("Figma", "Design Systems", "Auto-Layout", "User Flows", "Prototyping")
             ),
             new ProjectSummary(
                     "bangla-news-mismatch",
                     "The Dhaka Press & Lens",
-                    "AI Research & NLP",
+                    "Computer Vision",
                     "NLP & Computer Vision Research",
                     "2025",
                     "Bangla News Image-Text Mismatch Detection",
-                    List.of("Python", "NLP", "OpenCV", "Exploratory Data Analysis", "Matplotlib")
+                    List.of("Python", "NLP", "OpenCV", "Exploratory Data Analysis", "Multimodal AI")
             ),
             new ProjectSummary(
                     "synapse-iot",
                     "Synapse Tinkerer's Workshop",
-                    "Data & IoT",
-                    "UIU Lab Champion Project",
+                    "Embedded & IoT",
+                    "UIU Champion · Microprocessor & IoT",
                     "2024",
                     "Synapse — Sensor Telemetry & Microcontroller Hub",
                     List.of("Python", "Microcontrollers (C/C++)", "IoT Telemetry", "Circuit Design")

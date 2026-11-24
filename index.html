@@ -3,8 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Urmi Urma Snigdha · Dual-Mode Portfolio</title>
-  <meta name="description" content="Dual-mode portfolio of Urmi Urma Snigdha — CSE Graduate from United International University, UI/UX Designer, Brand Architect, and AI/ML Researcher in Dhaka." />
+  <title>Urmi Urma Snigdha · CSE Graduate, AI Engineer &amp; UI/UX Designer</title>
+  <meta name="description" content="Official dual-mode portfolio of Urmi Urma Snigdha — B.Sc. in Computer Science &amp; Engineering Graduate from United International University (UIU), AI/ML Researcher, Software Engineer, UI/UX Designer, and 1st Prize Winner UIU Moving Canvas 2026." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Urmi Urma Snigdha",
+    "alternateName": ["Urmi Snigdha", "Snigdha Urmi Urma", "Urmi Urma"],
+    "url": "https://urmi-village-repo.vercel.app/",
+    "image": "https://urmisnigdha.vercel.app/assets/photos/urmi-portrait.jpg",
+    "sameAs": [
+      "https://www.linkedin.com/in/urmi-urma-snigdha-4836362a1/",
+      "https://www.behance.net/urmisnigdha",
+      "https://github.com/snigdhaurmiurma",
+      "https://dribbble.com/urmisnigdha",
+      "https://www.freelancer.com.bd/u/urmisnigdha",
+      "https://www.upwork.com/freelancers/~011290c250c742513a"
+    ],
+    "jobTitle": "Computer Science & Engineering Graduate · UI/UX & Graphic Designer",
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "United International University (UIU)"
+    }
+  }
+  </script>
   <script>
     (function () {
       try {
@@ -325,13 +348,13 @@
     .village-sky { position: absolute; inset: 0; background: linear-gradient(180deg, #E5F0EC 0%, #F8EEDB 58%, #F3DEC0 100%); }
     .village-sky-twilight { position: absolute; inset: 0; background: linear-gradient(180deg, #4B5370 0%, #B87B77 48%, #F0C495 88%, #F4DFB9 100%); opacity: 0; pointer-events: none; }
     .village-sun { position: absolute; top: 13%; left: 18%; width: 90px; height: 90px; border-radius: 50%; background: radial-gradient(circle, #FFF7DC 0%, #F7D488 55%, rgba(247, 212, 136, 0) 75%); pointer-events: none; }
-    .layer-clouds { position: absolute; top: 7%; left: 0; width: 3200px; height: 220px; pointer-events: none; will-change: transform; }
+    .layer-clouds { position: absolute; top: 7%; left: 0; width: 4200px; height: 220px; pointer-events: none; will-change: transform; }
     .cloud { position: absolute; background: rgba(255, 253, 248, 0.82); border-radius: 999px; }
     .cloud::before, .cloud::after { content: ""; position: absolute; background: inherit; border-radius: 50%; }
     .cloud::before { width: 56%; height: 140%; top: -62%; left: 16%; }
     .cloud::after { width: 42%; height: 115%; top: -42%; right: 16%; }
-    .layer-hills { position: absolute; bottom: 150px; left: 0; width: 3400px; height: 280px; pointer-events: none; will-change: transform; }
-    .layer-world { position: absolute; inset: 0; width: 5200px; height: 100%; will-change: transform; }
+    .layer-hills { position: absolute; bottom: 150px; left: 0; width: 4600px; height: 280px; pointer-events: none; will-change: transform; }
+    .layer-world { position: absolute; inset: 0; width: 7400px; height: 100%; will-change: transform; }
     .village-ground { position: absolute; left: 0; right: 0; bottom: 0; height: 185px; background: linear-gradient(180deg, #98B58C 0%, #83A277 45%, #718F66 100%); border-top: 3px solid rgba(58, 45, 38, 0.22); }
     .village-path { position: absolute; left: 0; right: 0; bottom: 48px; height: 70px; background: repeating-linear-gradient(90deg, rgba(255, 253, 248, 0.25) 0 38px, transparent 38px 74px), linear-gradient(180deg, #E8DAC1 0%, #D9C6A5 100%); border-top: 2px dashed rgba(94, 71, 52, 0.28); border-bottom: 2px solid rgba(94, 71, 52, 0.2); }
     .village-prop { position: absolute; bottom: 136px; pointer-events: none; }
@@ -766,14 +789,198 @@
     @keyframes smokeRise { 0%, 100% { transform: translateY(0); opacity: 0.72; } 50% { transform: translateY(-8px); opacity: 0.35; } }
     @keyframes fireflyFloat { 0%, 100% { transform: translate(0, 0); opacity: 0.28; } 50% { transform: translate(12px, -18px); opacity: 1; } }
 
+    /* ================= PROFESSIONAL EXECUTIVE SECTIONS (MAIN SITE PARITY) ================= */
+    .fireflies-lane { width: 7260px; }
+    .nav-cv-btn {
+      padding: 6px 12px; border-radius: var(--radius-pill);
+      font-size: 0.84rem; font-weight: 600; color: var(--ink);
+      background: var(--paper-card); border: 1px solid var(--hairline-strong);
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+    .nav-cv-btn:hover { background: var(--paper-deep); border-color: var(--ink); }
+
+    .hero-grid { display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 40px; align-items: center; }
+    .hero-degree-line { font-size: 0.96rem; font-weight: 600; color: var(--ink); margin: -8px 0 14px; }
+    .hero-portrait-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .hero-portrait-frame {
+      width: 230px; height: 230px; border-radius: 50%; padding: 6px;
+      background: linear-gradient(135deg, var(--terracotta) 0%, var(--ochre) 52%, var(--sage) 100%);
+      box-shadow: var(--shadow-hover); position: relative;
+    }
+    .hero-portrait-img {
+      width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+      border: 4px solid var(--paper); display: block; background: var(--paper-deep);
+    }
+    .hero-portrait-caption {
+      font-size: 0.82rem; font-weight: 600; color: var(--sage);
+      background: var(--sage-soft); padding: 5px 13px; border-radius: var(--radius-pill);
+      border: 1px solid rgba(94, 125, 90, 0.24); text-align: center;
+    }
+    .social-strip { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .social-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 13px; border-radius: var(--radius-pill);
+      font-size: 0.82rem; font-weight: 600; color: var(--ink-soft);
+      background: var(--paper-card); border: 1px solid var(--hairline);
+      transition: transform 0.2s var(--ease-out), border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+    }
+    .social-chip:hover { color: var(--ink); border-color: var(--terracotta); background: var(--paper-deep); transform: translateY(-2px); }
+
+    .stats-strip {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;
+      margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--hairline);
+    }
+    .stat-card {
+      background: var(--paper-card); border: 1px solid var(--hairline);
+      border-radius: var(--radius-md); padding: 18px 20px; box-shadow: var(--shadow-soft);
+    }
+    .stat-val { font-family: var(--font-serif); font-size: 1.75rem; font-weight: 600; color: var(--terracotta); line-height: 1.1; margin-bottom: 4px; }
+    .stat-label { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.4; }
+
+    .about-photo-frame {
+      border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--hairline);
+      background: var(--paper-card); box-shadow: var(--shadow-soft); margin-bottom: 20px;
+    }
+    .about-photo-frame img { width: 100%; height: 290px; object-fit: cover; object-position: center top; display: block; }
+    .about-facts {
+      background: var(--paper-card); border: 1px solid var(--hairline); border-radius: var(--radius-md);
+      padding: 18px 20px; display: flex; flex-direction: column; gap: 10px;
+    }
+    .about-fact-row { display: flex; justify-content: space-between; gap: 12px; font-size: 0.88rem; border-bottom: 1px solid var(--hairline); padding-bottom: 8px; }
+    .about-fact-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .about-fact-key { color: var(--ink-muted); font-weight: 600; }
+    .about-fact-val { color: var(--ink); text-align: right; font-weight: 500; }
+
+    /* Skills Matrix */
+    .skills-matrix { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .skill-col-card {
+      background: var(--paper-card); border: 1px solid var(--hairline);
+      border-radius: var(--radius-lg); padding: 26px; box-shadow: var(--shadow-soft);
+    }
+    .skill-col-title { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 500; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--hairline); }
+    .skill-item { margin-bottom: 18px; }
+    .skill-item:last-child { margin-bottom: 0; }
+    .skill-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 6px; }
+    .skill-name { font-weight: 600; font-size: 0.94rem; color: var(--ink); }
+    .skill-level { font-size: 0.78rem; font-weight: 600; color: var(--terracotta); font-variant-numeric: tabular-nums; }
+    .skill-bar { height: 6px; border-radius: 999px; background: var(--paper-deep); overflow: hidden; margin-bottom: 8px; }
+    .skill-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--terracotta), var(--ochre)); }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+    /* Project Card Enhancements */
+    .work-card-impact {
+      font-size: 0.8rem; font-weight: 600; color: var(--sage);
+      background: var(--sage-soft); padding: 5px 10px; border-radius: var(--radius-sm);
+      margin-bottom: 12px; line-height: 1.4;
+    }
+    .work-card-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 4px; }
+    .work-card-ext { font-size: 0.82rem; font-weight: 600; color: var(--ink-muted); padding: 4px 10px; border-radius: var(--radius-pill); border: 1px solid var(--hairline); }
+    .work-card-ext:hover { color: var(--ink); border-color: var(--ink); }
+    .work-behance-cta { text-align: center; margin-top: 32px; }
+
+    /* Experience, Awards & Education */
+    .timeline-bullets { margin: 8px 0 0; padding-left: 18px; color: var(--ink-soft); font-size: 0.92rem; line-height: 1.62; }
+    .timeline-bullets li { margin-bottom: 5px; }
+    .awards-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-bottom: 36px; }
+    .award-card {
+      background: var(--paper-card); border: 1px solid var(--hairline); border-radius: var(--radius-md);
+      padding: 22px; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; gap: 8px;
+    }
+    .award-card--featured { grid-column: span 2; background: linear-gradient(135deg, var(--paper-card) 0%, var(--terracotta-soft) 100%); }
+    .award-badge-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .award-badge { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--terracotta); background: var(--paper); padding: 4px 10px; border-radius: var(--radius-pill); border: 1px solid var(--hairline); }
+    .award-date { font-size: 0.8rem; font-weight: 600; color: var(--ink-muted); }
+    .award-title { font-family: var(--font-serif); font-size: 1.18rem; font-weight: 500; margin: 2px 0 0; }
+    .award-event { font-size: 0.85rem; font-weight: 600; color: var(--sage); margin: 0; }
+    .award-desc { font-size: 0.9rem; color: var(--ink-soft); margin: 0; line-height: 1.58; }
+
+    .edu-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .edu-card {
+      background: var(--paper-card); border: 1px solid var(--hairline); border-radius: var(--radius-md);
+      padding: 22px; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; gap: 6px;
+    }
+    .edu-result { font-size: 0.8rem; font-weight: 700; color: var(--sage); background: var(--sage-soft); padding: 4px 10px; border-radius: var(--radius-pill); align-self: flex-start; margin-bottom: 4px; }
+    .edu-degree { font-family: var(--font-serif); font-size: 1.12rem; font-weight: 500; margin: 0; }
+    .edu-inst { font-size: 0.86rem; font-weight: 600; color: var(--terracotta); margin: 0; }
+    .edu-period { font-size: 0.8rem; color: var(--ink-muted); }
+    .edu-details { font-size: 0.86rem; color: var(--ink-soft); margin: 6px 0 0; line-height: 1.55; }
+
+    /* Full 10-Certifications Grid */
+    .certs-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .cert-card {
+      background: var(--paper-card); border: 1px solid var(--hairline); border-radius: var(--radius-md);
+      padding: 20px 22px; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; justify-content: space-between; gap: 10px;
+    }
+    .cert-top { display: flex; justify-content: space-between; gap: 8px; align-items: center; font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--sage); }
+    .cert-title { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 500; margin: 4px 0 6px; }
+    .cert-desc { font-size: 0.87rem; color: var(--ink-soft); margin: 0 0 10px; line-height: 1.54; }
+    .cert-foot { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--terracotta); padding-top: 8px; border-top: 1px solid var(--hairline); }
+
+    /* Searchable Engineering Notes & Featured Article */
+    .notes-search-bar { display: flex; gap: 10px; margin-bottom: 16px; }
+    .notes-search-input {
+      flex: 1; padding: 11px 16px; border-radius: var(--radius-pill);
+      border: 1px solid var(--hairline-strong); background: var(--paper-card);
+      color: var(--ink); font: inherit; font-size: 0.93rem;
+    }
+    .notes-search-input::placeholder { color: var(--ink-muted); }
+    .notes-featured {
+      background: linear-gradient(135deg, var(--paper-card) 0%, var(--paper-deep) 100%);
+      border: 1px solid var(--hairline-strong); border-radius: var(--radius-lg);
+      padding: 28px 30px; margin: 18px 0 24px; box-shadow: var(--shadow-soft);
+      cursor: pointer; transition: transform 0.28s var(--ease-out), box-shadow 0.28s var(--ease-out);
+    }
+    .notes-featured:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    .notes-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .note-card {
+      background: var(--paper-card); border: 1px solid var(--hairline); border-radius: var(--radius-md);
+      padding: 22px; box-shadow: var(--shadow-soft); cursor: pointer;
+      display: flex; flex-direction: column; justify-content: space-between;
+      transition: transform 0.25s var(--ease-out), box-shadow 0.25s ease;
+    }
+    .note-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .article-body h4 { font-family: var(--font-serif); font-size: 1.08rem; margin: 20px 0 8px; color: var(--ink); }
+    .article-body p { margin: 0 0 12px; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.7; }
+    .article-body ul { margin: 0 0 14px; padding-left: 20px; color: var(--ink-soft); font-size: 0.94rem; line-height: 1.68; }
+    .article-body li { margin-bottom: 6px; }
+    .article-body pre {
+      background: var(--paper-deep); border: 1px solid var(--hairline); border-radius: var(--radius-sm);
+      padding: 14px 16px; overflow-x: auto; font-size: 0.84rem; line-height: 1.55; margin: 12px 0 16px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; color: var(--ink);
+    }
+    .article-body code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.88em; }
+
+    /* Verified Profiles in Contact */
+    .profiles-box { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--hairline); }
+    .profiles-label { font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 10px; }
+    .profiles-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+    .profile-pill {
+      font-size: 0.8rem; font-weight: 600; padding: 6px 12px; border-radius: var(--radius-pill);
+      background: var(--paper-card); border: 1px solid var(--hairline); color: var(--ink-soft);
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .profile-pill:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+    /* CV Modal */
+    .cv-modal-sec { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--hairline); }
+    .cv-modal-sec h3 { font-family: var(--font-serif); font-size: 1.08rem; margin: 0 0 10px; color: var(--terracotta); }
+    .cv-modal-item { margin-bottom: 12px; }
+    .cv-modal-item strong { color: var(--ink); font-size: 0.94rem; }
+    .cv-modal-item span { display: block; font-size: 0.82rem; color: var(--ink-muted); }
+    .cv-modal-item p { margin: 4px 0 0; font-size: 0.88rem; color: var(--ink-soft); line-height: 1.55; }
+
     @media (max-width: 840px) {
-      .path-grid, .work-grid, .about-layout, .contact-grid, .studio-grid, .goodbye-lamp-section { grid-template-columns: 1fr; }
+      .hero-grid, .path-grid, .work-grid, .about-layout, .contact-grid, .studio-grid, .goodbye-lamp-section, .skills-matrix, .awards-grid, .edu-grid, .certs-grid, .notes-grid { grid-template-columns: 1fr; }
+      .award-card--featured { grid-column: span 1; }
+      .stats-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-portrait-wrap { order: -1; }
+      .hero-portrait-frame { width: 176px; height: 176px; }
       .goodbye-lamp-section { padding: 24px 20px; text-align: center; }
       .goodbye-actions { justify-content: center; }
       .beyond-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .timeline-row { grid-template-columns: 1fr; gap: 6px; }
       .read-nav a:not(.nav-village-pill) { display: none; }
-      .read-nav { gap: 10px; }
+      .read-nav { gap: 8px; }
     }
     @media (prefers-reduced-motion: reduce) {
       .urmi-actor, .lamp-room-glow, .lamp-intro, .goodbye-veil { transition-duration: 0.2s !important; }
@@ -859,11 +1066,14 @@
       <div class="read-header-inner">
         <button type="button" class="read-brand" data-switch-view="entry">urmi.design</button>
         <nav class="read-nav">
-          <a href="#work">Work</a>
           <a href="#about">About</a>
-          <a href="#milestones">Milestones</a>
+          <a href="#skills">Skills</a>
+          <a href="#work">Work</a>
+          <a href="#experience">Experience</a>
+          <a href="#awards">Awards</a>
           <a href="#notes">Notes</a>
           <a href="#contact">Contact</a>
+          <button type="button" class="nav-cv-btn" data-open-cv>📄 CV</button>
           <button type="button" class="theme-toggle" data-theme-toggle="standard" aria-label="Toggle dark mode" aria-pressed="false">🌙 Dark</button>
           <button type="button" class="nav-village-pill" data-switch-view="village">Village mode ↗</button>
         </nav>
@@ -871,83 +1081,139 @@
     </header>
     <main class="read-container">
       <section class="read-hero">
-        <p class="hero-eyebrow">CSE Graduate · UI/UX Designer &amp; Software Engineer</p>
-        <h1 class="hero-title">Hello, I'm Urmi.</h1>
-        <p class="hero-lead">I bridge human-centered design aesthetics with analytical computer science precision — crafting award-winning brand systems, intuitive interfaces, and AI-driven research at United International University.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#work">View my Work ↓</a>
-          <button type="button" class="btn btn-terracotta" data-switch-view="village">Explore Village Mode →</button>
-          <button type="button" class="btn btn-secondary" data-copy-email>Copy Email</button>
+        <div class="hero-grid">
+          <div>
+            <p class="hero-eyebrow">CSE Graduate · Available Immediately for Full-Time &amp; Remote Roles</p>
+            <h1 class="hero-title">Hello, I'm Urmi Urma Snigdha.</h1>
+            <p class="hero-degree-line">B.Sc. in Computer Science &amp; Engineering · United International University (UIU) · Dhaka</p>
+            <p class="hero-lead">Engineering robust Machine Learning, Digital Image Processing, Data Mining, and RAG pipelines alongside production-grade UI/UX design systems and award-winning brand architecture.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#work">Explore Selected Works ↓</a>
+              <button type="button" class="btn btn-terracotta" data-open-cv>📄 View &amp; Download CV</button>
+              <button type="button" class="btn btn-secondary" data-switch-view="village">Explore Village Mode →</button>
+              <button type="button" class="btn btn-secondary" data-copy-email>Copy Email</button>
+            </div>
+            <div class="social-strip" id="hero-social-strip"></div>
+          </div>
+          <div class="hero-portrait-wrap">
+            <div class="hero-portrait-frame">
+              <img class="hero-portrait-img" src="https://urmisnigdha.vercel.app/assets/photos/urmi-portrait.jpg" alt="Urmi Urma Snigdha portrait" loading="eager" onerror="this.style.display='none'" />
+            </div>
+            <span class="hero-portrait-caption">1st Prize · UIU Moving Canvas 2026</span>
+          </div>
+        </div>
+        <div class="stats-strip" id="stats-strip"></div>
+      </section>
+
+      <section class="read-section" id="about">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">The intersection of AI, creative vision &amp; engineering</h2>
+            <p class="section-sub">Bridging machine learning architectures, intuitive UX workflows, and impactful visual branding.</p>
+          </div>
+        </div>
+        <div class="about-layout">
+          <div class="about-prose" id="about-prose"></div>
+          <aside>
+            <div class="about-photo-frame">
+              <img src="https://urmisnigdha.vercel.app/assets/photos/urmi-intro.jpg" alt="Urmi Urma Snigdha" loading="lazy" onerror="this.parentElement.style.display='none'" />
+            </div>
+            <div class="about-facts">
+              <div class="about-fact-row"><span class="about-fact-key">Degree</span><span class="about-fact-val">B.Sc. in CSE (Graduated)</span></div>
+              <div class="about-fact-row"><span class="about-fact-key">University</span><span class="about-fact-val">United International University</span></div>
+              <div class="about-fact-row"><span class="about-fact-key">Location</span><span class="about-fact-val">Dhaka, Bangladesh</span></div>
+              <div class="about-fact-row"><span class="about-fact-key">Forums</span><span class="about-fact-val">UIU HR Forum · UIU App Forum</span></div>
+              <div class="about-fact-row"><span class="about-fact-key">Status</span><span class="about-fact-val">Open to Full-Time &amp; Remote</span></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="read-section" id="skills">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">Design mastery &amp; engineering stack</h2>
+            <p class="section-sub">Comprehensive capabilities spanning AI research, full-stack software development, and visual design.</p>
+          </div>
+        </div>
+        <div class="skills-matrix">
+          <div class="skill-col-card">
+            <h3 class="skill-col-title">🎨 Design &amp; Creative Direction</h3>
+            <div id="skills-design"></div>
+          </div>
+          <div class="skill-col-card">
+            <h3 class="skill-col-title">💻 AI, Software &amp; Data Engineering</h3>
+            <div id="skills-technical"></div>
+          </div>
         </div>
       </section>
 
       <section class="read-section" id="work">
         <div class="section-head">
           <div>
-            <h2 class="section-title">My work</h2>
-            <p class="section-sub">Click any project to read the challenge, craft, and outcome.</p>
+            <h2 class="section-title">Featured projects &amp; research case studies</h2>
+            <p class="section-sub">Click any project for the full challenge, engineering solution, and measurable impact.</p>
           </div>
           <div class="filter-row" id="work-filters"></div>
         </div>
         <div class="work-grid" id="work-grid"></div>
-      </section>
-
-      <section class="read-section" id="about">
-        <div class="section-head"><h2 class="section-title">A little about me</h2></div>
-        <div class="about-layout">
-          <div class="about-prose" id="about-prose"></div>
-          <aside>
-            <div class="about-sidebar-block"><h3>What I do</h3><p class="dot-list" id="what-i-do"></p></div>
-            <div class="about-sidebar-block"><h3>Tools &amp; stack</h3><div class="tool-pills" id="tools-list"></div></div>
-          </aside>
+        <div class="work-behance-cta">
+          <a href="https://www.behance.net/urmisnigdha/projects" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">🎨 Explore All 20+ Works on Behance ↗</a>
         </div>
       </section>
 
-      <section class="read-section" id="milestones">
+      <section class="read-section" id="experience">
         <div class="section-head">
           <div>
-            <h2 class="section-title">Honors, milestones &amp; education</h2>
-            <p class="section-sub">Global design recognition, UIU lab championships, and academic excellence.</p>
+            <h2 class="section-title">Professional experience</h2>
+            <p class="section-sub">Client design leadership, international remote data QA, and academic mentoring.</p>
           </div>
         </div>
-        <div id="timeline-list"></div>
+        <div id="experience-list"></div>
+      </section>
+
+      <section class="read-section" id="awards">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">Honors, competition wins &amp; education</h2>
+            <p class="section-sub">Global design recognition, UIU lab championships, and verified GPA 5.00 / 5.00 academic excellence.</p>
+          </div>
+        </div>
+        <div class="awards-grid" id="awards-grid"></div>
+        <div class="edu-grid" id="education-grid"></div>
       </section>
 
       <section class="read-section" id="credentials">
         <div class="section-head">
           <div>
-            <h2 class="section-title">Credentials &amp; certifications</h2>
-            <p class="section-sub">Verified training from Stanford Online, Google, Meta, and Grameenphone Academy.</p>
-          </div>
-          <div class="carousel-controls">
-            <span class="carousel-counter" id="cert-counter">1/6</span>
-            <button type="button" class="carousel-btn" id="cert-prev">←</button>
-            <button type="button" class="carousel-btn" id="cert-next">→</button>
+            <h2 class="section-title">Verified certifications &amp; accreditations</h2>
+            <p class="section-sub">10 verified credentials from Grameenphone Academy, Google, Stanford Online / DeepLearning.AI, Meta, and LinkedIn.</p>
           </div>
         </div>
-        <div class="carousel-track" id="cert-track"></div>
+        <div class="certs-grid" id="certs-grid"></div>
       </section>
 
       <section class="read-section" id="notes">
         <div class="section-head">
           <div>
-            <h2 class="section-title">Notes on AI &amp; design</h2>
-            <p class="section-sub">Deep dives across brand architecture, Transformers, RAG, and Green AI.</p>
+            <h2 class="section-title">Engineering &amp; research notes</h2>
+            <p class="section-sub">13 technical deep dives across Generative AI, RAG, Transformers, Computer Vision, Spring Boot, and Brand Architecture.</p>
           </div>
-          <div class="carousel-controls">
-            <span class="carousel-counter" id="notes-counter">1/6</span>
-            <button type="button" class="carousel-btn" id="notes-prev">←</button>
-            <button type="button" class="carousel-btn" id="notes-next">→</button>
-          </div>
+          <a href="https://urmisnigdha.vercel.app/blog.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:8px 15px;font-size:0.84rem">Open Full Blog Archive ↗</a>
         </div>
-        <div class="carousel-track" id="notes-track"></div>
+        <div class="notes-search-bar">
+          <input type="search" id="notes-search-input" class="notes-search-input" placeholder="Search 13 articles by keyword (e.g. Transformers, RAG, YOLO, PyTorch, Spring Boot, Livery)..." aria-label="Search technical articles" />
+        </div>
+        <div class="filter-row" id="notes-filters" style="margin-bottom:14px"></div>
+        <div id="notes-featured-wrap"></div>
+        <div class="notes-grid" id="notes-grid"></div>
       </section>
 
       <section class="read-section" id="beyond">
         <div class="section-head">
           <div>
-            <h2 class="section-title">Beyond interfaces</h2>
-            <p class="section-sub">Fine art, photography, culinary plating, and community animal rescue in Dhaka.</p>
+            <h2 class="section-title">Beyond interfaces: passions &amp; art</h2>
+            <p class="section-sub">Fine art, photography, culinary plating, and community animal welfare advocacy in Dhaka since 2021.</p>
           </div>
         </div>
         <div class="beyond-grid" id="beyond-grid"></div>
@@ -956,30 +1222,44 @@
       <section class="read-section" id="contact" style="border-bottom:none">
         <div class="contact-grid">
           <div>
-            <h2 class="section-title">Let's talk.</h2>
-            <p class="section-sub" style="max-width:44ch;margin-top:10px">Available for UI/UX design roles, brand identity commissions, AI research collaborations, and full-time engineering opportunities.</p>
+            <h2 class="section-title">Let's build meaningful experiences together.</h2>
+            <p class="section-sub" style="max-width:46ch;margin-top:10px">Available immediately for full-time software engineering, AI/ML &amp; data science, UI/UX product design, and brand consulting roles — locally in Dhaka or remotely worldwide.</p>
             <div class="contact-info-list">
               <div class="contact-item">
                 <div><span class="contact-item-label">Direct Email</span><span class="contact-item-val">urmiurmasnigdha@gmail.com</span></div>
                 <button type="button" class="contact-action-chip" data-copy-email>Copy</button>
               </div>
               <div class="contact-item">
-                <div><span class="contact-item-label">LinkedIn</span><span class="contact-item-val">Urmi Urma Snigdha</span></div>
+                <div><span class="contact-item-label">LinkedIn Messaging</span><span class="contact-item-val">Urmi Urma Snigdha · Professional Inquiries</span></div>
                 <a class="contact-action-chip" href="https://www.linkedin.com/in/urmi-urma-snigdha-4836362a1/" target="_blank" rel="noopener noreferrer">Message ↗</a>
               </div>
               <div class="contact-item">
-                <div><span class="contact-item-label">GitHub</span><span class="contact-item-val">github.com/snigdhaurmiurma</span></div>
-                <a class="contact-action-chip" href="https://github.com/snigdhaurmiurma" target="_blank" rel="noopener noreferrer">Open ↗</a>
+                <div><span class="contact-item-label">Official Curriculum Vitae</span><span class="contact-item-val">Full ATS CV &amp; PDF Download</span></div>
+                <a class="contact-action-chip" href="https://urmisnigdha.vercel.app/cv.html?download=true" target="_blank" rel="noopener noreferrer">PDF ↗</a>
               </div>
               <div class="contact-item">
-                <div><span class="contact-item-label">Local Time</span><span class="contact-item-val" id="dhaka-time">Dhaka, Bangladesh (GMT+6)</span></div>
+                <div><span class="contact-item-label">Location &amp; Local Time</span><span class="contact-item-val" id="dhaka-time">Dhaka, Bangladesh (GMT+6)</span></div>
               </div>
+            </div>
+            <div class="profiles-box">
+              <div class="profiles-label">Verified Online Profiles</div>
+              <div class="profiles-wrap" id="verified-profiles"></div>
             </div>
           </div>
           <form class="contact-form" id="contact-form">
-            <div class="form-field"><label>Your Name</label><input name="name" type="text" placeholder="Jane Doe" required /></div>
-            <div class="form-field"><label>Your Email</label><input name="email" type="email" placeholder="jane@company.com" required /></div>
-            <div class="form-field"><label>Message</label><textarea name="message" placeholder="Tell me about what you're building..." required></textarea></div>
+            <div class="form-field"><label for="cf-name">Your Name</label><input id="cf-name" name="name" type="text" placeholder="Jane Doe" required /></div>
+            <div class="form-field"><label for="cf-email">Your Email</label><input id="cf-email" name="email" type="email" placeholder="jane@company.com" required /></div>
+            <div class="form-field">
+              <label for="cf-subject">Project Type / Inquiry</label>
+              <select id="cf-subject" name="subject">
+                <option value="Full-Time / Software Engineering Opportunity">Full-Time / Software Engineering Opportunity</option>
+                <option value="AI / Machine Learning & Data Science">AI / Machine Learning &amp; Data Science</option>
+                <option value="UI/UX & Product Design">UI/UX &amp; Product Design</option>
+                <option value="Brand Identity & Graphic Design">Brand Identity &amp; Graphic Design</option>
+                <option value="General Inquiry">General Inquiry</option>
+              </select>
+            </div>
+            <div class="form-field"><label for="cf-message">Message</label><textarea id="cf-message" name="message" placeholder="Tell me about your project, team, or opportunity..." required></textarea></div>
             <button type="submit" class="btn btn-primary">Send message →</button>
           </form>
         </div>
@@ -1016,6 +1296,10 @@
       <footer class="read-footer">
         <span>© 2026 Urmi Urma Snigdha · Crafted in Dhaka</span>
         <div class="footer-links">
+          <button type="button" data-open-cv>📄 Curriculum Vitae</button>
+          <a href="https://github.com/snigdhaurmiurma" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.behance.net/urmisnigdha" target="_blank" rel="noopener noreferrer">Behance</a>
+          <a href="https://www.linkedin.com/in/urmi-urma-snigdha-4836362a1/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <button type="button" data-replay-intro>💡 Replay lamp</button>
           <button type="button" data-switch-view="entry">Switch path ↺</button>
         </div>
@@ -1270,6 +1554,71 @@
         <rect x="194" y="160" width="46" height="92" rx="6" fill="#8C593D" stroke="${INK}" stroke-width="2.2"/>
         <circle cx="217" cy="188" r="11" fill="#FFE6A3" stroke="${INK}" stroke-width="1.8"/>
       `, "shop-svg"),
+      vault: () => svgWrap("0 0 320 280", `
+        <ellipse cx="160" cy="258" rx="126" ry="13" fill="rgba(58,45,38,0.1)"/>
+        <polygon points="50,126 160,54 270,126" fill="#465D6E" stroke="${INK}" stroke-width="2.4" stroke-linejoin="round"/>
+        <circle cx="160" cy="96" r="15" fill="#F2CA7B" stroke="${INK}" stroke-width="2"/>
+        <path d="M154 96 L158 100 L167 91" stroke="${INK}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="64" y="126" width="192" height="126" rx="5" fill="#FBF6EA" stroke="${INK}" stroke-width="2.4"/>
+        <rect x="74" y="132" width="14" height="120" fill="#E6DCCB" stroke="${INK}" stroke-width="1.8"/>
+        <rect x="232" y="132" width="14" height="120" fill="#E6DCCB" stroke="${INK}" stroke-width="1.8"/>
+        <g class="shop-window">
+          <rect x="100" y="156" width="44" height="54" rx="6" fill="#FFE8A8" stroke="${INK}" stroke-width="2.1"/>
+          <path d="M108 194 L118 182 L126 188 L136 172" stroke="#5E7D5A" stroke-width="2.2" stroke-linecap="round"/>
+          <rect x="176" y="156" width="44" height="54" rx="6" fill="#FFE8A8" stroke="${INK}" stroke-width="2.1"/>
+          <rect x="188" y="176" width="20" height="16" rx="3" fill="#465D6E" stroke="${INK}" stroke-width="1.5"/>
+          <path d="M193 176 V171 C193 166, 203 166, 203 171 V176" stroke="${INK}" stroke-width="1.7"/>
+        </g>
+        <rect x="148" y="182" width="24" height="70" rx="12" fill="#465D6E" stroke="${INK}" stroke-width="2.1"/>
+      `, "shop-svg"),
+      microscope: () => svgWrap("0 0 320 280", `
+        <ellipse cx="160" cy="258" rx="126" ry="13" fill="rgba(58,45,38,0.1)"/>
+        <path d="M68 128 C68 62, 252 62, 252 128 Z" fill="#63877F" stroke="${INK}" stroke-width="2.4"/>
+        <circle cx="160" cy="94" r="18" fill="#E3F2EE" stroke="${INK}" stroke-width="2"/>
+        <circle cx="155" cy="92" r="5" fill="#C2654A" opacity="0.8"/>
+        <circle cx="166" cy="97" r="4" fill="#5E7D5A" opacity="0.85"/>
+        <rect x="64" y="128" width="192" height="124" rx="6" fill="#FAF7EF" stroke="${INK}" stroke-width="2.4"/>
+        <g class="shop-window">
+          <rect x="82" y="156" width="88" height="62" rx="8" fill="#FFE8AA" stroke="${INK}" stroke-width="2.2"/>
+          <circle cx="110" cy="187" r="14" fill="#CFE2D8" stroke="${INK}" stroke-width="1.6"/>
+          <circle cx="110" cy="187" r="6" fill="#C2654A"/>
+          <circle cx="144" cy="184" r="11" fill="#F2CA7B" stroke="${INK}" stroke-width="1.6"/>
+          <circle cx="144" cy="184" r="4" fill="#5E7D5A"/>
+        </g>
+        <rect x="186" y="158" width="52" height="94" rx="6" fill="#63877F" stroke="${INK}" stroke-width="2.2"/>
+        <rect x="197" y="172" width="30" height="36" rx="4" fill="#FFE8AA" stroke="${INK}" stroke-width="1.7"/>
+      `, "shop-svg"),
+      exchange: () => svgWrap("0 0 320 280", `
+        <ellipse cx="160" cy="258" rx="126" ry="13" fill="rgba(58,45,38,0.1)"/>
+        <rect x="60" y="88" width="200" height="164" rx="7" fill="#FDF6E8" stroke="${INK}" stroke-width="2.4"/>
+        <rect x="52" y="72" width="216" height="22" rx="6" fill="#B87A3E" stroke="${INK}" stroke-width="2.2"/>
+        <rect x="96" y="48" width="128" height="28" rx="6" fill="#FFFDF8" stroke="${INK}" stroke-width="2"/>
+        <text x="160" y="67" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" font-weight="600" fill="${INK}">MARKET PULSE</text>
+        <g class="shop-window">
+          <rect x="78" y="114" width="164" height="58" rx="7" fill="#FFE7A6" stroke="${INK}" stroke-width="2.2"/>
+          <rect x="92" y="144" width="14" height="20" rx="2" fill="#5E7D5A"/>
+          <rect x="114" y="134" width="14" height="30" rx="2" fill="#D9A04E"/>
+          <rect x="136" y="124" width="14" height="40" rx="2" fill="#C2654A"/>
+          <path d="M164 156 L182 142 L200 148 L226 124" stroke="#497387" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <rect x="136" y="186" width="48" height="66" rx="6" fill="#8C593D" stroke="${INK}" stroke-width="2.2"/>
+        <rect x="82" y="190" width="40" height="44" rx="5" fill="#FFE7A6" stroke="${INK}" stroke-width="1.9" class="shop-window"/>
+        <rect x="198" y="190" width="40" height="44" rx="5" fill="#FFE7A6" stroke="${INK}" stroke-width="1.9" class="shop-window"/>
+      `, "shop-svg"),
+      archive: () => svgWrap("0 0 320 280", `
+        <ellipse cx="160" cy="258" rx="126" ry="13" fill="rgba(58,45,38,0.1)"/>
+        <path d="M48 128 L160 56 L272 128 Z" fill="#5B5D7A" stroke="${INK}" stroke-width="2.4" stroke-linejoin="round"/>
+        <circle cx="160" cy="98" r="15" fill="#FFE6A3" stroke="${INK}" stroke-width="2" class="shop-window"/>
+        <rect x="64" y="128" width="192" height="124" rx="6" fill="#FAF5EA" stroke="${INK}" stroke-width="2.4"/>
+        <g class="shop-window">
+          <rect x="80" y="156" width="52" height="60" rx="6" fill="#FFE7A6" stroke="${INK}" stroke-width="2.1"/>
+          <path d="M90 172 H122 M90 182 H118 M90 192 H122 M90 202 H112" stroke="${INK}" stroke-width="1.7" stroke-linecap="round"/>
+          <rect x="188" y="156" width="52" height="60" rx="6" fill="#FFE7A6" stroke="${INK}" stroke-width="2.1"/>
+          <circle cx="212" cy="182" r="10" fill="none" stroke="#5B5D7A" stroke-width="2.2"/>
+          <line x1="219" y1="189" x2="228" y2="198" stroke="#5B5D7A" stroke-width="2.4" stroke-linecap="round"/>
+        </g>
+        <path d="M142 252 V186 C142 172, 178 172, 178 186 V252 Z" fill="#5B5D7A" stroke="${INK}" stroke-width="2.2"/>
+      `, "shop-svg"),
       home: () => svgWrap("0 0 360 290", `
         <ellipse cx="180" cy="268" rx="146" ry="14" fill="rgba(58,45,38,0.11)"/>
         <rect x="234" y="54" width="24" height="54" rx="3" fill="#B86B43" stroke="${INK}" stroke-width="2.2"/>
@@ -1440,55 +1789,580 @@
 
     const DATA = {
       profile: {
+        name: "Urmi Urma Snigdha",
+        title: "Computer Science & Engineering Graduate · UI/UX & Graphic Designer",
+        institution: "United International University (UIU), Dhaka",
+        degree: "B.Sc. in Computer Science & Engineering",
         email: "urmiurmasnigdha@gmail.com",
         linkedin: "https://www.linkedin.com/in/urmi-urma-snigdha-4836362a1/",
-        heroLead: "I bridge human-centered design aesthetics with analytical computer science precision — crafting award-winning brand systems, intuitive interfaces, and AI-driven engineering solutions.",
+        cvUrl: "https://urmisnigdha.vercel.app/cv.html",
+        cvDownloadUrl: "https://urmisnigdha.vercel.app/cv.html?download=true",
+        heroLead: "Computer Science & Engineering graduate from United International University (UIU). Engineering robust Machine Learning, Digital Image Processing, Data Mining, and RAG pipelines alongside production-grade UI/UX design systems and award-winning brand architecture.",
         aboutParagraphs: [
-          "I'm a Computer Science & Engineering graduate from United International University in Dhaka, driven to combine technology, visual craft, and analytical thinking into meaningful digital experiences.",
-          "On the engineering side, I dive deep into AI, Machine Learning, NLP, and RAG architectures — authoring two concurrent research papers in multilingual NLP and green AI.",
-          "On the design side, I create brand systems, vector logomarks, print architecture, and responsive UI/UX prototypes in Figma, Illustrator, and Photoshop.",
-          "Away from the screen, you'll find me painting textured acrylic nebulas, sketching graphite portraits, photographing Dhaka's botanical palettes, experimenting with culinary plating, or volunteering for community stray animal rescue since 2021."
+          "I am a Computer Science & Engineering graduate from United International University (UIU) in Dhaka, driven by the mission to combine robust software engineering, analytical problem-solving, and human-centered visual design.",
+          "With strong foundations across core computer science, I specialize in Machine Learning, Digital Image Processing, Data Mining, and Natural Language Processing. I focus on building practical, deterministic software pipelines — from computer vision cellular segmentation and predictive churn mining to distributed FinTech ledgers and vector Retrieval-Augmented Generation (RAG) architectures — alongside authoring two concurrent research papers in multilingual NLP and Green AI.",
+          "Complementing my engineering background, I bring deep hands-on proficiency in UI/UX and graphic design using Figma, Adobe Illustrator, and Photoshop. I design scalable design systems, interactive prototypes, official vehicle fleet liveries, and production-ready brand identities, ensuring end-to-end digital solutions are both technically resilient and visually compelling.",
+          "Having completed my B.Sc. in CSE, I am available immediately for full-time software engineering, AI/ML & data science, and UI/UX product design roles — locally in Dhaka or remotely worldwide."
         ],
-        whatIDo: ["UI/UX & Product Design", "Brand & Logo Architecture", "Design Systems & Prototyping", "Machine Learning & NLP", "Multilingual LLMs & RAG", "Computer Vision & Edge AI", "Print & Vehicle Livery", "Full-Stack Web Engineering", "Embedded IoT Telemetry"],
-        tools: ["Figma", "Adobe Illustrator", "Adobe Photoshop", "Python", "PyTorch", "Transformers", "React & Next.js", "Java & Spring Boot", "C / C++", "PostgreSQL", "Docker"]
+        stats: [
+          { value: "20+", label: "Client Projects Delivered on Behance & Freelancer" },
+          { value: "1st Prize", label: "UIU Moving Canvas (BDT 50,000) & Global Champion" },
+          { value: "2 Papers", label: "Research in Multilingual NLP & Green AI Safety" },
+          { value: "10+", label: "Verified Accreditations (Google, Stanford, Meta, GP)" }
+        ],
+        heroSocials: [
+          { name: "GitHub", url: "https://github.com/snigdhaurmiurma" },
+          { name: "LinkedIn", url: "https://www.linkedin.com/in/urmi-urma-snigdha-4836362a1/" },
+          { name: "Behance", url: "https://www.behance.net/urmisnigdha" },
+          { name: "Dribbble", url: "https://dribbble.com/urmisnigdha" },
+          { name: "Freelancer", url: "https://www.freelancer.com.bd/u/urmisnigdha" },
+          { name: "Upwork", url: "https://www.upwork.com/freelancers/~011290c250c742513a" }
+        ],
+        socialLinks: [
+          { name: "GitHub", url: "https://github.com/snigdhaurmiurma" },
+          { name: "LinkedIn", url: "https://www.linkedin.com/in/urmi-urma-snigdha-4836362a1/" },
+          { name: "Behance", url: "https://www.behance.net/urmisnigdha" },
+          { name: "Dribbble", url: "https://dribbble.com/urmisnigdha" },
+          { name: "Freelancer", url: "https://www.freelancer.com.bd/u/urmisnigdha" },
+          { name: "Upwork", url: "https://www.upwork.com/freelancers/~011290c250c742513a" },
+          { name: "Fiverr", url: "https://www.fiverr.com/urmisnigdha/buying?source=avatar_menu_profile" },
+          { name: "Pinterest", url: "https://www.pinterest.com/urmiurma/" },
+          { name: "YouTube", url: "https://www.youtube.com/@SnigdhasGallery" },
+          { name: "Instagram", url: "https://www.instagram.com/_urmi_snigdha_?igsh=aDM1OHpwYjFvMW05" },
+          { name: "Facebook", url: "https://www.facebook.com/urmiurmasnigdha.snigdha?mibextid=LQQJ4d" }
+        ]
+      },
+      skills: {
+        design: [
+          { name: "Adobe Illustrator", level: "Expert", percent: "95%", tags: ["Flyers", "Brochures", "Vector Marks", "Print Dielines", "Brand Identity"] },
+          { name: "Adobe Photoshop", level: "Expert", percent: "95%", tags: ["Compositing", "Photo Retouching", "Visual Assets", "Digital Mockups"] },
+          { name: "Brand & Logo Architecture", level: "Expert", percent: "92%", tags: ["Logomarks", "Typography Systems", "Color Palettes", "Stationery Sets"] },
+          { name: "Figma (UI/UX & Prototyping)", level: "Advanced", percent: "90%", tags: ["Wireframing", "Interactive Prototypes", "Auto-Layout", "Design Systems"] },
+          { name: "Visual Materials & Publishing", level: "Advanced", percent: "88%", tags: ["Business Cards", "Editorial Layouts", "Posters", "Calendars"] }
+        ],
+        technical: [
+          { name: "Python & Machine Learning", level: "Advanced", percent: "90%", tags: ["PyTorch", "TensorFlow", "Scikit-Learn", "Pandas", "CodeCarbon"] },
+          { name: "NLP & Multilingual LLMs", level: "Advanced", percent: "88%", tags: ["Transformers", "RAG", "LaBSE", "XLM-R", "Prompt Engineering"] },
+          { name: "Frontend & Web Technologies", level: "Advanced", percent: "88%", tags: ["React", "Next.js", "JavaScript (ES6+)", "HTML5 / CSS3", "Node.js"] },
+          { name: "C / C++ & Embedded Systems", level: "Advanced", percent: "85%", tags: ["Algorithms", "Data Structures", "Microcontrollers", "Hardware Telemetry"] },
+          { name: "Java & Backend Engineering", level: "Advanced", percent: "85%", tags: ["OOP", "Spring Boot", "Software Design Patterns", "REST APIs"] },
+          { name: "Computer Vision & Edge AI", level: "Intermediate", percent: "82%", tags: ["OpenCV", "YOLO", "Image Processing", "Watershed", "Mismatch Detection"] },
+          { name: "Databases & Cloud Tooling", level: "Intermediate", percent: "82%", tags: ["PostgreSQL", "MongoDB", "SQLite (WAL)", "Docker", "Git / GitHub", "Linux"] }
+        ]
       },
       projects: [
-        { id: "green-computing", shopName: "The Green Observatory", shopSign: "Observatory · AI & Energy", category: "AI Research & NLP", badge: "Academic Research · Pending Publication", year: "2026", title: "Green Computing & AI Safety Guardrail Benchmarking", shortDesc: "Measuring the energy overhead of AI safety guardrails across no-guardrail, lightweight, and LLM-as-judge configurations using CodeCarbon and NVML GPU monitoring.", accentSoft: "#E6EFE3", accentDark: "#1E2A22", illustration: "observatory", tags: ["Python", "CodeCarbon", "NVML", "PyTorch", "GPU Profiling"], problem: "Modern LLM deployments wrap inference inside safety guardrails, yet little empirical data quantifies the power and carbon trade-offs between lightweight classifiers and heavy LLM-as-judge pipelines.", approach: ["Designed controlled benchmark sweeps across unguarded, lightweight guardrail, and heavy LLM-as-judge configurations.", "Instrumented live GPU wattage and estimated CO2 emissions via NVML telemetry and CodeCarbon.", "Modeled energy-per-safe-response curves to identify sustainable production operating points."], outcome: "Delivered a reproducible green-AI benchmarking framework and pending publication showing when lightweight guardrails maintain safety at a fraction of the energy cost." },
-        { id: "cross-lingual-nli", shopName: "The Babel Library", shopSign: "Library · 15 Languages", category: "AI Research & NLP", badge: "Final Year Design Project · UIU", year: "2026", title: "Cross-Lingual NLI & Multilingual LLM Benchmarking", shortDesc: "Proposed the Cross-Lingual Stance Consistency Framework (CLSC) with Confidence-Gated Adaptive Prompting, Layer-wise Aligner, and XCR contrastive regularization over 15 languages.", accentSoft: "#F5E5DE", accentDark: "#2D211D", illustration: "library", tags: ["PyTorch", "Transformers", "LaBSE", "XLM-R", "Llama-3.2"], problem: "Multilingual LLMs frequently contradict their own stance when asked identical claims in high-resource vs low-resource languages like Bangla.", approach: ["Architected CLSC combining Confidence-Gated Adaptive Prompting (CGAP) with layer-wise representation alignment.", "Applied XCR contrastive regularization using LaBSE, XLM-R, and Llama-3.2.", "Benchmarked stance consistency systematically across 15 diverse languages."], outcome: "Narrowed cross-lingual stance drift on low-resource languages while preserving strong NLI accuracy." },
-        { id: "edusmart", shopName: "EduSmart Study Café", shopSign: "Study Café · UI/UX", category: "UI/UX & AI Product", badge: "UI/UX & AI Prototype", year: "2025", title: "EduSmart — Academic AI Companion & Study Ecosystem", shortDesc: "Full end-to-end responsive UI/UX prototype for an AI-powered academic assistant targeting university students across mobile and desktop platforms.", accentSoft: "#FBF1DF", accentDark: "#2C251A", illustration: "cafe", tags: ["Figma", "Design Systems", "Auto-Layout", "User Flows", "Prototyping"], problem: "Students juggle fragmented LMS portals, scattered PDF notes, and generic chat tools lacking syllabus context.", approach: ["Mapped end-to-end student study flows across lecture notes, deadlines, and AI revision.", "Built a modular Figma Auto-Layout design system across mobile and desktop breakpoints.", "Prototyped calm study rooms pairing AI explanations with visual progress tracking."], outcome: "Produced a cohesive multi-platform prototype demonstrating structured, student-first AI UX." },
-        { id: "moving-canvas", shopName: "UIU Moving Canvas Atelier", shopSign: "Atelier · Brand & Livery", category: "Branding & Identity", badge: "1st Prize Winner · BDT 50,000", year: "2026", title: "UIU Moving Canvas — Official Student Transit Bus Fleet Livery", shortDesc: "1st Prize Winner (BDT 50,000) for designing the official exterior branding and vehicle livery for United International University's student transit bus fleet.", accentSoft: "#F2E9F0", accentDark: "#2A2029", illustration: "atelier", tags: ["Adobe Illustrator", "Adobe Photoshop", "Brand Architecture", "Vector Art"], problem: "Brand systems must hold unmistakable clarity at full scale on 12-meter moving transit buses under bright outdoor lighting.", approach: ["Crafted geometric brand patterns, typography scales, and full-scale vehicle wrap layouts.", "Applied anamorphic distortion correction and CIELAB sunlight contrast math for UIU's official transit fleet livery."], outcome: "Won 1st Prize (BDT 50,000) in the UIU Moving Canvas Challenge 2026, deployed on UIU's official student transit fleet." },
-        { id: "bangla-news-mismatch", shopName: "The Dhaka Press & Lens", shopSign: "Press · Vision & NLP", category: "AI Research & NLP", badge: "NLP & Computer Vision Research", year: "2025", title: "Bangla News Image-Text Mismatch Detection", shortDesc: "Bilingual dataset and multimodal visual analysis pipeline to detect image-text mismatch in Bangladeshi news media for misinformation detection.", accentSoft: "#E5EFF3", accentDark: "#1C262E", illustration: "press", tags: ["Python", "NLP", "OpenCV", "Exploratory Data Analysis", "Matplotlib"], problem: "Misleading headlines often recycle unrelated photographs, yet Bangla media lacks specialized multimodal verification benchmarks.", approach: ["Curated a bilingual Bangladeshi news image-headline dataset with thorough EDA.", "Combined OpenCV visual pipelines with cross-modal semantic similarity modeling."], outcome: "Established an interpretable multimodal pipeline for flagging visual misinformation in Bangla news." },
-        { id: "synapse-iot", shopName: "Synapse Tinkerer's Workshop", shopSign: "Workshop · IoT & Hardware", category: "Data & IoT", badge: "UIU Lab Champion Project", year: "2024", title: "Synapse — Sensor Telemetry & Microcontroller Hub", shortDesc: "UIU Champion project: Real-time hardware telemetry, microcontroller logic, and data analysis engine with live interactive dashboards.", accentSoft: "#F6EAE2", accentDark: "#2B211B", illustration: "workshop", tags: ["Python", "Microcontrollers (C/C++)", "IoT Telemetry", "Circuit Design"], problem: "Embedded sensor prototypes often remain trapped in raw serial logs instead of readable live diagnostics.", approach: ["Built C/C++ microcontroller control loops with calibrated sensor feedback and clean circuit prototyping.", "Streamed live hardware telemetry into a Python analytics dashboard."], outcome: "Won 1st Place Champion in the UIU Microprocessor & Microcontroller Lab Showcase (2024) and 1st Runner-Up in Electronics Lab." }
+        {
+          id: "fundbridge",
+          shopName: "FundBridge Vault",
+          shopSign: "FinTech · Crypto Ledger",
+          category: "FinTech & Software",
+          badge: "FinTech Engineering & Cryptographic Security",
+          year: "2026",
+          title: "FundBridge — Distributed Micro-Finance & Anti-Predatory Lending Engine",
+          shortDesc: "Full-stack micro-finance platform featuring automated loan underwriting with anti-predatory APR caps, dual-entry immutable ledger accounting, AES-256-GCM encrypted KYC/NID vault, and SHA-256 tamper-evident block audit chain.",
+          impactHighlight: "100% mathematical ledger reconciliation · <50 ms SHA-256 audit verification",
+          accentSoft: "#E6EDF2",
+          accentDark: "#1B252E",
+          illustration: "vault",
+          tags: ["React", "Node.js", "Express", "SQLite (WAL)", "AES-256-GCM", "SHA-256 Chain", "Double-Entry Ledger"],
+          url: "https://github.com/snigdhaurmiurma/fundbridge",
+          urlLabel: "GitHub Repo ↗",
+          problem: "Preventing predatory APR inflation, mitigating ledger double-spending risks, and securing sensitive national identity (NID/KYC) credentials against exfiltration in distributed community micro-lending ecosystems.",
+          approach: [
+            "Architected a dual-entry financial accounting ledger with strict debit-credit invariant balancing in SQLite WAL mode.",
+            "Implemented AES-256-GCM field-level encryption with authenticated Galois tags for sensitive borrower NID/KYC records.",
+            "Built automated credit underwriting with capped fair-APR amortization schedules and an immutable SHA-256 block hash audit chain."
+          ],
+          outcome: "Eliminates ledger drift with 100% mathematical reconciliation, guarantees sub-50ms cryptographic audit verification, and safeguards borrower identities under zero-trust principles."
+        },
+        {
+          id: "medvision-ai",
+          shopName: "MedVision Micro-Lab",
+          shopSign: "Vision · Cellular AI",
+          category: "Computer Vision",
+          badge: "Digital Image Processing & Computer Vision",
+          year: "2026",
+          title: "MedVision-AI — Cellular & Microscopic Image Analysis Pipeline",
+          shortDesc: "Automated computer vision system utilizing CLAHE contrast enhancement, Otsu adaptive thresholding, and Watershed segmentation to isolate overlapping cell nuclei and extract morphometric anomaly metrics.",
+          impactHighlight: "94.8% segmentation precision · <145 ms per microscopic field",
+          accentSoft: "#E4F0ED",
+          accentDark: "#1A2926",
+          illustration: "microscope",
+          tags: ["Python", "OpenCV", "Scikit-Image", "Watershed Algorithm", "Otsu Thresholding", "CLAHE"],
+          url: "https://github.com/snigdhaurmiurma/urmiurmasnigdha.github.io/tree/main/projects/medvision-ai",
+          urlLabel: "View Code ↗",
+          problem: "Eliminating subjective inter-observer variability and manual counting fatigue across dense, overlapping microscopic blood smear and cellular tissue imaging.",
+          approach: [
+            "Engineered a deterministic Python pipeline with Contrast-Limited Adaptive Histogram Equalization (CLAHE) and Otsu variance-maximization thresholding.",
+            "Applied distance-transform Watershed segmentation with morphological opening/closing to cleanly separate overlapping cell nuclei.",
+            "Extracted geometric morphometrics (area, perimeter, isoperimetric circularity quotient) for automatic cytopathological anomaly scoring."
+          ],
+          outcome: "Processes microscopic fields in <145 ms with 94.8% segmentation precision and automated identification of irregular cellular structures."
+        },
+        {
+          id: "marketpulse-mining",
+          shopName: "MarketPulse Exchange",
+          shopSign: "Data Mining · Churn AI",
+          category: "Data Mining",
+          badge: "Data Mining & Predictive Analytics",
+          year: "2026",
+          title: "MarketPulse — Customer Behavior Mining & Churn Intelligence",
+          shortDesc: "End-to-end data mining and customer intelligence engine combining Apriori association rule mining for cross-sell bundle discovery, 4-cohort RFM K-Means clustering, and proactive churn risk prediction.",
+          impactHighlight: "0.923 ROC-AUC churn prediction · 89.4% accuracy · 24 bundles (>1.5 Lift)",
+          accentSoft: "#FBF1DF",
+          accentDark: "#2B2419",
+          illustration: "exchange",
+          tags: ["Python", "Pandas", "Scikit-Learn", "Apriori Algorithm", "K-Means RFM", "Gradient Boosting"],
+          url: "https://github.com/snigdhaurmiurma/urmiurmasnigdha.github.io/tree/main/projects/marketpulse-mining",
+          urlLabel: "View Code ↗",
+          problem: "Extracting actionable cross-sell affinity rules from high-volume transaction streams and identifying high-value customers at risk of attrition prior to cancellation.",
+          approach: [
+            "Developed an Apriori itemset miner computing Support (>0.06), Confidence, and Lift (>1.5) to surface high-affinity multi-product bundles.",
+            "Segmented the customer base into 4 behavioral cohorts via Recency, Frequency, and Monetary (RFM) vectorization and K-Means clustering.",
+            "Trained a regularized Gradient Boosting churn classifier with feature-level risk attribution."
+          ],
+          outcome: "Delivered 0.923 ROC-AUC (89.4% accuracy) churn prediction and isolated 24 high-affinity cross-sell product combinations with >1.5 Lift."
+        },
+        {
+          id: "docuquery-rag",
+          shopName: "DocuQuery Archive",
+          shopSign: "RAG · Vector Search",
+          category: "AI & NLP",
+          badge: "Applied Machine Learning & NLP",
+          year: "2026",
+          title: "DocuQuery-AI — Enterprise Document Intelligence & Semantic Search (RAG)",
+          shortDesc: "Production-structured Retrieval-Augmented Generation (RAG) system delivering sub-40ms dense vector retrieval, cross-encoder passage reranking, and zero-hallucination answers with verified source citations.",
+          impactHighlight: "99.1% factual faithfulness · <40 ms vector search · 100% cited answers",
+          accentSoft: "#ECEAF5",
+          accentDark: "#222030",
+          illustration: "archive",
+          tags: ["Python", "PyTorch", "FAISS", "Vector Search", "Cross-Encoder Reranker", "RAG", "NLP"],
+          url: "https://github.com/snigdhaurmiurma/urmiurmasnigdha.github.io/tree/main/projects/docuquery-rag",
+          urlLabel: "View Code ↗",
+          problem: "Eliminating generative AI hallucinations when querying voluminous enterprise technical manuals, compliance policies, and academic research papers.",
+          approach: [
+            "Constructed a multi-stage RAG pipeline with recursive character chunking and 128-dimensional dense semantic vector indexing in FAISS.",
+            "Integrated a joint query-passage cross-encoder reranker with confidence gating to filter irrelevant context.",
+            "Enforced strict citation attribution linking every generated claim back to exact document passages."
+          ],
+          outcome: "Achieved 99.1% factual grounding faithfulness, sub-40ms semantic retrieval latency, and 100% verified source citation attribution across multi-document corpora."
+        },
+        {
+          id: "green-computing",
+          shopName: "The Green Observatory",
+          shopSign: "Observatory · Green AI",
+          category: "AI & NLP",
+          badge: "Academic Research · Pending Publication",
+          year: "2026",
+          title: "Green Computing & AI Safety Guardrail Benchmarking",
+          shortDesc: "Investigating the runtime energy overhead and carbon emissions of AI safety guardrails across no-guardrail, lightweight guardrail, and heavy LLM-as-judge configurations using CodeCarbon and NVML GPU monitoring.",
+          impactHighlight: "6-module GPU carbon benchmark · Pending academic publication",
+          accentSoft: "#E6EFE3",
+          accentDark: "#1E2A22",
+          illustration: "observatory",
+          tags: ["Python", "CodeCarbon", "NVML", "PyTorch", "Statistical Modeling", "GPU Profiling"],
+          url: "https://github.com/snigdhaurmiurma",
+          urlLabel: "GitHub ↗",
+          problem: "Quantifying the precise carbon footprint and computational energy overhead of AI safety validation layers at runtime inference.",
+          approach: [
+            "Designed a 6-module Python benchmark pipeline sweeping unguarded, lightweight regex/classifier, and heavy LLM-as-judge configurations across 4 core research hypotheses.",
+            "Instrumented live GPU wattage and estimated CO2 emissions via NVML telemetry and CodeCarbon.",
+            "Modeled energy-per-safe-response Pareto curves to identify sustainable production operating points."
+          ],
+          outcome: "Contributes empirical carbon-cost benchmarks to Green AI, showing when lightweight safety guardrails preserve protection at a fraction of LLM-as-judge energy cost."
+        },
+        {
+          id: "cross-lingual-nli",
+          shopName: "The Babel Library",
+          shopSign: "Library · 15 Languages",
+          category: "AI & NLP",
+          badge: "Final Year Design Project (FYDP) · UIU",
+          year: "2026",
+          title: "Cross-Lingual NLI & Multilingual LLM Benchmarking (CLSC)",
+          shortDesc: "Proposed the Cross-Lingual Stance Consistency Framework (CLSC) with Confidence-Gated Adaptive Prompting (CGAP), Layer-wise Aligner, and XCR contrastive regularization across 15 languages.",
+          impactHighlight: "Benchmarked across 15 XNLI languages on Tesla T4 GPUs",
+          accentSoft: "#F5E5DE",
+          accentDark: "#2D211D",
+          illustration: "library",
+          tags: ["PyTorch", "Transformers", "LaBSE", "XLM-R", "Llama-3.2", "Qwen2.5", "Kaggle GPU"],
+          url: "https://github.com/snigdhaurmiurma",
+          urlLabel: "GitHub ↗",
+          problem: "Overcoming semantic misalignment and cross-lingual stance contradiction when evaluating identical claims across high-resource and low-resource languages like Bangla.",
+          approach: [
+            "Implemented an encoder-decoder architecture pairing frozen LaBSE and XLM-R encoders with Soft Prompt Projectors and Llama-3.2 / Qwen2.5 decoders on Tesla T4 GPUs.",
+            "Architected Confidence-Gated Adaptive Prompting (CGAP) and Layer-wise Representation Alignment.",
+            "Applied XCR cross-lingual contrastive regularization and systematically benchmarked stance consistency on XNLI over 15 languages."
+          ],
+          outcome: "Validated consistent cross-lingual NLI accuracy improvements while reducing stance drift across low-resource Indic and Asian languages."
+        },
+        {
+          id: "moving-canvas",
+          shopName: "UIU Moving Canvas Atelier",
+          shopSign: "Atelier · 1st Prize",
+          category: "Branding & Livery",
+          badge: "1st Prize Winner · BDT 50,000",
+          year: "2026",
+          title: "UIU Moving Canvas — Official Student Transit Bus Fleet Livery",
+          shortDesc: "1st Prize Winner (BDT 50,000) for designing the official exterior branding and vehicle livery for United International University's student transit bus fleet.",
+          impactHighlight: "1st Prize Winner (BDT 50,000) · Deployed on UIU's official bus fleet",
+          accentSoft: "#F2E9F0",
+          accentDark: "#2A2029",
+          illustration: "atelier",
+          tags: ["Adobe Illustrator", "Adobe Photoshop", "Brand Architecture", "Vehicle Livery", "CIELAB Contrast"],
+          url: "https://www.behance.net/urmisnigdha",
+          urlLabel: "Behance ↗",
+          problem: "Brand systems must hold unmistakable visual clarity at full scale on 40-foot moving transit buses under direct Dhaka daylight, compound panel curves, and 60 km/h commuter motion.",
+          approach: [
+            "Engineered a 3-tier perceptual hierarchy with high-contrast macro geometry recognizable at 100+ meters.",
+            "Applied reverse trigonometric anamorphic compensation for curved panels and CIELAB ΔL* > 45 sunlight luminance contrast math.",
+            "Produced full-scale 1:10 production print dielines avoiding panel split seams, gaskets, and mechanical doors."
+          ],
+          outcome: "Won 1st Prize and BDT 50,000 in the UIU Moving Canvas Challenge 2026, selected for UIU's official student transit bus fleet."
+        },
+        {
+          id: "edusmart",
+          shopName: "EduSmart Study Café",
+          shopSign: "Study Café · UI/UX",
+          category: "UI/UX & Product",
+          badge: "UI/UX & Product Prototype",
+          year: "2025",
+          title: "EduSmart — Academic Companion & Interactive Study Ecosystem",
+          shortDesc: "Full end-to-end responsive UI/UX prototype and scalable Figma design system for an AI-powered academic assistant targeting university students across mobile and desktop platforms.",
+          impactHighlight: "Flagship UIU prototype · Responsive Mobile & Desktop Design System",
+          accentSoft: "#FBF1DF",
+          accentDark: "#2C251A",
+          illustration: "cafe",
+          tags: ["Figma", "Design Systems", "Auto-Layout", "User Flows", "Interactive Prototyping"],
+          url: "https://www.behance.net/urmisnigdha",
+          urlLabel: "Behance ↗",
+          problem: "Students juggle fragmented LMS portals, scattered PDF notes, and generic chat tools lacking syllabus context, creating high cognitive load.",
+          approach: [
+            "Mapped end-to-end student study workflows covering onboarding, lecture revision, grade analytics, schedule planning, and AI Q&A.",
+            "Engineered a modular Figma Auto-Layout component system across mobile and desktop breakpoints.",
+            "Prototyped calm, low-cognitive-load study interfaces with structured visual progress feedback."
+          ],
+          outcome: "Presented at UIU as a flagship academic companion prototype earning strong usability feedback."
+        },
+        {
+          id: "bangla-news-mismatch",
+          shopName: "The Dhaka Press & Lens",
+          shopSign: "Press · Vision & NLP",
+          category: "Computer Vision",
+          badge: "NLP & Computer Vision Research",
+          year: "2025",
+          title: "Bangla News Image-Text Mismatch Detection",
+          shortDesc: "Bilingual dataset and multimodal visual-semantic analysis pipeline to detect image-text mismatch in Bangladeshi news media for automated misinformation flagging.",
+          impactHighlight: "Bilingual Bangla multimodal benchmark & interpretable OpenCV+NLP pipeline",
+          accentSoft: "#E5EFF3",
+          accentDark: "#1C262E",
+          illustration: "press",
+          tags: ["Python", "NLP", "OpenCV", "Exploratory Data Analysis", "Multimodal AI"],
+          url: "https://github.com/snigdhaurmiurma",
+          urlLabel: "GitHub ↗",
+          problem: "Misleading news headlines frequently recycle unrelated photographs, yet Bangla media lacks specialized multimodal verification datasets and interpretable baselines.",
+          approach: [
+            "Curated and cleaned a bilingual Bangladeshi news image-headline dataset with comprehensive exploratory data analysis.",
+            "Combined OpenCV visual feature extraction with cross-modal semantic similarity modeling to flag out-of-context imagery."
+          ],
+          outcome: "Established an interpretable multimodal pipeline for flagging visual misinformation in Bangladeshi digital journalism."
+        },
+        {
+          id: "synapse-iot",
+          shopName: "Synapse Tinkerer's Workshop",
+          shopSign: "Workshop · IoT Champion",
+          category: "Embedded & IoT",
+          badge: "UIU Champion · Microprocessor & IoT",
+          year: "2024",
+          title: "Synapse — Sensor Telemetry & Microcontroller Hub",
+          shortDesc: "UIU Champion project: Real-time hardware telemetry, microcontroller control logic, and live data analytics dashboard with anomaly alerting.",
+          impactHighlight: "1st Place Champion (Microprocessor Lab) & 1st Runner-Up (Electronics Lab)",
+          accentSoft: "#F6EAE2",
+          accentDark: "#2B211B",
+          illustration: "workshop",
+          tags: ["Python", "Microcontrollers (C/C++)", "IoT Telemetry", "Circuit Design", "Live Dashboards"],
+          url: "https://www.behance.net/urmisnigdha",
+          urlLabel: "Portfolio ↗",
+          problem: "Visualizing high-frequency raw hardware sensor streams without latency on resource-constrained microcontrollers.",
+          approach: [
+            "Built C/C++ microcontroller control loops with calibrated sensor feedback and precision analog/digital circuit prototyping.",
+            "Engineered an asynchronous serial telemetry protocol feeding live streams into a dynamic Python web monitoring dashboard with anomaly alerts."
+          ],
+          outcome: "Secured 1st Place Champion in the UIU Microprocessor & Microcontroller Lab Showcase (2024) and 1st Runner-Up in the Electronics Laboratory Showcase (Fall 2024)."
+        }
       ],
-      milestones: [
-        { period: "2026", title: "1st Prize Winner (BDT 50,000) — UIU Moving Canvas Challenge", org: "United International University · Official Bus Fleet Livery", summary: "Awarded 1st Prize and BDT 50,000 for designing the winning exterior branding and vehicle livery for UIU's official student transit bus fleet." },
-        { period: "2022 — 2026", title: "B.Sc. in Computer Science & Engineering", org: "United International University (UIU) · Dhaka, Bangladesh", summary: "CSE graduate specializing in Machine Learning, Data Analytics, Digital Image Processing, SAD, and Embedded Systems. Active researcher with 2 concurrent papers in NLP and green computing." },
-        { period: "2024", title: "Champion (Microprocessor Lab) & 1st Runner-Up (Electronics Lab)", org: "UIU CSE Project Showcases", summary: "Secured 1st Place Champion for the Synapse microcontroller automation hub plus 1st Runner-Up for precision circuit prototyping and PCB design." },
-        { period: "2023", title: "Global Contest Champion (1st / 150+) & 5th Runner-Up UI Design", org: "Freelancer.com International Competition · UIU SAD Showcase", summary: "Won 1st Place Champion against 150+ international designers on Freelancer.com and ranked top echelon for UI workflow ergonomics at UIU." },
-        { period: "2018 — 2020", title: "HSC & SSC — GPA 5.00 / 5.00", org: "Govt. Mohammadpur Model & Mohammadpur Preparatory School & College", summary: "GPA 5.00 / 5.00 in both national exams; served as Elected Class Representative for 5 consecutive years (2013–2018)." }
+      experience: [
+        {
+          period: "Aug 2021 – Present",
+          title: "Freelance Graphic & Brand Designer",
+          org: "Freelancer.com · Behance · Remote",
+          bullets: [
+            "Delivered 20+ client projects — brand identities, social media kits, brochures, flyers, business cards, and print calendars — using Adobe Illustrator and Photoshop.",
+            "Won 1st Place Global Design Competition Champion on Freelancer.com, competing against 150+ international designers.",
+            "Managed end-to-end client briefs, creative direction, revision cycles, print dielines, and on-time production handoffs independently."
+          ]
+        },
+        {
+          period: "Dec 2021 – May 2023",
+          title: "Surveyor & Data Quality Specialist",
+          org: "Your ITeams Sp. z o.o. (Poland · Remote)",
+          bullets: [
+            "Completed structured remote data-collection workflows for 1.5 years inside a deadline-driven international team.",
+            "Maintained strict quality-assurance, validation, and data-accuracy standards across large-scale survey datasets."
+          ]
+        },
+        {
+          period: "2020 – 2024",
+          title: "Science Home Tutor",
+          org: "Private · Self-Employed · Dhaka",
+          bullets: [
+            "Taught Physics, Chemistry, Mathematics, and Science to school-level students over 4 years with structured lesson plans and individualized progress tracking."
+          ]
+        }
+      ],
+      awards: [
+        {
+          featured: true,
+          badge: "1ST PRIZE · BDT 50,000",
+          date: "2026",
+          title: "1st Prize Winner — UIU Moving Canvas Challenge 2026",
+          event: "United International University · Official Bus Fleet Livery Competition",
+          desc: "Awarded 1st Prize and BDT 50,000 for designing the winning exterior branding and vehicle livery for United International University's official student transit bus fleet."
+        },
+        {
+          badge: "CHAMPION · 1ST PLACE",
+          date: "2024",
+          title: "Champion — Microprocessor & Microcontroller Lab",
+          event: "UIU CSE Project Showcase",
+          desc: "Secured 1st Place Champion for engineering the Synapse intelligent hardware-software automation system utilizing microcontroller telemetry, sensor feedback, and algorithmic control."
+        },
+        {
+          badge: "1ST RUNNER-UP",
+          date: "Fall 2024",
+          title: "1st Runner-Up — Electronics Laboratory",
+          event: "UIU CSE Project Showcase (Fall 2024)",
+          desc: "Awarded 1st Runner-Up trophy for precision analog and digital circuit prototyping, PCB schematic design, and hardware lab execution at United International University."
+        },
+        {
+          badge: "GLOBAL CHAMPION · 1ST / 150+",
+          date: "2023",
+          title: "Global Design Contest Champion (1st Place)",
+          event: "Freelancer.com International Competition",
+          desc: "Won 1st Place Champion competing against 150+ international graphic and brand designers on Freelancer.com."
+        },
+        {
+          badge: "UI EXCELLENCE · 5TH RUNNER-UP",
+          date: "2023",
+          title: "5th Runner-Up — UI Design (System Analysis & Design)",
+          event: "UIU CSE Project Showcase (SAD 2023)",
+          desc: "Ranked in the top echelon for human-centric system design, detailed UML modeling, interactive software mockups, and UI workflow ergonomics."
+        }
+      ],
+      education: [
+        {
+          result: "Graduated (Degree Completed)",
+          degree: "B.Sc. in Computer Science & Engineering",
+          institution: "United International University (UIU)",
+          period: "Dhaka, Bangladesh",
+          details: "Core coursework in Machine Learning, Digital Image Processing, Data Mining, Database Systems, Algorithms, Software Engineering, and System Analysis & Design (SAD). General Member: UIU HR Forum & UIU App Forum."
+        },
+        {
+          result: "GPA 5.00 / 5.00",
+          degree: "Higher Secondary Certificate (HSC) — Science",
+          institution: "Govt. Mohammadpur Model School & College",
+          period: "Passing Year: 2020 · Dhaka",
+          details: "Perfect GPA 5.00 / 5.00 in Science Group across Physics, Chemistry, Higher Mathematics, and ICT."
+        },
+        {
+          result: "GPA 5.00 / 5.00",
+          degree: "Secondary School Certificate (SSC) — Science",
+          institution: "Mohammadpur Preparatory School & College",
+          period: "Passing Year: 2018 · Dhaka",
+          details: "Perfect GPA 5.00 / 5.00 in Science Group. Served continuously as Elected Class Representative for 5 years (2013–2018), leading student forums and school events."
+        }
       ],
       certifications: [
-        { issuer: "Grameenphone Academy", date: "Jul 2026", title: "Personal Branding in AI Era", note: "Digital brand architecture and AI-powered creative workflows signed by Yasir Azman, CEO, Grameenphone Ltd." },
-        { issuer: "Stanford Online · DeepLearning.AI", date: "2024", title: "Supervised Machine Learning: Regression & Classification", note: "Mathematical foundations and Python implementation of supervised ML models." },
-        { issuer: "Google Career Certificates", date: "2024", title: "Foundations of User Experience (UX) Design", note: "User-centered design, heuristic evaluation, wireframing, and usability testing." },
-        { issuer: "Meta · Coursera", date: "2024", title: "Introduction to Front-End Development", note: "Responsive web paradigms, semantic HTML/CSS, and modern JavaScript." },
-        { issuer: "Google Career Certificates", date: "2024", title: "Foundations of Project Management", note: "Agile project lifecycle, sprint planning, and team orchestration." },
-        { issuer: "Grameenphone Academy", date: "Mar–Apr 2026", title: "Executive Communication Suite (4 Credentials)", note: "Corporate Presentation Skills, LinkedIn 101, Smart CV, and Interview Skills." }
+        { badge: "GP ACADEMY", issuer: "Grameenphone Academy", date: "Jul 22, 2026", title: "Personal Branding in AI Era", note: "Architecting digital personal brand identity and AI-powered design workflows (signed by Yasir Azman, CEO, Grameenphone Ltd.).", skills: ["Personal Branding", "AI Workflows", "Content Strategy"] },
+        { badge: "GP ACADEMY", issuer: "Grameenphone Academy", date: "Apr 01, 2026", title: "Sharpen Your Interview Skills", note: "Mastering behavioral, technical, and executive interviews with structured problem-solving breakdowns (signed by CEO Yasir Azman).", skills: ["Interview Techniques", "Technical Communication"] },
+        { badge: "GP ACADEMY", issuer: "Grameenphone Academy", date: "Mar 15, 2026", title: "Corporate Presentation Skills", note: "High-impact visual storytelling, executive slide deck architecture, and corporate communication (signed by CEO Yasir Azman).", skills: ["Visual Storytelling", "Pitch Decks", "Executive Presence"] },
+        { badge: "GP ACADEMY", issuer: "Grameenphone Academy", date: "Mar 15, 2026", title: "LinkedIn 101", note: "LinkedIn profile optimization, professional networking strategy, and industry thought leadership (signed by CEO Yasir Azman).", skills: ["LinkedIn Optimization", "Networking", "Outreach"] },
+        { badge: "GP ACADEMY", issuer: "Grameenphone Academy", date: "Mar 11, 2026", title: "Smart CV", note: "Modern ATS-compliant resume architecture, executive summary copywriting, and strategic skill positioning (signed by CEO Yasir Azman).", skills: ["ATS Optimization", "Resume Architecture", "Career Strategy"] },
+        { badge: "STANFORD / DEEPLEARNING.AI", issuer: "Stanford Online · DeepLearning.AI", date: "2024", title: "Supervised Machine Learning: Regression & Classification", note: "Mathematical foundations and Python implementation of supervised learning, gradient descent cost optimization, and classification models.", skills: ["Supervised Learning", "Regression", "Scikit-Learn"], verifyUrl: "https://www.coursera.org/verify/supervised-machine-learning" },
+        { badge: "GOOGLE UX", issuer: "Google Career Certificates (Coursera)", date: "2024", title: "Foundations of User Experience (UX) Design", note: "Comprehensive training in user-centered design, heuristic evaluation, persona research, wireframing, and usability testing.", skills: ["User Research", "Wireframing", "Usability Testing", "Figma"], verifyUrl: "https://www.coursera.org/verify/professional-cert/google-ux-design" },
+        { badge: "GOOGLE", issuer: "Google Career Certificates (Coursera)", date: "2024", title: "Foundations of Project Management", note: "Agile project lifecycle mastery, sprint planning, stakeholder management, and risk mitigation.", skills: ["Agile", "Sprint Planning", "Risk Mitigation"], verifyUrl: "https://www.coursera.org/verify/professional-cert/google-project-management" },
+        { badge: "META", issuer: "Meta (Coursera)", date: "2024", title: "Introduction to Front-End Development", note: "Core frontend engineering principles, semantic HTML5/CSS3, responsive systems, and modern JavaScript DOM architectures.", skills: ["HTML5 / CSS3", "Responsive Systems", "JavaScript"], verifyUrl: "https://www.coursera.org/verify/meta-front-end-developer" },
+        { badge: "LINKEDIN LEARNING", issuer: "LinkedIn Learning", date: "2024", title: "Smart CV & Project-Based Excel", note: "Analytical spreadsheet modeling, structured data organization, and executive career documentation.", skills: ["Excel Analytics", "Data Organization", "Reporting"] }
       ],
       notes: [
-        { category: "Brand & Industrial Design", readTime: "12 min read", date: "Sep 02, 2026", title: "The Science of Vehicle Wrap & Large-Scale Brand Architecture", excerpt: "Transforming 2D vector concepts into real-world 3D transit bus liveries — anamorphic distortion, CIELAB sunlight contrast, and viewing-distance DPI math.", body: "Designing for a 12-meter moving transit bus requires correcting for curved panels, testing CIELAB luminance contrast under harsh Dhaka sunlight, and budgeting viewing-distance DPI so brand geometry stays crisp at 40 km/h." },
-        { category: "Deep Learning & NLP", readTime: "14 min read", date: "Aug 29, 2026", title: "Understanding 'Attention Is All You Need': Visual & Math Deep Dive", excerpt: "Exploring Self-Attention, Multi-Head projections, Positional Encodings, Causal Masking, and clean PyTorch code.", body: "Scaled dot-product attention replaced sequential recurrence with parallel context routing. This walkthrough bridges the linear algebra of Q/K/V projections directly to readable PyTorch modules." },
-        { category: "GenAI & RAG", readTime: "11 min read", date: "Aug 18, 2026", title: "Building Production-Grade RAG Systems: Semantic Chunking & Hybrid Search", excerpt: "Token chunking strategies, Reciprocal Rank Fusion (RRF), cross-encoder reranking, and hallucination reduction.", body: "Pairing semantic boundary chunking with hybrid dense-plus-BM25 retrieval fused via RRF and a lightweight cross-encoder reranker dramatically improves grounded faithfulness." },
-        { category: "Multilingual NLP", readTime: "12 min read", date: "Mar 30, 2026", title: "Cross-Lingual NLI & Stance Detection across Low-Resource Languages", excerpt: "Inside the Cross-Lingual Stance Consistency (CLSC) framework across 15 languages.", body: "CLSC anchors multilingual representations via confidence-gated adaptive prompting and layer-wise alignment so models stay consistent across high- and low-resource languages." },
-        { category: "Green AI", readTime: "9 min read", date: "Mar 14, 2026", title: "Green AI & Model Compression: Pruning, INT8 Quantization & CodeCarbon", excerpt: "Measuring live GPU CO2 emissions with CodeCarbon alongside teacher-student distillation.", body: "Sustainable deep learning starts with measurement — combining CodeCarbon telemetry with INT8 quantization and structured pruning sharply lowers inference energy." },
-        { category: "Edge Computer Vision", readTime: "10 min read", date: "Jul 28, 2026", title: "Real-Time Edge Computer Vision: Optimized YOLO on Constrained Hardware", excerpt: "Channel pruning, INT8 quantization, TensorRT acceleration, and zero-copy streaming.", body: "Co-designing quantization calibration and zero-copy frame buffers unlocks smooth real-time detection on compact edge robotics boards." }
+        {
+          featured: true,
+          category: "Brand Architecture",
+          readTime: "12 min read",
+          date: "Sep 02, 2026",
+          title: "The Science of Vehicle Wrap & Large-Scale Brand Architecture: Designing for Dynamic 3D Physical Canvases",
+          excerpt: "Transforming 2D vector concepts into real-world 3D transit bus liveries — anamorphic distortion correction, CIELAB sunlight contrast, viewing-distance DPI math, and 60 km/h legibility.",
+          tags: ["Brand Identity", "Vector Geometry", "Vehicle Livery", "CIELAB", "Print Architecture"],
+          bodyHtml: `<p>Designing for a 40-foot moving vehicle sits at the intersection of graphic design, geometric spatial reasoning, and perceptual psychology. Unlike static screens, a transit bus lives in a 3D environment subject to daylight shifts, aerodynamic curves, panel seams, and high-speed motion.</p>
+            <h4>1. 3D Surface Distortion &amp; Anamorphic Compensation</h4>
+            <p>When flat 2D artwork wraps across curved metal panels, planar geometry foreshortens optically. Pre-warping vectors with reverse trigonometric compensation preserves perpendicular legibility at pedestrian eye level:</p>
+            <pre><code>Apparent_Height   = True_Height · cos(θ_surface_angle)
+Compensated_Scale = Desired_Scale / cos(θ_surface_angle)</code></pre>
+            <h4>2. Visual Hierarchy at 60 km/h (1.5–3.0s Fixation Window)</h4>
+            <ul><li><strong>Tier 1 (Macro Mark):</strong> High-contrast color block geometry recognizable at 100+ meters.</li><li><strong>Tier 2 (Primary Identity):</strong> Geometric logotype with minimum stroke weight against distance thinning.</li><li><strong>Tier 3 (Micro Details):</strong> Secondary accreditations placed solely on static zones (rear bumper &amp; entry doors).</li></ul>
+            <h4>3. CIELAB Daylight Contrast &amp; Viewing-Distance DPI</h4>
+            <pre><code>ΔE* = √[ (ΔL*)² + (Δa*)² + (Δb*)² ]   // Mandate ΔL* &gt; 45 for sunlight &amp; night clarity
+DPI_optimal = 3438 / Distance_in_inches  // ~28.65 DPI at 10 ft (100–150 DPI at 1:10 scale)</code></pre>`
+        },
+        {
+          category: "Deep Learning",
+          readTime: "14 min read",
+          date: "Aug 29, 2026",
+          title: "Understanding 'Attention Is All You Need': A Mathematical & Visual Deep Dive into Transformers",
+          excerpt: "Exploring Self-Attention, Multi-Head projections, Positional Encodings, Causal Masking, and PyTorch implementations of the seminal 2017 Transformer paper.",
+          tags: ["Deep Learning", "Transformers", "NLP", "PyTorch", "Attention Mechanism"],
+          bodyHtml: `<p>Vaswani et al. (2017) replaced sequential recurrence with parallel multi-head self-attention, unlocking global context routing across sequence tokens.</p>
+            <h4>1. Scaled Dot-Product Attention</h4>
+            <p>Scaling by <code>1 / √d_k</code> prevents large dot products from pushing softmax into vanishing-gradient saturation zones:</p>
+            <pre><code>Attention(Q, K, V) = softmax((Q · Kᵀ) / √d_k) · V</code></pre>
+            <h4>2. Multi-Head Subspaces &amp; Sinusoidal Positional Encodings</h4>
+            <pre><code>MultiHead(Q, K, V) = Concat(head_1, ..., head_h) · Wᴼ
+PE(pos, 2i)   = sin(pos / 10000^(2i / d_model))
+PE(pos, 2i+1) = cos(pos / 10000^(2i / d_model))</code></pre>
+            <p>In autoregressive decoders, an upper-triangular causal mask (−∞ on future positions) blocks look-ahead leakage during parallel training.</p>`
+        },
+        {
+          category: "GenAI",
+          readTime: "11 min read",
+          date: "Aug 18, 2026",
+          title: "Building Production-Grade RAG Systems: Semantic Chunking, Hybrid Vector Search & Re-ranking",
+          excerpt: "Enterprise RAG architecture breakdown: semantic boundary chunking, BM25 + dense Reciprocal Rank Fusion (RRF), cross-encoder reranking, and hallucination reduction.",
+          tags: ["GenAI", "RAG", "Vector DB", "Python", "NLP"],
+          bodyHtml: `<p>Production Retrieval-Augmented Generation requires multi-stage retrieval to balance semantic recall, exact keyword precision, and factual grounding.</p>
+            <h4>1. Semantic Chunking</h4>
+            <p>Instead of naïve fixed-character splits that slice mid-thought, computing cosine similarity between adjacent sentence embeddings splits documents along true topic boundaries.</p>
+            <h4>2. Hybrid Dense + Sparse Fusion (RRF)</h4>
+            <pre><code>RRF_Score(d) = Σ [ 1 / (k + rank_bm25(d)) + 1 / (k + rank_dense(d)) ]</code></pre>
+            <h4>3. Cross-Encoder Re-Ranking</h4>
+            <p>Passing query and top-k candidate passages jointly through full self-attention layers dramatically improves precision and slashes unsupported LLM hallucinations.</p>`
+        },
+        {
+          category: "Computer Vision",
+          readTime: "10 min read",
+          date: "Jul 28, 2026",
+          title: "Real-Time Edge Computer Vision: Deploying Optimized YOLO Architectures on Constrained Hardware",
+          excerpt: "Structured channel pruning, Post-Training INT8 Quantization, TensorRT acceleration, and zero-copy DMA video streaming on edge robotics boards.",
+          tags: ["Computer Vision", "YOLO", "Edge AI", "Robotics", "Python"],
+          bodyHtml: `<p>Deploying real-time detectors on edge compute boards demands balancing mAP@50:95 accuracy against wattage budgets and FPS latency.</p>
+            <h4>1. Structured Channel Pruning &amp; INT8 Quantization</h4>
+            <p>Removing whole convolution channels ranked by BatchNorm γ magnitude cuts FLOPs up to 45%, while symmetric INT8 quantization slashes memory footprint by 75%:</p>
+            <pre><code>Q(x) = clip( round(x / Scale) + ZeroPoint, -128, 127 )</code></pre>
+            <h4>2. Zero-Copy DMA Frame Buffers</h4>
+            <p>Eliminating CPU memory copies via Direct Memory Access drops frame ingestion latency from 18 ms to under 2 ms for sustained 45+ FPS robotic perception.</p>`
+        },
+        {
+          category: "Microservices",
+          readTime: "9 min read",
+          date: "Jul 12, 2026",
+          title: "Designing Scalable Event-Driven Microservices with Spring Boot 3, Kafka & Docker",
+          excerpt: "Spring Cloud Gateway routing, stateless JWT security, asynchronous Apache Kafka event messaging, and Resilience4j circuit breakers.",
+          tags: ["Microservices", "Spring Boot", "Java", "Docker", "PostgreSQL"],
+          bodyHtml: `<p>High-concurrency distributed backends thrive on loose coupling, edge security, and resilient asynchronous event propagation.</p>
+            <h4>1. Edge Gateway &amp; Event Streaming</h4>
+            <p>Spring Cloud Gateway centralizes JWT verification and Redis token-bucket rate limiting, while partitioned Apache Kafka topics replace brittle synchronous REST chains with idempotent event consumers.</p>
+            <h4>2. Fault Tolerance with Resilience4j</h4>
+            <p>Automated circuit breakers trip when downstream latency or failure rates spike, returning graceful cached fallbacks to prevent cascading outages.</p>`
+        },
+        {
+          category: "Vector DB",
+          readTime: "12 min read",
+          date: "Jun 24, 2026",
+          title: "Production Vector Databases at Scale: Benchmarking Qdrant, Milvus & pgvector in PostgreSQL",
+          excerpt: "Benchmarking 1M+ embeddings across HNSW vs IVFFlat indexing, recall-latency trade-offs, metadata filtering, and unified SQL+vector queries in pgvector.",
+          tags: ["Vector DB", "RAG", "PostgreSQL", "Docker", "Python"],
+          bodyHtml: `<p>HNSW graphs achieve 98%+ recall with sub-5ms query latencies at higher RAM cost, while IVFFlat partitions Voronoi cells with lower memory overhead.</p>
+            <h4>Unified Relational + Vector Filtering with pgvector</h4>
+            <pre><code>SELECT id, title, 1 - (embedding &lt;=&gt; $1) AS cosine_similarity
+FROM document_chunks
+WHERE tenant_id = 42
+ORDER BY embedding &lt;=&gt; $1
+LIMIT 10;</code></pre>`
+        },
+        {
+          category: "GenAI",
+          readTime: "13 min read",
+          date: "Jun 08, 2026",
+          title: "Efficient LLM Fine-Tuning with QLoRA, DeepSpeed & FlashAttention in PyTorch",
+          excerpt: "Democratizing 8B–70B LLM fine-tuning via 4-bit NormalFloat (NF4) quantization, low-rank adapters (LoRA), gradient checkpointing, and FlashAttention-2.",
+          tags: ["GenAI", "Deep Learning", "PyTorch", "Transformers", "Python"],
+          bodyHtml: `<p>QLoRA freezes base weights in 4-bit NormalFloat (NF4) format while training lightweight low-rank adapter matrices B·A, cutting VRAM usage by 65%:</p>
+            <pre><code>W = W₀ + ΔW = W₀ + (B · A) · (α / r)</code></pre>
+            <p>Pairing QLoRA with FlashAttention-2 SRAM tiling eliminates N×N HBM bottlenecks and speeds up fine-tuning throughput by ~2.5×.</p>`
+        },
+        {
+          category: "AI Research",
+          readTime: "10 min read",
+          date: "May 20, 2026",
+          title: "Next-Gen Multimodal AI: Aligning Vision & Language Latent Spaces with Cross-Attention & CLIP",
+          excerpt: "Vision Transformer (ViT) 16×16 patch tokenization, symmetric contrastive CLIP alignment loss, and cross-attention VQA projection networks.",
+          tags: ["AI Research", "Attention Mechanism", "NLP", "Computer Vision", "PyTorch"],
+          bodyHtml: `<p>Vision-Language Models slice images into 16×16 patch tokens processed by Transformer encoders, aligning visual and textual embeddings via symmetric contrastive cross-entropy:</p>
+            <pre><code>L_total = 0.5 * (L_image2text + L_text2image)</code></pre>
+            <p>Cross-attention projection bridges then let language decoders directly attend to spatial visual regions for grounded visual reasoning.</p>`
+        },
+        {
+          category: "Robotics",
+          readTime: "11 min read",
+          date: "May 04, 2026",
+          title: "Spatial AI & Autonomous Navigation: 3D SLAM, Depth Estimation & Vision Transformers in Robotics",
+          excerpt: "Fusing Visual-Inertial SLAM, monocular ViT depth estimation, 3D occupancy voxel costmaps, and Micro-ROS2 30 Hz navigation loops.",
+          tags: ["Robotics", "Edge AI", "Computer Vision", "Transformers", "Python"],
+          bodyHtml: `<p>Autonomous mobile robotics combines IMU telemetry with sparse visual keypoint tracking (V-SLAM) for drift-resistant localization in GPS-denied indoor spaces.</p>
+            <p>Monocular ViT depth maps project single RGB frames into 3D voxel obstacle costmaps feeding Nav2 planners over Micro-ROS2 bridges at sustained 30 Hz control loops.</p>`
+        },
+        {
+          category: "PostgreSQL",
+          readTime: "8 min read",
+          date: "Apr 19, 2026",
+          title: "High-Throughput PostgreSQL: Partitioning, Indexing Strategies & Connection Pooling with Spring Boot",
+          excerpt: "Range/hash table partitioning, B-Tree vs GIN vs BRIN index specialization, and HikariCP connection pool sizing formulas for Spring Boot.",
+          tags: ["PostgreSQL", "Java", "Spring Boot", "Microservices", "Docker"],
+          bodyHtml: `<p>Partition pruning across time-range or hash shards eliminates 90%+ of disk scans on multi-million-row tables, while GIN accelerates JSONB/full-text search and BRIN shrinks time-series index storage by 99%.</p>
+            <pre><code>connections = (cpu_cores * 2) + effective_spindle_count  // HikariCP baseline</code></pre>`
+        },
+        {
+          category: "NLP",
+          readTime: "12 min read",
+          date: "Mar 30, 2026",
+          title: "Cross-Lingual NLI & Multilingual Stance Detection across Low-Resource Languages",
+          excerpt: "Inside the Cross-Lingual Stance Consistency (CLSC) framework: Confidence-Gated Adaptive Prompting (CGAP), layer-wise alignment, and 15-language XNLI evaluation.",
+          tags: ["NLP", "AI Research", "Transformers", "PyTorch", "Deep Learning"],
+          bodyHtml: `<p>Multilingual encoders like LaBSE and XLM-RoBERTa still exhibit stance drift on low-resource Indic and Asian languages. CLSC introduces Confidence-Gated Adaptive Prompting (CGAP) to modulate soft prompts dynamically based on encoder certainty, paired with cross-lingual contrastive regularization across 15 XNLI languages.</p>`
+        },
+        {
+          category: "Edge AI",
+          readTime: "9 min read",
+          date: "Mar 14, 2026",
+          title: "Green AI & Model Compression: Pruning, INT8 Quantization & Knowledge Distillation",
+          excerpt: "Continuous GPU CO2 tracking with CodeCarbon, structured pruning, INT8 quantization, and teacher-student KL-divergence knowledge distillation.",
+          tags: ["Edge AI", "Deep Learning", "PyTorch", "AI Research", "Python"],
+          bodyHtml: `<p>Sustainable deep learning begins with hardware-level telemetry — tracking GPU/CPU/RAM wattage via CodeCarbon and distilling massive 70B teacher networks into compact 1.5B students:</p>
+            <pre><code>L_KD = (1 - α) · L_CE(y, y_s) + α · T² · KL(softmax(z_s / T) || softmax(z_t / T))</code></pre>`
+        },
+        {
+          category: "Docker",
+          readTime: "8 min read",
+          date: "Feb 22, 2026",
+          title: "Production Docker Workflows for AI & Java Microservices: Multi-Stage Builds & Security",
+          excerpt: "Multi-stage Spring Boot JRE images (<120 MB), Python wheel caching, non-root USER hardening, and clean Docker Compose orchestration.",
+          tags: ["Docker", "Microservices", "Spring Boot", "Java", "Python", "PostgreSQL"],
+          bodyHtml: `<p>Separating SDK build stages from minimal JRE/Alpine runtime images cuts Spring Boot container sizes from ~800 MB to under 120 MB. Pre-building Python wheels accelerates CI/CD rebuilds, while running as an unprivileged <code>USER appuser</code> with read-only filesystems hardens production security.</p>`
+        }
       ],
       beyond: [
-        { medium: "Acrylic on Canvas", title: "Midnight Celestial Nebula", desc: "Large-format textured acrylic exploring cosmic luminescence and color harmony." },
-        { medium: "Graphite & Charcoal", title: "Shadow & Emotion", desc: "Fine-art figurative portraiture studying human emotion and specular light." },
-        { medium: "Photography", title: "Chromatic Framing in Dhaka", desc: "Capturing urban Dhaka botanical palettes that inspire digital UI systems." },
-        { medium: "Culinary Arts", title: "Plating & Pastry Architecture", desc: "Applying micro-geometry and balanced palettes to modern gastronomy." },
-        { medium: "Social Advocacy", title: "Stray Animal Rescue", desc: "Active volunteer rescuing and advocating for stray animals in Dhaka since 2021." }
+        { medium: "Acrylic on Canvas", title: "Midnight Celestial Nebula", desc: "Large-format textured acrylic exploring cosmic luminescence, deep celestial gradients, and color harmony." },
+        { medium: "Graphite & Charcoal", title: "Shadow & Emotion", desc: "Fine-art figurative portraiture studying human emotion, specular lighting, and structural facial anatomy." },
+        { medium: "Photography & Color", title: "Chromatic Framing in Dhaka", desc: "Exploring nature and color harmony in urban Dhaka — capturing how natural palettes inform digital UI systems." },
+        { medium: "Culinary Arts", title: "Plating & Pastry Architecture", desc: "Applying compositional balance, micro-geometry, and balanced color palettes to modern gastronomy." },
+        { medium: "Social Advocacy", title: "Community Animal Welfare", desc: "Active volunteer rescuing, rehabilitating, and advocating for stray animals across Dhaka since 2021." }
       ]
     };
 
@@ -1542,6 +2416,35 @@
     document.getElementById("shared-modal-close").addEventListener("click", closeModal);
     modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
 
+    function openCvModal() {
+      openModal(`
+        <div class="modal-kicker">Official Curriculum Vitae · Verified 2026</div>
+        <h2 class="modal-title">${DATA.profile.name}</h2>
+        <p class="modal-copy" style="margin-bottom:14px"><strong>${DATA.profile.title}</strong><br/>${DATA.profile.institution} · ${DATA.profile.email}</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">
+          <a href="${DATA.profile.cvDownloadUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-terracotta">📥 Download Official PDF CV ↗</a>
+          <a href="${DATA.profile.cvUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">📄 Open Full CV Page ↗</a>
+          <button type="button" class="btn btn-secondary" data-copy-email>Copy Email</button>
+        </div>
+        <div class="cv-modal-sec">
+          <h3>Education</h3>
+          ${DATA.education.map((e) => `<div class="cv-modal-item"><strong>${e.degree} — ${e.result}</strong><span>${e.institution} · ${e.period}</span><p>${e.details}</p></div>`).join("")}
+        </div>
+        <div class="cv-modal-sec">
+          <h3>Professional Experience</h3>
+          ${DATA.experience.map((x) => `<div class="cv-modal-item"><strong>${x.title}</strong><span>${x.org} · ${x.period}</span><p>${x.bullets[0]}</p></div>`).join("")}
+        </div>
+        <div class="cv-modal-sec">
+          <h3>Key Honors &amp; Competitions</h3>
+          ${DATA.awards.map((a) => `<div class="cv-modal-item"><strong>${a.title}</strong><span>${a.badge} · ${a.date}</span></div>`).join("")}
+        </div>
+        <div class="cv-modal-sec">
+          <h3>Flagship Engineering &amp; Research Projects</h3>
+          ${DATA.projects.slice(0, 7).map((p) => `<div class="cv-modal-item"><strong>${p.title}</strong><span>${p.impactHighlight}</span></div>`).join("")}
+        </div>
+      `);
+    }
+
     /* View Switcher (Entry <-> Read <-> Village) */
     function switchView(name) {
       currentView = name;
@@ -1561,6 +2464,10 @@
           : (currentView === "village" ? "Warm Daylight Village enabled ☀️" : "Light Mode enabled ☀️"));
         return;
       }
+      if (e.target.closest("[data-open-cv]")) {
+        openCvModal();
+        return;
+      }
       const sw = e.target.closest("[data-switch-view]");
       if (sw) switchView(sw.dataset.switchView);
       if (e.target.closest("[data-copy-email]")) {
@@ -1573,13 +2480,35 @@
     document.getElementById("vignette-read").innerHTML = ART.entryRead();
     document.getElementById("vignette-village").innerHTML = ART.entryVillage();
 
-    /* Init Read Mode */
-    const categories = ["All", "AI Research & NLP", "UI/UX & AI Product", "Branding & Identity", "Data & IoT"];
+    /* Init Read Mode — Executive Hero, Stats, About, Skills, Projects, Experience, Awards, Education, Certs, Searchable Notes, Profiles */
+    document.getElementById("hero-social-strip").innerHTML = DATA.profile.heroSocials
+      .map((s) => `<a class="social-chip" href="${s.url}" target="_blank" rel="noopener noreferrer">${s.name} ↗</a>`).join("");
+
+    document.getElementById("stats-strip").innerHTML = DATA.profile.stats
+      .map((s) => `<div class="stat-card"><div class="stat-val">${s.value}</div><div class="stat-label">${s.label}</div></div>`).join("");
+
+    document.getElementById("about-prose").innerHTML = DATA.profile.aboutParagraphs.map((p) => `<p>${p}</p>`).join("") +
+      `<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+        <button type="button" class="btn btn-primary" data-open-cv>📄 View Full CV &amp; Credentials →</button>
+        <a href="#work" class="btn btn-secondary">Explore 10 Case Studies</a>
+      </div>`;
+
+    const renderSkillList = (list) => list.map((sk) => `
+      <div class="skill-item">
+        <div class="skill-head"><span class="skill-name">${sk.name}</span><span class="skill-level">${sk.level} · ${sk.percent}</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:${sk.percent}"></div></div>
+        <div class="skill-tags">${sk.tags.map((t) => `<span class="tag-chip">${t}</span>`).join("")}</div>
+      </div>`).join("");
+    document.getElementById("skills-design").innerHTML = renderSkillList(DATA.skills.design);
+    document.getElementById("skills-technical").innerHTML = renderSkillList(DATA.skills.technical);
+
+    const categories = ["All", "FinTech & Software", "AI & NLP", "Computer Vision", "Data Mining", "UI/UX & Product", "Branding & Livery", "Embedded & IoT"];
     let activeCat = "All";
     function renderFilters() {
-      document.getElementById("work-filters").innerHTML = categories.map((c) =>
-        `<button type="button" class="filter-btn ${c === activeCat ? "is-active" : ""}" data-cat="${c}">${c}</button>`
-      ).join("");
+      document.getElementById("work-filters").innerHTML = categories.map((c) => {
+        const count = c === "All" ? DATA.projects.length : DATA.projects.filter((p) => p.category === c).length;
+        return `<button type="button" class="filter-btn ${c === activeCat ? "is-active" : ""}" data-cat="${c}">${c} (${count})</button>`;
+      }).join("");
     }
     function renderProjects() {
       const list = activeCat === "All" ? DATA.projects : DATA.projects.filter((p) => p.category === activeCat);
@@ -1590,8 +2519,12 @@
             <div class="work-card-meta"><span>${p.badge}</span><span>${p.year}</span></div>
             <h3 class="work-card-title">${p.title}</h3>
             <p class="work-card-desc">${p.shortDesc}</p>
-            <div class="work-card-tags">${p.tags.slice(0, 4).map((t) => `<span class="tag-chip">${t}</span>`).join("")}</div>
-            <span class="work-card-link">Read breakdown →</span>
+            <div class="work-card-impact">✦ ${p.impactHighlight}</div>
+            <div class="work-card-tags">${p.tags.slice(0, 5).map((t) => `<span class="tag-chip">${t}</span>`).join("")}</div>
+            <div class="work-card-foot">
+              <span class="work-card-link">Read breakdown →</span>
+              <a class="work-card-ext" href="${p.url}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">${p.urlLabel}</a>
+            </div>
           </div>
         </article>`).join("");
     }
@@ -1602,6 +2535,7 @@
       renderFilters();
       renderProjects();
     });
+
     function openProjectModal(p, inVillage = false) {
       const idx = DATA.projects.findIndex((i) => i.id === p.id);
       const nextP = DATA.projects[idx + 1];
@@ -1609,14 +2543,16 @@
         <div class="modal-kicker">${inVillage ? p.shopName + " · " : ""}${p.badge} · ${p.year}</div>
         <h2 class="modal-title">${p.title}</h2>
         <div class="modal-illustration" style="--art-bg-light:${p.accentSoft};--art-bg-dark:${p.accentDark}">${ART[p.illustration]()}</div>
+        <div class="work-card-impact" style="margin-bottom:14px">✦ ${p.impactHighlight}</div>
         <div class="work-card-tags" style="margin-bottom:18px;display:flex;flex-wrap:wrap;gap:6px">${p.tags.map((t) => `<span class="tag-chip">${t}</span>`).join("")}</div>
         <h3 class="modal-section-heading">The Challenge</h3><p class="modal-copy">${p.problem}</p>
-        <h3 class="modal-section-heading">Approach &amp; Craft</h3><ul class="modal-list">${p.approach.map((s) => `<li>${s}</li>`).join("")}</ul>
-        <h3 class="modal-section-heading">Outcome</h3><p class="modal-copy">${p.outcome}</p>
-        ${inVillage ? `<div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
-          <button type="button" class="btn btn-primary" id="modal-next-shop">${nextP ? "Walk to " + nextP.shopName + " →" : "Visit Urmi's Canvas Home →"}</button>
-          <button type="button" class="btn btn-secondary" id="modal-back-lane">Back to lane</button>
-        </div>` : ""}
+        <h3 class="modal-section-heading">Engineering Solution &amp; Craft</h3><ul class="modal-list">${p.approach.map((s) => `<li>${s}</li>`).join("")}</ul>
+        <h3 class="modal-section-heading">Measurable Impact</h3><p class="modal-copy">${p.outcome}</p>
+        <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
+          <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="btn btn-terracotta">${p.urlLabel}</a>
+          ${inVillage ? `<button type="button" class="btn btn-primary" id="modal-next-shop">${nextP ? "Walk to " + nextP.shopName + " →" : "Visit Urmi's Canvas Home →"}</button>
+          <button type="button" class="btn btn-secondary" id="modal-back-lane">Back to lane</button>` : ""}
+        </div>
       `);
       if (inVillage) {
         document.getElementById("modal-next-shop").addEventListener("click", () => { closeModal(); jumpToStop(nextP ? nextP.id : "home"); });
@@ -1624,38 +2560,132 @@
       }
     }
     document.getElementById("work-grid").addEventListener("click", (e) => {
+      if (e.target.closest("a")) return;
       const c = e.target.closest("[data-project-id]");
       if (c) openProjectModal(DATA.projects.find((p) => p.id === c.dataset.projectId), false);
     });
-    document.getElementById("about-prose").innerHTML = DATA.profile.aboutParagraphs.map((p) => `<p>${p}</p>`).join("");
-    document.getElementById("what-i-do").textContent = DATA.profile.whatIDo.join(" · ");
-    document.getElementById("tools-list").innerHTML = DATA.profile.tools.map((t) => `<span class="tool-pill">${t}</span>`).join("");
-    document.getElementById("timeline-list").innerHTML = DATA.milestones.map((m) => `
+
+    document.getElementById("experience-list").innerHTML = DATA.experience.map((x) => `
       <div class="timeline-row">
-        <div class="timeline-period">${m.period}</div>
-        <div><h3 class="timeline-title">${m.title}</h3><p class="timeline-org">${m.org}</p><p class="timeline-summary">${m.summary}</p></div>
+        <div class="timeline-period">${x.period}</div>
+        <div>
+          <h3 class="timeline-title">${x.title}</h3>
+          <p class="timeline-org">${x.org}</p>
+          <ul class="timeline-bullets">${x.bullets.map((b) => `<li>${b}</li>`).join("")}</ul>
+        </div>
       </div>`).join("");
-    document.getElementById("cert-track").innerHTML = DATA.certifications.map((c) => `
-      <article class="carousel-card"><div><div class="carousel-card-eyebrow">${c.issuer} · ${c.date}</div><h3 class="carousel-card-title">${c.title}</h3><p class="carousel-card-text">${c.note}</p></div><span class="carousel-card-footer">Verified Credential ✓</span></article>`).join("");
-    document.getElementById("notes-track").innerHTML = DATA.notes.map((n, i) => `
-      <article class="carousel-card" style="cursor:pointer" data-note-idx="${i}"><div><div class="carousel-card-eyebrow">${n.category} · ${n.readTime}</div><h3 class="carousel-card-title">${n.title}</h3><p class="carousel-card-text">${n.excerpt}</p></div><span class="carousel-card-footer">Read note →</span></article>`).join("");
-    document.getElementById("notes-track").addEventListener("click", (e) => {
-      const c = e.target.closest("[data-note-idx]");
-      if (!c) return;
-      const n = DATA.notes[Number(c.dataset.noteIdx)];
-      openModal(`<div class="modal-kicker">${n.category} · ${n.date} · ${n.readTime}</div><h2 class="modal-title">${n.title}</h2><p class="modal-copy" style="color:var(--ink)">${n.excerpt}</p><hr style="border:none;border-top:1px solid var(--hairline);margin:18px 0"/><p class="modal-copy">${n.body}</p>`);
+
+    document.getElementById("awards-grid").innerHTML = DATA.awards.map((a) => `
+      <article class="award-card ${a.featured ? "award-card--featured" : ""}">
+        <div class="award-badge-row"><span class="award-badge">${a.badge}</span><span class="award-date">${a.date}</span></div>
+        <h3 class="award-title">${a.title}</h3>
+        <p class="award-event">${a.event}</p>
+        <p class="award-desc">${a.desc}</p>
+      </article>`).join("");
+
+    document.getElementById("education-grid").innerHTML = DATA.education.map((e) => `
+      <article class="edu-card">
+        <span class="edu-result">${e.result}</span>
+        <h3 class="edu-degree">${e.degree}</h3>
+        <p class="edu-inst">${e.institution}</p>
+        <span class="edu-period">${e.period}</span>
+        <p class="edu-details">${e.details}</p>
+      </article>`).join("");
+
+    document.getElementById("certs-grid").innerHTML = DATA.certifications.map((c) => `
+      <article class="cert-card">
+        <div>
+          <div class="cert-top"><span>${c.badge}</span><span>${c.date}</span></div>
+          <h3 class="cert-title">${c.title}</h3>
+          <p class="cert-desc">${c.note}</p>
+          <div class="skill-tags">${c.skills.map((s) => `<span class="tag-chip">${s}</span>`).join("")}</div>
+        </div>
+        <div class="cert-foot">
+          <span>${c.issuer}</span>
+          ${c.verifyUrl ? `<a href="${c.verifyUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">Verify ↗</a>` : `<span>Verified ✓</span>`}
+        </div>
+      </article>`).join("");
+
+    /* Searchable 12-Article Engineering & Research Notes */
+    const noteCats = ["All", "Brand Architecture", "Deep Learning", "GenAI", "Computer Vision", "NLP", "Microservices", "Vector DB", "Robotics", "PostgreSQL", "Edge AI", "Docker"];
+    let activeNoteCat = "All";
+    let noteQuery = "";
+
+    function openArticleModal(n) {
+      openModal(`
+        <div class="modal-kicker">${n.category} · ${n.date} · ${n.readTime}</div>
+        <h2 class="modal-title">${n.title}</h2>
+        <div class="work-card-tags" style="margin-bottom:16px;display:flex;flex-wrap:wrap;gap:6px">${n.tags.map((t) => `<span class="tag-chip">${t}</span>`).join("")}</div>
+        <p class="modal-copy" style="color:var(--ink);font-weight:500">${n.excerpt}</p>
+        <hr style="border:none;border-top:1px solid var(--hairline);margin:18px 0"/>
+        <div class="article-body">${n.bodyHtml}</div>
+      `);
+    }
+
+    function renderNotes() {
+      document.getElementById("notes-filters").innerHTML = noteCats.map((c) =>
+        `<button type="button" class="filter-btn ${c === activeNoteCat ? "is-active" : ""}" data-note-cat="${c}">${c}</button>`
+      ).join("");
+
+      const q = noteQuery.trim().toLowerCase();
+      const filtered = DATA.notes.filter((n) => {
+        const catOk = activeNoteCat === "All" || n.category === activeNoteCat || n.tags.some((t) => t.toLowerCase() === activeNoteCat.toLowerCase());
+        const qOk = !q || (n.title + " " + n.excerpt + " " + n.category + " " + n.tags.join(" ")).toLowerCase().includes(q);
+        return catOk && qOk;
+      });
+
+      const featuredWrap = document.getElementById("notes-featured-wrap");
+      const featured = DATA.notes[0];
+      if (!q && activeNoteCat === "All") {
+        featuredWrap.innerHTML = `
+          <article class="notes-featured" data-open-note="0">
+            <div class="carousel-card-eyebrow">★ Featured Masterclass · ${featured.category} · ${featured.date} · ${featured.readTime}</div>
+            <h3 class="section-title" style="font-size:clamp(1.3rem,2.4vw,1.65rem);margin-bottom:10px">${featured.title}</h3>
+            <p class="carousel-card-text" style="margin-bottom:14px">${featured.excerpt}</p>
+            <div class="work-card-tags" style="margin-bottom:12px">${featured.tags.map((t) => `<span class="tag-chip">${t}</span>`).join("")}</div>
+            <span class="carousel-card-footer">Read full technical breakdown →</span>
+          </article>`;
+      } else {
+        featuredWrap.innerHTML = "";
+      }
+
+      const gridItems = (!q && activeNoteCat === "All") ? filtered.slice(1) : filtered;
+      document.getElementById("notes-grid").innerHTML = gridItems.length
+        ? gridItems.map((n) => {
+            const idx = DATA.notes.indexOf(n);
+            return `
+              <article class="note-card" data-open-note="${idx}">
+                <div>
+                  <div class="carousel-card-eyebrow">${n.category} · ${n.date} · ${n.readTime}</div>
+                  <h3 class="carousel-card-title">${n.title}</h3>
+                  <p class="carousel-card-text">${n.excerpt}</p>
+                  <div class="work-card-tags" style="margin-bottom:12px">${n.tags.slice(0, 4).map((t) => `<span class="tag-chip">${t}</span>`).join("")}</div>
+                </div>
+                <span class="carousel-card-footer">Read full note →</span>
+              </article>`;
+          }).join("")
+        : `<p class="section-sub">No articles matched "${noteQuery}". Try searching Transformers, RAG, YOLO, PyTorch, Spring Boot, or Livery.</p>`;
+    }
+
+    document.getElementById("notes-filters").addEventListener("click", (e) => {
+      const b = e.target.closest("[data-note-cat]");
+      if (!b) return;
+      activeNoteCat = b.dataset.noteCat;
+      renderNotes();
     });
+    document.getElementById("notes-search-input").addEventListener("input", (e) => {
+      noteQuery = e.target.value;
+      renderNotes();
+    });
+    document.getElementById("notes").addEventListener("click", (e) => {
+      const card = e.target.closest("[data-open-note]");
+      if (card) openArticleModal(DATA.notes[Number(card.dataset.openNote)]);
+    });
+
     document.getElementById("beyond-grid").innerHTML = DATA.beyond.map((b) => `<div class="beyond-card"><div class="beyond-medium">${b.medium}</div><h3 class="beyond-title">${b.title}</h3><p class="beyond-desc">${b.desc}</p></div>`).join("");
 
-    function wireCarousel(trackId, counterId, prevId, nextId, total) {
-      const track = document.getElementById(trackId), counter = document.getElementById(counterId);
-      const upd = () => { const c = track.querySelector(".carousel-card"); if (!c) return; const idx = Math.min(total, Math.max(1, Math.round(track.scrollLeft / (c.offsetWidth + 18)) + 1)); counter.textContent = `${idx}/${total}`; };
-      document.getElementById(prevId).addEventListener("click", () => track.scrollBy({ left: -370, behavior: "smooth" }));
-      document.getElementById(nextId).addEventListener("click", () => track.scrollBy({ left: 370, behavior: "smooth" }));
-      track.addEventListener("scroll", upd, { passive: true });
-    }
-    wireCarousel("cert-track", "cert-counter", "cert-prev", "cert-next", DATA.certifications.length);
-    wireCarousel("notes-track", "notes-counter", "notes-prev", "notes-next", DATA.notes.length);
+    document.getElementById("verified-profiles").innerHTML = DATA.profile.socialLinks
+      .map((s) => `<a class="profile-pill" href="${s.url}" target="_blank" rel="noopener noreferrer">${s.name} ↗</a>`).join("");
 
     document.getElementById("contact-form").addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -1664,18 +2694,21 @@
       const origText = btn.textContent;
       btn.disabled = true;
       btn.textContent = "Sending...";
+      const subjectVal = form.subject ? form.subject.value : "General Inquiry";
       const endpoint = CONTACT_API_URL || ("https://formsubmit.co/ajax/" + DATA.profile.email);
       const payload = CONTACT_API_URL
         ? {
             name: form.name.value.trim(),
             email: form.email.value.trim(),
-            message: form.message.value.trim()
+            subject: subjectVal,
+            message: `[${subjectVal}] ` + form.message.value.trim()
           }
         : {
             name: form.name.value.trim(),
             email: form.email.value.trim(),
+            subject: subjectVal,
             message: form.message.value.trim(),
-            _subject: "New Inquiry from urmi-village-portfolio!"
+            _subject: `New ${subjectVal} Inquiry from urmi-village-portfolio!`
           };
       try {
         const res = await fetch(endpoint, {
@@ -1700,13 +2733,14 @@
     }, 1000);
     renderFilters();
     renderProjects();
+    renderNotes();
 
-    /* ================= INIT VILLAGE MODE ================= */
-    const WORLD_WIDTH = 5200;
+    /* ================= INIT VILLAGE MODE (ALL 10 FLAGSHIP SHOPS) ================= */
+    const WORLD_WIDTH = 7400;
     const stops = [
       { id: "gate", x: 340, type: "gate", kicker: "Start · Welcome", name: "Village Gate", greeting: "Welcome to my lane!", illustration: "gate", extra: "village-stop--gate" },
-      ...DATA.projects.map((p, i) => ({ id: p.id, x: 920 + i * 590, type: "project", project: p, kicker: p.shopSign, name: p.shopName, greeting: `Step into ${p.shopName}!`, illustration: p.illustration, extra: "" })),
-      { id: "home", x: 4680, type: "home", kicker: "Studio & Home · End", name: "Urmi's Canvas Home", greeting: "Come in for tea & art!", illustration: "home", extra: "village-stop--home" }
+      ...DATA.projects.map((p, i) => ({ id: p.id, x: 920 + i * 580, type: "project", project: p, kicker: p.shopSign, name: p.shopName, greeting: `Step into ${p.shopName}!`, illustration: p.illustration, extra: "" })),
+      { id: "home", x: 6840, type: "home", kicker: "Studio & Home · End", name: "Urmi's Canvas Home", greeting: "Come in for tea & art!", illustration: "home", extra: "village-stop--home" }
     ];
 
     const layerWorld = document.getElementById("layer-world");
@@ -1734,10 +2768,10 @@
       return `<span class="star${cool}" style="left:${left}px;top:${top}%;width:${size}px;height:${size}px;animation-delay:${delay}s;--twinkle-dur:${dur}s"></span>`;
     }).join("");
 
-    layerClouds.innerHTML = [[120,34,120,34],[560,76,96,28],[1020,28,145,40],[1580,64,112,32],[2140,30,136,38],[2720,70,118,34]]
+    layerClouds.innerHTML = [[120,34,120,34],[560,76,96,28],[1020,28,145,40],[1580,64,112,32],[2140,30,136,38],[2720,70,118,34],[3320,36,130,36],[3860,68,108,30]]
       .map(([l,t,w,h]) => `<div class="cloud" style="left:${l}px;top:${t}px;width:${w}px;height:${h}px"></div>`).join("");
 
-    const propsHtml = [[110,"tree",0],[560,"lamp",0],[630,"tree",1],[1190,"tree",0],[1265,"lamp",0],[1790,"tree",1],[2350,"lamp",0],[2410,"tree",0],[2980,"tree",1],[3560,"lamp",0],[3630,"tree",0],[4230,"tree",1],[4350,"lamp",0],[4960,"tree",0]]
+    const propsHtml = [[110,"tree",0],[560,"lamp",0],[630,"tree",1],[1195,"tree",0],[1265,"lamp",0],[1790,"tree",1],[2350,"lamp",0],[2410,"tree",0],[2960,"tree",1],[3510,"lamp",0],[3580,"tree",0],[4130,"tree",1],[4680,"lamp",0],[4740,"tree",0],[5290,"tree",1],[5840,"lamp",0],[5910,"tree",0],[6460,"tree",1],[6550,"lamp",0],[7140,"tree",0]]
       .map(([x,k,v]) => `<div class="village-prop" style="left:${x}px">${k === "tree" ? ART.tree(v) : ART.lamp() + '<span class="lamp-pool" aria-hidden="true"></span>'}</div>`).join("");
 
     const stopsHtml = stops.map((s) => `
@@ -1748,8 +2782,8 @@
       </div>`).join("");
 
     const firefliesHtml = `<div class="fireflies">${[[180,120,0],[320,80,0.7],[460,180,1.4],[600,90,2.1],[740,140,0.4],[860,70,1.9]].map(([x,y,d]) => `<span class="firefly" style="left:${x}px;top:${y}px;animation-delay:${d}s"></span>`).join("")}</div>`;
-    const nightLaneFirefliesHtml = `<div class="fireflies-lane" aria-hidden="true">${Array.from({ length: 34 }, (_, i) => {
-      const x = 90 + i * 146 + ((i * 29) % 54);
+    const nightLaneFirefliesHtml = `<div class="fireflies-lane" aria-hidden="true">${Array.from({ length: 48 }, (_, i) => {
+      const x = 90 + i * 148 + ((i * 29) % 54);
       const y = 55 + ((i * 67) % 245);
       const delay = ((i * 0.43) % 4.4).toFixed(2);
       return `<span class="firefly" style="left:${x}px;top:${y}px;animation-delay:${delay}s"></span>`;
@@ -1757,7 +2791,7 @@
     layerWorld.insertAdjacentHTML("beforeend", propsHtml + stopsHtml + firefliesHtml + nightLaneFirefliesHtml);
     document.getElementById("traveller-art").innerHTML = ART.character();
 
-    workDropdown.innerHTML = `<span class="hud-dropdown-label">Jump to a shop</span>` +
+    workDropdown.innerHTML = `<span class="hud-dropdown-label">Jump to a shop (10)</span>` +
       DATA.projects.map((p) => `<button type="button" data-jump-stop="${p.id}"><span>${p.shopName}</span><small>${p.year}</small></button>`).join("") +
       `<span class="hud-dropdown-label" style="margin-top:6px">End of the lane</span><button type="button" data-jump-stop="home"><span>Urmi's Canvas Home</span><small>Studio</small></button>`;
 
@@ -1780,19 +2814,22 @@
     function openHomeModal(tab = "about") {
       let body = "";
       if (tab === "about") body = DATA.profile.aboutParagraphs.map((p) => `<p class="modal-copy">${p}</p>`).join("");
+      else if (tab === "exp") body = `<div class="studio-grid">${DATA.experience.map((x) => `<div class="studio-mini-card"><span class="stop-sign-kicker">${x.period}</span><h4>${x.title}</h4><p><strong>${x.org}</strong> — ${x.bullets[0]}</p></div>`).join("")}</div>`;
       else if (tab === "art") body = `<div class="studio-grid">${DATA.beyond.map((b) => `<div class="studio-mini-card"><span class="stop-sign-kicker">${b.medium}</span><h4>${b.title}</h4><p>${b.desc}</p></div>`).join("")}</div>`;
-      else body = `<div class="studio-grid">${DATA.milestones.map((m) => `<div class="studio-mini-card"><span class="stop-sign-kicker">${m.period}</span><h4>${m.title}</h4><p>${m.summary}</p></div>`).join("")}</div>`;
+      else body = `<div class="studio-grid">${DATA.awards.map((a) => `<div class="studio-mini-card"><span class="stop-sign-kicker">${a.badge} · ${a.date}</span><h4>${a.title}</h4><p>${a.desc}</p></div>`).join("")}</div>`;
       openModal(`
         <div class="modal-kicker">End of the Lane · Dhaka, Bangladesh</div>
         <h2 class="modal-title">Urmi's Canvas Studio &amp; Cozy Home</h2>
         <div class="studio-tabs">
           <button type="button" class="studio-tab ${tab==="about"?"is-active":""}" data-ht="about">About Urmi</button>
-          <button type="button" class="studio-tab ${tab==="art"?"is-active":""}" data-ht="art">Art &amp; Passions</button>
+          <button type="button" class="studio-tab ${tab==="exp"?"is-active":""}" data-ht="exp">Experience</button>
           <button type="button" class="studio-tab ${tab==="awards"?"is-active":""}" data-ht="awards">Awards &amp; UIU</button>
+          <button type="button" class="studio-tab ${tab==="art"?"is-active":""}" data-ht="art">Art &amp; Passions</button>
         </div>
         ${body}
         <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
-          <button type="button" class="btn btn-terracotta" data-copy-email>Copy Email (${DATA.profile.email})</button>
+          <button type="button" class="btn btn-terracotta" data-open-cv>📄 View &amp; Download CV</button>
+          <button type="button" class="btn btn-secondary" data-copy-email>Copy Email</button>
           <button type="button" class="btn btn-secondary" data-switch-view="read">Open Read mode ↗</button>
           <button type="button" class="btn btn-secondary" data-trigger-goodbye>🌙 Turn off light · Good bye</button>
         </div>
@@ -1875,7 +2912,7 @@
       if (!el) return;
       const s = stops.find((x) => x.id === el.dataset.stopId);
       if (s.type === "gate") {
-        openModal(`<div class="modal-kicker">Village Noticeboard</div><h2 class="modal-title">Welcome to Urmi's Little Village</h2><p class="modal-copy">${DATA.profile.heroLead}</p><button type="button" class="btn btn-terracotta" id="gate-go">Walk to The Green Observatory →</button>`);
+        openModal(`<div class="modal-kicker">Village Noticeboard</div><h2 class="modal-title">Welcome to Urmi's Little Village</h2><p class="modal-copy">${DATA.profile.heroLead}</p><button type="button" class="btn btn-terracotta" id="gate-go">Walk to ${DATA.projects[0].shopName} →</button>`);
         document.getElementById("gate-go").addEventListener("click", () => { closeModal(); jumpToStop(DATA.projects[0].id); });
       } else if (s.type === "home") openHomeModal("about");
       else openProjectModal(s.project, true);
